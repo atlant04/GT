@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node app",
     "start": "node app",
-    "postinstall": "cd backend/ios && npm install"
+    "postinstall": "cd backend/js"
   },
   "author": "Maksim Tochilkin",
   "license": "MIT",
