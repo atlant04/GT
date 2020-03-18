@@ -37,7 +37,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         navigationItem.searchController = searchBar
         createDataSource()
 
-        AF.request("https://01df4715.ngrok.io/courses", method: .get).responseDecodable(of: [Course].self) { response in
+        AF.request("https://cb61e726.ngrok.io/courses", method: .get).responseDecodable(of: [Course].self) { response in
             switch response.result {
             case .success(let courses):
                 self.courses = courses

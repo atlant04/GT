@@ -64,6 +64,8 @@ struct Course: Decodable, Hashable {
                     return .systemPink
                 case .INTA:
                     return .systemYellow
+                case .MATH:
+                    return .systemGreen
                 default:
                     return .systemRed
                 }
