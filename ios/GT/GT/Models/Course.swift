@@ -7,46 +7,68 @@
 //
 
 import Foundation
+import ObjectMapper
 import UIKit
 
-struct Course: Decodable, Hashable {
+struct Course: ImmutableMappable, Hashable {
 
     let id: String
     let gradeBasis: String
-    let attributes: String?
+    let attributes: String
     let name: String
     let semester: String
     let fields: [String]
     let fullname: String
-    var school: School
+    let school: School
     let number: String
     let hours: String
     let identifier: String
     let sections: [Section]?
 
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case attributes = "course_attributes"
-        case gradeBasis = "grade_basis"
-        case name, semester, fields, fullname, school, number, hours, identifier, sections
+    init(map: Map) throws {
+        id = try map.value("_id") ?? "None"
+        gradeBasis = try map.value("grade_basis") ?? "None"
+        attributes = try map.value("attributes") ?? "None"
+        name = try map.value("name") ?? "None"
+        semester = try map.value("semester") ?? "None"
+        fields = try map.value("fields") ?? []
+        fullname = try map.value("fullname") ?? "None"
+        school = try map.value("school") ?? .NONE
+        number = try map.value("number") ?? "None"
+        hours = try map.value("hours") ?? "None"
+        identifier = try map.value("identifier") ?? "None"
+        sections = try? map.value("sections")
     }
 
-    struct Section: Decodable, Hashable {
-        let id: String
-        let crn: String
-        let instructors = [String]()
-        let meetings = [Meeting]()
-        enum CodingKeys: String, CodingKey {
-            case id = "section_id", crn, instructors, meetings
+    struct Section: ImmutableMappable, Hashable {
+        var id: String
+        var crn: String
+        var instructors: [String]
+        var meetings: [Meeting]
+
+        init(map: Map) throws {
+            id = try map.value("section_id") ?? "None"
+            crn = try map.value("crn") ?? "None"
+            instructors = try map.value("instructors") ?? []
+            meetings = try map.value("meetings") ?? []
         }
+
     }
 
-    struct Meeting: Decodable, Hashable {
-        let time: String?
-        let days: String?
-        let location: String?
-        let type: String
-        let instructor: [String]
+    struct Meeting: ImmutableMappable, Hashable {
+        var time: String
+        var days: String
+        var location: String
+        var type: String
+        var instructor: [String]
+
+        init(map: Map) throws {
+            time = try map.value("time") ?? "None"
+            days = try map.value("days") ?? "None"
+            location = try map.value("location") ?? "None"
+            type = try map.value("type") ?? "None"
+            instructor = try map.value("instructor") ?? []
+        }
     }
 
     enum School: String, Decodable, CaseIterable {
@@ -54,6 +76,7 @@ struct Course: Decodable, Hashable {
         case PHYS = "PHYS"
         case INTA = "INTA"
         case MATH = "MATH"
+        case NONE = "None"
 
         var color: UIColor {
             get {

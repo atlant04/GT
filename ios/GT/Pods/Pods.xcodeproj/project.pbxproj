@@ -7,171 +7,236 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00FA97D56201027AEB1C7692A2C3CF8B /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8D82849B7916F4A4035D8A681CA2815 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		02176772C786626D20D89FEAA08B206F /* JZCalendarWeekView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E0826B395BCA6DA98E29C2AA5FF84 /* JZCalendarWeekView-dummy.m */; };
-		0419772A87B16DB7DCF405A9E77D671F /* Protector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B7F60D8ED2571F8148AFF35D9A37C /* Protector.swift */; };
-		062F3EEF48017C6E73E814348BB772F6 /* WeakTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D412E0A0A101E42271A2ED25E0C2DCF /* WeakTimer.swift */; };
-		06507A26118BA5ACFBBC8C225776920E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD5F124B6452270BC4F8C3427290E2E /* Validation.swift */; };
-		0AE06C3AEA6CA45342BA703230ABD2CB /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E779A2936314F08618F850DBC321BF57 /* CachedResponseHandler.swift */; };
-		0CC43FF0E31AA320ACFEB0FE6239DF34 /* ServerTrustEvaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C64E5F36F23E65B3BDD6B47D823588 /* ServerTrustEvaluation.swift */; };
-		13457FE4E607509A3B9527B0711033D5 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6C3B336D35376FD40171B7102EA92 /* ResponseSerialization.swift */; };
-		14AB7976E100075ADEA0AB1DB833E72D /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558CCE3AEDA3E2D1BC8CA17A792A56B /* ParameterEncoding.swift */; };
-		17953A9CF2E354B3E69B9ABC2F367AD9 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7FB77EB80BAE9772D005E27AB5254 /* AFError.swift */; };
+		00FA97D56201027AEB1C7692A2C3CF8B /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702FE59CF5FD9D5DC6AE4E6EF424588 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02176772C786626D20D89FEAA08B206F /* JZCalendarWeekView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC04306DF4767EB9124A7D02A8F143E /* JZCalendarWeekView-dummy.m */; };
+		02E11AACB509E00F07FC45B073374310 /* EnumTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A397D2D8E92E8C341691821B744FC099 /* EnumTransform.swift */; };
+		0419772A87B16DB7DCF405A9E77D671F /* Protector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9A881E6739DE834CA5E9AC0C22E /* Protector.swift */; };
+		062F3EEF48017C6E73E814348BB772F6 /* WeakTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEFDACDD67285A4EB86299393A7E409 /* WeakTimer.swift */; };
+		06507A26118BA5ACFBBC8C225776920E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94E8DBE9E71D97714F28DAD7B74A96B /* Validation.swift */; };
+		0AE06C3AEA6CA45342BA703230ABD2CB /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D455740B11F13BAEA5ECE7F8206493 /* CachedResponseHandler.swift */; };
+		0C9FD48191A4E68417C886A9BA356C76 /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAA233FC6C284F8754D8B48910A285 /* ISO8601DateTransform.swift */; };
+		0CC43FF0E31AA320ACFEB0FE6239DF34 /* ServerTrustEvaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE48A963091FCC20CE19BA990E80284 /* ServerTrustEvaluation.swift */; };
+		0E478FF7AD49149E802261DB853A2837 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EF6FA48B74B9FDDD7D6E5CDF6DFE1 /* DateTransform.swift */; };
+		13457FE4E607509A3B9527B0711033D5 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6CEE70343A12D437474FC71A1640D /* ResponseSerialization.swift */; };
+		14AB7976E100075ADEA0AB1DB833E72D /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8245CDACD5A27240CC83CCC918555BB /* ParameterEncoding.swift */; };
+		17953A9CF2E354B3E69B9ABC2F367AD9 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D44F36E54A344A96FE1D4B77F3EF6 /* AFError.swift */; };
 		17DDB8B8CAC45C8ED55CBFE286CC7ED0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */; };
-		1B204E64FAF4C4673EBB69EE46D43436 /* JZAllDayCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA68950F22CC0BDE0DA49E91F073D4A /* JZAllDayCorner.swift */; };
-		1DBDEEEB9923EDFADF707BB3822CD2F2 /* JZColumnHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6444A6759E5EFEB860476E6F34B0A31 /* JZColumnHeader.swift */; };
-		20F794BF26C2BE45048D1CBDF8D9E63F /* JZGridLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A17DB74B1CB93695CA8B7D890C8D4D /* JZGridLine.swift */; };
-		30EDCF4F7C772B9995A8EE95CF195A0E /* JZBaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27008B52EAFFCAAB5E52069E9AEA84A8 /* JZBaseEvent.swift */; };
-		3A6D33EB076C5E2BA9B743C3A0E4F23F /* JZCurrentTimelineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DD1BE64534D836AA877E3DEF33E725 /* JZCurrentTimelineSection.swift */; };
-		3E7748F0B2D6A8B8A5459526774B5108 /* JZCornerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FF3528763D55E40035605F268EF7F2 /* JZCornerHeader.swift */; };
-		4082513A35C682F2193D002C80F72B79 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42225C9E8A2496344ACCF8719B362AAC /* Result+Alamofire.swift */; };
-		41560EF36E298F44ED9B4C8FEFCEC0FE /* JZAllDayEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0145B373E606CC08CA2D503AAE332AA2 /* JZAllDayEvent.swift */; };
-		418E7DD067CE4390BE712D12DAFB57B6 /* JZLongPressEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94394D9812E9FC3D513113248711349A /* JZLongPressEventCell.swift */; };
-		42CDB5C986C78BBC8E5C0185F746CABF /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA6FFBCB3781F24DF55EE957F859343 /* SessionDelegate.swift */; };
-		44127C4B989C9CC6A90D78B66A929A5E /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6661F7F030E8A7F27580AC4B55F2B /* AlamofireExtended.swift */; };
-		48D97BE7D5CAED273BD2341C239CC934 /* RequestTaskMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68019E6BD3A653E0B9F851823BAAA21A /* RequestTaskMap.swift */; };
-		56EC8ED1535DAB987F3D2B71D4C05773 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CE47D9CAD85DBE5E1F0749F19F761A /* HTTPHeaders.swift */; };
-		5C4A0685B5A201436AB52EF25829B333 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3241A61BD6CB1C069849037F554BC55 /* MultipartFormData.swift */; };
-		5D12235D061AEE7459279AAF8C348DFE /* URLEncodedFormEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A30E4BEF654F0F0B2A044C1758C1E4 /* URLEncodedFormEncoder.swift */; };
-		5D61C8ED0DDCC9F8B576B6514B19EE50 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A5B8955A7FD0C3584052ED8B8CB5C /* ParameterEncoder.swift */; };
-		605E0A15DDB75838982948AAE8B49401 /* JZCalendarWeekView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95657A43E907D01C342A44D0661D96EE /* JZCalendarWeekView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		643E1F3A74EC4B5320CD684913DF21AB /* Pods-GT-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0DA16A21745A0186258D05258855E22 /* Pods-GT-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		69ACE4EEE5A8C1C618B22CC1F7B8EF01 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C1183FEAC757256F023A319DA1D28D /* Session.swift */; };
-		6A22C46CB1EDE471794D9AB2AC10327F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19459317741E152420C53F8E5CACFD84 /* Request.swift */; };
-		70517C3BAC2D6614347DEAC15299EB84 /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B9C6813328A8E02FE190886EA7F2DD /* URLConvertible+URLRequestConvertible.swift */; };
-		74A6B3136E020D93D249483285FEEE95 /* JZCurrentTimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D42C0AA62790C4AD9DEDEDC1FF5D2 /* JZCurrentTimelinePage.swift */; };
-		765C39F1BAF6D14A8AA41A8F23118BC3 /* JZLongPressWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF802F3A49DB83C6E4D4B31CCB2369 /* JZLongPressWeekView.swift */; };
-		77B843D669B9F7B47FBA8F6D1AAB9FEB /* JZAllDayHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC8B8B5DB7B58B3AAF32834FF2896C /* JZAllDayHeaderBackground.swift */; };
-		7CF8362BA31492053F5CB165637AE117 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F986AB562B224948056A25639B82074 /* NetworkReachabilityManager.swift */; };
-		82E2B70B9F32E6E4A05596F725D4A953 /* JZColumnHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F394EA1B6C9C4F93A65344D21CE24BE /* JZColumnHeaderBackground.swift */; };
-		92811AC5CD9A5004116AE43C4E8FD955 /* OperationQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A192465C75D6523925F44BB16DB90A7 /* OperationQueue+Alamofire.swift */; };
-		97587DA0A46EEA3356FB5000398A0810 /* JZWeekViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5C94E796BD75D568A927EE3C51849 /* JZWeekViewHelper.swift */; };
+		1B204E64FAF4C4673EBB69EE46D43436 /* JZAllDayCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DC3EFDE6678083890FDF45FA4F3EEF /* JZAllDayCorner.swift */; };
+		1DBDEEEB9923EDFADF707BB3822CD2F2 /* JZColumnHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A4D04458D6B965CAD290899AEFE838 /* JZColumnHeader.swift */; };
+		20F794BF26C2BE45048D1CBDF8D9E63F /* JZGridLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD0F125F04B0784E6597339422E1C28 /* JZGridLine.swift */; };
+		30EDCF4F7C772B9995A8EE95CF195A0E /* JZBaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D1D494B9004E41823E685DE5FD632 /* JZBaseEvent.swift */; };
+		3556C30029720A3AF9CDBF70BE28281C /* FromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11A83726EF25024A7351EA1A2F651E /* FromJSON.swift */; };
+		3A6D33EB076C5E2BA9B743C3A0E4F23F /* JZCurrentTimelineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C4F434D8C47E299A54930F11EFA43 /* JZCurrentTimelineSection.swift */; };
+		3E7748F0B2D6A8B8A5459526774B5108 /* JZCornerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F0B1DA7CF0D5EC1AB29F48811E3328 /* JZCornerHeader.swift */; };
+		4082513A35C682F2193D002C80F72B79 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E42E170E6C78B74FBB78850D8F23A9 /* Result+Alamofire.swift */; };
+		41560EF36E298F44ED9B4C8FEFCEC0FE /* JZAllDayEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AB014087A80D011B23FFBAFFB0BEB /* JZAllDayEvent.swift */; };
+		418E7DD067CE4390BE712D12DAFB57B6 /* JZLongPressEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08ED2105B1DE4493F90A8B7E53BD1BB /* JZLongPressEventCell.swift */; };
+		42CDB5C986C78BBC8E5C0185F746CABF /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA3FD389BB4DAC16ED26A0DA8F6A72 /* SessionDelegate.swift */; };
+		44127C4B989C9CC6A90D78B66A929A5E /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175D4330B88C0235C754E6EACB05F2A0 /* AlamofireExtended.swift */; };
+		45EF41171CA52C2B9E61E1CCD69DDAB6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242B7A1E99561273D1A38678ABA7BC92 /* Map.swift */; };
+		48D97BE7D5CAED273BD2341C239CC934 /* RequestTaskMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2759C1A035070BF71D9F0C113F1FCB /* RequestTaskMap.swift */; };
+		553CF23D91DC8777B26191C77938004A /* NSDecimalNumberTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5FF81F8C2C051C8E40DCE89447336 /* NSDecimalNumberTransform.swift */; };
+		56EC8ED1535DAB987F3D2B71D4C05773 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC35A9B359D494CF6B77A5CBE13C8A /* HTTPHeaders.swift */; };
+		5C4A0685B5A201436AB52EF25829B333 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0DFDB0E810E830C2FC2BF3EA4C7A1F /* MultipartFormData.swift */; };
+		5D12235D061AEE7459279AAF8C348DFE /* URLEncodedFormEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E437527D83D210C5BC80BF8CFBAA032B /* URLEncodedFormEncoder.swift */; };
+		5D61C8ED0DDCC9F8B576B6514B19EE50 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04596647AF08D3F148699E203A18DB52 /* ParameterEncoder.swift */; };
+		605E0A15DDB75838982948AAE8B49401 /* JZCalendarWeekView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1BD0C91C22500F93A85439F5147F378 /* JZCalendarWeekView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64C60112E347C8B0F4B70760861FA125 /* EnumOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB92ADC661ADA3C51D68A0AD4775D51 /* EnumOperators.swift */; };
+		65F3F57891C3534229655745DB094F1B /* TransformOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2454B8A7BA9205723B60AA0931DFE /* TransformOf.swift */; };
+		664B70329CC935DB023416ADE2F203DC /* DictionaryTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93907E0173824B1B46F6B4FB5459889 /* DictionaryTransform.swift */; };
+		69ACE4EEE5A8C1C618B22CC1F7B8EF01 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF88D19D3F9710FA04C927B42B8D3D7 /* Session.swift */; };
+		6A22C46CB1EDE471794D9AB2AC10327F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5C248B8D7B2D372D636E4DAC2469B4 /* Request.swift */; };
+		70517C3BAC2D6614347DEAC15299EB84 /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97642D6C84695DFE3C324C0B2B7BC276 /* URLConvertible+URLRequestConvertible.swift */; };
+		74A6B3136E020D93D249483285FEEE95 /* JZCurrentTimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BD23064A3ED335DABA11AE9115F31 /* JZCurrentTimelinePage.swift */; };
+		74B0400B454263A4EA8B4CB1878087AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */; };
+		765C39F1BAF6D14A8AA41A8F23118BC3 /* JZLongPressWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E65A7509DFB59FFF9F5DE61D3451E /* JZLongPressWeekView.swift */; };
+		77B843D669B9F7B47FBA8F6D1AAB9FEB /* JZAllDayHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768440EB0A63E19FBCD05658E9C7E664 /* JZAllDayHeaderBackground.swift */; };
+		78BB4BFABCB498A10A06C02661795CDB /* ObjectMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3872DDA605D3A704AE3E8840F49E8DE7 /* ObjectMapper-dummy.m */; };
+		7908F4065CB1E8A38293CE28F4936941 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8808FAC6D29C7CB68D61D5E726BF8 /* Mapper.swift */; };
+		7CF8362BA31492053F5CB165637AE117 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F79E9AAA787D5622F263020DD48AEA5 /* NetworkReachabilityManager.swift */; };
+		82E2B70B9F32E6E4A05596F725D4A953 /* JZColumnHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26100E1DE7FC2D1A3D722E92396EB649 /* JZColumnHeaderBackground.swift */; };
+		83ADD0310D235BAF1EF73EBFCFCBBB50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */; };
+		86D61ED9E92755CAA98639EF12E90D65 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B01165D8A0DBCE6DA658594A992626 /* Operators.swift */; };
+		8DA5B74F96053B88D81B4C81C4D42C64 /* ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3DCD95F9A825B3BD92989D292B17 /* ToJSON.swift */; };
+		92811AC5CD9A5004116AE43C4E8FD955 /* OperationQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3289970A6E61FE0482478A5AB14FE5 /* OperationQueue+Alamofire.swift */; };
+		96DBFE11AAE27CA46A220B4FB06C355B /* IntegerOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7FCA9CD313D8107F1EDED83DE24F03 /* IntegerOperators.swift */; };
+		97587DA0A46EEA3356FB5000398A0810 /* JZWeekViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48A4D80A04B16CDABD28A2EF3699D38 /* JZWeekViewHelper.swift */; };
 		97A168DFB6DB61770CE2DBF4FD39AA8D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B079F294DA5D9A879E6D53A91F51A1E /* CFNetwork.framework */; };
-		A599167047C15C72591F1132897162B2 /* JZRowHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415FDF3874E996BE018D26586699EB22 /* JZRowHeaderBackground.swift */; };
-		AD9899986955B2EC1EC20818C860C971 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0DE5548AFD257EA9E4A59D07EF9B5 /* RequestInterceptor.swift */; };
-		AF92602937CA016548022C600B8CDC16 /* URLSessionConfiguration+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3D78A49520CA881DD586FAB447C23 /* URLSessionConfiguration+Alamofire.swift */; };
-		B1C58F6CED7B3E45170711D9ADF878AF /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1067B4D31AEA547C345D23CDA0340C07 /* Alamofire-dummy.m */; };
-		B23E9A5CDA31534491226F4C2EE8F8E6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC397D5540F227AEF1AD466D991AFE3 /* HTTPMethod.swift */; };
-		B3D38A92D483F9A188DA4FE6F4DFA74F /* JZAllDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F7732FA72682D6CC22CC1339E4F29 /* JZAllDayHeader.swift */; };
-		B788B3354CCEBE56DFDB963CAFD7F6C2 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3547876681E88BE03AE2C79044DEE797 /* Alamofire.swift */; };
+		9A2E1EA1F0F8F4FA13589FEFC4D712B0 /* HexColorTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4743685A0605B3FE81828B1A1F0B0650 /* HexColorTransform.swift */; };
+		9F73038C5D5809B9C54A4D5455C0CA91 /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D0CA3E929598F7EE6E05D7B162E46 /* MapError.swift */; };
+		A23B1618251C3B92A365B5669F513796 /* CodableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE9CCBC605E394A76C3051BA2E1DF2B /* CodableTransform.swift */; };
+		A35CB412DFB6E16F962F7D2A5E792D5D /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E11757C762BAE0E0D64767702C57878 /* TransformType.swift */; };
+		A599167047C15C72591F1132897162B2 /* JZRowHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BD4834F3199F5F8AFABE10D1069E0 /* JZRowHeaderBackground.swift */; };
+		AD9899986955B2EC1EC20818C860C971 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BCE6E8CCA472B4E06C0AA4B374740C /* RequestInterceptor.swift */; };
+		AF92602937CA016548022C600B8CDC16 /* URLSessionConfiguration+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1095C6964C4B8219C05E65521E09B /* URLSessionConfiguration+Alamofire.swift */; };
+		B1C58F6CED7B3E45170711D9ADF878AF /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 464AD570E072489D48198794336CE00F /* Alamofire-dummy.m */; };
+		B23E9A5CDA31534491226F4C2EE8F8E6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF7A6F66353DF3EA29527477FE005C5 /* HTTPMethod.swift */; };
+		B3D38A92D483F9A188DA4FE6F4DFA74F /* JZAllDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E05A401EBB826627D84BC379F70E2D /* JZAllDayHeader.swift */; };
+		B4A09A31159DC4BBD705B24893E7AC38 /* ObjectMapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A310D7892C02B5EEE24CFF3050DF54E /* ObjectMapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B788B3354CCEBE56DFDB963CAFD7F6C2 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F07A62575225C824AACB04AD000B63 /* Alamofire.swift */; };
+		BA2A816A2CDE195F83BBC03AB4671980 /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C28572C770262C1EE0C629087F714 /* TransformOperators.swift */; };
+		BE77AF28ABBCD1A186B56195290331D8 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D27B49EEE61665228E154CB1D0A471 /* Mappable.swift */; };
 		BE82AE980F8C7EE28A6448959194F93A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */; };
-		C2A7484E8F6CB39C9FF560C09AAB4446 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40281947540C9B12710904E0AC0D7C19 /* Extensions.swift */; };
-		C64AF152F7928CDB59385528DB65FE19 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0EA587A0FE15E4A8E2F26C06A856D /* RedirectHandler.swift */; };
-		C7369563F6946D8984124E1A546B6425 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28F431D51D1F69E89D4F55CD8DC6827 /* Notifications.swift */; };
-		C7BAFF74FDC57E1E890BEF3DEEA74D68 /* JZCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB373829EFE6AD7024EA11CE37FFAE9 /* JZCollectionView.swift */; };
-		CACBD166E573774FB5613C34AA6DA7A7 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5971E7EFD5FB1569AD308677F9174121 /* EventMonitor.swift */; };
-		D6B2983389480F48F27A0704EEB5DC81 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF000352E18A955CF9AB109C8DF9D599 /* RetryPolicy.swift */; };
-		D81965932BCAD28B831B5491D8556EEF /* JZBaseWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF90A37C3B46BFEAD1CC649510A11EA /* JZBaseWeekView.swift */; };
-		DE0571E9AD45BBB36211DAA619B4DEBA /* JZWeekViewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83815FBFF44F7E6269589360CC9050AB /* JZWeekViewColors.swift */; };
-		E07BD425C4EA9ADF15DDFCDB10D0B2FB /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6C6033E7B564B68BA6E8C2D05F35E /* MultipartUpload.swift */; };
-		E4E12208D5246E64B7E6CCAE987ADB03 /* URLRequest+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D20BBBC3C45BB7F6E1B248F58EAA9 /* URLRequest+Alamofire.swift */; };
-		E9A5AC2F471699CCA516952A5FEB990B /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CACCE8FC49FCC21594BC2E049B9AF3 /* DispatchQueue+Alamofire.swift */; };
-		F0F3837092954E990B0EC864895D3A77 /* JZRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FCBA84F272CB1D62D646080E8301D /* JZRowHeader.swift */; };
-		F3E7C5E9839BE65A059729EA74CA6D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */; };
-		F71789DC91A75033EFB79DB828676451 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570314AB7E673058F62A06D69B8E91E4 /* Response.swift */; };
-		F90E462CDBDB8CAFB58CAA171BB59CF8 /* JZWeekViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2CA7CA2215DF5DBE7083DD08234B4 /* JZWeekViewFlowLayout.swift */; };
-		FA97910B81C8148852C44D86EE6E7EDA /* Pods-GT-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571471CB70F67A673B333C8A1F03D8D /* Pods-GT-dummy.m */; };
+		C2A7484E8F6CB39C9FF560C09AAB4446 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F85B50D155D66A3D92E38D9C0D22CD /* Extensions.swift */; };
+		C64AF152F7928CDB59385528DB65FE19 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD4D8C3D079918B3C33A2DF56E601C9 /* RedirectHandler.swift */; };
+		C7369563F6946D8984124E1A546B6425 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576BC85E7A18F7A3EB934C50A11DD87D /* Notifications.swift */; };
+		C7BAFF74FDC57E1E890BEF3DEEA74D68 /* JZCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CA9E11021845414841DA9CF7FAA8 /* JZCollectionView.swift */; };
+		CACBD166E573774FB5613C34AA6DA7A7 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE17B712D0382B215640CCCC34BC9BA9 /* EventMonitor.swift */; };
+		D6B2983389480F48F27A0704EEB5DC81 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AED1B1555C5668913D1C1703737D74 /* RetryPolicy.swift */; };
+		D81965932BCAD28B831B5491D8556EEF /* JZBaseWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6611953F1A081A84BB304FAA1E978A /* JZBaseWeekView.swift */; };
+		DE0571E9AD45BBB36211DAA619B4DEBA /* JZWeekViewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48B256D84067AB101B1A67BA2C60DDD /* JZWeekViewColors.swift */; };
+		E07BD425C4EA9ADF15DDFCDB10D0B2FB /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A795B76D41B7729357FD7B79A7B727 /* MultipartUpload.swift */; };
+		E4E12208D5246E64B7E6CCAE987ADB03 /* URLRequest+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA9DA543E32BEAD07517B2600DB72D /* URLRequest+Alamofire.swift */; };
+		E9A5AC2F471699CCA516952A5FEB990B /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51EBE544E7BF7BA4114562DE889CF2 /* DispatchQueue+Alamofire.swift */; };
+		EB2E92AFE8E36A23EE6D311736B88B67 /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83911CFCF5F7AC030A657E1BC224FF7 /* DataTransform.swift */; };
+		F000D6CA12F7C477EC63335B91707775 /* URLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DD2A5A3B93ADAB6D6D6BB36F69A890 /* URLTransform.swift */; };
+		F0F3837092954E990B0EC864895D3A77 /* JZRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1301FAD2D64FAE74C31C3812D1BA5BC8 /* JZRowHeader.swift */; };
+		F2CA9FD6E3A7EFBB13BCEF662D06524B /* CustomDateFormatTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A61EA5D011B56613D2D70BBC3C3A52 /* CustomDateFormatTransform.swift */; };
+		F60975556A37AD5647ED82DC76E9CF6F /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2D9C2796B619918A6E1F230A75EC6C /* DateFormatterTransform.swift */; };
+		F62ACC174E57B3DBBEA79639400C77B3 /* Pods-GT-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571471CB70F67A673B333C8A1F03D8D /* Pods-GT-dummy.m */; };
+		F71789DC91A75033EFB79DB828676451 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C790A9428749A7B2529C58672422BDA /* Response.swift */; };
+		F90E462CDBDB8CAFB58CAA171BB59CF8 /* JZWeekViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEDAE011DD3B8ABCE5F44CD3CBEC341 /* JZWeekViewFlowLayout.swift */; };
+		F9B31EED95B0E98A057B6012F9883DCF /* ImmutableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6480E7534CACC3B5A090AC495858F9E /* ImmutableMappable.swift */; };
+		FDE7A0C3D1092281199DE80772C8678E /* Pods-GT-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0DA16A21745A0186258D05258855E22 /* Pods-GT-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7E900396CC39587336F25763F5C33629 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FB69877BBE5461EEA507FA5FCF8314F0;
-			remoteInfo = JZCalendarWeekView;
-		};
-		973A9011E6573B239197EAE68574612A /* PBXContainerItemProxy */ = {
+		A89FFB0143AAA28E8B79D6F686FA9959 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
+		D5F6F075825EEC9ECF1D28DDBF8A0309 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 162E649F50FEC62B61BDD87D1BD422B4;
+			remoteInfo = ObjectMapper;
+		};
+		D7C6CC0B12C0439D0D46F76D2C10E84E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB69877BBE5461EEA507FA5FCF8314F0;
+			remoteInfo = JZCalendarWeekView;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0145B373E606CC08CA2D503AAE332AA2 /* JZAllDayEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayEvent.swift; path = JZCalendarWeekView/JZAllDayEvent.swift; sourceTree = "<group>"; };
-		059A9B6C70CFFF96E07CA560A77DD899 /* JZCalendarWeekView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JZCalendarWeekView-Info.plist"; sourceTree = "<group>"; };
-		08F5C94E796BD75D568A927EE3C51849 /* JZWeekViewHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZWeekViewHelper.swift; path = JZCalendarWeekView/JZWeekViewHelper.swift; sourceTree = "<group>"; };
-		1067B4D31AEA547C345D23CDA0340C07 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		15A30E4BEF654F0F0B2A044C1758C1E4 /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
-		177CBF988F5C5FAD5A6C0C9230A84CB3 /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
-		17BC8B8B5DB7B58B3AAF32834FF2896C /* JZAllDayHeaderBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayHeaderBackground.swift; path = JZCalendarWeekView/ReusableViews/JZAllDayHeaderBackground.swift; sourceTree = "<group>"; };
-		19459317741E152420C53F8E5CACFD84 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		1B2F7732FA72682D6CC22CC1339E4F29 /* JZAllDayHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayHeader.swift; path = JZCalendarWeekView/ReusableViews/JZAllDayHeader.swift; sourceTree = "<group>"; };
-		1D9D20BBBC3C45BB7F6E1B248F58EAA9 /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
-		1F986AB562B224948056A25639B82074 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		20B9C6813328A8E02FE190886EA7F2DD /* URLConvertible+URLRequestConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLConvertible+URLRequestConvertible.swift"; path = "Source/URLConvertible+URLRequestConvertible.swift"; sourceTree = "<group>"; };
+		04596647AF08D3F148699E203A18DB52 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
+		07AED1B1555C5668913D1C1703737D74 /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
+		0AF6CEE70343A12D437474FC71A1640D /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		0D2013170626CD96C587D4E374AB3127 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		0D2759C1A035070BF71D9F0C113F1FCB /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
+		1301FAD2D64FAE74C31C3812D1BA5BC8 /* JZRowHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZRowHeader.swift; path = JZCalendarWeekView/ReusableViews/JZRowHeader.swift; sourceTree = "<group>"; };
+		13A61EA5D011B56613D2D70BBC3C3A52 /* CustomDateFormatTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomDateFormatTransform.swift; path = Sources/CustomDateFormatTransform.swift; sourceTree = "<group>"; };
+		13F2454B8A7BA9205723B60AA0931DFE /* TransformOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformOf.swift; path = Sources/TransformOf.swift; sourceTree = "<group>"; };
+		175D4330B88C0235C754E6EACB05F2A0 /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
+		1ABA12DD43C78F8893EC8D9C46B3D855 /* JZCalendarWeekView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JZCalendarWeekView-Info.plist"; sourceTree = "<group>"; };
+		1C3BD4834F3199F5F8AFABE10D1069E0 /* JZRowHeaderBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZRowHeaderBackground.swift; path = JZCalendarWeekView/ReusableViews/JZRowHeaderBackground.swift; sourceTree = "<group>"; };
+		20F0B1DA7CF0D5EC1AB29F48811E3328 /* JZCornerHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCornerHeader.swift; path = JZCalendarWeekView/ReusableViews/JZCornerHeader.swift; sourceTree = "<group>"; };
 		222DAEF0D819F359AFCFF3D4F927E8A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		27008B52EAFFCAAB5E52069E9AEA84A8 /* JZBaseEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZBaseEvent.swift; path = JZCalendarWeekView/JZBaseEvent.swift; sourceTree = "<group>"; };
-		27A17DB74B1CB93695CA8B7D890C8D4D /* JZGridLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZGridLine.swift; path = JZCalendarWeekView/ReusableViews/JZGridLine.swift; sourceTree = "<group>"; };
-		2F394EA1B6C9C4F93A65344D21CE24BE /* JZColumnHeaderBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZColumnHeaderBackground.swift; path = JZCalendarWeekView/ReusableViews/JZColumnHeaderBackground.swift; sourceTree = "<group>"; };
-		3547876681E88BE03AE2C79044DEE797 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		40281947540C9B12710904E0AC0D7C19 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = JZCalendarWeekView/Utils/Extensions.swift; sourceTree = "<group>"; };
-		415FDF3874E996BE018D26586699EB22 /* JZRowHeaderBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZRowHeaderBackground.swift; path = JZCalendarWeekView/ReusableViews/JZRowHeaderBackground.swift; sourceTree = "<group>"; };
-		42225C9E8A2496344ACCF8719B362AAC /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
-		452A5B8955A7FD0C3584052ED8B8CB5C /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
-		4A192465C75D6523925F44BB16DB90A7 /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		4FC7FB77EB80BAE9772D005E27AB5254 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		5065B2C6CCDA9B34CA8127B04ACB81B7 /* JZCalendarWeekView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JZCalendarWeekView-prefix.pch"; sourceTree = "<group>"; };
+		242B7A1E99561273D1A38678ABA7BC92 /* Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Map.swift; path = Sources/Map.swift; sourceTree = "<group>"; };
+		26100E1DE7FC2D1A3D722E92396EB649 /* JZColumnHeaderBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZColumnHeaderBackground.swift; path = JZCalendarWeekView/ReusableViews/JZColumnHeaderBackground.swift; sourceTree = "<group>"; };
+		2702FE59CF5FD9D5DC6AE4E6EF424588 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		2BEDAE011DD3B8ABCE5F44CD3CBEC341 /* JZWeekViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZWeekViewFlowLayout.swift; path = JZCalendarWeekView/JZWeekViewFlowLayout.swift; sourceTree = "<group>"; };
+		2C58F327290414477B2DB2CAF113C525 /* ObjectMapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ObjectMapper.modulemap; sourceTree = "<group>"; };
+		2CF88D19D3F9710FA04C927B42B8D3D7 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
+		2D2D9C2796B619918A6E1F230A75EC6C /* DateFormatterTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateFormatterTransform.swift; path = Sources/DateFormatterTransform.swift; sourceTree = "<group>"; };
+		2DE48A963091FCC20CE19BA990E80284 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
+		2E11757C762BAE0E0D64767702C57878 /* TransformType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformType.swift; path = Sources/TransformType.swift; sourceTree = "<group>"; };
+		352AB014087A80D011B23FFBAFFB0BEB /* JZAllDayEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayEvent.swift; path = JZCalendarWeekView/JZAllDayEvent.swift; sourceTree = "<group>"; };
+		36D27B49EEE61665228E154CB1D0A471 /* Mappable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mappable.swift; path = Sources/Mappable.swift; sourceTree = "<group>"; };
+		3872DDA605D3A704AE3E8840F49E8DE7 /* ObjectMapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ObjectMapper-dummy.m"; sourceTree = "<group>"; };
+		3C790A9428749A7B2529C58672422BDA /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		3E0D44F36E54A344A96FE1D4B77F3EF6 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+		3EC04306DF4767EB9124A7D02A8F143E /* JZCalendarWeekView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JZCalendarWeekView-dummy.m"; sourceTree = "<group>"; };
+		41BCE6E8CCA472B4E06C0AA4B374740C /* RequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestInterceptor.swift; path = Source/RequestInterceptor.swift; sourceTree = "<group>"; };
+		464AD570E072489D48198794336CE00F /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		4743685A0605B3FE81828B1A1F0B0650 /* HexColorTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HexColorTransform.swift; path = Sources/HexColorTransform.swift; sourceTree = "<group>"; };
+		4A310D7892C02B5EEE24CFF3050DF54E /* ObjectMapper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ObjectMapper-umbrella.h"; sourceTree = "<group>"; };
+		4E6611953F1A081A84BB304FAA1E978A /* JZBaseWeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZBaseWeekView.swift; path = JZCalendarWeekView/JZBaseWeekView.swift; sourceTree = "<group>"; };
+		4F79E9AAA787D5622F263020DD48AEA5 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		4FAF3DCD95F9A825B3BD92989D292B17 /* ToJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToJSON.swift; path = Sources/ToJSON.swift; sourceTree = "<group>"; };
 		5571471CB70F67A673B333C8A1F03D8D /* Pods-GT-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GT-dummy.m"; sourceTree = "<group>"; };
-		570314AB7E673058F62A06D69B8E91E4 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		5971E7EFD5FB1569AD308677F9174121 /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
+		576BC85E7A18F7A3EB934C50A11DD87D /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		59F85B50D155D66A3D92E38D9C0D22CD /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = JZCalendarWeekView/Utils/Extensions.swift; sourceTree = "<group>"; };
+		5C68833B4813EF98D5A215306C7EFBC8 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FA3D78A49520CA881DD586FAB447C23 /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
-		66B2CA7CA2215DF5DBE7083DD08234B4 /* JZWeekViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZWeekViewFlowLayout.swift; path = JZCalendarWeekView/JZWeekViewFlowLayout.swift; sourceTree = "<group>"; };
-		68019E6BD3A653E0B9F851823BAAA21A /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
+		5E92CA9E11021845414841DA9CF7FAA8 /* JZCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCollectionView.swift; path = JZCalendarWeekView/JZCollectionView.swift; sourceTree = "<group>"; };
+		606BD23064A3ED335DABA11AE9115F31 /* JZCurrentTimelinePage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCurrentTimelinePage.swift; path = JZCalendarWeekView/ReusableViews/JZCurrentTimelinePage.swift; sourceTree = "<group>"; };
+		60A795B76D41B7729357FD7B79A7B727 /* MultipartUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartUpload.swift; path = Source/MultipartUpload.swift; sourceTree = "<group>"; };
+		610CC45EF59E33CE1FF7E3C6DBDF3E0D /* JZCalendarWeekView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JZCalendarWeekView.modulemap; sourceTree = "<group>"; };
+		63DD2A5A3B93ADAB6D6D6BB36F69A890 /* URLTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLTransform.swift; path = Sources/URLTransform.swift; sourceTree = "<group>"; };
+		67B01165D8A0DBCE6DA658594A992626 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/Operators.swift; sourceTree = "<group>"; };
+		69DC3EFDE6678083890FDF45FA4F3EEF /* JZAllDayCorner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayCorner.swift; path = JZCalendarWeekView/ReusableViews/JZAllDayCorner.swift; sourceTree = "<group>"; };
+		6AF7A6F66353DF3EA29527477FE005C5 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Source/HTTPMethod.swift; sourceTree = "<group>"; };
+		6C6A42BB8C1ADFB7D24EAC1B270B17B5 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		6CEAF1B60E44DB5D5896619346AC31A6 /* Pods-GT-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GT-frameworks.sh"; sourceTree = "<group>"; };
-		6DDF802F3A49DB83C6E4D4B31CCB2369 /* JZLongPressWeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZLongPressWeekView.swift; path = JZCalendarWeekView/JZLongPressWeekView.swift; sourceTree = "<group>"; };
-		6DE0DE5548AFD257EA9E4A59D07EF9B5 /* RequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestInterceptor.swift; path = Source/RequestInterceptor.swift; sourceTree = "<group>"; };
+		6FEFDACDD67285A4EB86299393A7E409 /* WeakTimer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeakTimer.swift; path = JZCalendarWeekView/Utils/WeakTimer.swift; sourceTree = "<group>"; };
 		753BA8AFAA08F06ED1DFCBC62897C967 /* Pods-GT-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GT-acknowledgements.markdown"; sourceTree = "<group>"; };
-		803D42C0AA62790C4AD9DEDEDC1FF5D2 /* JZCurrentTimelinePage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCurrentTimelinePage.swift; path = JZCalendarWeekView/ReusableViews/JZCurrentTimelinePage.swift; sourceTree = "<group>"; };
-		80DD1BE64534D836AA877E3DEF33E725 /* JZCurrentTimelineSection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCurrentTimelineSection.swift; path = JZCalendarWeekView/ReusableViews/JZCurrentTimelineSection.swift; sourceTree = "<group>"; };
-		83815FBFF44F7E6269589360CC9050AB /* JZWeekViewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZWeekViewColors.swift; path = JZCalendarWeekView/Utils/JZWeekViewColors.swift; sourceTree = "<group>"; };
-		8AB373829EFE6AD7024EA11CE37FFAE9 /* JZCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCollectionView.swift; path = JZCalendarWeekView/JZCollectionView.swift; sourceTree = "<group>"; };
+		768440EB0A63E19FBCD05658E9C7E664 /* JZAllDayHeaderBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayHeaderBackground.swift; path = JZCalendarWeekView/ReusableViews/JZAllDayHeaderBackground.swift; sourceTree = "<group>"; };
+		7A51EBE544E7BF7BA4114562DE889CF2 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		7AB92ADC661ADA3C51D68A0AD4775D51 /* EnumOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumOperators.swift; path = Sources/EnumOperators.swift; sourceTree = "<group>"; };
+		7AE9CCBC605E394A76C3051BA2E1DF2B /* CodableTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CodableTransform.swift; path = Sources/CodableTransform.swift; sourceTree = "<group>"; };
+		7E0E65A7509DFB59FFF9F5DE61D3451E /* JZLongPressWeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZLongPressWeekView.swift; path = JZCalendarWeekView/JZLongPressWeekView.swift; sourceTree = "<group>"; };
+		82F07A62575225C824AACB04AD000B63 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		8AFA9DA543E32BEAD07517B2600DB72D /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
 		8B079F294DA5D9A879E6D53A91F51A1E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		8BC397D5540F227AEF1AD466D991AFE3 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Source/HTTPMethod.swift; sourceTree = "<group>"; };
-		8D412E0A0A101E42271A2ED25E0C2DCF /* WeakTimer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeakTimer.swift; path = JZCalendarWeekView/Utils/WeakTimer.swift; sourceTree = "<group>"; };
+		8CF8808FAC6D29C7CB68D61D5E726BF8 /* Mapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mapper.swift; path = Sources/Mapper.swift; sourceTree = "<group>"; };
+		8F0DFDB0E810E830C2FC2BF3EA4C7A1F /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		8F8658C3A83E651E05D699523BCBBF4C /* JZCalendarWeekView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JZCalendarWeekView-prefix.pch"; sourceTree = "<group>"; };
 		92760BF8EB581D8F91B027EA1DD9DAFA /* Pods-GT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GT.debug.xcconfig"; sourceTree = "<group>"; };
-		94394D9812E9FC3D513113248711349A /* JZLongPressEventCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZLongPressEventCell.swift; path = JZCalendarWeekView/JZLongPressEventCell.swift; sourceTree = "<group>"; };
-		94FF3528763D55E40035605F268EF7F2 /* JZCornerHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCornerHeader.swift; path = JZCalendarWeekView/ReusableViews/JZCornerHeader.swift; sourceTree = "<group>"; };
-		95657A43E907D01C342A44D0661D96EE /* JZCalendarWeekView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JZCalendarWeekView-umbrella.h"; sourceTree = "<group>"; };
+		97642D6C84695DFE3C324C0B2B7BC276 /* URLConvertible+URLRequestConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLConvertible+URLRequestConvertible.swift"; path = "Source/URLConvertible+URLRequestConvertible.swift"; sourceTree = "<group>"; };
 		9888F3F5F86F120C14C3BB67F36FE057 /* Pods-GT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GT.release.xcconfig"; sourceTree = "<group>"; };
+		9CB1095C6964C4B8219C05E65521E09B /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
 		9CF96F1BE38AF95814CDAECFC5A4B870 /* Pods_GT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GT.framework; path = "Pods-GT.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9FD4CA81A8D972F27700C4875FB6E270 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		A0C64E5F36F23E65B3BDD6B47D823588 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
-		A1CE47D9CAD85DBE5E1F0749F19F761A /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
-		A28F431D51D1F69E89D4F55CD8DC6827 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		A5C6B86E94DEBBEB9928E27CB29D4897 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		9F4394387C780EDFBB0AE680E57A7D80 /* JZCalendarWeekView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JZCalendarWeekView.xcconfig; sourceTree = "<group>"; };
+		A397D2D8E92E8C341691821B744FC099 /* EnumTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumTransform.swift; path = Sources/EnumTransform.swift; sourceTree = "<group>"; };
+		A425C9A881E6739DE834CA5E9AC0C22E /* Protector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protector.swift; path = Source/Protector.swift; sourceTree = "<group>"; };
+		A48A4D80A04B16CDABD28A2EF3699D38 /* JZWeekViewHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZWeekViewHelper.swift; path = JZCalendarWeekView/JZWeekViewHelper.swift; sourceTree = "<group>"; };
+		A5D455740B11F13BAEA5ECE7F8206493 /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
+		A8245CDACD5A27240CC83CCC918555BB /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		A8BAA233FC6C284F8754D8B48910A285 /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ISO8601DateTransform.swift; path = Sources/ISO8601DateTransform.swift; sourceTree = "<group>"; };
+		A8E05A401EBB826627D84BC379F70E2D /* JZAllDayHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayHeader.swift; path = JZCalendarWeekView/ReusableViews/JZAllDayHeader.swift; sourceTree = "<group>"; };
+		A9A4D04458D6B965CAD290899AEFE838 /* JZColumnHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZColumnHeader.swift; path = JZCalendarWeekView/ReusableViews/JZColumnHeader.swift; sourceTree = "<group>"; };
+		AD11A83726EF25024A7351EA1A2F651E /* FromJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FromJSON.swift; path = Sources/FromJSON.swift; sourceTree = "<group>"; };
 		ADB4836D71B39956D4BFB958F674C6C5 /* Pods-GT-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GT-Info.plist"; sourceTree = "<group>"; };
 		ADEABEC8344547052474CD1230DE9B8C /* JZCalendarWeekView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JZCalendarWeekView.framework; path = JZCalendarWeekView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEA6FFBCB3781F24DF55EE957F859343 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		B192A5451667DE2E047E51BFF5729A2E /* Pods-GT-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GT-acknowledgements.plist"; sourceTree = "<group>"; };
-		B24E0826B395BCA6DA98E29C2AA5FF84 /* JZCalendarWeekView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JZCalendarWeekView-dummy.m"; sourceTree = "<group>"; };
-		B2B6661F7F030E8A7F27580AC4B55F2B /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
-		B6C1183FEAC757256F023A319DA1D28D /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
-		B6F6C3B336D35376FD40171B7102EA92 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		C03B7F60D8ED2571F8148AFF35D9A37C /* Protector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protector.swift; path = Source/Protector.swift; sourceTree = "<group>"; };
+		B1BD0C91C22500F93A85439F5147F378 /* JZCalendarWeekView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JZCalendarWeekView-umbrella.h"; sourceTree = "<group>"; };
+		B6480E7534CACC3B5A090AC495858F9E /* ImmutableMappable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImmutableMappable.swift; path = Sources/ImmutableMappable.swift; sourceTree = "<group>"; };
+		B9084FE779702931E8DF1D00A2D725FB /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ObjectMapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD4D8C3D079918B3C33A2DF56E601C9 /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
+		BDD0F125F04B0784E6597339422E1C28 /* JZGridLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZGridLine.swift; path = JZCalendarWeekView/ReusableViews/JZGridLine.swift; sourceTree = "<group>"; };
+		BF7FCA9CD313D8107F1EDED83DE24F03 /* IntegerOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IntegerOperators.swift; path = Sources/IntegerOperators.swift; sourceTree = "<group>"; };
 		C0DA16A21745A0186258D05258855E22 /* Pods-GT-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GT-umbrella.h"; sourceTree = "<group>"; };
-		C3241A61BD6CB1C069849037F554BC55 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		C6444A6759E5EFEB860476E6F34B0A31 /* JZColumnHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZColumnHeader.swift; path = JZCalendarWeekView/ReusableViews/JZColumnHeader.swift; sourceTree = "<group>"; };
-		CBE0EA587A0FE15E4A8E2F26C06A856D /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
-		CEDB829020B79E43202A7305DB391AD0 /* JZCalendarWeekView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JZCalendarWeekView.xcconfig; sourceTree = "<group>"; };
-		CFA68950F22CC0BDE0DA49E91F073D4A /* JZAllDayCorner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZAllDayCorner.swift; path = JZCalendarWeekView/ReusableViews/JZAllDayCorner.swift; sourceTree = "<group>"; };
-		D4B6C6033E7B564B68BA6E8C2D05F35E /* MultipartUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartUpload.swift; path = Source/MultipartUpload.swift; sourceTree = "<group>"; };
-		DBBAE82CE0FA2887F0483A1805834143 /* JZCalendarWeekView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JZCalendarWeekView.modulemap; sourceTree = "<group>"; };
-		DCD5F124B6452270BC4F8C3427290E2E /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		E45FCBA84F272CB1D62D646080E8301D /* JZRowHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZRowHeader.swift; path = JZCalendarWeekView/ReusableViews/JZRowHeader.swift; sourceTree = "<group>"; };
-		E779A2936314F08618F850DBC321BF57 /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
-		E8D82849B7916F4A4035D8A681CA2815 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		EF000352E18A955CF9AB109C8DF9D599 /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
-		F0CACCE8FC49FCC21594BC2E049B9AF3 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		F10A888CF7B439E1EC9F2691FD66BF2C /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		F558CCE3AEDA3E2D1BC8CA17A792A56B /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		C18C4F434D8C47E299A54930F11EFA43 /* JZCurrentTimelineSection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZCurrentTimelineSection.swift; path = JZCalendarWeekView/ReusableViews/JZCurrentTimelineSection.swift; sourceTree = "<group>"; };
+		C48B256D84067AB101B1A67BA2C60DDD /* JZWeekViewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZWeekViewColors.swift; path = JZCalendarWeekView/Utils/JZWeekViewColors.swift; sourceTree = "<group>"; };
+		C4CC35A9B359D494CF6B77A5CBE13C8A /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
+		C5E42E170E6C78B74FBB78850D8F23A9 /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
+		C7C5FF81F8C2C051C8E40DCE89447336 /* NSDecimalNumberTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSDecimalNumberTransform.swift; path = Sources/NSDecimalNumberTransform.swift; sourceTree = "<group>"; };
+		CA3D0CA3E929598F7EE6E05D7B162E46 /* MapError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MapError.swift; path = Sources/MapError.swift; sourceTree = "<group>"; };
+		CF989850C7F8459195F36612F9CB8E2C /* ObjectMapper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ObjectMapper-Info.plist"; sourceTree = "<group>"; };
+		D3AA3FD389BB4DAC16ED26A0DA8F6A72 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
+		D93907E0173824B1B46F6B4FB5459889 /* DictionaryTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DictionaryTransform.swift; path = Sources/DictionaryTransform.swift; sourceTree = "<group>"; };
+		D94E8DBE9E71D97714F28DAD7B74A96B /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		DB2C28572C770262C1EE0C629087F714 /* TransformOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformOperators.swift; path = Sources/TransformOperators.swift; sourceTree = "<group>"; };
+		E08ED2105B1DE4493F90A8B7E53BD1BB /* JZLongPressEventCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZLongPressEventCell.swift; path = JZCalendarWeekView/JZLongPressEventCell.swift; sourceTree = "<group>"; };
+		E437527D83D210C5BC80BF8CFBAA032B /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
+		E4D7F4451A7707AB4BEF65319B0C38F4 /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
+		E83911CFCF5F7AC030A657E1BC224FF7 /* DataTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataTransform.swift; path = Sources/DataTransform.swift; sourceTree = "<group>"; };
+		E92D1D494B9004E41823E685DE5FD632 /* JZBaseEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZBaseEvent.swift; path = JZCalendarWeekView/JZBaseEvent.swift; sourceTree = "<group>"; };
+		F60A139F098A7EFB2C6BE68AD610FB82 /* ObjectMapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ObjectMapper-prefix.pch"; sourceTree = "<group>"; };
+		F743B09DF56EEF65BA5A76BCD7B71D6E /* ObjectMapper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ObjectMapper.xcconfig; sourceTree = "<group>"; };
 		F933F733E16BFB114662A0BC685845E1 /* Pods-GT.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GT.modulemap"; sourceTree = "<group>"; };
-		FEF90A37C3B46BFEAD1CC649510A11EA /* JZBaseWeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JZBaseWeekView.swift; path = JZCalendarWeekView/JZBaseWeekView.swift; sourceTree = "<group>"; };
+		FA9EF6FA48B74B9FDDD7D6E5CDF6DFE1 /* DateTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTransform.swift; path = Sources/DateTransform.swift; sourceTree = "<group>"; };
+		FB5C248B8D7B2D372D636E4DAC2469B4 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		FE17B712D0382B215640CCCC34BC9BA9 /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
+		FE3289970A6E61FE0482478A5AB14FE5 /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +245,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				17DDB8B8CAC45C8ED55CBFE286CC7ED0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2F07EBFB76D75DD6A2DFE753CDBFC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74B0400B454263A4EA8B4CB1878087AF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,11 +265,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E7306B3B5C0DD6174F4931241C24CC38 /* Frameworks */ = {
+		ED1637C96BF54A5D16D10C9E2A6FEA60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3E7C5E9839BE65A059729EA74CA6D3E /* Foundation.framework in Frameworks */,
+				83ADD0310D235BAF1EF73EBFCFCBBB50 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,46 +293,6 @@
 			path = "Target Support Files/Pods-GT";
 			sourceTree = "<group>";
 		};
-		020BAC0F020A4F109ACDB317CCA766B8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A8137438F093CDE52FC5E3EA6BBABA9D /* Alamofire */,
-				0463BAD46EF08D60A66EB8B5DD947679 /* JZCalendarWeekView */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		0463BAD46EF08D60A66EB8B5DD947679 /* JZCalendarWeekView */ = {
-			isa = PBXGroup;
-			children = (
-				40281947540C9B12710904E0AC0D7C19 /* Extensions.swift */,
-				CFA68950F22CC0BDE0DA49E91F073D4A /* JZAllDayCorner.swift */,
-				0145B373E606CC08CA2D503AAE332AA2 /* JZAllDayEvent.swift */,
-				1B2F7732FA72682D6CC22CC1339E4F29 /* JZAllDayHeader.swift */,
-				17BC8B8B5DB7B58B3AAF32834FF2896C /* JZAllDayHeaderBackground.swift */,
-				27008B52EAFFCAAB5E52069E9AEA84A8 /* JZBaseEvent.swift */,
-				FEF90A37C3B46BFEAD1CC649510A11EA /* JZBaseWeekView.swift */,
-				8AB373829EFE6AD7024EA11CE37FFAE9 /* JZCollectionView.swift */,
-				C6444A6759E5EFEB860476E6F34B0A31 /* JZColumnHeader.swift */,
-				2F394EA1B6C9C4F93A65344D21CE24BE /* JZColumnHeaderBackground.swift */,
-				94FF3528763D55E40035605F268EF7F2 /* JZCornerHeader.swift */,
-				803D42C0AA62790C4AD9DEDEDC1FF5D2 /* JZCurrentTimelinePage.swift */,
-				80DD1BE64534D836AA877E3DEF33E725 /* JZCurrentTimelineSection.swift */,
-				27A17DB74B1CB93695CA8B7D890C8D4D /* JZGridLine.swift */,
-				94394D9812E9FC3D513113248711349A /* JZLongPressEventCell.swift */,
-				6DDF802F3A49DB83C6E4D4B31CCB2369 /* JZLongPressWeekView.swift */,
-				E45FCBA84F272CB1D62D646080E8301D /* JZRowHeader.swift */,
-				415FDF3874E996BE018D26586699EB22 /* JZRowHeaderBackground.swift */,
-				83815FBFF44F7E6269589360CC9050AB /* JZWeekViewColors.swift */,
-				66B2CA7CA2215DF5DBE7083DD08234B4 /* JZWeekViewFlowLayout.swift */,
-				08F5C94E796BD75D568A927EE3C51849 /* JZWeekViewHelper.swift */,
-				8D412E0A0A101E42271A2ED25E0C2DCF /* WeakTimer.swift */,
-				60D946C7113BD913DD21051F2376E967 /* Support Files */,
-			);
-			name = JZCalendarWeekView;
-			path = JZCalendarWeekView;
-			sourceTree = "<group>";
-		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,32 +301,59 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		296C32AD1759B7CF247CF7F6F1D1E3FF /* Support Files */ = {
+		410EB46A4AEBA536CD601E9C93C5072B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9FD4CA81A8D972F27700C4875FB6E270 /* Alamofire.modulemap */,
-				F10A888CF7B439E1EC9F2691FD66BF2C /* Alamofire.xcconfig */,
-				1067B4D31AEA547C345D23CDA0340C07 /* Alamofire-dummy.m */,
-				177CBF988F5C5FAD5A6C0C9230A84CB3 /* Alamofire-Info.plist */,
-				A5C6B86E94DEBBEB9928E27CB29D4897 /* Alamofire-prefix.pch */,
-				E8D82849B7916F4A4035D8A681CA2815 /* Alamofire-umbrella.h */,
+				2C58F327290414477B2DB2CAF113C525 /* ObjectMapper.modulemap */,
+				F743B09DF56EEF65BA5A76BCD7B71D6E /* ObjectMapper.xcconfig */,
+				3872DDA605D3A704AE3E8840F49E8DE7 /* ObjectMapper-dummy.m */,
+				CF989850C7F8459195F36612F9CB8E2C /* ObjectMapper-Info.plist */,
+				F60A139F098A7EFB2C6BE68AD610FB82 /* ObjectMapper-prefix.pch */,
+				4A310D7892C02B5EEE24CFF3050DF54E /* ObjectMapper-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
+			path = "../Target Support Files/ObjectMapper";
 			sourceTree = "<group>";
 		};
-		60D946C7113BD913DD21051F2376E967 /* Support Files */ = {
+		487D0A403F32A6D21B3AE417F5438ADD /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				DBBAE82CE0FA2887F0483A1805834143 /* JZCalendarWeekView.modulemap */,
-				CEDB829020B79E43202A7305DB391AD0 /* JZCalendarWeekView.xcconfig */,
-				B24E0826B395BCA6DA98E29C2AA5FF84 /* JZCalendarWeekView-dummy.m */,
-				059A9B6C70CFFF96E07CA560A77DD899 /* JZCalendarWeekView-Info.plist */,
-				5065B2C6CCDA9B34CA8127B04ACB81B7 /* JZCalendarWeekView-prefix.pch */,
-				95657A43E907D01C342A44D0661D96EE /* JZCalendarWeekView-umbrella.h */,
+				3E0D44F36E54A344A96FE1D4B77F3EF6 /* AFError.swift */,
+				82F07A62575225C824AACB04AD000B63 /* Alamofire.swift */,
+				175D4330B88C0235C754E6EACB05F2A0 /* AlamofireExtended.swift */,
+				A5D455740B11F13BAEA5ECE7F8206493 /* CachedResponseHandler.swift */,
+				7A51EBE544E7BF7BA4114562DE889CF2 /* DispatchQueue+Alamofire.swift */,
+				FE17B712D0382B215640CCCC34BC9BA9 /* EventMonitor.swift */,
+				C4CC35A9B359D494CF6B77A5CBE13C8A /* HTTPHeaders.swift */,
+				6AF7A6F66353DF3EA29527477FE005C5 /* HTTPMethod.swift */,
+				8F0DFDB0E810E830C2FC2BF3EA4C7A1F /* MultipartFormData.swift */,
+				60A795B76D41B7729357FD7B79A7B727 /* MultipartUpload.swift */,
+				4F79E9AAA787D5622F263020DD48AEA5 /* NetworkReachabilityManager.swift */,
+				576BC85E7A18F7A3EB934C50A11DD87D /* Notifications.swift */,
+				FE3289970A6E61FE0482478A5AB14FE5 /* OperationQueue+Alamofire.swift */,
+				04596647AF08D3F148699E203A18DB52 /* ParameterEncoder.swift */,
+				A8245CDACD5A27240CC83CCC918555BB /* ParameterEncoding.swift */,
+				A425C9A881E6739DE834CA5E9AC0C22E /* Protector.swift */,
+				BCD4D8C3D079918B3C33A2DF56E601C9 /* RedirectHandler.swift */,
+				FB5C248B8D7B2D372D636E4DAC2469B4 /* Request.swift */,
+				41BCE6E8CCA472B4E06C0AA4B374740C /* RequestInterceptor.swift */,
+				0D2759C1A035070BF71D9F0C113F1FCB /* RequestTaskMap.swift */,
+				3C790A9428749A7B2529C58672422BDA /* Response.swift */,
+				0AF6CEE70343A12D437474FC71A1640D /* ResponseSerialization.swift */,
+				C5E42E170E6C78B74FBB78850D8F23A9 /* Result+Alamofire.swift */,
+				07AED1B1555C5668913D1C1703737D74 /* RetryPolicy.swift */,
+				2DE48A963091FCC20CE19BA990E80284 /* ServerTrustEvaluation.swift */,
+				2CF88D19D3F9710FA04C927B42B8D3D7 /* Session.swift */,
+				D3AA3FD389BB4DAC16ED26A0DA8F6A72 /* SessionDelegate.swift */,
+				97642D6C84695DFE3C324C0B2B7BC276 /* URLConvertible+URLRequestConvertible.swift */,
+				E437527D83D210C5BC80BF8CFBAA032B /* URLEncodedFormEncoder.swift */,
+				8AFA9DA543E32BEAD07517B2600DB72D /* URLRequest+Alamofire.swift */,
+				9CB1095C6964C4B8219C05E65521E09B /* URLSessionConfiguration+Alamofire.swift */,
+				D94E8DBE9E71D97714F28DAD7B74A96B /* Validation.swift */,
+				BC5D327F0C2A70B74ABDC5947DD7B174 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/JZCalendarWeekView";
+			name = Alamofire;
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		9234A7676A9EF19EDCB1187702BE2B46 /* Targets Support Files */ = {
@@ -304,55 +364,92 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		A8137438F093CDE52FC5E3EA6BBABA9D /* Alamofire */ = {
+		98D85D22FC5AD057ED58AD33F4D72F07 /* JZCalendarWeekView */ = {
 			isa = PBXGroup;
 			children = (
-				4FC7FB77EB80BAE9772D005E27AB5254 /* AFError.swift */,
-				3547876681E88BE03AE2C79044DEE797 /* Alamofire.swift */,
-				B2B6661F7F030E8A7F27580AC4B55F2B /* AlamofireExtended.swift */,
-				E779A2936314F08618F850DBC321BF57 /* CachedResponseHandler.swift */,
-				F0CACCE8FC49FCC21594BC2E049B9AF3 /* DispatchQueue+Alamofire.swift */,
-				5971E7EFD5FB1569AD308677F9174121 /* EventMonitor.swift */,
-				A1CE47D9CAD85DBE5E1F0749F19F761A /* HTTPHeaders.swift */,
-				8BC397D5540F227AEF1AD466D991AFE3 /* HTTPMethod.swift */,
-				C3241A61BD6CB1C069849037F554BC55 /* MultipartFormData.swift */,
-				D4B6C6033E7B564B68BA6E8C2D05F35E /* MultipartUpload.swift */,
-				1F986AB562B224948056A25639B82074 /* NetworkReachabilityManager.swift */,
-				A28F431D51D1F69E89D4F55CD8DC6827 /* Notifications.swift */,
-				4A192465C75D6523925F44BB16DB90A7 /* OperationQueue+Alamofire.swift */,
-				452A5B8955A7FD0C3584052ED8B8CB5C /* ParameterEncoder.swift */,
-				F558CCE3AEDA3E2D1BC8CA17A792A56B /* ParameterEncoding.swift */,
-				C03B7F60D8ED2571F8148AFF35D9A37C /* Protector.swift */,
-				CBE0EA587A0FE15E4A8E2F26C06A856D /* RedirectHandler.swift */,
-				19459317741E152420C53F8E5CACFD84 /* Request.swift */,
-				6DE0DE5548AFD257EA9E4A59D07EF9B5 /* RequestInterceptor.swift */,
-				68019E6BD3A653E0B9F851823BAAA21A /* RequestTaskMap.swift */,
-				570314AB7E673058F62A06D69B8E91E4 /* Response.swift */,
-				B6F6C3B336D35376FD40171B7102EA92 /* ResponseSerialization.swift */,
-				42225C9E8A2496344ACCF8719B362AAC /* Result+Alamofire.swift */,
-				EF000352E18A955CF9AB109C8DF9D599 /* RetryPolicy.swift */,
-				A0C64E5F36F23E65B3BDD6B47D823588 /* ServerTrustEvaluation.swift */,
-				B6C1183FEAC757256F023A319DA1D28D /* Session.swift */,
-				AEA6FFBCB3781F24DF55EE957F859343 /* SessionDelegate.swift */,
-				20B9C6813328A8E02FE190886EA7F2DD /* URLConvertible+URLRequestConvertible.swift */,
-				15A30E4BEF654F0F0B2A044C1758C1E4 /* URLEncodedFormEncoder.swift */,
-				1D9D20BBBC3C45BB7F6E1B248F58EAA9 /* URLRequest+Alamofire.swift */,
-				5FA3D78A49520CA881DD586FAB447C23 /* URLSessionConfiguration+Alamofire.swift */,
-				DCD5F124B6452270BC4F8C3427290E2E /* Validation.swift */,
-				296C32AD1759B7CF247CF7F6F1D1E3FF /* Support Files */,
+				59F85B50D155D66A3D92E38D9C0D22CD /* Extensions.swift */,
+				69DC3EFDE6678083890FDF45FA4F3EEF /* JZAllDayCorner.swift */,
+				352AB014087A80D011B23FFBAFFB0BEB /* JZAllDayEvent.swift */,
+				A8E05A401EBB826627D84BC379F70E2D /* JZAllDayHeader.swift */,
+				768440EB0A63E19FBCD05658E9C7E664 /* JZAllDayHeaderBackground.swift */,
+				E92D1D494B9004E41823E685DE5FD632 /* JZBaseEvent.swift */,
+				4E6611953F1A081A84BB304FAA1E978A /* JZBaseWeekView.swift */,
+				5E92CA9E11021845414841DA9CF7FAA8 /* JZCollectionView.swift */,
+				A9A4D04458D6B965CAD290899AEFE838 /* JZColumnHeader.swift */,
+				26100E1DE7FC2D1A3D722E92396EB649 /* JZColumnHeaderBackground.swift */,
+				20F0B1DA7CF0D5EC1AB29F48811E3328 /* JZCornerHeader.swift */,
+				606BD23064A3ED335DABA11AE9115F31 /* JZCurrentTimelinePage.swift */,
+				C18C4F434D8C47E299A54930F11EFA43 /* JZCurrentTimelineSection.swift */,
+				BDD0F125F04B0784E6597339422E1C28 /* JZGridLine.swift */,
+				E08ED2105B1DE4493F90A8B7E53BD1BB /* JZLongPressEventCell.swift */,
+				7E0E65A7509DFB59FFF9F5DE61D3451E /* JZLongPressWeekView.swift */,
+				1301FAD2D64FAE74C31C3812D1BA5BC8 /* JZRowHeader.swift */,
+				1C3BD4834F3199F5F8AFABE10D1069E0 /* JZRowHeaderBackground.swift */,
+				C48B256D84067AB101B1A67BA2C60DDD /* JZWeekViewColors.swift */,
+				2BEDAE011DD3B8ABCE5F44CD3CBEC341 /* JZWeekViewFlowLayout.swift */,
+				A48A4D80A04B16CDABD28A2EF3699D38 /* JZWeekViewHelper.swift */,
+				6FEFDACDD67285A4EB86299393A7E409 /* WeakTimer.swift */,
+				F531F561BAFDEE95CDCD44BCF04556B3 /* Support Files */,
 			);
-			name = Alamofire;
-			path = Alamofire;
+			name = JZCalendarWeekView;
+			path = JZCalendarWeekView;
 			sourceTree = "<group>";
 		};
-		A84BDFD2F7783A5C7BAB9FCEC9F2BE92 /* Products */ = {
+		9FF1149D838B1A32A04D3999F99D8F86 /* ObjectMapper */ = {
 			isa = PBXGroup;
 			children = (
-				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
-				ADEABEC8344547052474CD1230DE9B8C /* JZCalendarWeekView.framework */,
-				9CF96F1BE38AF95814CDAECFC5A4B870 /* Pods_GT.framework */,
+				7AE9CCBC605E394A76C3051BA2E1DF2B /* CodableTransform.swift */,
+				13A61EA5D011B56613D2D70BBC3C3A52 /* CustomDateFormatTransform.swift */,
+				E83911CFCF5F7AC030A657E1BC224FF7 /* DataTransform.swift */,
+				2D2D9C2796B619918A6E1F230A75EC6C /* DateFormatterTransform.swift */,
+				FA9EF6FA48B74B9FDDD7D6E5CDF6DFE1 /* DateTransform.swift */,
+				D93907E0173824B1B46F6B4FB5459889 /* DictionaryTransform.swift */,
+				7AB92ADC661ADA3C51D68A0AD4775D51 /* EnumOperators.swift */,
+				A397D2D8E92E8C341691821B744FC099 /* EnumTransform.swift */,
+				AD11A83726EF25024A7351EA1A2F651E /* FromJSON.swift */,
+				4743685A0605B3FE81828B1A1F0B0650 /* HexColorTransform.swift */,
+				B6480E7534CACC3B5A090AC495858F9E /* ImmutableMappable.swift */,
+				BF7FCA9CD313D8107F1EDED83DE24F03 /* IntegerOperators.swift */,
+				A8BAA233FC6C284F8754D8B48910A285 /* ISO8601DateTransform.swift */,
+				242B7A1E99561273D1A38678ABA7BC92 /* Map.swift */,
+				CA3D0CA3E929598F7EE6E05D7B162E46 /* MapError.swift */,
+				36D27B49EEE61665228E154CB1D0A471 /* Mappable.swift */,
+				8CF8808FAC6D29C7CB68D61D5E726BF8 /* Mapper.swift */,
+				C7C5FF81F8C2C051C8E40DCE89447336 /* NSDecimalNumberTransform.swift */,
+				67B01165D8A0DBCE6DA658594A992626 /* Operators.swift */,
+				4FAF3DCD95F9A825B3BD92989D292B17 /* ToJSON.swift */,
+				13F2454B8A7BA9205723B60AA0931DFE /* TransformOf.swift */,
+				DB2C28572C770262C1EE0C629087F714 /* TransformOperators.swift */,
+				2E11757C762BAE0E0D64767702C57878 /* TransformType.swift */,
+				63DD2A5A3B93ADAB6D6D6BB36F69A890 /* URLTransform.swift */,
+				410EB46A4AEBA536CD601E9C93C5072B /* Support Files */,
 			);
-			name = Products;
+			name = ObjectMapper;
+			path = ObjectMapper;
+			sourceTree = "<group>";
+		};
+		BC5D327F0C2A70B74ABDC5947DD7B174 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6C6A42BB8C1ADFB7D24EAC1B270B17B5 /* Alamofire.modulemap */,
+				0D2013170626CD96C587D4E374AB3127 /* Alamofire.xcconfig */,
+				464AD570E072489D48198794336CE00F /* Alamofire-dummy.m */,
+				E4D7F4451A7707AB4BEF65319B0C38F4 /* Alamofire-Info.plist */,
+				5C68833B4813EF98D5A215306C7EFBC8 /* Alamofire-prefix.pch */,
+				2702FE59CF5FD9D5DC6AE4E6EF424588 /* Alamofire-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		C1BEB5A0B68758213B926FA85976F287 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				487D0A403F32A6D21B3AE417F5438ADD /* Alamofire */,
+				98D85D22FC5AD057ED58AD33F4D72F07 /* JZCalendarWeekView */,
+				9FF1149D838B1A32A04D3999F99D8F86 /* ObjectMapper */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -360,8 +457,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				020BAC0F020A4F109ACDB317CCA766B8 /* Pods */,
-				A84BDFD2F7783A5C7BAB9FCEC9F2BE92 /* Products */,
+				C1BEB5A0B68758213B926FA85976F287 /* Pods */,
+				EC84C86531E23B6D759242F05700585D /* Products */,
 				9234A7676A9EF19EDCB1187702BE2B46 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -375,6 +472,31 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		EC84C86531E23B6D759242F05700585D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
+				ADEABEC8344547052474CD1230DE9B8C /* JZCalendarWeekView.framework */,
+				B9084FE779702931E8DF1D00A2D725FB /* ObjectMapper.framework */,
+				9CF96F1BE38AF95814CDAECFC5A4B870 /* Pods_GT.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F531F561BAFDEE95CDCD44BCF04556B3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				610CC45EF59E33CE1FF7E3C6DBDF3E0D /* JZCalendarWeekView.modulemap */,
+				9F4394387C780EDFBB0AE680E57A7D80 /* JZCalendarWeekView.xcconfig */,
+				3EC04306DF4767EB9124A7D02A8F143E /* JZCalendarWeekView-dummy.m */,
+				1ABA12DD43C78F8893EC8D9C46B3D855 /* JZCalendarWeekView-Info.plist */,
+				8F8658C3A83E651E05D699523BCBBF4C /* JZCalendarWeekView-prefix.pch */,
+				B1BD0C91C22500F93A85439F5147F378 /* JZCalendarWeekView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JZCalendarWeekView";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -386,6 +508,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F4AC2678348A52C18755E91C94D01E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE7A0C3D1092281199DE80772C8678E /* Pods-GT-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADDF288DD930A46B5F0F198C225895C9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,11 +524,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CABECD5F9EE4755BAFC8D75FAD4F64E4 /* Headers */ = {
+		CCA6E17C793ED5BE6A94E6948D844AE5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				643E1F3A74EC4B5320CD684913DF21AB /* Pods-GT-umbrella.h in Headers */,
+				B4A09A31159DC4BBD705B24893E7AC38 /* ObjectMapper-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,22 +537,41 @@
 /* Begin PBXNativeTarget section */
 		078B5FAE05E498CBC0296D9B2308255B /* Pods-GT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BEDDCFBB254B98839C21D47CCE9E608 /* Build configuration list for PBXNativeTarget "Pods-GT" */;
+			buildConfigurationList = BC2CCE9768D58B3D5F80929438718BE0 /* Build configuration list for PBXNativeTarget "Pods-GT" */;
 			buildPhases = (
-				CABECD5F9EE4755BAFC8D75FAD4F64E4 /* Headers */,
-				58FDAA5D891D1C1CD3E0F0E864795760 /* Sources */,
-				E7306B3B5C0DD6174F4931241C24CC38 /* Frameworks */,
-				950A8BAC36015BAF8698F091B3C3B500 /* Resources */,
+				2F4AC2678348A52C18755E91C94D01E8 /* Headers */,
+				A60FF5E0FEB5DBFD029A0567443430E6 /* Sources */,
+				7A2F07EBFB76D75DD6A2DFE753CDBFC8 /* Frameworks */,
+				E930A1F3E3188BBE84D42E502930CA32 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0F17C80C88E09FB8C24853943541CFA1 /* PBXTargetDependency */,
-				40A2D7406248FB38101A40E8BFFAF87D /* PBXTargetDependency */,
+				463F2AB3ED868F566114EA0922D0A29E /* PBXTargetDependency */,
+				894AC5A12FCD4A293D219F2A0AC0B432 /* PBXTargetDependency */,
+				32C281F155097A6E6AC9513419E6346D /* PBXTargetDependency */,
 			);
 			name = "Pods-GT";
 			productName = "Pods-GT";
 			productReference = 9CF96F1BE38AF95814CDAECFC5A4B870 /* Pods_GT.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		162E649F50FEC62B61BDD87D1BD422B4 /* ObjectMapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E87F6954491067B29ADB27A94D68AA11 /* Build configuration list for PBXNativeTarget "ObjectMapper" */;
+			buildPhases = (
+				CCA6E17C793ED5BE6A94E6948D844AE5 /* Headers */,
+				39B28AE5344BF7EAB543FC2C9D39AE75 /* Sources */,
+				ED1637C96BF54A5D16D10C9E2A6FEA60 /* Frameworks */,
+				DB00122A85F347C8D68E5E2B7D815A51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObjectMapper;
+			productName = ObjectMapper;
+			productReference = B9084FE779702931E8DF1D00A2D725FB /* ObjectMapper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */ = {
@@ -479,12 +628,13 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = A84BDFD2F7783A5C7BAB9FCEC9F2BE92 /* Products */;
+			productRefGroup = EC84C86531E23B6D759242F05700585D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */,
 				FB69877BBE5461EEA507FA5FCF8314F0 /* JZCalendarWeekView */,
+				162E649F50FEC62B61BDD87D1BD422B4 /* ObjectMapper */,
 				078B5FAE05E498CBC0296D9B2308255B /* Pods-GT */,
 			);
 		};
@@ -505,7 +655,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		950A8BAC36015BAF8698F091B3C3B500 /* Resources */ = {
+		DB00122A85F347C8D68E5E2B7D815A51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E930A1F3E3188BBE84D42E502930CA32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -515,11 +672,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		58FDAA5D891D1C1CD3E0F0E864795760 /* Sources */ = {
+		39B28AE5344BF7EAB543FC2C9D39AE75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA97910B81C8148852C44D86EE6E7EDA /* Pods-GT-dummy.m in Sources */,
+				A23B1618251C3B92A365B5669F513796 /* CodableTransform.swift in Sources */,
+				F2CA9FD6E3A7EFBB13BCEF662D06524B /* CustomDateFormatTransform.swift in Sources */,
+				EB2E92AFE8E36A23EE6D311736B88B67 /* DataTransform.swift in Sources */,
+				F60975556A37AD5647ED82DC76E9CF6F /* DateFormatterTransform.swift in Sources */,
+				0E478FF7AD49149E802261DB853A2837 /* DateTransform.swift in Sources */,
+				664B70329CC935DB023416ADE2F203DC /* DictionaryTransform.swift in Sources */,
+				64C60112E347C8B0F4B70760861FA125 /* EnumOperators.swift in Sources */,
+				02E11AACB509E00F07FC45B073374310 /* EnumTransform.swift in Sources */,
+				3556C30029720A3AF9CDBF70BE28281C /* FromJSON.swift in Sources */,
+				9A2E1EA1F0F8F4FA13589FEFC4D712B0 /* HexColorTransform.swift in Sources */,
+				F9B31EED95B0E98A057B6012F9883DCF /* ImmutableMappable.swift in Sources */,
+				96DBFE11AAE27CA46A220B4FB06C355B /* IntegerOperators.swift in Sources */,
+				0C9FD48191A4E68417C886A9BA356C76 /* ISO8601DateTransform.swift in Sources */,
+				45EF41171CA52C2B9E61E1CCD69DDAB6 /* Map.swift in Sources */,
+				9F73038C5D5809B9C54A4D5455C0CA91 /* MapError.swift in Sources */,
+				BE77AF28ABBCD1A186B56195290331D8 /* Mappable.swift in Sources */,
+				7908F4065CB1E8A38293CE28F4936941 /* Mapper.swift in Sources */,
+				553CF23D91DC8777B26191C77938004A /* NSDecimalNumberTransform.swift in Sources */,
+				78BB4BFABCB498A10A06C02661795CDB /* ObjectMapper-dummy.m in Sources */,
+				86D61ED9E92755CAA98639EF12E90D65 /* Operators.swift in Sources */,
+				8DA5B74F96053B88D81B4C81C4D42C64 /* ToJSON.swift in Sources */,
+				65F3F57891C3534229655745DB094F1B /* TransformOf.swift in Sources */,
+				BA2A816A2CDE195F83BBC03AB4671980 /* TransformOperators.swift in Sources */,
+				A35CB412DFB6E16F962F7D2A5E792D5D /* TransformType.swift in Sources */,
+				F000D6CA12F7C477EC63335B91707775 /* URLTransform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,27 +774,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A60FF5E0FEB5DBFD029A0567443430E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F62ACC174E57B3DBBEA79639400C77B3 /* Pods-GT-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0F17C80C88E09FB8C24853943541CFA1 /* PBXTargetDependency */ = {
+		32C281F155097A6E6AC9513419E6346D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjectMapper;
+			target = 162E649F50FEC62B61BDD87D1BD422B4 /* ObjectMapper */;
+			targetProxy = D5F6F075825EEC9ECF1D28DDBF8A0309 /* PBXContainerItemProxy */;
+		};
+		463F2AB3ED868F566114EA0922D0A29E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 973A9011E6573B239197EAE68574612A /* PBXContainerItemProxy */;
+			targetProxy = A89FFB0143AAA28E8B79D6F686FA9959 /* PBXContainerItemProxy */;
 		};
-		40A2D7406248FB38101A40E8BFFAF87D /* PBXTargetDependency */ = {
+		894AC5A12FCD4A293D219F2A0AC0B432 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JZCalendarWeekView;
 			target = FB69877BBE5461EEA507FA5FCF8314F0 /* JZCalendarWeekView */;
-			targetProxy = 7E900396CC39587336F25763F5C33629 /* PBXContainerItemProxy */;
+			targetProxy = D7C6CC0B12C0439D0D46F76D2C10E84E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		00319A2330DC739FCBFBB6CFB0C5F58D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F10A888CF7B439E1EC9F2691FD66BF2C /* Alamofire.xcconfig */;
+			baseConfigurationReference = 0D2013170626CD96C587D4E374AB3127 /* Alamofire.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -649,7 +844,7 @@
 		};
 		0A7419698B86098802E95CC08EED03C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEDB829020B79E43202A7305DB391AD0 /* JZCalendarWeekView.xcconfig */;
+			baseConfigurationReference = 9F4394387C780EDFBB0AE680E57A7D80 /* JZCalendarWeekView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -683,9 +878,9 @@
 			};
 			name = Release;
 		};
-		41EBE39A49062BED29D56E9D1E65880D /* Debug */ = {
+		13049AA41BBA470FCF6FD2872090678C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEDB829020B79E43202A7305DB391AD0 /* JZCalendarWeekView.xcconfig */;
+			baseConfigurationReference = F743B09DF56EEF65BA5A76BCD7B71D6E /* ObjectMapper.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -696,18 +891,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JZCalendarWeekView/JZCalendarWeekView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JZCalendarWeekView/JZCalendarWeekView-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ObjectMapper/ObjectMapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ObjectMapper/ObjectMapper-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/JZCalendarWeekView/JZCalendarWeekView.modulemap";
-				PRODUCT_MODULE_NAME = JZCalendarWeekView;
-				PRODUCT_NAME = JZCalendarWeekView;
+				MODULEMAP_FILE = "Target Support Files/ObjectMapper/ObjectMapper.modulemap";
+				PRODUCT_MODULE_NAME = ObjectMapper;
+				PRODUCT_NAME = ObjectMapper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -718,7 +913,7 @@
 			};
 			name = Debug;
 		};
-		75BFE307C1FFD36099C3CCE464848193 /* Debug */ = {
+		41844EE5F1C7381F67FD9B7D65FD9945 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92760BF8EB581D8F91B027EA1DD9DAFA /* Pods-GT.debug.xcconfig */;
 			buildSettings = {
@@ -755,6 +950,80 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		41EBE39A49062BED29D56E9D1E65880D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F4394387C780EDFBB0AE680E57A7D80 /* JZCalendarWeekView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JZCalendarWeekView/JZCalendarWeekView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JZCalendarWeekView/JZCalendarWeekView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JZCalendarWeekView/JZCalendarWeekView.modulemap";
+				PRODUCT_MODULE_NAME = JZCalendarWeekView;
+				PRODUCT_NAME = JZCalendarWeekView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6A269568FAF432F8E7FDDBA4B4B90066 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9888F3F5F86F120C14C3BB67F36FE057 /* Pods-GT.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GT/Pods-GT-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GT/Pods-GT.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -820,12 +1089,10 @@
 			};
 			name = Debug;
 		};
-		D8F0B540ACCB87DDC49356592568C673 /* Release */ = {
+		AAC32C769BB7275DEFD11A5D52A8613B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9888F3F5F86F120C14C3BB67F36FE057 /* Pods-GT.release.xcconfig */;
+			baseConfigurationReference = F743B09DF56EEF65BA5A76BCD7B71D6E /* ObjectMapper.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -835,23 +1102,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GT/Pods-GT-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ObjectMapper/ObjectMapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ObjectMapper/ObjectMapper-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GT/Pods-GT.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/ObjectMapper/ObjectMapper.modulemap";
+				PRODUCT_MODULE_NAME = ObjectMapper;
+				PRODUCT_NAME = ObjectMapper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -921,7 +1187,7 @@
 		};
 		F659822BFF3B3C20B29B76B89800A5E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F10A888CF7B439E1EC9F2691FD66BF2C /* Alamofire.xcconfig */;
+			baseConfigurationReference = 0D2013170626CD96C587D4E374AB3127 /* Alamofire.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -977,11 +1243,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BEDDCFBB254B98839C21D47CCE9E608 /* Build configuration list for PBXNativeTarget "Pods-GT" */ = {
+		BC2CCE9768D58B3D5F80929438718BE0 /* Build configuration list for PBXNativeTarget "Pods-GT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				75BFE307C1FFD36099C3CCE464848193 /* Debug */,
-				D8F0B540ACCB87DDC49356592568C673 /* Release */,
+				41844EE5F1C7381F67FD9B7D65FD9945 /* Debug */,
+				6A269568FAF432F8E7FDDBA4B4B90066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -991,6 +1257,15 @@
 			buildConfigurations = (
 				41EBE39A49062BED29D56E9D1E65880D /* Debug */,
 				0A7419698B86098802E95CC08EED03C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E87F6954491067B29ADB27A94D68AA11 /* Build configuration list for PBXNativeTarget "ObjectMapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13049AA41BBA470FCF6FD2872090678C /* Debug */,
+				AAC32C769BB7275DEFD11A5D52A8613B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

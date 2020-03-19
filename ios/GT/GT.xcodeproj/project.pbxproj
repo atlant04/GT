@@ -17,8 +17,6 @@
 		FA2E4E48241F1A3300942616 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E47241F1A3300942616 /* Extensions.swift */; };
 		FA2E4E4C241F1A9400942616 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E4B241F1A9400942616 /* Protocols.swift */; };
 		FA2E4E4E241F1AF900942616 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E4D241F1AF900942616 /* CourseCell.swift */; };
-		FA2E4E572420536500942616 /* CourseCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E552420536500942616 /* CourseCellXib.swift */; };
-		FA2E4E582420536500942616 /* CourseCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2E4E562420536500942616 /* CourseCellXib.xib */; };
 		FA74FC3824208D17000A56FB /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FC3724208D17000A56FB /* SectionHeader.swift */; };
 		FA74FC3A242099FC000A56FB /* DetailCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FC39242099FC000A56FB /* DetailCourseViewController.swift */; };
 		FA74FC3D2420B102000A56FB /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA74FC3C2420B102000A56FB /* EventCell.xib */; };
@@ -40,8 +38,6 @@
 		FA2E4E4B241F1A9400942616 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		FA2E4E4D241F1AF900942616 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		FA2E4E4F241F517700942616 /* GT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GT.entitlements; sourceTree = "<group>"; };
-		FA2E4E552420536500942616 /* CourseCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellXib.swift; sourceTree = "<group>"; };
-		FA2E4E562420536500942616 /* CourseCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseCellXib.xib; sourceTree = "<group>"; };
 		FA74FC3724208D17000A56FB /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		FA74FC39242099FC000A56FB /* DetailCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCourseViewController.swift; sourceTree = "<group>"; };
 		FA74FC3C2420B102000A56FB /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
@@ -133,8 +129,6 @@
 				FA2E4E4D241F1AF900942616 /* CourseCell.swift */,
 				FA74FC3C2420B102000A56FB /* EventCell.xib */,
 				FA2E4E4B241F1A9400942616 /* Protocols.swift */,
-				FA2E4E552420536500942616 /* CourseCellXib.swift */,
-				FA2E4E562420536500942616 /* CourseCellXib.xib */,
 				FA74FC3724208D17000A56FB /* SectionHeader.swift */,
 			);
 			path = Views;
@@ -212,7 +206,6 @@
 				FA74FC3D2420B102000A56FB /* EventCell.xib in Resources */,
 				FA2E4E3A241EC53000942616 /* LaunchScreen.storyboard in Resources */,
 				FA2E4E37241EC53000942616 /* Assets.xcassets in Resources */,
-				FA2E4E582420536500942616 /* CourseCellXib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +260,6 @@
 			files = (
 				FA2E4E48241F1A3300942616 /* Extensions.swift in Sources */,
 				FA2E4E46241F19FD00942616 /* Course.swift in Sources */,
-				FA2E4E572420536500942616 /* CourseCellXib.swift in Sources */,
 				FA2E4E32241EC52A00942616 /* ViewController.swift in Sources */,
 				FA2E4E4E241F1AF900942616 /* CourseCell.swift in Sources */,
 				FA74FC3824208D17000A56FB /* SectionHeader.swift in Sources */,

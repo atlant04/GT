@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ObjectMapper
 
 class ViewController: UIViewController, UICollectionViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
 
@@ -37,11 +38,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         navigationItem.searchController = searchBar
         createDataSource()
 
-        AF.request("https://cb61e726.ngrok.io/courses", method: .get).responseDecodable(of: [Course].self) { response in
+        AF.request("https://oscarapp.appspot.com/courses", method: .get).responseJSON { response in
             switch response.result {
-            case .success(let courses):
-                self.courses = courses
-                self.reloadData(with: courses)
+            case .success(let json):
+                //print(jsonString.prefix(1000))
+                do {
+                    self.courses = try Mapper<Course>().mapArray(JSONObject: json)
+                } catch {
+                    print(error)
+                }
+                self.reloadData(with: self.courses)
             case .failure(let error):
                 print(error.errorDescription)
             }
@@ -124,16 +130,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         let text = """
         Semester: \(item.semester)\n
         Identifier: \(item.identifier)\n
-        Section 1: \(item.sections?[0].id ?? "None")\n
-        Location: \(item.sections?[0].meetings[0].location ?? "None")\n
-        Time: \(item.sections?[0].meetings[0].time ?? "None")\n
-        Instructor: \(item.sections?[0].meetings[0].instructor[0] ?? "None")
+        Section 1: \(item.sections?.first?.id ?? "None")\n
+        Location: \(item.sections?.first?.meetings.first?.location ?? "None")\n
+        Time: \(item.sections?.first?.meetings.first?.time ?? "None")\n
+        Instructor: \(item.sections?.first?.meetings.first?.instructor.first ?? "None")
         """
 
         let alertVC = UIAlertController(title: item.name, message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) { _ in
             alertVC.dismiss(animated: true, completion: nil)
-            self.navigationController?.pushViewController(DetailCourseViewController(), animated: true)
+            let detailVC = DetailCourseViewController()
+            detailVC.course = item
+            self.navigationController?.pushViewController(detailVC, animated: true)
         }
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)

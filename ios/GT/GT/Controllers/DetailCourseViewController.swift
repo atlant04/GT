@@ -10,30 +10,19 @@ import Foundation
 import UIKit
 import JZCalendarWeekView
 
-class DetailCourseViewController: UIViewController, JZBaseViewDelegate {
-    func initDateDidChange(_ weekView: JZBaseWeekView, initDate: Date) {
-    }
-
-
-    var calendar: JZBaseWeekView!
-    let baseDate: Date = Date()
-    var events = [Event]()
+class DetailCourseViewController: UIViewController {
+    var calendar: CalendarView!
+    var course: Course!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendar = JZBaseWeekView(frame: view.bounds)
+        //calendar = CalendarView(frame: view.bounds)
+        //view.addSubview(calendar)
+        setupCalendar()
+    }
 
-        for i in 1...10 {
-            let event = Event(id: "Test", startDate: baseDate, endDate: Date(timeInterval: TimeInterval(3600 * 10), since: baseDate))
-            events.append(event)
-        }
-        print(baseDate.description)
-        print(Date(timeInterval: TimeInterval(3600 * 10), since: baseDate).description)
-        let mappedEvents = JZWeekViewHelper.getIntraEventsByDate(originalEvents: events)
-        calendar.baseDelegate = self
-        calendar.setupCalendar(numOfDays: 7, setDate: baseDate, allEvents: [baseDate: [Event(id: "Test", startDate: baseDate, endDate: baseDate.addingTimeInterval(36000))]])
+    func setupCalendar() {
 
-        view.addSubview(calendar)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -46,14 +35,14 @@ class DetailCourseViewController: UIViewController, JZBaseViewDelegate {
 class CalendarView: JZBaseWeekView {
     override func registerViewClasses() {
         super.registerViewClasses()
-        self.collectionView.register(UINib(nibName: "EventCell", bundle: nil), forCellWithReuseIdentifier: EventCell.reuseIdentifier)
-        //self.collectionView.register(EventCell.self, forCellWithReuseIdentifier: EventCell.reuseIdentifier)
+        //self.collectionView.register(UINib(nibName: "EventCell", bundle: nil), forCellWithReuseIdentifier: EventCell.reuseIdentifier)
+        self.collectionView.register(EventCell.self, forCellWithReuseIdentifier: EventCell.reuseIdentifier)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let date = flowLayout.dateForColumnHeader(at: indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EventCell.reuseIdentifier, for: indexPath) as! EventCell
-        cell.update(event: allEventsBySection[date]![indexPath.row] as! Event)
+        let event = getCurrentEvent(with: indexPath) as! Event
+        cell.update(event: event)
         return cell
     }
 }
@@ -63,23 +52,54 @@ class Event: JZBaseEvent {
     override init(id: String, startDate: Date, endDate: Date) {
         super.init(id: "Text", startDate: startDate, endDate: endDate)
     }
+
+    override func copy(with zone: NSZone?) -> Any {
+        return Event(id: id, startDate: startDate, endDate: endDate)
+    }
 }
 
 
 class EventCell: UICollectionViewCell {
     static let reuseIdentifier: String = "eventCell"
 
-    @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var border: UIView!
-
     func update(event: Event) {
-        title.text = event.id
+        label.text = event.id
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Test"
+        return label
+    }()
+
+    let border: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBlue
+        return view
+    }()
+
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .systemBlue
+        contentView.addSubview(label)
+        contentView.addSubview(border)
         setupBasic()
+        NSLayoutConstraint.activate([
+            border.widthAnchor.constraint(equalToConstant: 2),
+            border.topAnchor.constraint(equalTo: contentView.topAnchor),
+            border.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            border.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor),
+            label.leadingAnchor.constraint(equalTo: border.trailingAnchor, constant: 5),
+            label.heightAnchor.constraint(equalToConstant: 15)
+        ])
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("Plz stop using storyboards")
     }
 
     func setupBasic() {
@@ -88,33 +108,8 @@ class EventCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowRadius = 5
         layer.shadowOpacity = 0
-        title.font = UIFont.systemFont(ofSize: 12)
-        title.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        self.backgroundColor = .systemBlue
-        border.backgroundColor = .systemRed
-    }
-
-//    let label: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.backgroundColor = .black
-//        label.text = "Test"
-//        return label
-//    }()
-
-
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        backgroundColor = .systemBlue
-//        contentView.addSubview(label)
-//        NSLayoutConstraint.activate([
-//            label.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            label.heightAnchor.constraint(equalToConstant: 15)
-//        ])
-//    }
-
-    required init?(coder: NSCoder) {
-        fatalError("Plz stop using storyboards")
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        self.backgroundColor = UIColor(red: 238/255, green: 247/255, blue: 1, alpha: 1) //238, 247, 255
     }
 }

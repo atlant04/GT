@@ -16,8 +16,8 @@ class CourseCell: UICollectionViewCell, SelfConfiguringCell {
          name.text = course.name
          identifier.text = course.identifier
          hours.text = course.hours
-         instructor.text = course.sections?.first?.instructors.first ?? "None"
-         sections.text = "# of sections \(course.sections?.count ?? 0)"
+        instructor.text = course.sections?.first?.instructors.first ?? "None"
+        sections.text = "# of sections \(course.sections?.count ?? 0)"
          contentView.backgroundColor = course.school.color
      }
 

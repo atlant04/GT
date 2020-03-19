@@ -49,11 +49,11 @@
             </constraints>
             <size key="customSize" width="220" height="123"/>
             <connections>
-                <outlet property="border" destination="8SG-Gp-s1M" id="oJC-pE-HCM"/>
+                <outlet property="border" destination="8SG-Gp-s1M" id="vYo-oW-aMt"/>
                 <outlet property="borderView" destination="8SG-Gp-s1M" id="vYo-RE-yoO"/>
-                <outlet property="location" destination="aw5-WT-uEQ" id="DVG-sy-kRU"/>
+                <outlet property="location" destination="aw5-WT-uEQ" id="d9i-x4-vjO"/>
                 <outlet property="locationLabel" destination="aw5-WT-uEQ" id="tpa-uD-5m0"/>
-                <outlet property="title" destination="HrX-f2-wzq" id="axs-ss-6sT"/>
+                <outlet property="title" destination="HrX-f2-wzq" id="ZwU-Wl-Yrx"/>
                 <outlet property="titleLabel" destination="HrX-f2-wzq" id="hyu-eB-0qr"/>
             </connections>
             <point key="canvasLocation" x="85" y="76"/>

@@ -7,5 +7,6 @@ target 'GT' do
 
   # Pods for GT
    pod 'JZCalendarWeekView'
+   pod 'ObjectMapper'
    pod 'Alamofire', '~> 5.0'
 end
