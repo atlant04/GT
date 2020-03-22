@@ -27,19 +27,20 @@ class DetailCourseViewController: UIViewController, MTWeekViewDataSource {
 
     func parseEvents() {
         guard let sections = course.sections else { return }
-        let meetings = sections.flatMap { $0.meetings }
+        let meetings = sections.compactMap { $0.meetings }.joined()
         print(meetings)
-        let events = meetings.flatMap { parseMeeting(meeting: $0) }
-        self.events = events
+        let events = meetings.compactMap { parseMeeting(meeting: $0) }.joined()
+        self.events = Array(events)
     }
 
     func parseMeeting(meeting: Course.Meeting) -> [Event] {
-        guard let hyphen = meeting.time.firstIndex(of: "-") else { return [] }
-        let start = meeting.time[..<hyphen]
-        let endRange = meeting.time.index(hyphen, offsetBy: 2)...
-        let end = meeting.time[endRange]
+        guard let time = meeting.time, let daysOfWeek = meeting.days else { return [] }
+        guard let hyphen = time.firstIndex(of: "-") else { return [] }
+        let start = time[..<hyphen]
+        let endRange = time.index(hyphen, offsetBy: 2)...
+        let end = time[endRange]
 
-        let days = Array(meeting.days).compactMap { Event.DayOfWeek(rawValue: $0) }
+        let days = Array(daysOfWeek).compactMap { Event.DayOfWeek(rawValue: $0) }
 
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm a"
@@ -203,7 +204,8 @@ class MTWeekView: JZBaseWeekView {
         let allEvents = getAllEventsForCurrentWeek()
         let setDate = week.first ?? Date()
         let range = (week.first, week.last)
-        self.setupCalendar(numOfDays: 5, setDate: setDate, allEvents: allEvents, scrollType: .pageScroll, firstDayOfWeek: .Monday, currentTimelineType: .page, visibleTime: Date(), scrollableRange: range)
+        let firstEvent = Array(allEvents.values).joined().sorted { $0.startDate < $1.startDate }.first?.startDate ?? Date()
+        self.setupCalendar(numOfDays: 5, setDate: setDate, allEvents: allEvents, scrollType: .sectionScroll, firstDayOfWeek: .Monday, currentTimelineType: .section, visibleTime: firstEvent, scrollableRange: range)
     }
 
     func getAllEventsForCurrentWeek() -> [Date: [JZBaseEvent]] {
@@ -214,6 +216,5 @@ class MTWeekView: JZBaseWeekView {
         }
         return resultingEvents
     }
-
 
 }

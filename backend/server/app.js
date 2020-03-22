@@ -1,12 +1,21 @@
 const express = require('express')
 const parser = require('body-parser')
 const app = express()
+const monitor = require('./monitor.js')
+
 const port = process.env.PORT || 3000
 app.use(parser.urlencoded({
     extended: true
 }))
 
+app.use(express.json());
+
+app.use(require("./Routes/Course.js"))
+app.use(require("./Routes/Listener.js"))
+
 require('./db.js').connect(() => {
-    app.use(require("./Routes/Course.js"))
-    app.listen(port, () => console.log("Listening on port 3000"))
+    app.listen(port, () => {
+        console.log("Listening on port 3000")
+        //monitor.start("https://ada7996e.ngrok.io/listen")
+    })
 })

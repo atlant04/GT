@@ -26,6 +26,9 @@ open class JZRowHeader: UICollectionReusableView {
         // If you want to customise the RowHeader, please keep the similar contraints with this one (vertically center and a value to trailing anchor)
         // If you want to change rowHeaderWidth and font size, you can change the trailing value to make it horizontally center in normal state, but keep the trailing anchor
         lblTime.setAnchorCenterVerticallyTo(view: self, trailingAnchor: (self.trailingAnchor, -5))
+        
+        let colors: [UIColor] = [.systemRed, .systemBlue, .systemGray]
+        self.backgroundColor = colors.randomElement()
     }
 
     open func setupBasic() {

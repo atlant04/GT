@@ -81,7 +81,7 @@ open class JZWeekViewFlowLayout: UICollectionViewFlowLayout {
     var allDayHeaderBackgroundAttributes = AttDic()
     var allDayCornerAttributes = AttDic()
 
-    weak var delegate: WeekViewFlowLayoutDelegate?
+    public weak var delegate: WeekViewFlowLayoutDelegate?
     private var minuteTimer: Timer?
 
     // Default UI parameters Initializer
@@ -345,7 +345,7 @@ open class JZWeekViewFlowLayout: UICollectionViewFlowLayout {
         attributes.zIndex = zIndexForElementKind(JZDecorationViewKinds.verticalGridline)
     }
 
-    func layoutHorizontalGridLinesAttributes(calendarStartX: CGFloat, calendarStartY: CGFloat) {
+    open func layoutHorizontalGridLinesAttributes(calendarStartX: CGFloat, calendarStartY: CGFloat) {
         var horizontalGridlineIndex = 0
         let calendarGridWidth = collectionViewContentSize.width - rowHeaderWidth - contentsMargin.left - contentsMargin.right
         var attributes = UICollectionViewLayoutAttributes()

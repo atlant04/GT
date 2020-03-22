@@ -25,8 +25,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
-//        let nib = UINib(nibName: "CourseCellXib", bundle: nil)
-//        collectionView.register(nib, forCellWithReuseIdentifier: CourseCellXib.reuseIdentifier.rawValue)
         collectionView.register(CourseCell.self, forCellWithReuseIdentifier: CourseCell.reuseIdentifier.rawValue)
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         collectionView.delegate = self
@@ -41,13 +39,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         AF.request("https://oscarapp.appspot.com/courses", method: .get).responseJSON { response in
             switch response.result {
             case .success(let json):
-                //print(jsonString.prefix(1000))
-                do {
-                    self.courses = try Mapper<Course>().mapArray(JSONObject: json)
-                } catch {
-                    print(error)
+                if let courses = Mapper<Course>().mapArray(JSONObject: json) {
+                    self.courses = courses
+                    self.reloadData(with: self.courses)
                 }
-                self.reloadData(with: self.courses)
             case .failure(let error):
                 print(error.errorDescription)
             }
@@ -57,7 +52,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
      func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, text.count > 0 {
             searchedCourses = self.courses.filter({ (course) -> Bool in
-                course.fullname.contains(text) || course.identifier.contains(text) || course.identifier.contains(text) 
+                course.fullname?.contains(text) ?? false ||
+                    course.identifier?.contains(text) ?? false ||
+                course.identifier?.contains(text) ?? false
             })
             reloadData(with: searchedCourses)
         }
@@ -81,14 +78,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader
 
             let course = self.dataSource.itemIdentifier(for: indexPath)
-            sectionHeader?.title.text = course?.school.rawValue
+            sectionHeader?.title.text = course?.school?.rawValue
             return sectionHeader
         }
     }
 
     func reloadData(with courses: [Course]) {
         var snapshot = NSDiffableDataSourceSnapshot<Course.School, Course>()
-        self.mappedCourses = Dictionary(grouping: courses, by:{ $0.school })
+        self.mappedCourses = Dictionary(grouping: courses, by:{ return $0.school ?? .CS })
         snapshot.appendSections(Array(self.mappedCourses.keys))
 
         self.mappedCourses.keys.forEach { (school) in
@@ -131,9 +128,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         Semester: \(item.semester)\n
         Identifier: \(item.identifier)\n
         Section 1: \(item.sections?.first?.id ?? "None")\n
-        Location: \(item.sections?.first?.meetings.first?.location ?? "None")\n
-        Time: \(item.sections?.first?.meetings.first?.time ?? "None")\n
-        Instructor: \(item.sections?.first?.meetings.first?.instructor.first ?? "None")
+        Location: \(item.sections?.first?.meetings?.first?.location ?? "None")\n
+        Time: \(item.sections?.first?.meetings?.first?.time ?? "None")\n
+        Instructor: \(item.sections?.first?.meetings?.first?.instructor?.first ?? "None")
         """
 
         let alertVC = UIAlertController(title: item.name, message: text, preferredStyle: .alert)
@@ -143,7 +140,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
             detailVC.course = item
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
+        let monitor = UIAlertAction(title: "Monitor", style: .default) { (action) in
+            self.monitorButtonPressed(course: item)
+            alertVC.dismiss(animated: true, completion: nil)
+        }
+        
         alertVC.addAction(action)
+        alertVC.addAction(monitor)
         self.present(alertVC, animated: true, completion: nil)
     }
 }
@@ -151,5 +154,52 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
 extension ViewController {
     enum Section {
         case main
+    }
+}
+
+extension ViewController {
+    
+    func monitorButtonPressed(course: Course) {
+        AF.request("https://9b17300b.ngrok.io/listen", method: .post, parameters: course.toJSON()).responseJSON { response in
+            switch response.result {
+            case .success(let json):
+                let responses = Mapper<Response>().mapArray(JSONObject: json)
+                self.presentAlert(for: responses)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func presentAlert(for responses: [Response]?) {
+        if let responses = responses {
+            var text = ""
+            text = responses.reduce(text){ (text, response) in
+                guard let crn = response.crn, let seats = response.seats?["remaining"] else { return text }
+                let str = "\(crn) has \(seats) seats remaining\n"
+                return text + str
+            }
+            
+            let alertVC = UIAlertController(title: "Availability", message: text, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel) { action in alertVC.dismiss(animated: true, completion: nil) }
+            alertVC.addAction(action)
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
+}
+
+
+struct Response: Mappable {
+    
+    var crn: String?
+    var seats: [String: Any]?
+    var waitlist: [String: Any]?
+    
+    init?(map: Map) { }
+    
+    mutating func mapping(map: Map) {
+        crn <- map["crn"]
+        seats <- map["data.seats"]
+        waitlist <- map["data.waitlist"]
     }
 }

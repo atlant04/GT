@@ -20,7 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.frame = UIScreen.main.bounds
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        
+        let mainVC = ViewController()
+        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        
+        let controllers = [mainVC]
+        var navControllers = controllers.map { UINavigationController(rootViewController: $0) }
+        
+        let tabBarVC = UITabBarController()
+        tabBarVC.setViewControllers(navControllers, animated: true)
+        
+        window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
     }
 
