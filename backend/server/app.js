@@ -10,10 +10,9 @@ app.use(parser.urlencoded({
 
 app.use(express.json());
 
-app.use(require("./Routes/Course.js"))
-app.use(require("./Routes/Listener.js"))
-
 require('./db.js').connect(() => {
+    app.use(require("./Routes/Course.js"))
+    app.use(require("./Routes/Listener.js"))
     app.listen(port, () => {
         console.log("Listening on port 3000")
         //monitor.start("https://ada7996e.ngrok.io/listen")

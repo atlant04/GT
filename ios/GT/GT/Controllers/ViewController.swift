@@ -160,7 +160,7 @@ extension ViewController {
 extension ViewController {
     
     func monitorButtonPressed(course: Course) {
-        AF.request("https://9b17300b.ngrok.io/listen", method: .post, parameters: course.toJSON()).responseJSON { response in
+        AF.request("https://oscarapp.appspot.com/listen", method: .post, parameters: course.toJSON()).responseJSON { response in
             switch response.result {
             case .success(let json):
                 let responses = Mapper<Response>().mapArray(JSONObject: json)
