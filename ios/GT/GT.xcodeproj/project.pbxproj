@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27093CE72428A737001341E1 /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 27093CE62428A737001341E1 /* MTWeekView */; };
 		27093CE92428C517001341E1 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CE82428C517001341E1 /* ServerManager.swift */; };
 		27093CEB2428C5AD001341E1 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CEA2428C5AD001341E1 /* AppConstants.swift */; };
+		27093CF12428C95B001341E1 /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 27093CF02428C95B001341E1 /* MTWeekView */; };
 		E2B19467E6CC1566F7C05409 /* Pods_GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7D40129BF408F6B14A4448 /* Pods_GT.framework */; };
 		FA2E4E2E241EC52A00942616 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E2D241EC52A00942616 /* AppDelegate.swift */; };
 		FA2E4E30241EC52A00942616 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E2F241EC52A00942616 /* SceneDelegate.swift */; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27093CE72428A737001341E1 /* MTWeekView in Frameworks */,
+				27093CF12428C95B001341E1 /* MTWeekView in Frameworks */,
 				E2B19467E6CC1566F7C05409 /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,7 +184,7 @@
 			);
 			name = GT;
 			packageProductDependencies = (
-				27093CE62428A737001341E1 /* MTWeekView */,
+				27093CF02428C95B001341E1 /* MTWeekView */,
 			);
 			productName = GT;
 			productReference = FA2E4E2A241EC52A00942616 /* GT.app */;
@@ -215,7 +215,7 @@
 			);
 			mainGroup = FA2E4E21241EC52A00942616;
 			packageReferences = (
-				27093CE52428A737001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */,
+				27093CEF2428C95B001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */,
 			);
 			productRefGroup = FA2E4E2B241EC52A00942616 /* Products */;
 			projectDirPath = "";
@@ -500,7 +500,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		27093CE52428A737001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
+		27093CEF2428C95B001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
 			requirement = {
@@ -511,9 +511,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		27093CE62428A737001341E1 /* MTWeekView */ = {
+		27093CF02428C95B001341E1 /* MTWeekView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 27093CE52428A737001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */;
+			package = 27093CEF2428C95B001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */;
 			productName = MTWeekView;
 		};
 /* End XCSwiftPackageProductDependency section */

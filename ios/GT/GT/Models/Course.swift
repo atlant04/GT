@@ -26,6 +26,10 @@ struct Course: Mappable, Hashable {
     var hours: String?
     var identifier: String?
     var sections: [Section]?
+    
+    var instructors: [String]? {
+        return sections?.flatMap { $0.instructors ?? [] }
+    }
 
 //    init(map: Map) throws {
 //        id = try map.value("_id") ?? "None"

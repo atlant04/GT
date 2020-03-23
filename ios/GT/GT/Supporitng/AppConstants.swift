@@ -10,6 +10,11 @@ import Foundation
 
 
 struct AppConstants {
+    
+    static let shared = AppConstants()
+    
+    private init() { }
+    
     let baseUrl = "https://oscarapp.appspot.com"
     
     var coursesUrl: String {
