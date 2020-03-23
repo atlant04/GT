@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27093CE72428A737001341E1 /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 27093CE62428A737001341E1 /* MTWeekView */; };
+		27093CE92428C517001341E1 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CE82428C517001341E1 /* ServerManager.swift */; };
+		27093CEB2428C5AD001341E1 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CEA2428C5AD001341E1 /* AppConstants.swift */; };
 		E2B19467E6CC1566F7C05409 /* Pods_GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7D40129BF408F6B14A4448 /* Pods_GT.framework */; };
 		FA2E4E2E241EC52A00942616 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E2D241EC52A00942616 /* AppDelegate.swift */; };
 		FA2E4E30241EC52A00942616 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E2F241EC52A00942616 /* SceneDelegate.swift */; };
@@ -36,6 +39,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27093CE82428C517001341E1 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		27093CEA2428C5AD001341E1 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		5D212B988C2AF2B87A7114AC /* Pods-GT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.release.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.release.xcconfig"; sourceTree = "<group>"; };
 		6AABCACA0A24AE2012C421AA /* Pods-GT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.debug.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.debug.xcconfig"; sourceTree = "<group>"; };
 		FA2E4E2A241EC52A00942616 /* GT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27093CE72428A737001341E1 /* MTWeekView in Frameworks */,
 				E2B19467E6CC1566F7C05409 /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +130,8 @@
 				FA2E4E36241EC53000942616 /* Assets.xcassets */,
 				FA2E4E3B241EC53000942616 /* Info.plist */,
 				FA2E4E47241F1A3300942616 /* Extensions.swift */,
+				27093CE82428C517001341E1 /* ServerManager.swift */,
+				27093CEA2428C5AD001341E1 /* AppConstants.swift */,
 			);
 			path = Supporitng;
 			sourceTree = "<group>";
@@ -175,6 +183,9 @@
 			dependencies = (
 			);
 			name = GT;
+			packageProductDependencies = (
+				27093CE62428A737001341E1 /* MTWeekView */,
+			);
 			productName = GT;
 			productReference = FA2E4E2A241EC52A00942616 /* GT.app */;
 			productType = "com.apple.product-type.application";
@@ -203,6 +214,9 @@
 				Base,
 			);
 			mainGroup = FA2E4E21241EC52A00942616;
+			packageReferences = (
+				27093CE52428A737001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */,
+			);
 			productRefGroup = FA2E4E2B241EC52A00942616 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,8 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27093CE92428C517001341E1 /* ServerManager.swift in Sources */,
 				FA2E4E48241F1A3300942616 /* Extensions.swift in Sources */,
 				FA2E4E46241F19FD00942616 /* Course.swift in Sources */,
+				27093CEB2428C5AD001341E1 /* AppConstants.swift in Sources */,
 				FA2E4E32241EC52A00942616 /* ViewController.swift in Sources */,
 				FA2E4E4E241F1AF900942616 /* CourseCell.swift in Sources */,
 				FA74FC3824208D17000A56FB /* SectionHeader.swift in Sources */,
@@ -482,6 +498,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27093CE52428A737001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27093CE62428A737001341E1 /* MTWeekView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27093CE52428A737001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */;
+			productName = MTWeekView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA2E4E22241EC52A00942616 /* Project object */;
 }
