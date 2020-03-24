@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		27033ACE242A482C006FE461 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27033AC8242A482C006FE461 /* EventCell.xib */; };
 		27033ACF242A482C006FE461 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033AC9242A482C006FE461 /* CourseCell.swift */; };
-		27033AD0242A482C006FE461 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033ACB242A482C006FE461 /* Course.swift */; };
 		27033AD1242A482C006FE461 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033ACC242A482C006FE461 /* Protocols.swift */; };
 		27033AD2242A482C006FE461 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033ACD242A482C006FE461 /* SectionHeader.swift */; };
 		271A444D24292EB300AADABE /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 271A444C24292EB300AADABE /* MTWeekView */; };
@@ -33,7 +32,6 @@
 		0AF9DE093F0FB685B6287235 /* Pods-GT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.release.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.release.xcconfig"; sourceTree = "<group>"; };
 		27033AC8242A482C006FE461 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		27033AC9242A482C006FE461 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
-		27033ACB242A482C006FE461 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		27033ACC242A482C006FE461 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		27033ACD242A482C006FE461 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		273DFC012429074C008950DA /* GT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,20 +71,11 @@
 			children = (
 				27033AC8242A482C006FE461 /* EventCell.xib */,
 				27033AC9242A482C006FE461 /* CourseCell.swift */,
-				27033ACA242A482C006FE461 /* Models */,
 				27033ACC242A482C006FE461 /* Protocols.swift */,
 				27033ACD242A482C006FE461 /* SectionHeader.swift */,
 			);
 			name = Views;
 			path = ../../../../../.Trash/GT/GT/Views;
-			sourceTree = "<group>";
-		};
-		27033ACA242A482C006FE461 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				27033ACB242A482C006FE461 /* Course.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		273DFBF82429074C008950DA = {
@@ -284,7 +273,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27033AD0242A482C006FE461 /* Course.swift in Sources */,
 				273DFC1D2429076E008950DA /* ViewController.swift in Sources */,
 				274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */,
 				273DFC1C2429076E008950DA /* DetailCourseViewController.swift in Sources */,
