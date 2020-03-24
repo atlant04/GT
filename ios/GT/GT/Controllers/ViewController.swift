@@ -141,6 +141,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         let alertVC = UIAlertController(title: course.name, message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) { _ in
             alertVC.dismiss(animated: true, completion: nil)
+//            let detailVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "detail") as! DetailViewController
             let detailVC = DetailViewController()
             detailVC.course = course
             self.navigationController?.pushViewController(detailVC, animated: true)
@@ -166,7 +167,7 @@ extension ViewController {
 
 extension ViewController {
     
-    func presentSeatsAlert(for responses: [Response]) {
+    func presentSeatsAlert(for responses: [MTResponse]) {
         var text = ""
         text = responses.reduce(text){ (t, response) in
             guard let crn = response.crn, let seats = response.seats?["remaining"] else { return text }
@@ -181,7 +182,7 @@ extension ViewController {
 }
 
 
-struct Response: Mappable {
+struct MTResponse: Mappable {
     
     var crn: String?
     var seats: [String: Any]?

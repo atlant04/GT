@@ -24,8 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainVC = ViewController()
         mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
-        let controllers = [mainVC]
-        var navControllers = controllers.map { UINavigationController(rootViewController: $0) }
+        let trackVC = TrackedableViewController(style: .insetGrouped)
+        trackVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        
+        let controllers = [mainVC, trackVC]
+        let navControllers = controllers.map { UINavigationController(rootViewController: $0) }
         
         let tabBarVC = UITabBarController()
         tabBarVC.setViewControllers(navControllers, animated: true)

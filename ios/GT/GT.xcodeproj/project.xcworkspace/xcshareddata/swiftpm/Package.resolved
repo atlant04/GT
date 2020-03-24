@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MTWeekView",
+        "repositoryURL": "https://github.com/atlant04/MTWeekView.git",
+        "state": {
+          "branch": "master",
+          "revision": "bbe6b209187b18d77b8ea19a17ba548074de38fc",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

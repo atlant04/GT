@@ -2,15 +2,19 @@
 //  AppDelegate.swift
 //  GT
 //
-//  Created by MacBook on 3/15/20.
-//  Copyright © 2020 MT. All rights reserved.
+//  Created by Maksim Tochilkin on 23.03.2020.
+//  Copyright © 2020 Maksim Tochilkin. All rights reserved.
 //
 
 import UIKit
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         return true
     }
 
