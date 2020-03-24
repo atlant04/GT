@@ -40,7 +40,7 @@ class TrackedableViewController: UITableViewController {
         print(notification.userInfo?["track"])
         if let dict = notification.userInfo?["track"] as? [String: Course.Section] {
             if var section = dict.values.first {
-                section.parentId = dict.keys.first
+                section.identifier = dict.keys.first
                 let inserted = sections.insert(section).inserted
                 if inserted {
                     fetch(section: section)
@@ -103,7 +103,7 @@ class SectionCell: UITableViewCell {
     static var reuseId = String(describing: self)
     
     func configure(with pair: Pair<Course.Section, MTResponse>) {
-        self.textLabel?.text = "\(pair.key.parentId ?? "") \(pair.key.id ?? "")"
+        self.textLabel?.text = "\(pair.key.identifier ?? "") \(pair.key.id ?? "")"
         self.detailTextLabel?.text = pair.value.seats?["remaining"] as? String
         self.imageView?.image = UIImage(systemName: "checkmark.seal.fill")
     }

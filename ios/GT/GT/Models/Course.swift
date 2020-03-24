@@ -68,7 +68,7 @@ struct Course: Mappable, Hashable {
         var crn: String?
         var instructors: [String]?
         var meetings: [Meeting]?
-        var parentId: String?
+        var identifier: String?
 
 //        init(map: Map) throws {
 //            id = try map.value("section_id") ?? "None"
@@ -82,7 +82,7 @@ struct Course: Mappable, Hashable {
             crn <- map["crn"]
             instructors <- map["instructors"]
             meetings <- map["meetings"]
-            parentId <- map["parentId"]
+            identifier <- map["parentId"]
         }
 
     }

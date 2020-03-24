@@ -7,15 +7,19 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct AppConstants {
     
     static let shared = AppConstants()
     
+    var userId: String? {
+        return UIDevice.current.identifierForVendor?.uuidString
+    }
+    
     private init() { }
     
-    let baseUrl = "https://oscarapp.appspot.com"
+    let baseUrl = "https://79b140f9.ngrok.io" //https://oscarapp.appspot.com"
     
     var coursesUrl: String {
         return baseUrl + EndPoints.courses.rawValue

@@ -9,4 +9,5 @@ target 'GT' do
    pod 'JZCalendarWeekView'
    pod 'ObjectMapper'
    pod 'Alamofire', '~> 5.0'
+   pod 'pod PushNotifications'
 end
