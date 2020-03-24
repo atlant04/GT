@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27033ACE242A482C006FE461 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27033AC8242A482C006FE461 /* EventCell.xib */; };
+		27033ACF242A482C006FE461 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033AC9242A482C006FE461 /* CourseCell.swift */; };
+		27033AD0242A482C006FE461 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033ACB242A482C006FE461 /* Course.swift */; };
+		27033AD1242A482C006FE461 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033ACC242A482C006FE461 /* Protocols.swift */; };
+		27033AD2242A482C006FE461 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033ACD242A482C006FE461 /* SectionHeader.swift */; };
 		271A444D24292EB300AADABE /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 271A444C24292EB300AADABE /* MTWeekView */; };
 		273DFC052429074C008950DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC042429074C008950DA /* AppDelegate.swift */; };
 		273DFC0C2429074C008950DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC0A2429074C008950DA /* Main.storyboard */; };
@@ -15,10 +20,6 @@
 		273DFC1C2429076E008950DA /* DetailCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC192429076E008950DA /* DetailCourseViewController.swift */; };
 		273DFC1D2429076E008950DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC1A2429076E008950DA /* ViewController.swift */; };
 		273DFC1E2429076E008950DA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC1B2429076E008950DA /* DetailViewController.swift */; };
-		273DFC2424290773008950DA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC2024290773008950DA /* EventCell.xib */; };
-		273DFC2524290773008950DA /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2124290773008950DA /* CourseCell.swift */; };
-		273DFC2624290773008950DA /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2224290773008950DA /* Protocols.swift */; };
-		273DFC2724290773008950DA /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2324290773008950DA /* SectionHeader.swift */; };
 		273DFC2C2429078D008950DA /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2B2429078D008950DA /* Course.swift */; };
 		273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2D242907A5008950DA /* SceneDelegate.swift */; };
 		273DFC32242907AE008950DA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2F242907AD008950DA /* AppConstants.swift */; };
@@ -30,6 +31,11 @@
 
 /* Begin PBXFileReference section */
 		0AF9DE093F0FB685B6287235 /* Pods-GT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.release.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.release.xcconfig"; sourceTree = "<group>"; };
+		27033AC8242A482C006FE461 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		27033AC9242A482C006FE461 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
+		27033ACB242A482C006FE461 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		27033ACC242A482C006FE461 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		27033ACD242A482C006FE461 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		273DFC012429074C008950DA /* GT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273DFC042429074C008950DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		273DFC0B2429074C008950DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,11 +45,6 @@
 		273DFC192429076E008950DA /* DetailCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCourseViewController.swift; sourceTree = "<group>"; };
 		273DFC1A2429076E008950DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		273DFC1B2429076E008950DA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		273DFC2024290773008950DA /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		273DFC2124290773008950DA /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
-		273DFC2224290773008950DA /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		273DFC2324290773008950DA /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		273DFC282429077A008950DA /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		273DFC2B2429078D008950DA /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		273DFC2D242907A5008950DA /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		273DFC2F242907AD008950DA /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -67,6 +68,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27033AC7242A482C006FE461 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27033AC8242A482C006FE461 /* EventCell.xib */,
+				27033AC9242A482C006FE461 /* CourseCell.swift */,
+				27033ACA242A482C006FE461 /* Models */,
+				27033ACC242A482C006FE461 /* Protocols.swift */,
+				27033ACD242A482C006FE461 /* SectionHeader.swift */,
+			);
+			name = Views;
+			path = ../../../../../.Trash/GT/GT/Views;
+			sourceTree = "<group>";
+		};
+		27033ACA242A482C006FE461 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27033ACB242A482C006FE461 /* Course.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		273DFBF82429074C008950DA = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +110,7 @@
 		273DFC032429074C008950DA /* GT */ = {
 			isa = PBXGroup;
 			children = (
-				273DFC1F24290773008950DA /* Views */,
+				27033AC7242A482C006FE461 /* Views */,
 				273DFC182429076E008950DA /* Controllers */,
 				273DFC042429074C008950DA /* AppDelegate.swift */,
 				273DFC0A2429074C008950DA /* Main.storyboard */,
@@ -113,27 +135,6 @@
 				274D8730242A238E00B229B2 /* TrackedableViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		273DFC1F24290773008950DA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				273DFC292429077A008950DA /* Models */,
-				273DFC2024290773008950DA /* EventCell.xib */,
-				273DFC2124290773008950DA /* CourseCell.swift */,
-				273DFC2224290773008950DA /* Protocols.swift */,
-				273DFC2324290773008950DA /* SectionHeader.swift */,
-			);
-			name = Views;
-			path = ../../OscarApp/ios/GT/GT/Views;
-			sourceTree = "<group>";
-		};
-		273DFC292429077A008950DA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				273DFC282429077A008950DA /* Course.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		273DFC2A2429078D008950DA /* Models */ = {
@@ -227,7 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273DFC2424290773008950DA /* EventCell.xib in Resources */,
+				27033ACE242A482C006FE461 /* EventCell.xib in Resources */,
 				273DFC112429074F008950DA /* LaunchScreen.storyboard in Resources */,
 				273DFC0E2429074F008950DA /* Assets.xcassets in Resources */,
 				273DFC0C2429074C008950DA /* Main.storyboard in Resources */,
@@ -283,19 +284,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27033AD0242A482C006FE461 /* Course.swift in Sources */,
 				273DFC1D2429076E008950DA /* ViewController.swift in Sources */,
 				274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */,
 				273DFC1C2429076E008950DA /* DetailCourseViewController.swift in Sources */,
+				27033ACF242A482C006FE461 /* CourseCell.swift in Sources */,
 				273DFC2C2429078D008950DA /* Course.swift in Sources */,
 				273DFC32242907AE008950DA /* AppConstants.swift in Sources */,
 				273DFC33242907AE008950DA /* ServerManager.swift in Sources */,
-				273DFC2524290773008950DA /* CourseCell.swift in Sources */,
 				273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */,
+				27033AD1242A482C006FE461 /* Protocols.swift in Sources */,
+				27033AD2242A482C006FE461 /* SectionHeader.swift in Sources */,
 				273DFC34242907AE008950DA /* Extensions.swift in Sources */,
 				273DFC1E2429076E008950DA /* DetailViewController.swift in Sources */,
-				273DFC2724290773008950DA /* SectionHeader.swift in Sources */,
 				273DFC052429074C008950DA /* AppDelegate.swift in Sources */,
-				273DFC2624290773008950DA /* Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
