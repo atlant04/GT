@@ -13,4 +13,12 @@ router.post("/listen", async (req, res) => {
     res.json(data)
 })
 
+router.post("/listen/section", async (req, res) => {
+    const crn = req.body.crn
+    if (crn) {
+        result = await parse("202008", crn)
+        res.json(result)
+    }
+})
+
 module.exports = router

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		27093CE92428C517001341E1 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CE82428C517001341E1 /* ServerManager.swift */; };
 		27093CEB2428C5AD001341E1 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CEA2428C5AD001341E1 /* AppConstants.swift */; };
-		27093CF12428C95B001341E1 /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 27093CF02428C95B001341E1 /* MTWeekView */; };
-		E2B19467E6CC1566F7C05409 /* Pods_GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7D40129BF408F6B14A4448 /* Pods_GT.framework */; };
+		27093CF32428D9E4001341E1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27093CF22428D9E4001341E1 /* DetailViewController.swift */; };
 		FA2E4E2E241EC52A00942616 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E2D241EC52A00942616 /* AppDelegate.swift */; };
 		FA2E4E30241EC52A00942616 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E2F241EC52A00942616 /* SceneDelegate.swift */; };
 		FA2E4E32241EC52A00942616 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E4E31241EC52A00942616 /* ViewController.swift */; };
@@ -41,9 +40,8 @@
 /* Begin PBXFileReference section */
 		27093CE82428C517001341E1 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		27093CEA2428C5AD001341E1 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		5D212B988C2AF2B87A7114AC /* Pods-GT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.release.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.release.xcconfig"; sourceTree = "<group>"; };
-		6AABCACA0A24AE2012C421AA /* Pods-GT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.debug.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.debug.xcconfig"; sourceTree = "<group>"; };
-		FA2E4E2A241EC52A00942616 /* GT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27093CF22428D9E4001341E1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		273DFBF724290706008950DA /* GT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA2E4E2D241EC52A00942616 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		FA2E4E2F241EC52A00942616 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
 		FA2E4E31241EC52A00942616 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 		FA74FC3724208D17000A56FB /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		FA74FC39242099FC000A56FB /* DetailCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCourseViewController.swift; sourceTree = "<group>"; };
 		FA74FC3C2420B102000A56FB /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		FC7D40129BF408F6B14A4448 /* Pods_GT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,47 +63,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27093CF12428C95B001341E1 /* MTWeekView in Frameworks */,
-				E2B19467E6CC1566F7C05409 /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B27F4E6A1931170C3FFF87E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FC7D40129BF408F6B14A4448 /* Pods_GT.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A1D6BAD38689A0CE021CD71E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6AABCACA0A24AE2012C421AA /* Pods-GT.debug.xcconfig */,
-				5D212B988C2AF2B87A7114AC /* Pods-GT.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		FA2E4E21241EC52A00942616 = {
 			isa = PBXGroup;
 			children = (
 				FA2E4E2C241EC52A00942616 /* GT */,
-				FA2E4E2B241EC52A00942616 /* Products */,
-				A1D6BAD38689A0CE021CD71E /* Pods */,
-				1B27F4E6A1931170C3FFF87E /* Frameworks */,
+				273DFBF724290706008950DA /* GT.app */,
 			);
-			sourceTree = "<group>";
-		};
-		FA2E4E2B241EC52A00942616 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FA2E4E2A241EC52A00942616 /* GT.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FA2E4E2C241EC52A00942616 /* GT */ = {
@@ -141,7 +109,8 @@
 			children = (
 				FA2E4E45241F19FD00942616 /* Course.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = Views/Models;
 			sourceTree = "<group>";
 		};
 		FA2E4E49241F1A5F00942616 /* Views */ = {
@@ -160,6 +129,7 @@
 			children = (
 				FA2E4E31241EC52A00942616 /* ViewController.swift */,
 				FA74FC39242099FC000A56FB /* DetailCourseViewController.swift */,
+				27093CF22428D9E4001341E1 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -171,11 +141,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA2E4E3E241EC53000942616 /* Build configuration list for PBXNativeTarget "GT" */;
 			buildPhases = (
-				95B7F89EBD1E714F033D4DC3 /* [CP] Check Pods Manifest.lock */,
 				FA2E4E26241EC52A00942616 /* Sources */,
 				FA2E4E27241EC52A00942616 /* Frameworks */,
 				FA2E4E28241EC52A00942616 /* Resources */,
-				B580982A457D1532DC7A7F02 /* [CP] Embed Pods Frameworks */,
 				275FBEC12425AAE0002F0AB7 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -183,11 +151,8 @@
 			dependencies = (
 			);
 			name = GT;
-			packageProductDependencies = (
-				27093CF02428C95B001341E1 /* MTWeekView */,
-			);
 			productName = GT;
-			productReference = FA2E4E2A241EC52A00942616 /* GT.app */;
+			productReference = 273DFBF724290706008950DA /* GT.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -215,9 +180,9 @@
 			);
 			mainGroup = FA2E4E21241EC52A00942616;
 			packageReferences = (
-				27093CEF2428C95B001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */,
+				272D230E2428F7D700E6D5B1 /* XCRemoteSwiftPackageReference "MTWeekView" */,
 			);
-			productRefGroup = FA2E4E2B241EC52A00942616 /* Products */;
+			productRefGroup = FA2E4E21241EC52A00942616;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -239,48 +204,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		95B7F89EBD1E714F033D4DC3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GT-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B580982A457D1532DC7A7F02 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		FA2E4E26241EC52A00942616 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -289,6 +212,7 @@
 				27093CE92428C517001341E1 /* ServerManager.swift in Sources */,
 				FA2E4E48241F1A3300942616 /* Extensions.swift in Sources */,
 				FA2E4E46241F19FD00942616 /* Course.swift in Sources */,
+				27093CF32428D9E4001341E1 /* DetailViewController.swift in Sources */,
 				27093CEB2428C5AD001341E1 /* AppConstants.swift in Sources */,
 				FA2E4E32241EC52A00942616 /* ViewController.swift in Sources */,
 				FA2E4E4E241F1AF900942616 /* CourseCell.swift in Sources */,
@@ -430,7 +354,6 @@
 		};
 		FA2E4E3F241EC53000942616 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AABCACA0A24AE2012C421AA /* Pods-GT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GT/GT.entitlements;
@@ -454,7 +377,6 @@
 		};
 		FA2E4E40241EC53000942616 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D212B988C2AF2B87A7114AC /* Pods-GT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GT/GT.entitlements;
@@ -486,7 +408,7 @@
 				FA2E4E3D241EC53000942616 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		FA2E4E3E241EC53000942616 /* Build configuration list for PBXNativeTarget "GT" */ = {
 			isa = XCConfigurationList;
@@ -495,12 +417,12 @@
 				FA2E4E40241EC53000942616 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		27093CEF2428C95B001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
+		272D230E2428F7D700E6D5B1 /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
 			requirement = {
@@ -509,14 +431,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		27093CF02428C95B001341E1 /* MTWeekView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 27093CEF2428C95B001341E1 /* XCRemoteSwiftPackageReference "MTWeekView" */;
-			productName = MTWeekView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA2E4E22241EC52A00942616 /* Project object */;
 }

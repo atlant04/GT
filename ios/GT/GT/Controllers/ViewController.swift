@@ -141,7 +141,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         let alertVC = UIAlertController(title: course.name, message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) { _ in
             alertVC.dismiss(animated: true, completion: nil)
-            let detailVC = DetailCourseViewController()
+            let detailVC = DetailViewController()
             detailVC.course = course
             self.navigationController?.pushViewController(detailVC, animated: true)
         }

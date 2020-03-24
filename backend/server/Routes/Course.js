@@ -4,7 +4,6 @@ const db = require('../db.js').db()
 
 router.get('/courses', (req, res) => {
     db.collection("courses").find({}).toArray((err, courses) => {
-        console.log(courses)
         res.json(courses)
     })
 })
