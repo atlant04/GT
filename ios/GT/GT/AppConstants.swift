@@ -19,7 +19,7 @@ struct AppConstants {
     
     private init() { }
     
-    let baseUrl = "https://79b140f9.ngrok.io" //https://oscarapp.appspot.com"
+    let baseUrl = "https://oscarapp.appspot.com"
     
     var coursesUrl: String {
         return baseUrl + EndPoints.courses.rawValue
