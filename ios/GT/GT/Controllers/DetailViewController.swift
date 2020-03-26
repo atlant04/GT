@@ -16,21 +16,25 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     var tableView: UITableView!
     var weekView: MTWeekView!
     var meetings: [Event]?
-    var firstMeeting: Time = Time(hour: 0, minute: 0)
-    var lastMeeting: Time = Time(hour: 24, minute: 0)
+    var firstMeeting: Time = Time(hour: 8, minute: 0)
+    var lastMeeting: Time = Time(hour: 20, minute: 0)
     
     var pickerView = UIPickerView()
     var weekViewHeightConstraint: NSLayoutConstraint!
     var isExpanded = false
-    var selectedSection: Course.Section?
+    var sectionsTitles = [String]()
+    var selectedSection: Section?
+    var stack: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = course.identifier
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Track", style: .done, target: self, action: #selector(trackButtonPressed))
         parseEvents()
-        course.sections?.forEach { print($0.meetings) }
-        selectedSection = course.sections?.first
+    
+        sectionsTitles = course.sections.compactMap { $0.id }.sorted()
+        sectionsTitles.insert("All", at: 0)
+        selectedSection = course.sections.first
         
         weekView = MTWeekView(frame: view.bounds, configuration: LayoutConfiguration())
         weekView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +48,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         tableView.isScrollEnabled = false
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
+        tableView.contentSize = CGSize(width: view.bounds.width, height: 200)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.dataSource = self
         pickerView.delegate = self
@@ -51,38 +56,44 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         view.addSubview(tableView)
         view.addSubview(weekView)
         
-        //        let courseDetails = CourseContent(course: course)
-        //        let controller = UIHostingController(rootView: courseDetails)
-        //        addChild(controller)
-        //        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        //        view.addSubview(controller.view)
-        //        controller.didMove(toParent: self)
-        
-        weekViewHeightConstraint = weekView.heightAnchor.constraint(equalToConstant: 400)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 400)
-        ])
+        //weekViewHeightConstraint = weekView.heightAnchor.constraint(equalToConstant: 400)
         
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         
-        NSLayoutConstraint.activate([
-            weekView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            weekViewHeightConstraint,
-            weekView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
-            weekView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
+//        NSLayoutConstraint.activate([
+//            weekView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            weekViewHeightConstraint,
+//            weekView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
+//            weekView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//        ])
+//        
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            tableView.heightAnchor.constraint(equalToConstant: 400)
+//        ])
         
         weekView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(expandWeekView(_:))))
         
         view.backgroundColor = .systemBackground
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.tableFooterView = UIView()
+        stack = UIStackView(arrangedSubviews: [tableView, pickerView, weekView])
+        stack.axis = .vertical
+        
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fill
+        view.addSubview(stack)
+        
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        
+        ])
         
     }
     
@@ -124,15 +135,15 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         //        if let first = sortedEvents?.first?.start, let last = sortedEvents?.last?.end {
         //            return (start: first, end: last + Time(hour: 1, minute: 0))
         //        }
-        let sortedEvents = meetings?.sorted { $0.start.hour < $1.start.hour }
-        if let first = sortedEvents?.first?.start, let last = sortedEvents?.last?.end {
-            return (start: first, end: last + Time(hour: 1, minute: 0))
-        }
+//        let sortedEvents = meetings?.sorted { $0.start.hour < $1.start.hour }
+//        if let first = sortedEvents?.first?.start, let last = sortedEvents?.last?.end {
+//            return (start: first, end: last + Time(hour: 1, minute: 0))
+//        }
         return (start: firstMeeting, end: lastMeeting)
     }
     
     
-    func parseMeeting(meeting: Course.Meeting) -> [MeetingEvent] {
+    func parseMeeting(meeting: Meeting) -> [MeetingEvent] {
         guard let time = meeting.time, let daysOfWeek = meeting.days else { return [] }
         guard let hyphen = time.firstIndex(of: "-") else { return [] }
         let start = time[..<hyphen]
@@ -143,11 +154,13 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm a"
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        //formatter.timeZone = TimeZone(abbreviation: "UTC")
         if let startDate = formatter.date(from: String(start)),
             let endDate = formatter.date(from: String(end)) {
             let startTime = Time(from: startDate)
             let endTime = Time(from: endDate)
+            print(time)
+            print(startTime)
             
             return days.map { MeetingEvent(identifier: course.identifier ?? "TBD", day: $0, start: startTime, end: endTime)}
         } else {
@@ -157,8 +170,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     }
     
     func parseEvents() {
-        guard let sections = course.sections else { return }
-        let meetings = sections.compactMap { $0.meetings }.joined()
+        let meetings = course.sections.compactMap { $0.meetings }.joined()
         self.meetings = meetings.flatMap(parseMeeting)
     }
     
@@ -172,7 +184,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        2
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -183,7 +195,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sections = ["Full name", "Hours", "Sections"]
+        let sections = ["Full name", "Hours"]
         return sections[section]
     }
     
@@ -205,8 +217,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.textLabel?.text = course.hours
         }
+        print(tableView.intrinsicContentSize)
         return cell
     }
+
 }
 
 extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -215,18 +229,12 @@ extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        (course.sections?.count ??  0 ) + 1
+        sectionsTitles.count
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if row == 0 {
-            return "All"
-        }
-        if let sections = course.sections {
-            return sections[row - 1].id
-        }
-        return "N/A"
+        sectionsTitles[row]
     }
     
     
@@ -237,12 +245,9 @@ extension DetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             weekView.invalidate()
             return
         }
-        
-        if let sections = course.sections {
-            selectedSection = sections[row - 1]
-            meetings = selectedSection?.meetings?.flatMap(parseMeeting)
-            weekView.invalidate()
-        }
+        selectedSection = course.sections[row - 1]
+        meetings = selectedSection?.meetings.flatMap(parseMeeting)
+        weekView.invalidate()
     }
     
     
@@ -311,50 +316,17 @@ class MeetingCell: UICollectionViewCell, MTSelfConfiguringEventCell {
     }
 }
 
-
-struct CourseContent: View {
-    let course: Course
-    @State var sectionSelection: String = ""
-    var semester: String {
-        switch course.semester?.suffix(2) {
-        case "08":
-            return "Fall"
-        case "02":
-            return "Spring"
-        case "05":
-            return "Summer"
-        default:
-            return "N/A"
-        }
+extension UITableView {
+    
+    override open var intrinsicContentSize: CGSize {
+        contentSize
     }
     
-    var body: some View {
-        Form {
-            Section {
-                HStack {
-                    Text("Full Name")
-                    Spacer()
-                    Text(course.fullname ?? "TBD")
-                }
-                HStack {
-                    Text("Hours")
-                    Spacer()
-                    Text(course.hours ?? "TBD")
-                }
-                HStack {
-                    Text("Semester")
-                    Spacer()
-                    Text(self.semester)
-                }
-                Picker(
-                    selection: $sectionSelection,
-                    label: Text("Sections")
-                ) {
-                    ForEach(0...5, id: \.self) { section in
-                        Text(String(section))
-                    }
-                }
-            }
-        }
+}
+//
+extension UIPickerView {
+    override open var intrinsicContentSize: CGSize {
+        CGSize(width: frame.size.width, height: 75)
     }
 }
+

@@ -42,9 +42,9 @@ struct ServerManager {
         }
     }
     
-    public func listen(to course: Course.Section, completion: @escaping (MTResponse) -> Void) {
+    public func listen(to course: Section, completion: @escaping (MTResponse) -> Void) {
         guard let userId = AppConstants.shared.userId else { return }
-        let encodedSection = Mapper<Course.Section>().toJSON(course)
+        let encodedSection = Mapper<Section>().toJSON(course)
         let data = ["section": encodedSection, "user_id": userId] as [String : Any]
         AF.request(AppConstants.shared.listenSectionUrl, method: .post, parameters: data).responseJSON { encodedResponse in
             switch encodedResponse.result {

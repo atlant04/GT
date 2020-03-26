@@ -154,3 +154,11 @@ extension CaseIterable where Self: Equatable {
     }
 
 }
+
+extension String {
+
+    func removeExtraSpaces() -> String {
+        return self.replacingOccurrences(of: "[\\s\n]+", with: " ", options: .regularExpression, range: nil)
+    }
+
+}

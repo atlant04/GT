@@ -11,15 +11,15 @@ import ObjectMapper
 
 class TrackedableViewController: UITableViewController {
 
-    var sections = Set<Course.Section>()
-    var results = [Pair<Course.Section, MTResponse>]()
+    var sections = Set<Section>()
+    var results = [Pair<Section, MTResponse>]()
     let response = MTResponse(JSON: [:])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let data = UserDefaults.standard.object(forKey: "sections") as? String,
-            let sections = Mapper<Course.Section>().mapArray(JSONString: data) {
-            self.sections = Set<Course.Section>(sections)
+            let sections = Mapper<Section>().mapArray(JSONString: data) {
+            self.sections = Set<Section>(sections)
             update()
         }
         tableView.register(SectionCell.self, forCellReuseIdentifier: SectionCell.reuseId)
@@ -38,7 +38,7 @@ class TrackedableViewController: UITableViewController {
     
     @objc func didReceiveTrackingRequest(_ notification: Notification) {
         print(notification.userInfo?["track"])
-        if let dict = notification.userInfo?["track"] as? [String: Course.Section] {
+        if let dict = notification.userInfo?["track"] as? [String: Section] {
             if var section = dict.values.first {
                 section.identifier = dict.keys.first
                 let inserted = sections.insert(section).inserted
@@ -61,7 +61,7 @@ class TrackedableViewController: UITableViewController {
         }
     }
     
-    func fetch(section: Course.Section) {
+    func fetch(section: Section) {
         ServerManager.shared.listen(to: section) { response in
             print(response)
             self.results.append(Pair(key: section, value: response))
@@ -102,7 +102,7 @@ class TrackedableViewController: UITableViewController {
 class SectionCell: UITableViewCell {
     static var reuseId = String(describing: self)
     
-    func configure(with pair: Pair<Course.Section, MTResponse>) {
+    func configure(with pair: Pair<Section, MTResponse>) {
         self.textLabel?.text = "\(pair.key.identifier ?? "") \(pair.key.id ?? "")"
         self.detailTextLabel?.text = pair.value.seats?["remaining"] as? String
         self.imageView?.image = UIImage(systemName: "checkmark.seal.fill")

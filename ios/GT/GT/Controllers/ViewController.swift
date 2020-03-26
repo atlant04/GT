@@ -9,20 +9,22 @@
 import UIKit
 import Alamofire
 import ObjectMapper
+import CoreData
 
 class ViewController: UIViewController, UICollectionViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
     
     var collectionView: UICollectionView!
     var courses = [Course]()
-    var mappedCourses: [Course.School: [Course]] = [:]
-    var searchedCourses = [Course]()
-    var dataSource: UICollectionViewDiffableDataSource<Course.School, Course>!
+    var selectedCourses = [Course]()
+    var dataSource: UICollectionViewDiffableDataSource<String, Course>!
     var searchBar: UISearchController!
+    var fetchController: NSFetchedResultsController<Course>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Courses"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonTapped))
         setupCollectionView()
         view.addSubview(collectionView)
         
@@ -32,11 +34,70 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         navigationItem.searchController = searchBar
         createDataSource()
         
-        ServerManager.shared.getCourses { courses in
+        let courses = CoreDataStack.shared.fetchCourses()
+//        let request = NSFetchRequest<Course>(entityName: "Course")
+//        request.sortDescriptors = [
+//            NSSortDescriptor(key: "name", ascending: true)
+//        ]
+//        fetchController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+//        do {
+//            try fetchController.performFetch()
+//        } catch {
+//            print(error)
+//        }
+//        if let courses = fetchController.fetchedObjects {
+//            self.reloadData(with: courses)
+//        }
+        
+        if courses.count == 0 {
+            ServerManager.shared.getCourses { courses in
+                self.courses = courses
+                self.reloadData(with: courses)
+            }
+        } else {
             self.courses = courses
             self.reloadData(with: courses)
+            CoreDataStack.shared.saveContext()
         }
+        selectedCourses = self.courses
     }
+    
+    @objc func filterButtonTapped() {
+        let alertVC = UIAlertController(title: "Filter", message: "", preferredStyle: .actionSheet)
+        let filters = ["CS", "MATH", "INTA", "PHYS", "ALL"]
+        filters.forEach { title in
+            let action = UIAlertAction(title: title, style: .default) { action in
+                self.filter(attribute: action.title!)
+                alertVC.dismiss(animated: true, completion: nil)
+            }
+            alertVC.addAction(action)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+            alertVC.dismiss(animated: true, completion: nil)
+        }
+        alertVC.addAction(cancel)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    func filter(attribute: String) {
+        
+        var section: NSCollectionLayoutSection? = nil
+        var courses: [Course]
+
+        if attribute == "ALL" {
+            courses = self.courses
+            selectedCourses = self.courses
+        } else {
+            courses = CoreDataStack.shared.fetchCourses(by: attribute)
+            selectedCourses = courses
+            section = createLayoutSection(using: .main)
+            section!.orthogonalScrollingBehavior = .none
+        }
+        
+        self.collectionView.collectionViewLayout = self.createCompositionalLayout(section: section)
+        self.reloadData(with: courses)
+    }
+
     
     func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
@@ -49,13 +110,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
     
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, text.count > 0 {
-            searchedCourses = self.courses.filter({ (course) -> Bool in
+            let searchedCourses = self.selectedCourses.filter({ (course) -> Bool in
                 course.fullname?.contains(text) ?? false ||
                     course.identifier?.contains(text) ?? false ||
                     course.identifier?.contains(text) ?? false
             })
             reloadData(with: searchedCourses)
         }
+        
+//        if let text = searchController.searchBar.text, text.count > 0 {
+//            let request = NSFetchRequest<Course>(entityName: "Course")
+//            request.predicate = NSPredicate(format: "fullname CONTAINS[c] '\(text)'")
+//            let courses = CoreDataStack.shared.fetchCourses(request: request)
+//            reloadData(with: courses)
+//        }
     }
     
     
@@ -68,7 +136,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
     }
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Course.School, Course>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, course) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<String, Course>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, course) -> UICollectionViewCell? in
             return self.configure(CourseCell.self, with: course, for: indexPath)
         })
         
@@ -76,26 +144,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader
             
             let course = self.dataSource.itemIdentifier(for: indexPath)
-            sectionHeader?.title.text = course?.school?.rawValue
+            sectionHeader?.title.text = course?.school
             return sectionHeader
         }
     }
     
     func reloadData(with courses: [Course]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Course.School, Course>()
-        self.mappedCourses = Dictionary(grouping: courses, by:{ return $0.school ?? .CS })
-        snapshot.appendSections(Array(self.mappedCourses.keys))
+        var snapshot = NSDiffableDataSourceSnapshot<String, Course>()
+        let mappedCourses = Dictionary(grouping: courses, by:{ return $0.school ?? "DNE" })
+        snapshot.appendSections(Array(mappedCourses.keys).sorted())
         
-        self.mappedCourses.keys.forEach { (school) in
-            snapshot.appendItems(self.mappedCourses[school] ?? [], toSection: school)
+        mappedCourses.keys.forEach { (school) in
+            snapshot.appendItems(mappedCourses[school] ?? [], toSection: school)
         }
         
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
     
-    func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    func createCompositionalLayout(section: NSCollectionLayoutSection? = nil) -> UICollectionViewCompositionalLayout {
+
         let layout = UICollectionViewCompositionalLayout { index, environment in
-            return self.createLayoutSection(using: .main)
+            return section ?? self.createLayoutSection(using: .main)
         }
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
@@ -108,7 +177,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(150))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .estimated(150))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)
         let boundaryItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .estimated(40))
@@ -125,15 +194,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
     
     func presentAlert(for course: Course) {
         var sectionIds = ""
-        sectionIds = course.sections?.reduce(sectionIds) { (ids, section)  in
+        sectionIds = course.sections.reduce(sectionIds) { (ids, section)  in
             return ids + "\(section.id ?? ""), "
-        } ?? "No sections exist for this course"
+        }
         
         let text = """
         Semester: \(String(describing: course.semester))\n
         Identifier: \(String(describing: course.identifier))\n
-        Location: \(course.sections?.first?.meetings?.first?.location ?? "None")\n
-        Time: \(course.sections?.first?.meetings?.first?.time ?? "None")\n
+        Location: \(course.sections.first?.meetings.first?.location ?? "None")\n
+        Time: \(course.sections.first?.meetings.first?.time ?? "None")\n
         Sections: \(sectionIds)
         """
         
@@ -141,7 +210,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UISearchResult
         let alertVC = UIAlertController(title: course.name, message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) { _ in
             alertVC.dismiss(animated: true, completion: nil)
-//            let detailVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "detail") as! DetailViewController
             let detailVC = DetailViewController()
             detailVC.course = course
             self.navigationController?.pushViewController(detailVC, animated: true)
@@ -179,6 +247,18 @@ extension ViewController {
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)
     }
+}
+
+extension ViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if let courses = controller.fetchedObjects as? [Course] {
+            self.courses = courses
+            self.reloadData(with: courses)
+            selectedCourses = courses
+        }
+    }
+    
+    
 }
 
 
