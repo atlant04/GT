@@ -21,13 +21,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.frame = UIScreen.main.bounds
         
-        let mainVC = ViewController()
-        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        let mainVC = ViewController(columns: 2)
+        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
         
-        let trackVC = TrackedableViewController(style: .insetGrouped)
+        let trackVC = TrackedableViewController(columns: 1)
         trackVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
         
-        let controllers = [mainVC, trackVC]
+        let searchVC = SearchViewController(columns: 3)
+        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
+        
+        let controllers = [mainVC, searchVC, trackVC]
         let navControllers = controllers.map { UINavigationController(rootViewController: $0) }
         
         let tabBarVC = UITabBarController()

@@ -1,28 +1,30 @@
 PODS:
   - Alamofire (5.0.4)
-  - JZCalendarWeekView (0.7.1)
+  - Groot (3.0.1):
+    - Groot/Swift (= 3.0.1)
+  - Groot/Swift (3.0.1)
   - ObjectMapper (3.5.2)
   - PushNotifications (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
-  - JZCalendarWeekView
+  - Groot
   - ObjectMapper
   - PushNotifications (= 2.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - JZCalendarWeekView
+    - Groot
     - ObjectMapper
     - PushNotifications
 
 SPEC CHECKSUMS:
   Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
-  JZCalendarWeekView: 586a429ab3fbeef4f98d648ea6b801f57c5495cc
+  Groot: a668afbcf0be88d76c0a26c714cfa4638ceaca66
   ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   PushNotifications: db23723ad406eeeae365b9ba8f473bf0a54be093
 
-PODFILE CHECKSUM: fbf5b24156bc409cf737e93c565747e70a04ab56
+PODFILE CHECKSUM: be8cc597e05514ef5652a5eb265483848fa37fe5
 
 COCOAPODS: 1.9.1

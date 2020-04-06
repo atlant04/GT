@@ -1,38 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
         <attribute name="attributes" optional="YES" attributeType="String"/>
         <attribute name="fields" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
-        <attribute name="fullname" optional="YES" attributeType="String"/>
-        <attribute name="gradeBasis" optional="YES" attributeType="String"/>
-        <attribute name="hours" optional="YES" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
-        <attribute name="identifier" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="number" optional="YES" attributeType="String"/>
-        <attribute name="school" optional="YES" attributeType="String"/>
-        <attribute name="semester" optional="YES" attributeType="String"/>
-        <relationship name="allSections" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="course" inverseEntity="Section"/>
+        <attribute name="fullname" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="fullname"/>
+            </userInfo>
+        </attribute>
+        <attribute name="gradeBasis" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="grade_basis"/>
+            </userInfo>
+        </attribute>
+        <attribute name="hours" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="hours"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="_id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="identifier" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="identifier"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="number" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="number"/>
+            </userInfo>
+        </attribute>
+        <attribute name="school" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="school"/>
+            </userInfo>
+        </attribute>
+        <attribute name="semester" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="school"/>
+            </userInfo>
+        </attribute>
+        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="course" inverseEntity="Section">
+            <userInfo>
+                <entry key="JSONKeyPath" value="sections"/>
+            </userInfo>
+        </relationship>
     </entity>
     <entity name="Meeting" representedClassName="Meeting" syncable="YES" codeGenerationType="class">
-        <attribute name="days" optional="YES" attributeType="String"/>
+        <attribute name="days" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="days"/>
+            </userInfo>
+        </attribute>
         <attribute name="instructor" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
-        <attribute name="location" optional="YES" attributeType="String"/>
-        <attribute name="time" optional="YES" attributeType="String"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="allMeetings" inverseEntity="Section"/>
+        <attribute name="location" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="location"/>
+            </userInfo>
+        </attribute>
+        <attribute name="time" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="time"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="time"/>
+            </userInfo>
+        </attribute>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="meetings" inverseEntity="Section"/>
+    </entity>
+    <entity name="Seats" representedClassName="Seats" syncable="YES" codeGenerationType="class">
+        <attribute name="actual" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="data.seats.actual"/>
+            </userInfo>
+        </attribute>
+        <attribute name="actualWL" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="data.waitlist.actual"/>
+            </userInfo>
+        </attribute>
+        <attribute name="capacity" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="data.seats.capacity"/>
+            </userInfo>
+        </attribute>
+        <attribute name="capacityWL" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="data.waitlist.capacity"/>
+            </userInfo>
+        </attribute>
+        <attribute name="remaining" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="data.seats.remaining"/>
+            </userInfo>
+        </attribute>
+        <attribute name="remainingWL" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="data.waitlist.remaining"/>
+            </userInfo>
+        </attribute>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="seats" inverseEntity="Section"/>
     </entity>
     <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
-        <attribute name="crn" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="identifier" optional="YES" attributeType="String"/>
-        <attribute name="instructors" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
-        <relationship name="allMeetings" toMany="YES" deletionRule="Nullify" destinationEntity="Meeting" inverseName="section" inverseEntity="Meeting"/>
-        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="allSections" inverseEntity="Course"/>
+        <attribute name="crn" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="crn"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" optional="YES" attributeType="String">
+            <userInfo>
+                <entry key="JSONKeyPath" value="section_id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="instructors" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]">
+            <userInfo>
+                <entry key="JSONKeyPath" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="tracked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="sections" inverseEntity="Course"/>
+        <relationship name="meetings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meeting" inverseName="section" inverseEntity="Meeting">
+            <userInfo>
+                <entry key="JSONKeyPath" value="meetings"/>
+            </userInfo>
+        </relationship>
+        <relationship name="seats" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Seats" inverseName="section" inverseEntity="Seats"/>
     </entity>
     <elements>
         <element name="Course" positionX="-63" positionY="-18" width="128" height="223"/>
         <element name="Meeting" positionX="-36" positionY="81" width="128" height="133"/>
-        <element name="Section" positionX="-54" positionY="72" width="128" height="133"/>
+        <element name="Section" positionX="-54" positionY="72" width="128" height="148"/>
+        <element name="Seats" positionX="-54" positionY="90" width="128" height="148"/>
     </elements>
 </model>

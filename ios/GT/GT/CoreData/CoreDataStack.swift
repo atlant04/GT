@@ -8,42 +8,39 @@
 
 import Foundation
 import CoreData
+import Groot
 
-class CoreDataStack: NSPersistentContainer {
+class CoreDataStack {
     static let shared = CoreDataStack()
     
-    private init() {
-        let modelUrl = Bundle.main.url(forResource: "Model", withExtension: "momd")!
-        let model = NSManagedObjectModel(contentsOf: modelUrl)!
-        super.init(name: "CoreDataStack", managedObjectModel: model)
-        self.loadPersistentStores { (description, error) in
-            print(error)
-        }
+    var container: NSPersistentContainer
+    
+    init() {
+        container = NSPersistentContainer(name: "Model")
+        container.loadPersistentStores { _, _ in }
     }
     
-    func fetchCourses(request: NSFetchRequest<Course>? = nil) -> [Course] {
-        let request = request ?? NSFetchRequest<Course>(entityName: "Course")
-        
-        do {
-            return try self.viewContext.fetch(request)
-        } catch {
-            print(error)
-            return []
-        }
-    }
-    
-    
-    func fetchCourses(by school: String) -> [Course] {
-        let request = NSFetchRequest<Course>(entityName: "Course")
-        request.predicate = NSPredicate(format: "school == '\(school)'")
-        return fetchCourses(request: request)
-    }
-    
-    func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            print(error)
+    func insertCourses(_ courses: [[String: Any]], completion: @escaping (Bool) -> Void) {
+        container.performBackgroundTask { context in
+            do {
+                for course in courses {
+                    let _ = try object(withEntityName: "Course", fromJSONDictionary: course, inContext: context) as! Course
+                }
+            } catch {
+                print(error)
+            }
+            
+            do {
+                try context.save()
+                DispatchQueue.main.async {
+                    completion(true)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(false)
+                      print(error)
+                }
+            }
         }
     }
 }

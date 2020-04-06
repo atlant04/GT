@@ -16,10 +16,6 @@ import UIKit
 //    }
 //}
 
-extension Notification.Name {
-    static let track = Notification.Name("track")
-}
-
 extension UIView {
     func fill(_ view: UIView) {
         NSLayoutConstraint.activate([

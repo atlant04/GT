@@ -1,5 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/JZCalendarWeekView/JZCalendarWeekView.framework
+${BUILT_PRODUCTS_DIR}/Groot/Groot.framework
 ${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
 ${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework

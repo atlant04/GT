@@ -8,134 +8,137 @@
 
 import UIKit
 import ObjectMapper
+import CoreData
+import Groot
+import Alamofire
 
-class TrackedableViewController: UITableViewController {
+class TrackedableViewController: ColumnViewController<Section, SectionCell> {
 
-    var sections = Set<Section>()
-    var results = [Pair<Section, MTResponse>]()
-    let response = MTResponse(JSON: [:])
+    var controller: NSFetchedResultsController<Section>!
+    lazy var refresh: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        return refresh
+    }()
+    
+    
+    override init(columns: Int = 1) {
+        super.init(columns: columns)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackingRequest(_:)), name: .newTrackRequest, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let data = UserDefaults.standard.object(forKey: "sections") as? String,
-            let sections = Mapper<Section>().mapArray(JSONString: data) {
-            self.sections = Set<Section>(sections)
-            update()
-        }
-        tableView.register(SectionCell.self, forCellReuseIdentifier: SectionCell.reuseId)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Tracked Courses"
+        
+        let request: NSFetchRequest<Section> = Section.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        request.predicate = NSPredicate(format: "tracked = %d", true)
+        controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        try? controller.performFetch()
+        
+        let left = UISwipeGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        left.direction = .left
+        
+        let right = UISwipeGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        right.direction = .right
+        
+        collectionView.addSubview(refresh)
+        collectionView.addGestureRecognizer(left)
+        collectionView.addGestureRecognizer(right)
+        collectionView.alwaysBounceVertical = true
+        
+        self.reloadData()
     }
-    
-    override init(style: UITableView.Style) {
-        super.init(style: style)
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackingRequest(_:)), name: .track, object: nil)
-    }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func handleRefresh(_ refresh: UIRefreshControl) {
+        guard let sections = controller.fetchedObjects else { refresh.endRefreshing(); return }
+        
+        let group = DispatchGroup()
+        
+        for section in sections {
+            group.enter()
+            ServerManager.shared.seats(to: section) { dict in
+                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+                    section.seats = seats
+                    self.update(section: section)
+                    group.leave()
+                }
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.reloadData()
+            refresh.endRefreshing()
+        }
+    }
     
     @objc func didReceiveTrackingRequest(_ notification: Notification) {
-        print(notification.userInfo?["track"])
-        if let dict = notification.userInfo?["track"] as? [String: Section] {
-            if var section = dict.values.first {
-                section.identifier = dict.keys.first
-                let inserted = sections.insert(section).inserted
-                if inserted {
-                    fetch(section: section)
+        if let section = notification.object as? Section {
+            section.tracked = true
+            reloadData()
+            ServerManager.shared.seats(to: section) { [weak self] dict in
+                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+                    seats.section = section
+                    self?.update(section: section)
+                    self?.reloadData()
                 }
             }
         }
     }
     
-    deinit {
-        let jsonData = sections.toJSONString()
-        UserDefaults.standard.setValue(jsonData, forKey: "sections")
-    }
-    
-    func update() {
-        results = []
-        for section in self.sections {
-            fetch(section: section)
+    func update(section: Section) {
+        if let indexPath = controller.indexPath(forObject: section), let cell = collectionView.cellForItem(at: indexPath) as? SectionCell {
+            cell.configure(with: section)
         }
     }
     
-    func fetch(section: Section) {
-        ServerManager.shared.listen(to: section) { response in
-            print(response)
-            self.results.append(Pair(key: section, value: response))
-            self.tableView.reloadData()
-        }
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return results.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SectionCell.reuseId, for: indexPath) as! SectionCell
-        cell.configure(with: results[indexPath.row])
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let pair = results.remove(at: indexPath.item)
-            sections.remove(pair.key)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-
-}
-
-
-
-class SectionCell: UITableViewCell {
-    static var reuseId = String(describing: self)
-    
-    func configure(with pair: Pair<Section, MTResponse>) {
-        self.textLabel?.text = "\(pair.key.identifier ?? "") \(pair.key.id ?? "")"
-        self.detailTextLabel?.text = pair.value.seats?["remaining"] as? String
-        self.imageView?.image = UIImage(systemName: "checkmark.seal.fill")
-    }
-    
-    let statusImage: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "confirmation")
-        return image
-    }()
-    
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        addSubview(statusImage)
+    var isDeleting: Bool = false
+    @objc func didLongPress(_ recognizer: UISwipeGestureRecognizer) {
+        let location = recognizer.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: location) else { return }
+        let cell = collectionView.cellForItem(at: indexPath) as! SectionCell
         
-        NSLayoutConstraint.activate([
-            statusImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            statusImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            statusImage.heightAnchor.constraint(equalToConstant: 40),
-            statusImage.widthAnchor.constraint(equalToConstant: 40)
-        ])
+        if recognizer.direction == .left {
+            UIView.animate(withDuration: 0.2, animations: {
+                cell.center.x = 0
+            }) { _ in
+                let section = self.controller.object(at: indexPath)
+                section.tracked = false
+                self.reloadData()
+            }
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func reloadData() {
+        try? CoreDataStack.shared.container.viewContext.save()
+        try? controller.performFetch()
+        guard let sections = controller.fetchedObjects else { return }
+        var snapshot = NSDiffableDataSourceSnapshot<String, Section>()
+        snapshot.appendSections(["Default"])
+        snapshot.appendItems(sections)
+        dataSource.apply(snapshot)
     }
+
+}
+
+struct MTResponse: Mappable {
     
+    var crn: String?
+    var seats: [String: Any]?
+    var waitlist: [String: Any]?
+    
+    init?(map: Map) { }
+    
+    mutating func mapping(map: Map) {
+        crn <- map["crn"]
+        seats <- map["data.seats"]
+        waitlist <- map["data.waitlist"]
+    }
 }
 
-
-struct Pair<K, V> {
-    let key: K
-    let value: V
-}
