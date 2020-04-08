@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const parse = require('../parse.js')
 const db = require("../db.js").db()
-const publish = require("../publisher.js")
+//const publish = require("../publisher.js")
 
 const notify = async (bucket) => {
     const data = await parse("202008", bucket.crn)
@@ -31,9 +31,8 @@ const buckets = async () => {
         buckets.forEach(async (bucket) => {
             let needsNotification = await notify(bucket)
             if (needsNotification == true) {
-                bucket.subscribers.forEach(subscriber => {
-                    publish(subscriber)
-                })
+                console.log(buckets)
+                //publish(bucket)
             }
         })
     })
