@@ -26,6 +26,7 @@ class ColumnViewController<T: Hashable, Cell: UICollectionViewCell>: UICollectio
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         registerCells()
         setupDataSource()
     }
@@ -39,21 +40,46 @@ class ColumnViewController<T: Hashable, Cell: UICollectionViewCell>: UICollectio
     
     //MARK: Layout
     func createCompositionalLayout(section: NSCollectionLayoutSection? = nil) -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout(section: createLayoutSection())
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
-        layout.configuration = config
-        return layout
+        return createLayout()
     }
     
-    func createLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+    func createLayoutSection(forSectionIndex sectionIndex: Int,
+                             andLayoutEnvironment layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                             heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(150))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columnNumber)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitem: item,
+                                                       count: layoutEnvironment.container.effectiveContentSize.width > 500 ? columnNumber + 1 : columnNumber)
         let section = NSCollectionLayoutSection(group: group)
         return section
+    }
+    
+//    let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+//                                          heightDimension: .estimated(44))
+//    let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
+//        layoutSize: titleSize,
+//        elementKind: SectionHeader.titleElementKind,
+//        alignment: .top)
+//    section.boundarySupplementaryItems = [titleSupplementary]
+    
+    func createLayout() -> UICollectionViewCompositionalLayout {
+
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 10
+        let sectionProvider = { [weak self] (sectionIndex: Int,
+            layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let self = self else { return nil }
+            return self.createLayoutSection(forSectionIndex: sectionIndex,
+                                            andLayoutEnvironment: layoutEnvironment)
+        }
+        let layout = UICollectionViewCompositionalLayout(
+            sectionProvider: sectionProvider, configuration: config)
+        return layout
+        
     }
     
     typealias CellConfigurator<CellType: UICollectionViewCell> = (T, IndexPath) -> CellType where CellType: ConfiguringCell
@@ -72,6 +98,13 @@ class ColumnViewController<T: Hashable, Cell: UICollectionViewCell>: UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseIdentifier, for: indexPath) as? Cell else { fatalError("Unable to Dequeue") }
         cell.configure(with: item)
         return cell
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { context in
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }, completion: nil)
     }
 }
 
