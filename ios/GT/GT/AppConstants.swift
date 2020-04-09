@@ -19,7 +19,7 @@ struct AppConstants {
     
     private init() { }
     
-    let baseUrl = "https://oscarapp.appspot.com"
+    let baseUrl = "https://5b6e5ab9.ngrok.io"//"https://oscarapp.appspot.com"
     
     var coursesUrl: String {
         return baseUrl + EndPoints.courses.rawValue
@@ -33,10 +33,15 @@ struct AppConstants {
         return baseUrl + EndPoints.listenSection.rawValue
     }
     
+    var unsubscribe: String {
+        return baseUrl + EndPoints.unsubscribe.rawValue
+    }
+    
     
     enum EndPoints: String {
         case courses = "/courses"
         case listen = "/listen"
         case listenSection = "/listen/section"
+        case unsubscribe = "/unsubscribe"
     }
 }

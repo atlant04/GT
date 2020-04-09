@@ -17,7 +17,10 @@ class CoreDataStack {
     
     init() {
         container = NSPersistentContainer(name: "Model")
-        container.loadPersistentStores { _, _ in }
+        container.loadPersistentStores { description, error in
+            description.shouldMigrateStoreAutomatically = true
+            description.shouldInferMappingModelAutomatically = true
+        }
     }
     
     func insertCourses(_ courses: [[String: Any]], completion: @escaping (Bool) -> Void) {

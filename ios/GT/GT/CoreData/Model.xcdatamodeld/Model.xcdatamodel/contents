@@ -79,34 +79,34 @@
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="meetings" inverseEntity="Section"/>
     </entity>
     <entity name="Seats" representedClassName="Seats" syncable="YES" codeGenerationType="class">
-        <attribute name="actual" optional="YES" attributeType="String">
+        <attribute name="actual" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
-                <entry key="JSONKeyPath" value="data.seats.actual"/>
+                <entry key="JSONKeyPath" value="seats.actual"/>
             </userInfo>
         </attribute>
-        <attribute name="actualWL" optional="YES" attributeType="String">
+        <attribute name="actualWL" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
-                <entry key="JSONKeyPath" value="data.waitlist.actual"/>
+                <entry key="JSONKeyPath" value="waitlist.actual"/>
             </userInfo>
         </attribute>
-        <attribute name="capacity" optional="YES" attributeType="String">
+        <attribute name="capacity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
-                <entry key="JSONKeyPath" value="data.seats.capacity"/>
+                <entry key="JSONKeyPath" value="seats.capacity"/>
             </userInfo>
         </attribute>
-        <attribute name="capacityWL" optional="YES" attributeType="String">
+        <attribute name="capacityWL" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
-                <entry key="JSONKeyPath" value="data.waitlist.capacity"/>
+                <entry key="JSONKeyPath" value="waitlist.capacity"/>
             </userInfo>
         </attribute>
-        <attribute name="remaining" optional="YES" attributeType="String">
+        <attribute name="remaining" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
-                <entry key="JSONKeyPath" value="data.seats.remaining"/>
+                <entry key="JSONKeyPath" value="seats.remaining"/>
             </userInfo>
         </attribute>
-        <attribute name="remainingWL" optional="YES" attributeType="String">
+        <attribute name="remainingWL" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
-                <entry key="JSONKeyPath" value="data.waitlist.remaining"/>
+                <entry key="JSONKeyPath" value="waitlist.remaining"/>
             </userInfo>
         </attribute>
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="seats" inverseEntity="Section"/>
@@ -128,7 +128,11 @@
             </userInfo>
         </attribute>
         <attribute name="tracked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="sections" inverseEntity="Course"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="sections" inverseEntity="Course">
+            <userInfo>
+                <entry key="JSONKeyPath" value="course"/>
+            </userInfo>
+        </relationship>
         <relationship name="meetings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meeting" inverseName="section" inverseEntity="Meeting">
             <userInfo>
                 <entry key="JSONKeyPath" value="meetings"/>
@@ -139,7 +143,7 @@
     <elements>
         <element name="Course" positionX="-63" positionY="-18" width="128" height="223"/>
         <element name="Meeting" positionX="-36" positionY="81" width="128" height="133"/>
-        <element name="Section" positionX="-54" positionY="72" width="128" height="148"/>
         <element name="Seats" positionX="-54" positionY="90" width="128" height="148"/>
+        <element name="Section" positionX="-54" positionY="72" width="128" height="148"/>
     </elements>
 </model>

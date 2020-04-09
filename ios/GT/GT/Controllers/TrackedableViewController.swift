@@ -111,6 +111,7 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
                 let section = self.controller.object(at: indexPath)
                 section.tracked = false
                 self.reloadData()
+                ServerManager.shared.unsubscribe(from: section) { response in }
             }
         }
     }

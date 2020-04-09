@@ -74,6 +74,14 @@ struct ServerManager {
         }
     }
     
+    public func unsubscribe(from section: Section, completion: @escaping ([String: Any]) -> Void) {
+        guard let userId = AppConstants.shared.userId else { return }
+        let encodedSection = json(fromObject: section)
+        let data = ["section": encodedSection, "user_id": userId] as [String : Any]
+        AF.request(AppConstants.shared.unsubscribe, method: .post, parameters: data).responseJSON { response in
+            
+        }
+    }
     
     public func seats(to section: Section, completion: @escaping ([String: Any]) -> Void) {
         guard let userId = AppConstants.shared.userId else { return }
