@@ -2,20 +2,21 @@ const PushNotifications = require('@pusher/push-notifications-server');
 
 let beamsClient = new PushNotifications({
     instanceId: '2c57da76-8881-452d-93e7-974833886bda',
-    secretKey: '4D530ED4C7C703DE5622DF99A0B88447AA22CCDC7F8D05C360C2BD9AA1DD12FF'
+    secretKey: '81E64ADC63CFACF37021024F6D203E2D5D16E9E79F7377F5377F10945C8871CC'
 });
 
-const publish = () => {
-    beamsClient.publishToInterests(["44D235AD-9237-4619-824B-81CFB8991882"], {
+const publish = (bucket) => {
+    if (bucket.subscribers.length == 0) return 
+    beamsClient.publishToInterests([bucket.subscribers[0]], {
         apns: {
             aps: {
-                alert: 'Hello!'
+                alert: 'Status changed for ' + bucket.section.course.identifier
             }
         },
         fcm: {
             notification: {
-                title: 'Hello',
-                body: 'Hello, world!'
+                title: 'Status changed for ' + bucket.crn,
+                body: 'There are currently ' + bucket.seats.remaining + " spots available"
             }
         }
     }).then((publishResponse) => {

@@ -16,20 +16,20 @@ const parse = async (term, crn) => {
     $('span').filter(function(index, el){
         return $(this).text() === "Seats"
     }).parent().parent().children('td').each((index, el) => {
-        seats[keys[index]] = $(el).text()
+        seats[keys[index]] = parseInt($(el).text())
     })
 
     $('span').filter(function(index, el){
         return $(this).text() === "Waitlist Seats"
     }).parent().parent().children('td').map((index, el) => {
-        waitlist[keys[index]] = $(el).text()
+        waitlist[keys[index]] = parseInt($(el).text())
     }).get()
     
-    return {crn: crn,
-        data: {
+    return {
+        crn: crn,
         seats: seats,
         waitlist: waitlist
-    }}
+    }
 }
 
 module.exports = parse

@@ -15,12 +15,19 @@ router.post("/listen", async (req, res) => {
 })
 
 router.post("/listen/section", async (req, res) => {
+    console.log(req.body)
+    const crn = req.body.section.crn
+    if (crn) {
+        result = await parse("202008", crn)
+        res.json(result) 
+    } 
+
     db.collection("bucket").findOneAndUpdate({
         crn: req.body.section.crn,
     }, {
         $set: {
-            seats: 0,
-            notify: false,
+            seats: result.seats,
+            waitlist: result.waitlist,
             section: req.body.section
         },
         $addToSet: {
@@ -29,13 +36,20 @@ router.post("/listen/section", async (req, res) => {
     }, {
         upsert: true
     })
+}) 
 
+
+router.post("/unsubscribe", async (req, res) => {
     console.log(req.body)
-    const crn = req.body.section.crn
-    if (crn) {
-        result = await parse("202008", crn)
-        res.json(result)
-    }
+    db.collection("bucket").findOneAndUpdate({
+        crn: req.body.section.crn
+    }, {
+        $pull: {
+            "subscribers": req.body.user_id
+        }
+    }, {
+        returnNewDocument: true
+    }).then(newDoc => res.json(newDoc))
 })
 
 
