@@ -17,12 +17,12 @@ import UIKit
 //}
 
 extension UIView {
-    func fill(_ view: UIView) {
+    func fill(_ view: UIView, withConstant constant: CGSize = CGSize.zero) {
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: view.topAnchor),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            self.topAnchor.constraint(equalTo: view.topAnchor, constant: constant.height),
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant.width),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant.height),
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant.width),
         ])
     }
 

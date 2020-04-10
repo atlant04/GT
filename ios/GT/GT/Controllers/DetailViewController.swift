@@ -276,3 +276,9 @@ extension UIPickerView {
 extension Notification.Name {
     static let newTrackRequest = Notification.Name("new_track_request")
 }
+
+struct DetailViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
