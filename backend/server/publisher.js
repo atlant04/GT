@@ -6,8 +6,7 @@ let beamsClient = new PushNotifications({
 });
 
 const publish = (bucket) => {
-    if (bucket.subscribers.length == 0) return 
-    beamsClient.publishToInterests([bucket.subscribers[0]], {
+    beamsClient.publishToInterests(bucket.subscribers, {
         apns: {
             aps: {
                 alert: 'Status changed for ' + bucket.section.course.identifier

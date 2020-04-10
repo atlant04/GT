@@ -20,5 +20,3 @@ require('./db.js').connect(() => {
         //monitor.start("https://ada7996e.ngrok.io/listen")
     })
 })
-
-//setInterval(() => publish(), 10000)
