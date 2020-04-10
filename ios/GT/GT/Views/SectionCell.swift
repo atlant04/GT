@@ -88,9 +88,9 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
     func configure(with content: Section) {
         name.text = "\(content.course?.identifier ?? "") Section: \(content.id ?? "")"
         crn.text = "CRN: \(content.crn ?? "")"
-        seats.text = "Remaining: \(content.seats?.remaining ?? "0")"
-        waitlist.text = "Remaining on waitlist: \(content.seats?.remainingWL ?? "0")"
-        if let seats = Int(content.seats?.remaining ?? "0") {
+        seats.text = "Remaining: \(content.seats?.remaining ?? 0)"
+        waitlist.text = "Remaining on waitlist: \(content.seats?.remainingWL ?? 0)"
+        if let seats = content.seats?.remaining {
             if seats > 0 {
                 image.image = UIImage(named: "check")
             } else {
