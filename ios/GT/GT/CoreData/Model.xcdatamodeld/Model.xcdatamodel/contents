@@ -45,7 +45,7 @@
         </attribute>
         <attribute name="semester" optional="YES" attributeType="String">
             <userInfo>
-                <entry key="JSONKeyPath" value="school"/>
+                <entry key="JSONKeyPath" value="semester"/>
             </userInfo>
         </attribute>
         <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section" inverseName="course" inverseEntity="Section">
@@ -73,7 +73,7 @@
         </attribute>
         <attribute name="type" optional="YES" attributeType="String">
             <userInfo>
-                <entry key="JSONKeyPath" value="time"/>
+                <entry key="JSONKeyPath" value="type"/>
             </userInfo>
         </attribute>
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="meetings" inverseEntity="Section"/>

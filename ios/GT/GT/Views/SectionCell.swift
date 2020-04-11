@@ -8,26 +8,6 @@
 
 import UIKit
 
-//class SectionCell: UICollectionViewCell, ConfiguringCell {
-//    typealias Content = Section
-//    static var reuseIdentifier: String = "section_cell"
-//
-//    @IBOutlet weak var name: UILabel!
-//    @IBOutlet weak var crn: UILabel!
-//    @IBOutlet weak var instructor: UILabel!
-//    @IBOutlet weak var remaining: UILabel!
-//    @IBOutlet weak var image: UIImageView!
-//
-//
-//    func configure(with content: Section) {
-//        name.text = content.course?.name
-//    }
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//}
-
 
 class SectionCell: UICollectionViewCell, ConfiguringCell {
     typealias Content = Section
@@ -93,12 +73,11 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         if let seats = content.seats?.remaining {
             if seats > 0 {
                 image.image = UIImage(named: "check")
+                contentView.layer.borderColor = UIColor.systemGreen.cgColor
             } else {
                 image.image = UIImage(named: "cross")
+                contentView.layer.borderColor = UIColor.systemRed.cgColor
             }
-        }
-        if let school = content.course?.school, let color = schoolColors[school] {
-            contentView.backgroundColor = color
         }
     }
     
@@ -120,18 +99,11 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         headerStack.isLayoutMarginsRelativeArrangement = true
         headerStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         
-//        let stack = UIStackView(arrangedSubviews: [headerStack, seatsStack])
-//        stack.axis = .vertical
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-        
         image.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        //image.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         contentView.addSubview(headerStack)
         headerStack.fill(contentView)
-        contentView.backgroundColor = .systemYellow
-        contentView.layer.cornerRadius = 20
-        contentView.layer.cornerCurve = .continuous
+        setupUI()
         
     }
     
@@ -140,6 +112,22 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
             image.topAnchor.constraint(equalTo: contentView.topAnchor),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ])
+    }
+    
+    private func setupUI() {
+        contentView.backgroundColor = .secondarySystemBackground
+        contentView.layer.cornerRadius = 20.0
+        contentView.layer.cornerCurve = .continuous
+        contentView.layer.borderWidth = 3.0
+        
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0.0,
+                                                height: 4.0)
+        contentView.layer.shadowRadius = 8.0
+        contentView.layer.shadowOpacity = 0.3
+        contentView.layer.shouldRasterize = true
+        contentView.layer.rasterizationScale = UIScreen.main.scale
     }
     
     required init?(coder: NSCoder) {

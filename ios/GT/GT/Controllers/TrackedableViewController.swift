@@ -25,6 +25,7 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
     override init(columns: Int = 1) {
         super.init(columns: columns)
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackingRequest(_:)), name: .newTrackRequest, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackAllRequest(_:)), name: .trackAllRequest, object: nil)
     }
     
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         let request: NSFetchRequest<Section> = Section.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         request.predicate = NSPredicate(format: "tracked = %d", true)
-        controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "course.identifier", cacheName: nil)
         try? controller.performFetch()
         
         let left = UISwipeGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
@@ -52,6 +53,11 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         self.reloadData()
     }
     
+    override func registerCells() {
+        super.registerCells()
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -66,7 +72,7 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
             ServerManager.shared.seats(to: section) { dict in
                 if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
                     section.seats = seats
-                    self.update(section: section)
+                    //self.update(section: section)
                     group.leave()
                 }
             }
@@ -80,14 +86,47 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
     
     @objc func didReceiveTrackingRequest(_ notification: Notification) {
         if let section = notification.object as? Section {
-            section.tracked = true
-            reloadData()
             ServerManager.shared.seats(to: section) { [weak self] dict in
                 if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
                     seats.section = section
-                    self?.update(section: section)
+                    section.tracked = true
+                    //self?.update(section: section)
                     self?.reloadData()
                 }
+            }
+        }
+    }
+    
+    @objc func didReceiveTrackAllRequest(_ notification: Notification) {
+        if let sections = notification.object as? [Section] {
+//            for section in sections {
+//                section.tracked = true
+//                reloadData()
+//                ServerManager.shared.seats(to: section) { [weak self] dict in
+//                    if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+//                        seats.section = section
+//                        self?.update(section: section)
+//                        self?.reloadData()
+//                    }
+//                }
+//            }
+            
+            let group = DispatchGroup()
+            
+            for section in sections {
+                group.enter()
+                ServerManager.shared.seats(to: section) { dict in
+                    if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+                        seats.section = section
+                        section.tracked = true
+                        //self.update(section: section)
+                        group.leave()
+                    }
+                }
+            }
+            
+            group.notify(queue: .main) {
+                self.reloadData()
             }
         }
     }
@@ -97,6 +136,30 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
             cell.configure(with: section)
         }
     }
+    
+    
+    override func createLayoutSection(forSectionIndex sectionIndex: Int, andLayoutEnvironment layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                             heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.97), heightDimension: .estimated(150))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
+                                                       subitem: item,
+                                                       count: 1)
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .estimated(44))
+        let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: titleSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
+        
+        section.boundarySupplementaryItems = [titleSupplementary]
+        return section
+    }
+    
     
     var isDeleting: Bool = false
     @objc func didLongPress(_ recognizer: UISwipeGestureRecognizer) {
@@ -119,11 +182,33 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
     func reloadData() {
         try? CoreDataStack.shared.container.viewContext.save()
         try? controller.performFetch()
-        guard let sections = controller.fetchedObjects else { return }
+        
+        for section in controller.sections ?? [] {
+                   print(section)
+                   for object in section.objects ?? [] {
+                       print(object)
+                   }
+               }
+        
+        guard let sections = controller.sections else { return }
         var snapshot = NSDiffableDataSourceSnapshot<String, Section>()
-        snapshot.appendSections(["Default"])
-        snapshot.appendItems(sections)
+        for section in sections {
+            print(section.name)
+            snapshot.appendSections([section.name])
+            snapshot.appendItems(section.objects as! [Section], toSection: section.name)
+        }
         dataSource.apply(snapshot)
+    }
+    
+    override func setupDataSource() {
+        super.setupDataSource()
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader
+            let name = self.controller.sections?[indexPath.section].name
+            sectionHeader?.title.text = name
+            sectionHeader?.seeAllButton.isHidden = true
+            return sectionHeader
+        }
     }
 
 }
