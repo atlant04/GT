@@ -68,6 +68,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         
         stack = UIStackView(arrangedSubviews: [tableView, pickerView, weekView])
         stack.axis = .vertical
+        stack.distribution = .fill
         stack.setCustomSpacing(24, after: pickerView)
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
@@ -77,7 +78,6 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
             stack.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-
         ])
         
     }
@@ -94,7 +94,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         guard let sections = course.sections as? Set<Section> else { return }
         for section in sections {
             if let meetings = section.meetings as? Set<Meeting> {
-                var events = meetings.flatMap(parseMeeting)
+                let events = meetings.flatMap(parseMeeting)
                 
                 if (events.contains { $0.type == "Lecture*" }) {
                     lectures[section] = events
@@ -156,7 +156,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.35) {
                 self.pickerView.alpha = self.pickerView.alpha == 1 ? 0 : 1
                 self.pickerView.isHidden = !self.pickerView.isHidden
             }
@@ -306,7 +306,7 @@ class MeetingCell: UICollectionViewCell, MTSelfConfiguringEventCell {
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             label.widthAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
-        contentView.layer.cornerRadius = 2
+        contentView.layer.cornerRadius = 12
         contentView.layer.cornerCurve = .continuous
         contentView.backgroundColor = .systemTeal
     }

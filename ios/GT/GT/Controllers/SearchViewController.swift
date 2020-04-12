@@ -26,6 +26,7 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         navigationItem.title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = true
         search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
         
         collectionView.backgroundColor = .systemBackground
         
@@ -70,6 +71,8 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
             searchCourses(text: text)
+        } else {
+            searchCourses(text: section)
         }
     }
 }
