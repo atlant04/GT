@@ -43,8 +43,8 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         parseEvents()
         
         weekView = MTWeekView(frame: view.bounds, configuration: LayoutConfiguration())
-        weekView.translatesAutoresizingMaskIntoConstraints = false
         weekView.dataSource = self
+        weekView.bounds = CGRect(x: 0, y: 0, width: view.frame.width, height: 500)
         weekView.registerCell(of: MeetingCell.self)
         
         tableView = UITableView()
@@ -69,6 +69,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         stack = UIStackView(arrangedSubviews: [tableView, pickerView, weekView])
         stack.axis = .vertical
         stack.distribution = .fill
+        stack.alignment = .fill
         stack.setCustomSpacing(24, after: pickerView)
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
