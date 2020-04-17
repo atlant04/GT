@@ -6,18 +6,44 @@
 //  Copyright © 2020 MT. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import MTWeekView
 
 
-//extension ObjectId: Hashable {
-//    public func hash(into hasher: inout Hasher) {
-//        hasher.combine(self.description)
-//    }
-//}
+extension Notification.Name {
+    static let newTrackRequest = Notification.Name("new_track_request")
+    static let trackAllRequest = Notification.Name("track_all_request")
+}
+
+extension Dictionary {
+    subscript(i:Int) -> (key:Key,value:Value) {
+        get {
+            return self[index(startIndex, offsetBy: i)];
+        }
+    }
+}
+
+extension Day {
+    init(character: Character) {
+        switch character {
+        case "M":
+            self = .Monday
+        case "T":
+            self = .Tuesday
+        case "W":
+            self = .Wednesday
+        case "R":
+            self = .Thursday
+        case "F":
+            self = .Friday
+        default:
+            self = .Monday
+        }
+    }
+}
 
 extension UIView {
-    func fill(_ view: UIView, withConstant constant: CGSize = CGSize.zero) {
+    func fill(with view: UIView, withConstant constant: CGSize = CGSize.zero) {
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: view.topAnchor, constant: constant.height),
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant.width),

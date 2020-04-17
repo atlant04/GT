@@ -10,4 +10,5 @@ target 'GT' do
    pod 'Alamofire', '~> 5.0'
    pod 'PushNotifications', '2.0.0'
    pod 'Groot'
+   pod 'Segmentio'
 end

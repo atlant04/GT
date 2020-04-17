@@ -32,6 +32,9 @@
 		FA365FE5244874980058AE7B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA365FE2244874970058AE7B /* SectionHeader.swift */; };
 		FA365FE6244874980058AE7B /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA365FE3244874980058AE7B /* CourseCell.swift */; };
 		FA365FE7244874980058AE7B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA365FE4244874980058AE7B /* Protocols.swift */; };
+		FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530DD2449DAFB00B97046 /* Parser.swift */; };
+		FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */; };
+		FAB530E22449F19F00B97046 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530E12449F19F00B97046 /* MeetingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,13 +61,15 @@
 		27A78223243A11CF006CDE57 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		27B71FA4242CA620000EFEFE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		27E94EDE24407D1900108619 /* GT copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GT copy-Info.plist"; path = "/Users/mtoch/Desktop/OscarApp/ios/GT/GT copy-Info.plist"; sourceTree = "<absolute>"; };
 		27F9B29224351DF7006C5EE8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3F7CAC2D3D35BD4D3CD90374 /* Pods_GT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A153F377C25C6D3F4E0D5AE0 /* Pods-GT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.debug.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.debug.xcconfig"; sourceTree = "<group>"; };
 		FA365FE2244874970058AE7B /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		FA365FE3244874980058AE7B /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		FA365FE4244874980058AE7B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		FAB530DD2449DAFB00B97046 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableView.swift; sourceTree = "<group>"; };
+		FAB530E12449F19F00B97046 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,8 @@
 				FA365FE2244874970058AE7B /* SectionHeader.swift */,
 				1786E575243FCC5900FF6C9C /* SectionCellXib.xib */,
 				1786E578243FCC5900FF6C9C /* CoursePickerView.swift */,
+				FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */,
+				FAB530E12449F19F00B97046 /* MeetingCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,7 +107,6 @@
 				273DFC022429074C008950DA /* Products */,
 				566B16AA1F6131133B08F523 /* Pods */,
 				D66F3A33F4FA9750477A8A32 /* Frameworks */,
-				27E94EDE24407D1900108619 /* GT copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +121,7 @@
 		273DFC032429074C008950DA /* GT */ = {
 			isa = PBXGroup;
 			children = (
+				FAB530DC2449DA9F00B97046 /* Supporting */,
 				27B71F9C242CA620000EFEFE /* CoreData */,
 				275BA43D242A95BC00E89227 /* GT.entitlements */,
 				273DFC2A2429078D008950DA /* Models */,
@@ -125,9 +132,6 @@
 				273DFC0D2429074F008950DA /* Assets.xcassets */,
 				273DFC0F2429074F008950DA /* LaunchScreen.storyboard */,
 				273DFC2D242907A5008950DA /* SceneDelegate.swift */,
-				273DFC2F242907AD008950DA /* AppConstants.swift */,
-				273DFC31242907AE008950DA /* Extensions.swift */,
-				273DFC30242907AE008950DA /* ServerManager.swift */,
 				273DFC122429074F008950DA /* Info.plist */,
 			);
 			path = GT;
@@ -178,6 +182,17 @@
 				3F7CAC2D3D35BD4D3CD90374 /* Pods_GT.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAB530DC2449DA9F00B97046 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				273DFC2F242907AD008950DA /* AppConstants.swift */,
+				273DFC31242907AE008950DA /* Extensions.swift */,
+				273DFC30242907AE008950DA /* ServerManager.swift */,
+				FAB530DD2449DAFB00B97046 /* Parser.swift */,
+			);
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +319,7 @@
 			files = (
 				FA365FE5244874980058AE7B /* SectionHeader.swift in Sources */,
 				FA365FE6244874980058AE7B /* CourseCell.swift in Sources */,
+				FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */,
 				FA365FE7244874980058AE7B /* Protocols.swift in Sources */,
 				27F9B29124350DCC006C5EE8 /* Model.xcdatamodeld in Sources */,
 				273DFC1D2429076E008950DA /* ViewController.swift in Sources */,
@@ -314,6 +330,7 @@
 				273DFC2C2429078D008950DA /* Course.swift in Sources */,
 				273DFC32242907AE008950DA /* AppConstants.swift in Sources */,
 				273DFC33242907AE008950DA /* ServerManager.swift in Sources */,
+				FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */,
 				273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */,
 				27F9B29324351DF7006C5EE8 /* SearchViewController.swift in Sources */,
 				27B71FAD242CABD1000EFEFE /* CoreDataStack.swift in Sources */,
@@ -321,6 +338,7 @@
 				273DFC1E2429076E008950DA /* DetailViewController.swift in Sources */,
 				27A78224243A11CF006CDE57 /* SpinnerViewController.swift in Sources */,
 				273DFC052429074C008950DA /* AppDelegate.swift in Sources */,
+				FAB530E22449F19F00B97046 /* MeetingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +556,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
 			requirement = {
-				branch = master;
+				branch = dev;
 				kind = branch;
 			};
 		};

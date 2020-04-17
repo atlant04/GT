@@ -32,7 +32,7 @@ class CoursePickerViewController: UIViewController {
 //        doneButton.backgroundColor = .systemYellow
         pickerViewHolder.addSubview(picker)
 //        pickerViewHolder.addSubview(doneButton)
-        picker.fill(pickerViewHolder)
+        picker.fill(with: pickerViewHolder)
         view.addSubview(pickerViewHolder)
         
         pickerViewHolder.backgroundColor = .systemBackground

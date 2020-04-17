@@ -102,7 +102,7 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         image.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         contentView.addSubview(headerStack)
-        headerStack.fill(contentView)
+        headerStack.fill(with: contentView)
         setupUI()
         
     }
