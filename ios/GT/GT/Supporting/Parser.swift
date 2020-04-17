@@ -8,6 +8,7 @@
 
 import Foundation
 import MTWeekView
+import SwiftDate
 
 
 struct Parser {
@@ -35,11 +36,10 @@ struct Parser {
 
         let days = Array(daysOfWeek).compactMap { Day(character: $0) }
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm a"
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
-        if let startDate = formatter.date(from: "2:00 pm"),
-            let endDate = formatter.date(from: String(end)) {
+        if let startDate = String(start).toDate("HH:mm a")?.date,
+            let endDate = String(end).toDate("HH:mm a")?.date {
+            print(startDate)
+            print(endDate)
             let startTime = Time(from: startDate)
             let endTime = Time(from: endDate)
 
