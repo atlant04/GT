@@ -21,6 +21,14 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         }
     }
 
+    var sections: Set<Section> {
+        return (course.sections as? Set<Section>) ?? Set<Section>()
+    }
+
+    var currentSegment: SegmentioItem {
+        return segmentioView.segmentioItems[segmentioView.selectedSegmentioIndex]
+    }
+
     var tableView: CourseDetailTableView!
     var weekView: MTWeekView!
 
@@ -55,59 +63,29 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         
         view.backgroundColor = .systemBackground
 
-       // let segmentioViewRect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 125)
-        segmentioView = Segmentio()
-        let options = SegmentioOptions(
-            backgroundColor: .secondarySystemGroupedBackground,
-            segmentPosition: .dynamic,
-            scrollEnabled: false,
-//            indicatorOptions: .none,
-//            horizontalSeparatorOptions: .none,
-//            verticalSeparatorOptions: SegmentioVerticalSeparatorOptions,
-            imageContentMode: .center,
-            labelTextAlignment: .center,
-            segmentStates: SegmentioStates(
-                        defaultState: SegmentioState(
-                            backgroundColor: .clear,
-                            titleFont: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
-                            titleTextColor: .white
-                        ),
-                        selectedState: SegmentioState(
-                            backgroundColor: .orange,
-                            titleFont: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
-                            titleTextColor: .black
-                        ),
-                        highlightedState: SegmentioState(
-                            backgroundColor: UIColor.lightGray.withAlphaComponent(0.6),
-                            titleFont: UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize),
-                            titleTextColor: .black
-                        )
-            )
-        )
-
-
-        segmentioView.setup(
-            content: segmentioContent(),
-            style: .onlyLabel,
-            options: options
-        )
-        segmentioView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+       setupSegmentio()
 
         segmentioView.valueDidChange = { [weak self] segmentio, index in
-            self?.weekView.showEvents { event in
+            guard let self = self else { return }
+            if index == 0 {
+                self.weekView.showAll();
+                self.button.title = "Track All Lectures"
+                return
+
+            }
+
+            let segment = segmentio.segmentioItems[index]
+            self.button.title = "Track \(segment.title ?? "")"
+            self.weekView.showEvents { event in
                 if let meeting = event as? MeetingEvent {
-                    let segment = segmentio.segmentioItems[index]
                     return meeting.name == segment.title
                 }
                 return false
             }
+
         }
 
         setupStack()
-
-
-
-        
     }
 
     func setupStack() {
@@ -126,10 +104,11 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     }
     
     @objc func trackButtonTapped() {
-        if button.title == "Track All" {
-            //NotificationCenter.default.post(name: .trackAllRequest, object: Array(lectures.keys))
+        if segmentioView.selectedSegmentioIndex == 0 {
+            NotificationCenter.default.post(name: .trackAllRequest, object: sections)
         } else {
-            NotificationCenter.default.post(name: .newTrackRequest, object: selectedSection)
+            let section = sections.first { $0.id == currentSegment.title }
+            NotificationCenter.default.post(name: .newTrackRequest, object: section)
         }
     }
 
@@ -139,12 +118,62 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     }
 
     func segmentioContent() -> [SegmentioItem] {
-        return allEvents.map { event in
-            SegmentioItem(title: event.name, image: nil)
+        guard let sections = course.sections as? Set<Section> else { return [] }
+        var content = sections.map { section -> SegmentioItem in
+            var item = SegmentioItem(title: section.id, image: nil)
+            if section.tracked {
+                let seats = section.seats?.remaining ?? 0
+                item.addBadge(Int(seats), color: .systemRed)
+            }
+            return item
         }.sorted { first, second in
-            guard let t1 = first.title, let t2 = second.title else { return false}
-            return t1 < t2
+            guard let t1 = first.title, let t2 = second.title else { return false }
+            return t1.count < t2.count || t1 < t2
         }
+
+        var all = SegmentioItem(title: "All", image: nil)
+        content.insert(all, at: 0)
+        return content
+    }
+
+    func setupSegmentio() {
+        segmentioView = Segmentio()
+        let options = SegmentioOptions(
+            backgroundColor: .secondarySystemGroupedBackground,
+            segmentPosition: .dynamic,
+            scrollEnabled: true,
+            labelTextAlignment: .center,
+            segmentStates: SegmentioStates(
+                defaultState: SegmentioState(
+                    backgroundColor: .clear,
+                    titleFont: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
+                    titleTextColor: .white
+                ),
+                selectedState: SegmentioState(
+                    backgroundColor: .orange,
+                    titleFont: UIFont.systemFont(ofSize: UIFont.systemFontSize),
+                    titleTextColor: .black
+                ),
+                highlightedState: SegmentioState(
+                    backgroundColor: UIColor.lightGray.withAlphaComponent(0.6),
+                    titleFont: UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize),
+                    titleTextColor: .black
+                )
+            )
+        )
+
+
+        segmentioView.setup(
+            content: segmentioContent(),
+            style: .onlyLabel,
+            options: options
+        )
+        segmentioView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        segmentioView.reloadSegmentio()
     }
     
 }

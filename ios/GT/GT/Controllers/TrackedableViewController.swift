@@ -14,12 +14,25 @@ import Alamofire
 
 class TrackedableViewController: ColumnViewController<Section, SectionCell> {
 
-    var controller: NSFetchedResultsController<Section>!
+    var controller: NSFetchedResultsController<Section> = {
+        let request: NSFetchRequest<Section> = Section.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        request.predicate = NSPredicate(format: "tracked = %d", true)
+        let controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "course.identifier", cacheName: nil)
+        return controller
+    }()
+
     lazy var refresh: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
         return refresh
     }()
+
+
+    var trackedSections: [String: Set<Section>] = [:]
+    var sectionsAsArray: [Section] {
+        return Array(trackedSections.values).flatMap{ $0 }
+    }
     
     
     override init(columns: Int = 1) {
@@ -32,13 +45,14 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Tracked Courses"
-        
-        let request: NSFetchRequest<Section> = Section.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        request.predicate = NSPredicate(format: "tracked = %d", true)
-        controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "course.identifier", cacheName: nil)
-        try? controller.performFetch()
-        
+
+        if let _ = try? controller.performFetch(), let sections = controller.fetchedObjects {
+            trackedSections = Dictionary<String, Set<Section>>()
+            sections.forEach { self.append(section: $0) }
+            update()
+        }
+
+
         let left = UISwipeGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
         left.direction = .left
         
@@ -49,9 +63,9 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         collectionView.addGestureRecognizer(left)
         collectionView.addGestureRecognizer(right)
         collectionView.alwaysBounceVertical = true
-        
-        self.reloadData()
+
     }
+
     
     override func registerCells() {
         super.registerCells()
@@ -63,80 +77,88 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
     }
     
     @objc func handleRefresh(_ refresh: UIRefreshControl) {
-        guard let sections = controller.fetchedObjects else { refresh.endRefreshing(); return }
+        guard !trackedSections.isEmpty else { refresh.endRefreshing(); return }
         
         let group = DispatchGroup()
         
-        for section in sections {
+        for section in sectionsAsArray {
             group.enter()
-            ServerManager.shared.seats(to: section) { dict in
+            ServerManager.shared.seats(to: section) { [weak self] dict in
                 if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
                     section.seats = seats
-                    //self.update(section: section)
+                    self?.updateCell(section: section)
                     group.leave()
                 }
             }
         }
         
         group.notify(queue: .main) {
-            self.reloadData()
             refresh.endRefreshing()
         }
     }
     
     @objc func didReceiveTrackingRequest(_ notification: Notification) {
         if let section = notification.object as? Section {
+            section.tracked = true
+            append(section: section)
+            update()
             ServerManager.shared.seats(to: section) { [weak self] dict in
                 if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
-                    seats.section = section
+                    section.seats = seats
                     section.tracked = true
-                    //self?.update(section: section)
-                    self?.reloadData()
+                    self?.updateCell(section: section)
                 }
             }
+        }
+    }
+
+    func append(section: Section) {
+        guard let id = section.course?.identifier else { return }
+        if let _ = trackedSections[id] {
+            trackedSections[id]?.insert(section)
+        } else {
+            trackedSections[id] = [section]
+        }
+    }
+
+    func remove(_ section: Section) {
+        guard let id = section.course?.identifier else { return }
+        trackedSections[id]?.remove(section)
+        if trackedSections[id]?.isEmpty ?? false {
+            trackedSections.removeValue(forKey: id)
         }
     }
     
     @objc func didReceiveTrackAllRequest(_ notification: Notification) {
-        if let sections = notification.object as? [Section] {
-//            for section in sections {
-//                section.tracked = true
-//                reloadData()
-//                ServerManager.shared.seats(to: section) { [weak self] dict in
-//                    if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
-//                        seats.section = section
-//                        self?.update(section: section)
-//                        self?.reloadData()
-//                    }
-//                }
-//            }
-            
-            let group = DispatchGroup()
-            
-            for section in sections {
-                group.enter()
-                ServerManager.shared.seats(to: section) { dict in
-                    if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
-                        seats.section = section
-                        section.tracked = true
-                        //self.update(section: section)
-                        group.leave()
-                    }
+        guard let sections = notification.object as? [Section] else { return }
+
+        let group = DispatchGroup()
+        for section in sections {
+            append(section: section)
+            group.enter()
+            ServerManager.shared.seats(to: section) { [weak self] dict in
+                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+                    seats.section = section
+                    section.tracked = true
+                    self?.updateCell(section: section)
+                    group.leave()
                 }
             }
+        }
+
+        update()
             
-            group.notify(queue: .main) {
-                self.reloadData()
-            }
+        group.notify(queue: .main) {
+
         }
     }
     
-    func update(section: Section) {
-        if let indexPath = controller.indexPath(forObject: section), let cell = collectionView.cellForItem(at: indexPath) as? SectionCell {
+    func updateCell(section: Section) {
+        try? CoreDataStack.shared.container.viewContext.save()
+        if let indexPath = dataSource.indexPath(for: section), let cell = collectionView.cellForItem(at: indexPath) as? SectionCell {
             cell.configure(with: section)
         }
     }
-    
     
     override func createLayoutSection(forSectionIndex sectionIndex: Int, andLayoutEnvironment layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -171,32 +193,24 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
             UIView.animate(withDuration: 0.2, animations: {
                 cell.center.x = 0
             }) { _ in
-                let section = self.controller.object(at: indexPath)
-                section.tracked = false
-                self.reloadData()
-                ServerManager.shared.unsubscribe(from: section) { response in }
+                if let section = self.dataSource.itemIdentifier(for: indexPath) {
+                    self.remove(section)
+                    self.update()
+                    section.tracked = false
+                    ServerManager.shared.unsubscribe(from: section) { response in }
+                }
             }
         }
     }
-    
-    func reloadData() {
-        try? CoreDataStack.shared.container.viewContext.save()
-        try? controller.performFetch()
-        
-        for section in controller.sections ?? [] {
-                   print(section)
-                   for object in section.objects ?? [] {
-                       print(object)
-                   }
-               }
-        
-        guard let sections = controller.sections else { return }
+
+    func update() {
         var snapshot = NSDiffableDataSourceSnapshot<String, Section>()
-        for section in sections {
-            print(section.name)
-            snapshot.appendSections([section.name])
-            snapshot.appendItems(section.objects as! [Section], toSection: section.name)
+        snapshot.appendSections(Array(trackedSections.keys))
+        print(trackedSections)
+        for (id, sections) in trackedSections {
+            snapshot.appendItems(Array(sections), toSection: id)
         }
+
         dataSource.apply(snapshot)
     }
     
@@ -204,11 +218,16 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         super.setupDataSource()
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader
-            let name = self.controller.sections?[indexPath.section].name
-            sectionHeader?.title.text = name
+            let section = self.dataSource.itemIdentifier(for: indexPath)
+            sectionHeader?.title.text = section?.course?.identifier
             sectionHeader?.seeAllButton.isHidden = true
             return sectionHeader
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        try? CoreDataStack.shared.container.viewContext.save()
     }
 
 }

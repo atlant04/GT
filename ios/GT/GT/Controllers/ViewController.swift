@@ -134,11 +134,9 @@ final class ViewController: ColumnViewController<Course, CourseCell> {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
         let course = fetchController.object(at: indexPath)
         let detailVC = DetailViewController()
         detailVC.course = course
-        print(course.sections)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 

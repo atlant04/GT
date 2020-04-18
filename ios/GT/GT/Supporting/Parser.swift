@@ -29,26 +29,28 @@ struct Parser {
 
     static func parseMeeting(meeting: Meeting) -> [MeetingEvent] {
         guard let time = meeting.time, let daysOfWeek = meeting.days else { return [] }
-        guard let hyphen = time.firstIndex(of: "-") else { return [] }
-        let start = time[..<hyphen]
-        let endRange = time.index(hyphen, offsetBy: 2)...
-        let end = time[endRange]
+        let times = time.split(separator: "-")
+        guard !times.isEmpty else { return [] }
+
 
         let days = Array(daysOfWeek).compactMap { Day(character: $0) }
+        let strings = times.map { String($0).trimmingCharacters(in: .whitespacesAndNewlines).uppercased() }
 
-        if let startDate = String(start).toDate("HH:mm a")?.date,
-            let endDate = String(end).toDate("HH:mm a")?.date {
-            print(startDate)
-            print(endDate)
-            let startTime = Time(from: startDate)
-            let endTime = Time(from: endDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 
-            return days.map { MeetingEvent(type: meeting.type, name: meeting.section?.id, day: $0, start: startTime, end: endTime)}
-        } else {
-            return days.map { MeetingEvent(type: meeting.type, name: meeting.section?.id, day: $0, start: Time(hour: 12, minute: 0), end: Time(hour: 14, minute: 0))}
+        if let start = dateFormatter.date(from: strings[0]),
+            let end = dateFormatter.date(from: strings[1]) {
+            return days.map {
+                MeetingEvent(type: meeting.type,
+                             name: meeting.section?.id,
+                             day: $0,
+                             start: Time(from: start),
+                             end: Time(from: end))
+            }
         }
 
+        return []
     }
-
-
 }

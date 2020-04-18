@@ -70,13 +70,12 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         crn.text = "CRN: \(content.crn ?? "")"
         seats.text = "Remaining: \(content.seats?.remaining ?? 0)"
         waitlist.text = "Remaining on waitlist: \(content.seats?.remainingWL ?? 0)"
+        image.image = UIImage(named: "cross")
+        contentView.layer.borderColor = UIColor.systemRed.cgColor
         if let seats = content.seats?.remaining {
             if seats > 0 {
                 image.image = UIImage(named: "check")
                 contentView.layer.borderColor = UIColor.systemGreen.cgColor
-            } else {
-                image.image = UIImage(named: "cross")
-                contentView.layer.borderColor = UIColor.systemRed.cgColor
             }
         }
     }
