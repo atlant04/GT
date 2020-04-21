@@ -14,6 +14,11 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
     
     var request: NSFetchRequest<Course> = Course.fetchRequest()
     var controller: NSFetchedResultsController<Course>?
+
+    var onSelected: ((Course, SearchViewController) -> Void) = { course, vc  in
+        vc.presentDetailVC(course: course)
+    }
+
     var section: String? {
         didSet {
             searchCourses(text: self.section)
@@ -33,6 +38,12 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         request.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
         searchCourses(text: section)
         
+    }
+
+    func presentDetailVC(course: Course) {
+        let detailVC = DetailViewController()
+        detailVC.course = course
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func searchCourses(text: String?) {
@@ -92,9 +103,6 @@ extension SearchViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let controller = controller else { return }
         let course = controller.object(at: indexPath)
-        let detailVC = DetailViewController()
-        detailVC.course = course
-        print(course.sections)
-        navigationController?.pushViewController(detailVC, animated: true)
+        onSelected(course, self)
     }
 }

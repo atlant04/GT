@@ -56,9 +56,11 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         tableView = CourseDetailTableView()
         tableView.attributes = courseAttributes
         
-        weekView = MTWeekView()
-        weekView.dataSource = self
+        var config = LayoutConfiguration()
+        config.hidesVerticalLines = true
+        weekView = MTWeekView(frame: .zero, configuration: config)
         weekView.register(MeetingCell.self)
+        weekView.dataSource = self
         weekView.setContentCompressionResistancePriority(UILayoutPriority(249), for: .vertical)
         
         view.backgroundColor = .systemBackground
@@ -91,6 +93,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     func setupStack() {
         stack = UIStackView(arrangedSubviews: [tableView, segmentioView, weekView])
         stack.axis = .vertical
+        //stack.alignment = .center
         stack.setCustomSpacing(24, after: segmentioView)
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
@@ -180,6 +183,8 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
 
 
 struct MeetingEvent: Event {
+    var id: UUID = UUID()
+
     var type: String?
     var name: String?
     var day: Day

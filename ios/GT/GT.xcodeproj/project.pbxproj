@@ -35,6 +35,9 @@
 		FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530DD2449DAFB00B97046 /* Parser.swift */; };
 		FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */; };
 		FAB530E22449F19F00B97046 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530E12449F19F00B97046 /* MeetingCell.swift */; };
+		FAE59F02244E58BC0096F003 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = FAE59F01244E58BC0096F003 /* SideMenu */; };
+		FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE59F03244E59C20096F003 /* ScheduleViewController.swift */; };
+		FAE59F06244E600B0096F003 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE59F05244E600B0096F003 /* SideMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,8 @@
 		FAB530DD2449DAFB00B97046 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailTableView.swift; sourceTree = "<group>"; };
 		FAB530E12449F19F00B97046 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
+		FAE59F03244E59C20096F003 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		FAE59F05244E600B0096F003 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				271A444D24292EB300AADABE /* MTWeekView in Frameworks */,
+				FAE59F02244E58BC0096F003 /* SideMenu in Frameworks */,
 				850FD7BDFFF6B638E349271F /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +152,8 @@
 				27F9B29224351DF7006C5EE8 /* SearchViewController.swift */,
 				27A782192438C6B5006CDE57 /* ColumnViewController.swift */,
 				27A78223243A11CF006CDE57 /* SpinnerViewController.swift */,
+				FAE59F03244E59C20096F003 /* ScheduleViewController.swift */,
+				FAE59F05244E600B0096F003 /* SideMenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 			name = GT;
 			packageProductDependencies = (
 				271A444C24292EB300AADABE /* MTWeekView */,
+				FAE59F01244E58BC0096F003 /* SideMenu */,
 			);
 			productName = GT;
 			productReference = 273DFC012429074C008950DA /* GT.app */;
@@ -246,6 +255,7 @@
 			mainGroup = 273DFBF82429074C008950DA;
 			packageReferences = (
 				27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */,
+				FAE59F00244E58BC0096F003 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 273DFC022429074C008950DA /* Products */;
 			projectDirPath = "";
@@ -324,11 +334,13 @@
 				27F9B29124350DCC006C5EE8 /* Model.xcdatamodeld in Sources */,
 				273DFC1D2429076E008950DA /* ViewController.swift in Sources */,
 				274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */,
+				FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */,
 				1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */,
 				27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */,
 				1786E57E243FCC5900FF6C9C /* CoursePickerView.swift in Sources */,
 				273DFC2C2429078D008950DA /* Course.swift in Sources */,
 				273DFC32242907AE008950DA /* AppConstants.swift in Sources */,
+				FAE59F06244E600B0096F003 /* SideMenuViewController.swift in Sources */,
 				273DFC33242907AE008950DA /* ServerManager.swift in Sources */,
 				FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */,
 				273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */,
@@ -556,8 +568,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
 			requirement = {
-				branch = dev;
+				branch = "drag&drop";
 				kind = branch;
+			};
+		};
+		FAE59F00244E58BC0096F003 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.4.8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -567,6 +587,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */;
 			productName = MTWeekView;
+		};
+		FAE59F01244E58BC0096F003 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAE59F00244E58BC0096F003 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -10,13 +10,10 @@ import UIKit
 import MTWeekView
 
 
-class MeetingCell: UICollectionViewCell, MTConfigurableCell {
+class MeetingCell: MTBaseCell{
 
-    static var reuseId: String {
-        return String(describing: self)
-    }
-
-    func configure(with data: Event) {
+   override func configure(with data: Event) {
+    super.configure(with: data)
         if let meeting = data as? MeetingEvent {
             label.text = meeting.name
         }
@@ -39,10 +36,12 @@ class MeetingCell: UICollectionViewCell, MTConfigurableCell {
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             label.widthAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
-        contentView.layer.cornerRadius = 12
-        contentView.layer.cornerCurve = .continuous
-        contentView.backgroundColor = .systemTeal
+        //contentView.layer.cornerRadius = 12
+//        contentView.layer.cornerCurve = .continuous
+        backgroundColor = UIColor.systemRed.withAlphaComponent(0.4)
     }
+
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

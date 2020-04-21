@@ -35,6 +35,7 @@ class SectionHeader: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.translatesAutoresizingMaskIntoConstraints = false
         let hstack = UIStackView(arrangedSubviews: [title, seeAllButton])
         hstack.axis = .horizontal
         hstack.translatesAutoresizingMaskIntoConstraints = false

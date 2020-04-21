@@ -101,8 +101,8 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         image.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         contentView.addSubview(headerStack)
-        headerStack.fill(with: contentView)
         setupUI()
+        headerStack.fill(with: contentView)
         
     }
     
@@ -127,6 +127,7 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         contentView.layer.shadowOpacity = 0.3
         contentView.layer.shouldRasterize = true
         contentView.layer.rasterizationScale = UIScreen.main.scale
+        //contentView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {

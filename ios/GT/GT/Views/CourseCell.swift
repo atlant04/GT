@@ -24,14 +24,14 @@ class CourseCell: UICollectionViewCell, ConfiguringCell {
         schoolColors[school] = color
         return color
     }
-    
+
     private func setupUI() {
         contentView.backgroundColor = .secondarySystemBackground
         contentView.layer.cornerRadius = 20.0
         contentView.layer.cornerCurve = .continuous
         contentView.layer.borderWidth = 3.0
         
-        contentView.layer.masksToBounds = false
+        contentView.clipsToBounds = false
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOffset = CGSize(width: 0.0,
                                                 height: 4.0)
@@ -50,7 +50,6 @@ class CourseCell: UICollectionViewCell, ConfiguringCell {
         sections.text = "# of sections \(course.sections?.count ?? 0)"
         
         contentView.layer.borderColor = getSchoolColor(course.school ?? "Default").cgColor
-//        contentView.backgroundColor = getSchoolColor(course.school ?? "Default")
      }
 
     let identifier: UILabel = {

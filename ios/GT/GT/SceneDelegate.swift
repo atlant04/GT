@@ -22,16 +22,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
         let mainVC = ViewController(columns: 2)
-        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+        mainVC.tabBarItem = UITabBarItem(title: "Courses", image: UIImage.init(systemName: "folder.fill"), selectedImage: UIImage.init(systemName: "folder"))
         
         let trackVC = TrackedableViewController(columns: 1)
-        trackVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        trackVC.tabBarItem = UITabBarItem(title: "Track", image: UIImage.init(systemName: "cart.fill"), selectedImage: UIImage.init(systemName: "cart"))
         
         let searchVC = SearchViewController(columns: 3)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
+
+        let scheduleVC = ScheduleViewController()
+        scheduleVC.tabBarItem = UITabBarItem(title: "My Schedule", image: UIImage.init(systemName: "calendar"), tag: 4)
         
-        let controllers = [mainVC, searchVC, trackVC]
-        let navControllers = controllers.map { UINavigationController(rootViewController: $0) }
+        let controllers = [mainVC, searchVC, trackVC, scheduleVC]
+        let navControllers: [UINavigationController] = controllers.map {
+            let nav = UINavigationController(rootViewController: $0)
+            nav.navigationBar.prefersLargeTitles = true
+            return nav
+        }
         
         let tabBarVC = UITabBarController()
         tabBarVC.setViewControllers(navControllers, animated: true)
