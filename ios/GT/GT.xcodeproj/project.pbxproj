@@ -23,6 +23,9 @@
 		273DFC33242907AE008950DA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC30242907AE008950DA /* ServerManager.swift */; };
 		273DFC34242907AE008950DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC31242907AE008950DA /* Extensions.swift */; };
 		274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D8730242A238E00B229B2 /* TrackedableViewController.swift */; };
+		279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */; };
+		279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */; };
+		279ACE2324546CF500B3DD06 /* SectionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */; };
 		27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A782192438C6B5006CDE57 /* ColumnViewController.swift */; };
 		27A78224243A11CF006CDE57 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A78223243A11CF006CDE57 /* SpinnerViewController.swift */; };
 		27B71FAD242CABD1000EFEFE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */; };
@@ -60,6 +63,9 @@
 		273DFC31242907AE008950DA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		274D8730242A238E00B229B2 /* TrackedableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedableViewController.swift; sourceTree = "<group>"; };
 		275BA43D242A95BC00E89227 /* GT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GT.entitlements; sourceTree = "<group>"; };
+		279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerTableView.swift; sourceTree = "<group>"; };
+		279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePickerCell.swift; sourceTree = "<group>"; };
+		279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerCell.swift; sourceTree = "<group>"; };
 		27A782192438C6B5006CDE57 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		27A78223243A11CF006CDE57 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		27B71FA4242CA620000EFEFE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -100,8 +106,10 @@
 				FA365FE2244874970058AE7B /* SectionHeader.swift */,
 				1786E575243FCC5900FF6C9C /* SectionCellXib.xib */,
 				1786E578243FCC5900FF6C9C /* CoursePickerView.swift */,
-				FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */,
 				FAB530E12449F19F00B97046 /* MeetingCell.swift */,
+				FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */,
+				279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */,
+				279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +154,7 @@
 		273DFC182429076E008950DA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
 				273DFC1A2429076E008950DA /* ViewController.swift */,
 				273DFC1B2429076E008950DA /* DetailViewController.swift */,
 				274D8730242A238E00B229B2 /* TrackedableViewController.swift */,
@@ -334,6 +343,7 @@
 				27F9B29124350DCC006C5EE8 /* Model.xcdatamodeld in Sources */,
 				273DFC1D2429076E008950DA /* ViewController.swift in Sources */,
 				274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */,
+				279ACE2324546CF500B3DD06 /* SectionPickerCell.swift in Sources */,
 				FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */,
 				1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */,
 				27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */,
@@ -344,6 +354,8 @@
 				273DFC33242907AE008950DA /* ServerManager.swift in Sources */,
 				FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */,
 				273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */,
+				279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */,
+				279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */,
 				27F9B29324351DF7006C5EE8 /* SearchViewController.swift in Sources */,
 				27B71FAD242CABD1000EFEFE /* CoreDataStack.swift in Sources */,
 				273DFC34242907AE008950DA /* Extensions.swift in Sources */,

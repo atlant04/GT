@@ -99,7 +99,7 @@ class CourseCell: UICollectionViewCell, ConfiguringCell {
         stack.distribution = .fillProportionally
         stack.alignment = .center
         contentView.addSubview(stack)
-        stack.fill(with: contentView, withConstant: CGSize(width: 6, height: 6))
+        stack.fill(with: contentView, insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
 
     }
 

@@ -12,25 +12,42 @@ import MTWeekView
 
 class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNavigationControllerDelegate {
     var menu: SideMenuNavigationController!
-    let weekView = MTWeekView()
-    var selectedCourses: [Course]? {
-        didSet {
-            weekView.reload()
-        }
-    }
+    var weekView: MTWeekView!
+    var sectionPicker: SectionPickerTableView = SectionPickerTableView()
+    var selectedSections = Set<Section>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "My Schedule"
-        var config = LayoutConfiguration()
-        config.hidesVerticalLines = true
-        weekView.configuration = config
-        view.addSubview(weekView)
-        weekView.translatesAutoresizingMaskIntoConstraints = false
-        weekView.register(MeetingCell.self)
-        view.fill(with: weekView)
-        weekView.dataSource = self
+
+        setupWeekView()
+        
+        var request: NSFetchRequest<Course> = Course.fetchRequest()
+        request.predicate = NSPredicate(format: "number = 1332 OR number = 1331")
+        let course = try? CoreDataStack.shared.container.viewContext.fetch(request)
+        sectionPicker.courses = course ?? []
+        
+        addChild(sectionPicker)
+        sectionPicker.didMove(toParent: self)
+        view.addSubview(sectionPicker.tableView)
+        
+        NSLayoutConstraint.activate([
+            sectionPicker.tableView.topAnchor.constraint(equalTo: weekView.bottomAnchor),
+            sectionPicker.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sectionPicker.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sectionPicker.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        
+        sectionPicker.onSelection = { [weak self] section, selected in
+            guard let self = self else { return }
+            if selected {
+                self.selectedSections.insert(section)
+            } else {
+                self.selectedSections.remove(section)
+            }
+            self.weekView.reload()
+        }
 
         let main = UIStoryboard(name: "Main", bundle: .main)
         menu = main.instantiateViewController(identifier: "leftMenu")
@@ -38,7 +55,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNa
 
         (menu.viewControllers.first as? SideMenuTableViewController)?.onDoneBlock = { name, courses in
             self.navigationItem.title = name
-            self.selectedCourses = courses
+            self.sectionPicker.courses = courses ?? []
         }
 
 
@@ -47,6 +64,25 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNa
         menu.presentationStyle = presentStyle()
         menu.menuWidth = view.bounds.width * 2 / 3
         menu.blurEffectStyle = traitCollection.userInterfaceStyle == .light ? .light : .dark
+    }
+    
+    func setupWeekView() {
+        var config = LayoutConfiguration()
+        config.hidesVerticalLines = true
+        weekView = MTWeekView(frame: .zero, configuration: config)
+        view.addSubview(weekView)
+        weekView.translatesAutoresizingMaskIntoConstraints = false
+        weekView.register(MeetingCell.self)
+        weekView.dataSource = self
+        
+        NSLayoutConstraint.activate([
+            weekView.topAnchor.constraint(equalTo: view.topAnchor),
+            weekView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            weekView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            weekView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2)
+        ])
+        
+//        view.fill(with: weekView)
     }
 
 
@@ -69,9 +105,9 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNa
     }
 
     func allEvents(for weekView: MTWeekView) -> [Event] {
-        guard let selectedCourses = selectedCourses else { return [] }
-        return selectedCourses.flatMap { course in
-            Parser.parseEvents(course: course)
+        return selectedSections.flatMap { section -> [MeetingEvent] in
+            guard let meetings = section.meetings as? Set<Meeting> else { return [] }
+            return meetings.flatMap(Parser.parseMeeting(meeting:))
         }
     }
 
@@ -79,5 +115,9 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNa
         weekView.reload()
     }
 
+    
 }
 
+extension ScheduleViewController: UITableViewDelegate {
+    
+}

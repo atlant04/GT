@@ -43,7 +43,7 @@ class SectionHeader: UICollectionReusableView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         addSubview(stack)
-        stack.fill(with: self, withConstant: CGSize(width: 0, height: 12))
+        stack.fill(with: self, insets: UIEdgeInsets(top: 6, left: 0, bottom: 0, right: 6))
         separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 

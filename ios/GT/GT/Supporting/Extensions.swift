@@ -9,6 +9,38 @@
 import UIKit
 import MTWeekView
 
+protocol Collapsable {
+    var isCollapsed: Bool { get set }
+    var numberOfCollapsableItems: Int { get }
+}
+
+extension Course: Collapsable {
+    private static var collapsables = [String: Bool]()
+    
+    var isCollapsed: Bool {
+        get {
+            guard let name = name else { return false}
+            return Course.collapsables[name] ?? false
+        }
+        set {
+            guard let name = name else { return }
+            Course.collapsables[name] = newValue
+        }
+    }
+    
+    var numberOfCollapsableItems: Int {
+        return isCollapsed ? 0 : sections?.count ?? 0
+    }
+    
+}
+
+extension Bool {
+    mutating func toggle() {
+        self = !self
+    }
+}
+
+
 
 extension Notification.Name {
     static let newTrackRequest = Notification.Name("new_track_request")
@@ -43,12 +75,12 @@ extension Day {
 }
 
 extension UIView {
-    func fill(with view: UIView, withConstant constant: CGSize = CGSize.zero) {
+    func fill(with view: UIView, insets: UIEdgeInsets = .zero) {
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: view.topAnchor, constant: constant.height),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant.width),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant.height),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant.width),
+            self.topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -insets.left),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -insets.bottom),
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -insets.right),
         ])
     }
 
