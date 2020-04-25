@@ -87,13 +87,14 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
                 if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
                     section.seats = seats
                     self?.updateCell(section: section)
-                    group.leave()
                 }
+                 group.leave()
             }
         }
         
         group.notify(queue: .main) {
             refresh.endRefreshing()
+            self.update()
         }
     }
     

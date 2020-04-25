@@ -25,8 +25,8 @@ struct AppConstants {
         return baseUrl + EndPoints.courses.rawValue
     }
     
-    var listenUrl: String {
-        return baseUrl + EndPoints.listen.rawValue
+    var seatsUrl: String {
+        return baseUrl + EndPoints.seats.rawValue
     }
     
     var listenSectionUrl: String {
@@ -40,7 +40,7 @@ struct AppConstants {
     
     enum EndPoints: String {
         case courses = "/courses"
-        case listen = "/listen"
+        case seats = "/seats"
         case listenSection = "/listen/section"
         case unsubscribe = "/unsubscribe"
     }

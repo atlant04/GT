@@ -47,6 +47,8 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = course.identifier
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Track", style: .plain, target: self, action: #selector(trackButtonTapped))
 
         button = navigationItem.rightBarButtonItem!
