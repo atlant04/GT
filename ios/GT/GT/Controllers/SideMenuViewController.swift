@@ -11,6 +11,7 @@ import SideMenu
 
 class SideMenuTableViewController: UITableViewController {
 
+    //@AutoUserDefaults<[String: [Course]]>(key: "schedules", defaultValue: [:])
     var schedules: [String: [Course]] = [:]
     var onDoneBlock: ((String, [Course]) -> Void)?
 

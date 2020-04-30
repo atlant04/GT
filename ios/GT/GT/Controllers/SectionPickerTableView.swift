@@ -30,6 +30,7 @@ final class SectionPickerTableView: UITableViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.register(SectionPickerCell.self, forCellReuseIdentifier: SectionPickerCell.reuseId)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.tableView.alwaysBounceVertical = false
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

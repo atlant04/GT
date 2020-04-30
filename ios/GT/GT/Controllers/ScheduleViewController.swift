@@ -9,12 +9,28 @@
 import UIKit
 import SideMenu
 import MTWeekView
+import CoreData
 
 class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNavigationControllerDelegate {
     var menu: SideMenuNavigationController!
     var weekView: MTWeekView!
     var sectionPicker: SectionPickerTableView = SectionPickerTableView()
     var selectedSections = Set<Section>()
+    var contentView: UIScrollView!
+
+//    override func loadView() {
+//        super.loadView()
+//        contentView = UIScrollView()
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.contentSize = UIScreen.main.bounds.size
+//        view.addSubview(contentView)
+//        NSLayoutConstraint.activate([
+//            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            contentView.topAnchor.constraint(equalTo: view.topAnchor),
+//            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+//        ])
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
