@@ -30,15 +30,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchVC = SearchViewController(columns: 3)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
 
-        let scheduleVC = ScheduleViewController()
+        let scheduleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "split") as! UISplitViewController
         scheduleVC.tabBarItem = UITabBarItem(title: "My Schedule", image: UIImage.init(systemName: "calendar"), tag: 4)
         
-        let controllers = [mainVC, searchVC, trackVC, scheduleVC]
-        let navControllers: [UINavigationController] = controllers.map {
+        let controllers = [mainVC, searchVC, trackVC]
+        var navControllers: [UIViewController] = controllers.map {
             let nav = UINavigationController(rootViewController: $0)
             nav.navigationBar.prefersLargeTitles = true
             return nav
         }
+        
+        navControllers.append(scheduleVC)
         
         let tabBarVC = UITabBarController()
         tabBarVC.setViewControllers(navControllers, animated: true)

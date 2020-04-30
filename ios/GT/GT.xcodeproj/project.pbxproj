@@ -23,6 +23,7 @@
 		273DFC33242907AE008950DA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC30242907AE008950DA /* ServerManager.swift */; };
 		273DFC34242907AE008950DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC31242907AE008950DA /* Extensions.swift */; };
 		274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D8730242A238E00B229B2 /* TrackedableViewController.swift */; };
+		2766DFEA245B8D64001795FB /* ScheduleSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766DFE9245B8D64001795FB /* ScheduleSplitViewController.swift */; };
 		279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */; };
 		279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */; };
 		279ACE2324546CF500B3DD06 /* SectionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */; };
@@ -64,6 +65,7 @@
 		273DFC31242907AE008950DA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		274D8730242A238E00B229B2 /* TrackedableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedableViewController.swift; sourceTree = "<group>"; };
 		275BA43D242A95BC00E89227 /* GT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GT.entitlements; sourceTree = "<group>"; };
+		2766DFE9245B8D64001795FB /* ScheduleSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSplitViewController.swift; sourceTree = "<group>"; };
 		279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerTableView.swift; sourceTree = "<group>"; };
 		279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePickerCell.swift; sourceTree = "<group>"; };
 		279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerCell.swift; sourceTree = "<group>"; };
@@ -156,15 +158,12 @@
 		273DFC182429076E008950DA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
-				273DFC1A2429076E008950DA /* ViewController.swift */,
-				273DFC1B2429076E008950DA /* DetailViewController.swift */,
-				274D8730242A238E00B229B2 /* TrackedableViewController.swift */,
-				27F9B29224351DF7006C5EE8 /* SearchViewController.swift */,
+				27F94233245B72DB00832468 /* Track */,
+				27F94232245B72A900832468 /* Schedules */,
+				27F94231245B728700832468 /* Search */,
+				27F94230245B725300832468 /* Courses */,
 				27A782192438C6B5006CDE57 /* ColumnViewController.swift */,
 				27A78223243A11CF006CDE57 /* SpinnerViewController.swift */,
-				FAE59F03244E59C20096F003 /* ScheduleViewController.swift */,
-				FAE59F05244E600B0096F003 /* SideMenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +183,42 @@
 				27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		27F94230245B725300832468 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				273DFC1A2429076E008950DA /* ViewController.swift */,
+				273DFC1B2429076E008950DA /* DetailViewController.swift */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		27F94231245B728700832468 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				27F9B29224351DF7006C5EE8 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		27F94232245B72A900832468 /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				FAE59F03244E59C20096F003 /* ScheduleViewController.swift */,
+				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
+				FAE59F05244E600B0096F003 /* SideMenuViewController.swift */,
+				2766DFE9245B8D64001795FB /* ScheduleSplitViewController.swift */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		27F94233245B72DB00832468 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				274D8730242A238E00B229B2 /* TrackedableViewController.swift */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		566B16AA1F6131133B08F523 /* Pods */ = {
@@ -350,6 +385,7 @@
 				FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */,
 				1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */,
 				27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */,
+				2766DFEA245B8D64001795FB /* ScheduleSplitViewController.swift in Sources */,
 				1786E57E243FCC5900FF6C9C /* CoursePickerView.swift in Sources */,
 				FA3938ED2454F7760022DA8F /* UserDefaults.swift in Sources */,
 				273DFC2C2429078D008950DA /* Course.swift in Sources */,

@@ -13,15 +13,13 @@ class SideMenuTableViewController: UITableViewController {
 
     //@AutoUserDefaults<[String: [Course]]>(key: "schedules", defaultValue: [:])
     var schedules: [String: [Course]] = [:]
-    var onDoneBlock: ((String, [Course]) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Schedules"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "schedule_cell")
         tableView.tableFooterView = UIView()
-         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddScheduleAlert))
-
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddScheduleAlert))
     }
 
     @objc func presentAddScheduleAlert() {
@@ -68,14 +66,6 @@ class SideMenuTableViewController: UITableViewController {
             vc.dismiss(animated: true, completion: nil)
         }
         self.present(UINavigationController(rootViewController: searchVC), animated: true, completion: nil)
-    }
-
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let courses = schedules[indexPath.row]
-        dismiss(animated: true, completion: {
-            self.onDoneBlock?(courses.key, courses.value)
-        })
     }
 }
 

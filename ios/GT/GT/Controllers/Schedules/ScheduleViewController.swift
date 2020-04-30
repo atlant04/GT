@@ -11,26 +11,13 @@ import SideMenu
 import MTWeekView
 import CoreData
 
-class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNavigationControllerDelegate {
+class ScheduleViewController: UIViewController, MTWeekViewDataSource {
+    
     var menu: SideMenuNavigationController!
     var weekView: MTWeekView!
     var sectionPicker: SectionPickerTableView = SectionPickerTableView()
     var selectedSections = Set<Section>()
     var contentView: UIScrollView!
-
-//    override func loadView() {
-//        super.loadView()
-//        contentView = UIScrollView()
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.contentSize = UIScreen.main.bounds.size
-//        view.addSubview(contentView)
-//        NSLayoutConstraint.activate([
-//            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            contentView.topAnchor.constraint(equalTo: view.topAnchor),
-//            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-//        ])
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,21 +52,21 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNa
             self.weekView.reload()
         }
 
-        let main = UIStoryboard(name: "Main", bundle: .main)
-        menu = main.instantiateViewController(identifier: "leftMenu")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(presentMenu(_:)))
-
-        (menu.viewControllers.first as? SideMenuTableViewController)?.onDoneBlock = { name, courses in
-            self.navigationItem.title = name
-            self.sectionPicker.courses = courses ?? []
-        }
-
-
-        menu.statusBarEndAlpha = 0
-        menu.animationOptions = .curveEaseInOut
-        menu.presentationStyle = presentStyle()
-        menu.menuWidth = view.bounds.width * 2 / 3
-        menu.blurEffectStyle = traitCollection.userInterfaceStyle == .light ? .light : .dark
+//        let main = UIStoryboard(name: "Main", bundle: .main)
+//        menu = main.instantiateViewController(identifier: "leftMenu")
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(presentMenu(_:)))
+//
+//        (menu.viewControllers.first as? SideMenuTableViewController)?.onDoneBlock = { name, courses in
+//            self.navigationItem.title = name
+//            self.sectionPicker.courses = courses ?? []
+//        }
+//
+//
+//        menu.statusBarEndAlpha = 0
+//        menu.animationOptions = .curveEaseInOut
+//        menu.presentationStyle = presentStyle()
+//        menu.menuWidth = view.bounds.width * 2 / 3
+//        menu.blurEffectStyle = traitCollection.userInterfaceStyle == .light ? .light : .dark
     }
     
     func setupWeekView() {
@@ -126,14 +113,5 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, SideMenuNa
             return meetings.flatMap(Parser.parseMeeting(meeting:))
         }
     }
-
-    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
-        weekView.reload()
-    }
-
-    
-}
-
-extension ScheduleViewController: UITableViewDelegate {
     
 }
