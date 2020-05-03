@@ -127,7 +127,7 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
         contentView.layer.shadowOpacity = 0.3
         contentView.layer.shouldRasterize = true
         contentView.layer.rasterizationScale = UIScreen.main.scale
-        //contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {

@@ -12,7 +12,6 @@ import UIKit
 class ScheduleSplitViewController: UISplitViewController {
     
     var schedulePicker: SideMenuTableViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         schedulePicker = (viewControllers.first as! UINavigationController).viewControllers.first as? SideMenuTableViewController
@@ -28,5 +27,9 @@ extension ScheduleSplitViewController: UITableViewDelegate {
         let scheduleVC = ScheduleViewController()
         scheduleVC.sectionPicker.courses = courses
         showDetailViewController(scheduleVC, sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        500
     }
 }

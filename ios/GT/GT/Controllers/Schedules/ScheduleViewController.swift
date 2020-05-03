@@ -72,6 +72,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource {
     func setupWeekView() {
         var config = LayoutConfiguration()
         config.hidesVerticalLines = true
+        config.collisionStrategy = .combine
         weekView = MTWeekView(frame: .zero, configuration: config)
         view.addSubview(weekView)
         weekView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +80,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource {
         weekView.dataSource = self
         
         NSLayoutConstraint.activate([
-            weekView.topAnchor.constraint(equalTo: view.topAnchor),
+            weekView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             weekView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             weekView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             weekView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2)

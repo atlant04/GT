@@ -77,10 +77,10 @@ extension Day {
 extension UIView {
     func fill(with view: UIView, insets: UIEdgeInsets = .zero) {
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
+            self.topAnchor.constraint(equalTo: view.topAnchor, constant: -insets.top),
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -insets.left),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -insets.bottom),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -insets.right),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: insets.bottom),
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: insets.right),
         ])
     }
 

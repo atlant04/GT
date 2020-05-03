@@ -17,8 +17,10 @@ class SideMenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Schedules"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "schedule_cell")
+        tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 500
+        tableView.separatorStyle = .none
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddScheduleAlert))
     }
 
@@ -41,17 +43,17 @@ class SideMenuTableViewController: UITableViewController {
         1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        schedules.keys.count
+        6
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "schedule_cell", for: indexPath)
-        let scheduleName = Array(schedules.keys)[indexPath.row]
-        cell.textLabel?.text = scheduleName
-        let button = PropertyButton(type: .contactAdd)
-        button.localObject = scheduleName
-        button.addTarget(self, action: #selector(presentSearchVC(_:)), for: .touchUpInside)
-        cell.accessoryView = button
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.reuseIdentifier, for: indexPath)
+//        let scheduleName = Array(schedules.keys)[indexPath.row]
+//        cell.textLabel?.text = scheduleName
+//        let button = PropertyButton(type: .contactAdd)
+//        button.localObject = scheduleName
+//        button.addTarget(self, action: #selector(presentSearchVC(_:)), for: .touchUpInside)
+//        cell.accessoryView = button
         return cell
     }
 
