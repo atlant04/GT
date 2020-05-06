@@ -12,7 +12,7 @@ import SideMenu
 class SideMenuTableViewController: UITableViewController {
 
     //@AutoUserDefaults<[String: [Course]]>(key: "schedules", defaultValue: [:])
-    var schedules: [String: [Course]] = [:]
+    var schedules = [Schedule]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

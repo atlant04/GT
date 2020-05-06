@@ -51,22 +51,6 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource {
             }
             self.weekView.reload()
         }
-
-//        let main = UIStoryboard(name: "Main", bundle: .main)
-//        menu = main.instantiateViewController(identifier: "leftMenu")
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(presentMenu(_:)))
-//
-//        (menu.viewControllers.first as? SideMenuTableViewController)?.onDoneBlock = { name, courses in
-//            self.navigationItem.title = name
-//            self.sectionPicker.courses = courses ?? []
-//        }
-//
-//
-//        menu.statusBarEndAlpha = 0
-//        menu.animationOptions = .curveEaseInOut
-//        menu.presentationStyle = presentStyle()
-//        menu.menuWidth = view.bounds.width * 2 / 3
-//        menu.blurEffectStyle = traitCollection.userInterfaceStyle == .light ? .light : .dark
     }
     
     func setupWeekView() {
@@ -80,7 +64,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource {
         weekView.dataSource = self
         
         NSLayoutConstraint.activate([
-            weekView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            weekView.topAnchor.constraint(equalTo: view.topAnchor),
             weekView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             weekView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             weekView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2)

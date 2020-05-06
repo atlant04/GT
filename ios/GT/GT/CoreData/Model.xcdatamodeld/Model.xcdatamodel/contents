@@ -78,6 +78,10 @@
         </attribute>
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="meetings" inverseEntity="Section"/>
     </entity>
+    <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section"/>
+    </entity>
     <entity name="Seats" representedClassName="Seats" syncable="YES" codeGenerationType="class">
         <attribute name="actual" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
@@ -145,5 +149,6 @@
         <element name="Meeting" positionX="-36" positionY="81" width="128" height="133"/>
         <element name="Seats" positionX="-54" positionY="90" width="128" height="148"/>
         <element name="Section" positionX="-54" positionY="72" width="128" height="148"/>
+        <element name="Schedule" positionX="-54" positionY="99" width="128" height="73"/>
     </elements>
 </model>

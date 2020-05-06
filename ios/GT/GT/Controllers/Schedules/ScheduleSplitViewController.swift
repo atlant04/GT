@@ -23,10 +23,10 @@ class ScheduleSplitViewController: UISplitViewController {
 
 extension ScheduleSplitViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let courses = schedulePicker.schedules[indexPath.row].value
+        //let courses = schedulePicker.schedules[indexPath.row].value
         let scheduleVC = ScheduleViewController()
-        scheduleVC.sectionPicker.courses = courses
-        showDetailViewController(scheduleVC, sender: self)
+        //scheduleVC.sectionPicker.courses = courses
+        showDetailViewController(UINavigationController(rootViewController: scheduleVC), sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
