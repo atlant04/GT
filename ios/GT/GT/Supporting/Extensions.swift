@@ -74,13 +74,19 @@ extension Day {
     }
 }
 
+extension UIEdgeInsets {
+    static var all: (CGFloat) -> UIEdgeInsets = { inset in
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+}
+
 extension UIView {
     func fill(with view: UIView, insets: UIEdgeInsets = .zero) {
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: view.topAnchor, constant: -insets.top),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -insets.left),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: insets.bottom),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: insets.right),
+            view.topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top),
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: insets.left),
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -insets.bottom),
+            view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -insets.right),
         ])
     }
 
@@ -215,4 +221,10 @@ extension String {
         return self.replacingOccurrences(of: "[\\s\n]+", with: " ", options: .regularExpression, range: nil)
     }
 
+}
+
+extension FloatingPoint {
+    var inRadians: Self {
+        return Self.pi * self / 180
+    }
 }

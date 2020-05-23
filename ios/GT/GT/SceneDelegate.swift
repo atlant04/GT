@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchVC = SearchViewController(columns: 3)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
 
-        let scheduleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "split") as! UISplitViewController
+        let scheduleVC = MainSplitViewController()
         scheduleVC.tabBarItem = UITabBarItem(title: "My Schedule", image: UIImage.init(systemName: "calendar"), tag: 4)
         
         let controllers = [mainVC, searchVC, trackVC]

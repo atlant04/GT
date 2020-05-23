@@ -23,7 +23,7 @@
 		273DFC33242907AE008950DA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC30242907AE008950DA /* ServerManager.swift */; };
 		273DFC34242907AE008950DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC31242907AE008950DA /* Extensions.swift */; };
 		274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D8730242A238E00B229B2 /* TrackedableViewController.swift */; };
-		2766DFEA245B8D64001795FB /* ScheduleSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766DFE9245B8D64001795FB /* ScheduleSplitViewController.swift */; };
+		2766DFEA245B8D64001795FB /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766DFE9245B8D64001795FB /* MainSplitViewController.swift */; };
 		2766E010245DF741001795FB /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E00F245DF741001795FB /* ScheduleCell.swift */; };
 		2766E012245DFA87001795FB /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E011245DFA87001795FB /* ScheduleList.swift */; };
 		2766E014245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */; };
@@ -43,7 +43,6 @@
 		FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530DD2449DAFB00B97046 /* Parser.swift */; };
 		FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530DF2449DCA500B97046 /* CourseDetailTableView.swift */; };
 		FAB530E22449F19F00B97046 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB530E12449F19F00B97046 /* MeetingCell.swift */; };
-		FAE59F02244E58BC0096F003 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = FAE59F01244E58BC0096F003 /* SideMenu */; };
 		FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE59F03244E59C20096F003 /* ScheduleViewController.swift */; };
 		FAE59F06244E600B0096F003 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE59F05244E600B0096F003 /* SideMenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -68,7 +67,7 @@
 		273DFC31242907AE008950DA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		274D8730242A238E00B229B2 /* TrackedableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedableViewController.swift; sourceTree = "<group>"; };
 		275BA43D242A95BC00E89227 /* GT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GT.entitlements; sourceTree = "<group>"; };
-		2766DFE9245B8D64001795FB /* ScheduleSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSplitViewController.swift; sourceTree = "<group>"; };
+		2766DFE9245B8D64001795FB /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		2766E00F245DF741001795FB /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		2766E011245DFA87001795FB /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
 		2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -99,7 +98,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				271A444D24292EB300AADABE /* MTWeekView in Frameworks */,
-				FAE59F02244E58BC0096F003 /* SideMenu in Frameworks */,
 				850FD7BDFFF6B638E349271F /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				27F94233245B72DB00832468 /* Track */,
-				27F94232245B72A900832468 /* Schedules */,
+				27F94232245B72A900832468 /* ScheduleFlow */,
 				27F94231245B728700832468 /* Search */,
 				27F94230245B725300832468 /* Courses */,
 				27A782192438C6B5006CDE57 /* ColumnViewController.swift */,
@@ -185,6 +183,7 @@
 		2766E00E245DF723001795FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */,
 				2766E00F245DF741001795FB /* ScheduleCell.swift */,
 				2766E011245DFA87001795FB /* ScheduleList.swift */,
 			);
@@ -217,17 +216,16 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		27F94232245B72A900832468 /* Schedules */ = {
+		27F94232245B72A900832468 /* ScheduleFlow */ = {
 			isa = PBXGroup;
 			children = (
 				2766E00E245DF723001795FB /* Views */,
 				FAE59F03244E59C20096F003 /* ScheduleViewController.swift */,
 				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
 				FAE59F05244E600B0096F003 /* SideMenuViewController.swift */,
-				2766DFE9245B8D64001795FB /* ScheduleSplitViewController.swift */,
-				2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */,
+				2766DFE9245B8D64001795FB /* MainSplitViewController.swift */,
 			);
-			path = Schedules;
+			path = ScheduleFlow;
 			sourceTree = "<group>";
 		};
 		27F94233245B72DB00832468 /* Track */ = {
@@ -287,7 +285,6 @@
 			name = GT;
 			packageProductDependencies = (
 				271A444C24292EB300AADABE /* MTWeekView */,
-				FAE59F01244E58BC0096F003 /* SideMenu */,
 			);
 			productName = GT;
 			productReference = 273DFC012429074C008950DA /* GT.app */;
@@ -319,7 +316,6 @@
 			mainGroup = 273DFBF82429074C008950DA;
 			packageReferences = (
 				27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */,
-				FAE59F00244E58BC0096F003 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 273DFC022429074C008950DA /* Products */;
 			projectDirPath = "";
@@ -403,7 +399,7 @@
 				FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */,
 				1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */,
 				27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */,
-				2766DFEA245B8D64001795FB /* ScheduleSplitViewController.swift in Sources */,
+				2766DFEA245B8D64001795FB /* MainSplitViewController.swift in Sources */,
 				1786E57E243FCC5900FF6C9C /* CoursePickerView.swift in Sources */,
 				FA3938ED2454F7760022DA8F /* UserDefaults.swift in Sources */,
 				273DFC2C2429078D008950DA /* Course.swift in Sources */,
@@ -644,14 +640,6 @@
 				kind = branch;
 			};
 		};
-		FAE59F00244E58BC0096F003 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.4.8;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -659,11 +647,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */;
 			productName = MTWeekView;
-		};
-		FAE59F01244E58BC0096F003 /* SideMenu */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FAE59F00244E58BC0096F003 /* XCRemoteSwiftPackageReference "SideMenu" */;
-			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
 

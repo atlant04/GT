@@ -6,17 +6,8 @@
         "repositoryURL": "https://github.com/atlant04/MTWeekView.git",
         "state": {
           "branch": "drag&drop",
-          "revision": "983e2797e25b4eb0a96dd2f0e0bb93fb8a1aa354",
+          "revision": "8a90a45a636850d5f253b085972072e6ec5fc449",
           "version": null
-        }
-      },
-      {
-        "package": "SideMenu",
-        "repositoryURL": "https://github.com/jonkykong/SideMenu.git",
-        "state": {
-          "branch": null,
-          "revision": "138103093176154f84ae9a2a63e58b9ae78bc6d7",
-          "version": "6.4.8"
         }
       },
       {

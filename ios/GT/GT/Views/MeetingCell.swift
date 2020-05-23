@@ -13,7 +13,7 @@ import MTWeekView
 class MeetingCell: MTBaseCell{
 
    override func configure(with data: Event) {
-    super.configure(with: data)
+        super.configure(with: data)
         if let meeting = data as? MeetingEvent {
             label.text = meeting.name
         }
@@ -36,10 +36,13 @@ class MeetingCell: MTBaseCell{
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             label.widthAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
-        //contentView.layer.cornerRadius = 12
-//        contentView.layer.cornerCurve = .continuous
-        backgroundColor = UIColor.systemRed.withAlphaComponent(0.4)
+        let color = UIColor(red: 94/255, green: 25/255, blue: 20/255, alpha: 0.9)
+        contentView.backgroundColor = color
+        contentView.layer.cornerRadius = 12
+        contentView.layer.cornerCurve = .continuous
     }
+    
+
 
 
 

@@ -40,12 +40,12 @@ class CourseList: UICollectionView, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        sections.count
+        8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CourseListCell.reuseIdentifier, for: indexPath) as! CourseListCell
-        cell.label.text = sections[indexPath.row].course?.identifier
+        cell.label.text = ["CS 1332", "APPH 1050", "MATH 2550", "PHYS 2212"].randomElement()//sections[indexPath.row].course?.identifier
         return cell
     }
     
@@ -56,8 +56,7 @@ class CourseList: UICollectionView, UICollectionViewDataSource {
     override func layoutSubviews() {
         invalidateIntrinsicContentSize()
         super.layoutSubviews()
-    }
-    
+    }  
 }
 
 

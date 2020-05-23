@@ -96,10 +96,11 @@ class CourseCell: UICollectionViewCell, ConfiguringCell {
         let stack = UIStackView(arrangedSubviews: [identifier, name, hours, sections])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
+        stack.distribution = .fillEqually
         stack.alignment = .center
         contentView.addSubview(stack)
-        stack.fill(with: contentView, insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+        contentView.fill(with: stack, insets: .all(4))
+        //stack.fill(with: contentView, insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
 
     }
 

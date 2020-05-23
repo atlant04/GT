@@ -60,8 +60,8 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
     }
     
     override func layoutSubviews() {
-        //courseList.collectionView.invalidateIntrinsicContentSize()
         super.layoutSubviews()
+        contentView.frame = contentView.frame.insetBy(dx: 8, dy: 8)
     }
     
     var heightConstraint: NSLayoutConstraint?
@@ -69,14 +69,23 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
     func commonInit() {
         weekView.dataSource = self
         weekView.register(MeetingCell.self)
-        
+        weekView.setContentHuggingPriority(UILayoutPriority(0), for: .vertical)
         let stack = UIStackView(arrangedSubviews: [label, courseList, weekView])
+        
+        stack.isUserInteractionEnabled = false
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fill
         stack.axis = .vertical
         stack.spacing = 8
-        contentView.addSubview(stack)
-        contentView.fill(with: stack, insets: .init(top: 8, left: 8, bottom: 8, right: 8))
+        selectionStyle = .none
     
+        contentView.addSubview(stack)
+        contentView.fill(with: stack, insets: .all(24))
+        contentView.layer.cornerRadius = 16
+        contentView.layer.cornerCurve = .continuous
+        contentView.layer.borderWidth = 5
+        contentView.layer.borderColor = UIColor.systemBlue.cgColor
+        contentView.clipsToBounds = true
     }
 
     

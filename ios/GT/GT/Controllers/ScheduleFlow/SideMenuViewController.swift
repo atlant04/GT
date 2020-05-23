@@ -7,21 +7,20 @@
 //
 
 import UIKit
-import SideMenu
 
 class SideMenuTableViewController: UITableViewController {
 
-    //@AutoUserDefaults<[String: [Course]]>(key: "schedules", defaultValue: [:])
-    var schedules = [Schedule]()
-
+    var schedules: [String: [Course]] = [:]
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         navigationItem.title = "Schedules"
+        
         tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
-        tableView.estimatedRowHeight = 500
+        tableView.estimatedRowHeight = 200
         tableView.separatorStyle = .none
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddScheduleAlert))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddScheduleAlert))
     }
 
     @objc func presentAddScheduleAlert() {
@@ -47,7 +46,15 @@ class SideMenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.reuseIdentifier, for: indexPath) as! ScheduleCell
+    
+        var transform = CGAffineTransform(rotationAngle: CGFloat.pi / 40)
+        transform.a = 1
+        transform.d = 1
+        cell.layer.anchorPoint = .init(x: 0.5, y: 0.5)
+        //cell.transform = transform
+        
+        //cell.layer.mask = maskLayer
 //        let scheduleName = Array(schedules.keys)[indexPath.row]
 //        cell.textLabel?.text = scheduleName
 //        let button = PropertyButton(type: .contactAdd)
@@ -55,6 +62,14 @@ class SideMenuTableViewController: UITableViewController {
 //        button.addTarget(self, action: #selector(presentSearchVC(_:)), for: .touchUpInside)
 //        cell.accessoryView = button
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let cell = tableView.cellForRow(at: .init(row: 0, section: 0)) as! ScheduleCell
+        print(cell.courseList.intrinsicContentSize)
+        print(cell.weekView.intrinsicContentSize)
+        print(cell.label.intrinsicContentSize)
     }
 
     @objc func presentSearchVC(_ sender: UIButton) {
@@ -75,3 +90,4 @@ class SideMenuTableViewController: UITableViewController {
 class PropertyButton: UIButton {
     var localObject: Any?
 }
+
