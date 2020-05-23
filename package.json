@@ -5,17 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "node app",
-    "start": "node app",
-    "postinstall": "cd backend/ios && npm install"
+    "start": "node app"
   },
   "author": "Maksim Tochilkin",
   "license": "MIT",
   "dependencies": {
+    "@pusher/push-notifications-server": "^1.2.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.5",
-    "mongoose": "^5.9.5",
-    "nodemon": "^2.0.2"
+    "mongoose": "^5.9.5"
   }
 }
