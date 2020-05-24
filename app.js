@@ -21,7 +21,7 @@ db.connect(() => {
     app.use(ListenRoute)
     app.listen(port, () => {
         console.log("Listening on port 3000")
-        worker.startWorker()
+        //worker.startWorker()
         //monitor.start("https://ada7996e.ngrok.io/listen")
     })
 })

@@ -4,6 +4,7 @@ import cheerio from "cheerio"
 const fetch = async (term, crn) => {
     const baseUrl = `https://oscar.gatech.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=${term}&crn_in=${crn}`
     const result = await axios.get(baseUrl)
+    .catch(err => console.log(err))
     return cheerio.load(result.data)
 }
 
