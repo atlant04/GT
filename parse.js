@@ -1,12 +1,11 @@
-const axios = require('axios')
-const cheerio = require('cheerio')
+import axios from "axios"
+import cheerio from "cheerio"
 
 const fetch = async (term, crn) => {
     const baseUrl = `https://oscar.gatech.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=${term}&crn_in=${crn}`
     const result = await axios.get(baseUrl)
     return cheerio.load(result.data)
 }
-
 
 const parse = async (term, crn) => {
     const $ = await fetch(term, crn)
@@ -32,4 +31,4 @@ const parse = async (term, crn) => {
     }
 }
 
-module.exports = parse
+export default parse

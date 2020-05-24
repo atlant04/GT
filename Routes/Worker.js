@@ -1,8 +1,8 @@
-const express = require('express')
+import express from "express"
+import { db } from "../db.js"
+import parse from "../parse.js"
+import publish from "../publisher.js"
 const router = express.Router()
-const parse = require('../parse.js')
-const db = require("../db.js").db()
-const publish = require("../publisher.js")
 
 const statusChanged = async (bucket) => {
     const data = await parse("202008", bucket.crn)
@@ -29,12 +29,10 @@ const checkBuckets = async () => {
         buckets.forEach(async (bucket) => {
             const needsNotification = await statusChanged(bucket)
             if (needsNotification) {
-                publish(bucket)
+                //publish(bucket)
             }
         })
     })
 }
 
-module.exports = {
-    startWorker: () => setInterval(() => checkBuckets(), 10000)
-}
+export const startWorker = () => setInterval(() => checkBuckets(), 10000)

@@ -1,7 +1,13 @@
-const express = require('express')
-const parser = require('body-parser')
+import express from "express"
+import parser from "body-parser"
+import { start } from "./monitor.js"
+import { courseInfoUpdate } from './jobs.js'
+import CourseRoute from "./Routes/Course.js"
+import ListenRoute from "./Routes/Listener.js"
+import * as worker from "./Routes/Worker.js"
+import * as db from "./db.js"
+
 const app = express()
-const monitor = require('./monitor.js')
 
 const port = process.env.PORT || 3000
 app.use(parser.urlencoded({
@@ -10,10 +16,9 @@ app.use(parser.urlencoded({
 
 app.use(express.json());
 
-require('./db.js').connect(() => {
-    app.use(require("./Routes/Course.js"))
-    app.use(require("./Routes/Listener.js"))
-    const worker = require("./Routes/Worker.js")
+db.connect(() => {
+    app.use(CourseRoute)
+    app.use(ListenRoute)
     app.listen(port, () => {
         console.log("Listening on port 3000")
         worker.startWorker()

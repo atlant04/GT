@@ -1,7 +1,7 @@
-const express = require('express')
+import express from "express"
+import { db } from "../db.js"
+import parse from "../parse.js"
 const router = express.Router()
-const parse = require('../parse.js')
-const db = require("../db.js").db()
 
 
 router.post("/listen", async (req, res) => {
@@ -52,5 +52,4 @@ router.post("/unsubscribe", async (req, res) => {
     }).then(newDoc => res.json(newDoc))
 })
 
-
-module.exports = router
+export default router

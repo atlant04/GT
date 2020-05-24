@@ -1,6 +1,7 @@
-const express = require('express')
+import express from "express"
+import { db } from "../db.js"
+
 const router = express.Router()
-const db = require('../db.js').db()
 
 router.get('/courses', (req, res) => {
     db.collection("courses").find({}).toArray((err, courses) => {
@@ -14,6 +15,4 @@ router.get('/', (req, res) => {
     })
 })
 
-
-
-module.exports = router
+export default router

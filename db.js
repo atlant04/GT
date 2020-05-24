@@ -1,19 +1,16 @@
-const MongoClient = require('mongodb').MongoClient
+import mongodb from "mongodb"
 const uri = "mongodb+srv://admin:I83zA2NLzlb56URb@oscar-ima5l.mongodb.net/test?retryWrites=true&w=majority"
-const client = new MongoClient(uri, {
+const client = new mongodb.MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
-var _db
+export var db
 
-module.exports = {
-    connect: (callback) => client.connect(err => {
-        _db = client.db("Oscar")
-        callback(err)
-    }),
-    db: () => {
-        return _db
-    },
-    close: () => client.close()
-}
+export const connect = (callback) => client.connect(err => {
+    db = client.db("Oscar")
+    callback(err)
+})
+
+
+export const close = () => client.close()

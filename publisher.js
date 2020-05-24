@@ -1,4 +1,4 @@
-const PushNotifications = require('@pusher/push-notifications-server');
+import PushNotifications from "@pusher/push-notifications-server"
 
 let beamsClient = new PushNotifications({
     instanceId: '2c57da76-8881-452d-93e7-974833886bda',
@@ -25,4 +25,4 @@ const publish = (bucket) => {
     })
 }
 
-module.exports = publish
+export default publish
