@@ -3,4 +3,54 @@
    uuid = "DC2657F2-6B72-4E04-ADAA-E7110EB7B992"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AEB1B20-784D-42B8-A638-140BD2DFB74C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GT/Supporting/ServerManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getCourses(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7AEB1B20-784D-42B8-A638-140BD2DFB74C - 3d4e8a67fc74b272"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in GT.ServerManager.getCourses(completion: (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mtoch/Desktop/OscarApp/ios/GT/GT/Supporting/ServerManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "296">
+               </Location>
+               <Location
+                  uuid = "7AEB1B20-784D-42B8-A638-140BD2DFB74C - 3d4e8a67fc74b272"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in GT.ServerManager.getCourses(completion: (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mtoch/Desktop/OscarApp/ios/GT/GT/Supporting/ServerManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "320">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

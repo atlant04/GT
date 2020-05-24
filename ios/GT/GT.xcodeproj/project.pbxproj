@@ -185,6 +185,7 @@
 			children = (
 				2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */,
 				2766E00F245DF741001795FB /* ScheduleCell.swift */,
+				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
 				2766E011245DFA87001795FB /* ScheduleList.swift */,
 			);
 			path = Views;
@@ -221,7 +222,6 @@
 			children = (
 				2766E00E245DF723001795FB /* Views */,
 				FAE59F03244E59C20096F003 /* ScheduleViewController.swift */,
-				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
 				FAE59F05244E600B0096F003 /* SideMenuViewController.swift */,
 				2766DFE9245B8D64001795FB /* MainSplitViewController.swift */,
 			);
