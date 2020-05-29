@@ -91,6 +91,13 @@ final class ViewController: ColumnViewController<Course, CourseCell> {
         return section
         
     }
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("here")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
     
     override func setupDataSource() {
         super.setupDataSource()

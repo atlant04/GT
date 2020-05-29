@@ -12,8 +12,6 @@ import CoreData
 
 class MainSplitViewController: UISplitViewController {
     var schedulePicker: SideMenuTableViewController!
-    var detailSchedule: ScheduleViewController!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +20,6 @@ class MainSplitViewController: UISplitViewController {
         self.preferredPrimaryColumnWidthFraction = 0.3
         self.maximumPrimaryColumnWidth = 700
         schedulePicker = SideMenuTableViewController()
-        schedulePicker.tableView.delegate = self
-        detailSchedule = ScheduleViewController()
         viewControllers = [UINavigationController(schedulePicker)]
         
     }
@@ -36,24 +32,6 @@ class MainSplitViewController: UISplitViewController {
 
 }
 
-
-extension MainSplitViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let courses = schedulePicker.schedules[indexPath.row].value
-        let scheduleVC = ScheduleViewController()
-//        scheduleVC.modalPresentationStyle = .fullScreen
-        //scheduleVC.sectionPicker.courses = courses
-        //showDetailViewController(scheduleVC, sender: nil)
-//        show(scheduleVC, sender: nil)
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.wiggle()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        400
-    }
-    
-}
 
 extension MainSplitViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
@@ -92,8 +70,8 @@ extension UITableViewCell {
         transform.isAdditive = true
         transform.repeatCount = .greatestFiniteMagnitude
 
-        self.layer.add(transform, forKey: nil)
-        self.layer.add(scale, forKey: nil)
+        self.layer.add(transform, forKey: "transform")
+        self.layer.add(scale, forKey: "scale")
     }
 }
 

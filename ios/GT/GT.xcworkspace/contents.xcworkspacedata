@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/mtoch/Desktop/OscarApp/ios/GT/GT/CoreData/Meeting+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/mtoch/Desktop/OscarApp/ios/GT/GT/CoreData/Meeting+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:GT.xcodeproj">
    </FileRef>
    <FileRef

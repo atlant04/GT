@@ -10,7 +10,6 @@
 		1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786E574243FCC5900FF6C9C /* SectionCell.swift */; };
 		1786E57B243FCC5900FF6C9C /* SectionCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1786E575243FCC5900FF6C9C /* SectionCellXib.xib */; };
 		1786E57E243FCC5900FF6C9C /* CoursePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786E578243FCC5900FF6C9C /* CoursePickerView.swift */; };
-		271A444D24292EB300AADABE /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 271A444C24292EB300AADABE /* MTWeekView */; };
 		273DFC052429074C008950DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC042429074C008950DA /* AppDelegate.swift */; };
 		273DFC0C2429074C008950DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC0A2429074C008950DA /* Main.storyboard */; };
 		273DFC0E2429074F008950DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC0D2429074F008950DA /* Assets.xcassets */; };
@@ -27,6 +26,9 @@
 		2766E010245DF741001795FB /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E00F245DF741001795FB /* ScheduleCell.swift */; };
 		2766E012245DFA87001795FB /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E011245DFA87001795FB /* ScheduleList.swift */; };
 		2766E014245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */; };
+		2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 2792C73E247E8DA400E0789F /* MTWeekView */; };
+		2792C749247FEE8100E0789F /* Meeting+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2792C747247FEE8100E0789F /* Meeting+CoreDataProperties.swift */; };
+		2792C74A247FEE8100E0789F /* Meeting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2792C748247FEE8100E0789F /* Meeting+CoreDataClass.swift */; };
 		279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */; };
 		279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */; };
 		279ACE2324546CF500B3DD06 /* SectionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */; };
@@ -71,6 +73,9 @@
 		2766E00F245DF741001795FB /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		2766E011245DFA87001795FB /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
 		2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		2792C740247E8DAB00E0789F /* MTWeekView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTWeekView; path = ../../../MTWeekView; sourceTree = "<group>"; };
+		2792C747247FEE8100E0789F /* Meeting+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meeting+CoreDataProperties.swift"; path = "/Users/mtoch/Desktop/OscarApp/ios/GT/GT/CoreData/Meeting+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		2792C748247FEE8100E0789F /* Meeting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meeting+CoreDataClass.swift"; path = "/Users/mtoch/Desktop/OscarApp/ios/GT/GT/CoreData/Meeting+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerTableView.swift; sourceTree = "<group>"; };
 		279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePickerCell.swift; sourceTree = "<group>"; };
 		279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerCell.swift; sourceTree = "<group>"; };
@@ -97,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271A444D24292EB300AADABE /* MTWeekView in Frameworks */,
+				2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */,
 				850FD7BDFFF6B638E349271F /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +130,7 @@
 		273DFBF82429074C008950DA = {
 			isa = PBXGroup;
 			children = (
+				2792C740247E8DAB00E0789F /* MTWeekView */,
 				273DFC032429074C008950DA /* GT */,
 				273DFC022429074C008950DA /* Products */,
 				566B16AA1F6131133B08F523 /* Pods */,
@@ -194,6 +200,8 @@
 		27B71F9C242CA620000EFEFE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				2792C748247FEE8100E0789F /* Meeting+CoreDataClass.swift */,
+				2792C747247FEE8100E0789F /* Meeting+CoreDataProperties.swift */,
 				27B71FA3242CA620000EFEFE /* Model.xcdatamodeld */,
 				27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */,
 			);
@@ -284,7 +292,7 @@
 			);
 			name = GT;
 			packageProductDependencies = (
-				271A444C24292EB300AADABE /* MTWeekView */,
+				2792C73E247E8DA400E0789F /* MTWeekView */,
 			);
 			productName = GT;
 			productReference = 273DFC012429074C008950DA /* GT.app */;
@@ -315,7 +323,7 @@
 			);
 			mainGroup = 273DFBF82429074C008950DA;
 			packageReferences = (
-				27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */,
+				2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */,
 			);
 			productRefGroup = 273DFC022429074C008950DA /* Products */;
 			projectDirPath = "";
@@ -389,6 +397,8 @@
 			files = (
 				FA365FE5244874980058AE7B /* SectionHeader.swift in Sources */,
 				FA365FE6244874980058AE7B /* CourseCell.swift in Sources */,
+				2792C749247FEE8100E0789F /* Meeting+CoreDataProperties.swift in Sources */,
+				2792C74A247FEE8100E0789F /* Meeting+CoreDataClass.swift in Sources */,
 				FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */,
 				FA365FE7244874980058AE7B /* Protocols.swift in Sources */,
 				2766E010245DF741001795FB /* ScheduleCell.swift in Sources */,
@@ -632,7 +642,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
+		2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
 			requirement = {
@@ -643,9 +653,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		271A444C24292EB300AADABE /* MTWeekView */ = {
+		2792C73E247E8DA400E0789F /* MTWeekView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 27C14368242913D500E91FAC /* XCRemoteSwiftPackageReference "MTWeekView" */;
+			package = 2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */;
 			productName = MTWeekView;
 		};
 /* End XCSwiftPackageProductDependency section */

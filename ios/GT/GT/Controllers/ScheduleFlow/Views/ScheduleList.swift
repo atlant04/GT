@@ -9,10 +9,10 @@
 import UIKit
 
 
-class CourseList: UICollectionView, UICollectionViewDataSource {
+class CourseList: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var alignedLayout: UICollectionViewFlowLayout
     
-    var sections = [Section]() {
+    var courses = [Course]() {
         didSet {
             reloadData()
         }
@@ -28,35 +28,42 @@ class CourseList: UICollectionView, UICollectionViewDataSource {
         backgroundColor = UIColor.systemBackground
         isScrollEnabled = false
         dataSource = self
+        delegate = self
         
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
     
+    override func reloadData() {
+        super.reloadData()
+        collectionViewLayout.invalidateLayout()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        8
+        courses.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CourseListCell.reuseIdentifier, for: indexPath) as! CourseListCell
-        cell.label.text = ["CS 1332", "APPH 1050", "MATH 2550", "PHYS 2212"].randomElement()//sections[indexPath.row].course?.identifier
+        cell.label.text = courses[indexPath.row].identifier
         return cell
     }
     
     override var intrinsicContentSize: CGSize {
         return collectionViewLayout.collectionViewContentSize
     }
-    
+
     override func layoutSubviews() {
         invalidateIntrinsicContentSize()
         super.layoutSubviews()
-    }  
+        
+    }
 }
 
 
@@ -74,6 +81,7 @@ private final class CourseListCell: UICollectionViewCell, ConfiguringCell {
         let label = PaddedLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "CS 1332"
+        label.numberOfLines = 1
         label.textAlignment = .center
         label.insets = .init(top: 4, left: 4, bottom: 4, right: 4)
         return label
@@ -88,13 +96,13 @@ private final class CourseListCell: UICollectionViewCell, ConfiguringCell {
         contentView.addSubview(label)
         contentView.backgroundColor = UIColor.secondarySystemBackground
         contentView.layer.cornerRadius = 6
-        self.fill(with: label)
+        contentView.fill(with: label)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 class PaddedLabel: UILabel {

@@ -13,7 +13,7 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
     typealias Content = Section
     static var reuseIdentifier: String = "section_cell"
     var isEditing: Bool = false
-    
+
     
     let image: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "cross"))

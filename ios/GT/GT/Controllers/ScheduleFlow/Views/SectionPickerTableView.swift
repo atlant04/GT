@@ -25,11 +25,6 @@ final class SectionPickerTableView: UITableView {
     }
 
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! SectionPickerCell
-        cell.isChosen.toggle()
-    }
-    
 }
 
 

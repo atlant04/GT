@@ -53,7 +53,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
 
         button = navigationItem.rightBarButtonItem!
 
-        allEvents = Parser.parseEvents(course: course)
+        allEvents = (course.sections as? Set<Section>)?.compactMap { $0.allEvents }.reduce([], +)
 
         tableView = CourseDetailTableView()
         tableView.attributes = courseAttributes
@@ -136,7 +136,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
             return t1.count < t2.count || t1 < t2
         }
 
-        var all = SegmentioItem(title: "All", image: nil)
+        let all = SegmentioItem(title: "All", image: nil)
         content.insert(all, at: 0)
         return content
     }
@@ -184,19 +184,72 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
 }
 
 
-struct MeetingEvent: Event {
-    var id: UUID = UUID()
+public struct MeetingEvent: Codable, Event {
+    public var id: UUID = UUID()
 
-    var type: String?
-    var name: String?
-    var day: Day
-    var start: Time
-    var end: Time
+    public var type: String?
+    public var name: String?
+    public var day: Day
+    public var start: Time
+    public var end: Time
     
     mutating func setName(name: String?) {
         self.name = name
     }
 }
 
+public class MeetingObject: NSObject {
+    
+//    public func encode(with coder: NSCoder) {
+//        coder.encode(type, forKey: "type")
+//        coder.encode(name, forKey: "name")
+////        coder.encode(day, forKey: "day")
+////        coder.encode(start, forKey: "start")
+////        coder.encode(end, forKey: "end")
+//    }
+    
+//    public required init?(coder: NSCoder) {
+//        self.type = coder.decodeObject(forKey: "type") as? String
+//        self.name = coder.decodeObject(forKey: "name") as? String
+////        self.day = coder.decodeObject(forKey: "day") as? Day ?? .Monday
+////        self.start = coder.decodeObject(forKey: "start") as? Time ?? Time(hour: 12, minute: 0)
+////        self.end = coder.decodeObject(forKey: "end") as? Time ?? Time(hour: 14, minute: 0)
+//
+//        self.day = .Monday
+//        self.start = Time(hour: 12, minute: 0)
+//        self.end = Time(hour: 14, minute: 0)
+//    }
+    
+    public var type: String?
+    public var name: String?
+    public var day: Day
+    public var start: Time
+    public var end: Time
 
+    public static var supportsSecureCoding: Bool = true
+    
+    init(event: MeetingEvent) {
+        self.day = event.day
+        self.start = event.start
+        self.end = event.end
+        self.type = event.type
+        self.name = event.name
+        super.init()
 
+        self.event = event
+    }
+    
+    public var event: MeetingEvent {
+        get {
+            MeetingEvent(day: day, start: start, end: end)
+        }
+        
+        set {
+            self.day = newValue.day
+            self.start = newValue.start
+            self.end = newValue.end
+            self.type = newValue.type
+            self.name = newValue.name
+        }
+    }
+}

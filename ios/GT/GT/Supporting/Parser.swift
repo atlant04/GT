@@ -27,10 +27,7 @@ struct Parser {
         return result
     }
     
-//    static parseSection(_ section: Section) -> [MeetingEvent] {
-//        var result = [MeetingEvent]()
-//    }
-
+    
     static func parseMeeting(meeting: Meeting) -> [MeetingEvent] {
         guard let time = meeting.time, let daysOfWeek = meeting.days else { return [] }
         let times = time.split(separator: "-")

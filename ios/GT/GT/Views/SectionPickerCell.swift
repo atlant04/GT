@@ -26,6 +26,7 @@ final class SectionPickerCell: UITableViewCell {
         let image = UIImageView()
         image.image = isChosen ? UIImage(systemName: "plus.circle.fill") : UIImage(systemName: "plus.circle")
         image.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        image.contentMode = .scaleAspectFit
         return image
     }()
        
@@ -36,23 +37,26 @@ final class SectionPickerCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(label)
+        //contentView.addSubview(label)
         
         selectionStyle = .none
         let stack = UIStackView(arrangedSubviews: [chooseIcon, label])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.spacing = 16
-        stack.alignment = .center
+//        stack.alignment = .center
         contentView.addSubview(stack)
-        fill(with: stack, insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
+        contentView.fill(with: stack, insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var section: Section?
+    
     func configure(section: Section) {
+        self.section = section
         label.text = section.id
     }
     

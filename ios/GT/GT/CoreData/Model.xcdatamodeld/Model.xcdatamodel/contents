@@ -54,12 +54,13 @@
             </userInfo>
         </relationship>
     </entity>
-    <entity name="Meeting" representedClassName="Meeting" syncable="YES" codeGenerationType="class">
+    <entity name="Meeting" representedClassName=".Meeting" syncable="YES">
         <attribute name="days" optional="YES" attributeType="String">
             <userInfo>
                 <entry key="JSONKeyPath" value="days"/>
             </userInfo>
         </attribute>
+        <attribute name="events" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[MeetingObject]"/>
         <attribute name="instructor" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="location" optional="YES" attributeType="String">
             <userInfo>
@@ -80,7 +81,8 @@
     </entity>
     <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course"/>
+        <relationship name="selectedSections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section"/>
     </entity>
     <entity name="Seats" representedClassName="Seats" syncable="YES" codeGenerationType="class">
         <attribute name="actual" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
@@ -146,9 +148,9 @@
     </entity>
     <elements>
         <element name="Course" positionX="-63" positionY="-18" width="128" height="223"/>
-        <element name="Meeting" positionX="-36" positionY="81" width="128" height="133"/>
+        <element name="Meeting" positionX="-36" positionY="81" width="128" height="148"/>
+        <element name="Schedule" positionX="-54" positionY="99" width="128" height="88"/>
         <element name="Seats" positionX="-54" positionY="90" width="128" height="148"/>
         <element name="Section" positionX="-54" positionY="72" width="128" height="148"/>
-        <element name="Schedule" positionX="-54" positionY="99" width="128" height="73"/>
     </elements>
 </model>

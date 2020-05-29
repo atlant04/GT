@@ -46,6 +46,11 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+    }
+    
     func searchCourses(text: String?) {
         request.predicate = createPredicate(text: text)
         controller = NSFetchedResultsController<Course>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
