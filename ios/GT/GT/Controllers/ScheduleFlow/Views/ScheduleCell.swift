@@ -9,32 +9,12 @@
 import UIKit
 import MTWeekView
 
-extension Schedule {
-    var coursesArr: [Course]? {
-        if let courses = self.courses as? Set<Course> {
-             return Array(courses)
-        }
-        return nil
-    }
-}
-
-extension Course {
-    var sectionsArr: [Section]? {
-        if let sections = self.sections as? Set<Section> {
-             return Array(sections)
-        }
-        return nil
-    }
-    
-    var allEvents: [MeetingEvent]? {
-        sectionsArr?.compactMap { $0.allEvents }.reduce([], +)
-    }
-}
-
-
-class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
+class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITextFieldDelegate {
     func allEvents(for weekView: MTWeekView) -> [Event] {
-        []//schedule?.coursesArr?.compactMap { $0.allEvents }.reduce([], +) ?? []
+        if let schedule = schedule {
+            return Parser.events(scheduleWithColor: schedule)
+        }
+        return []
     }
     
     typealias Content = Schedule
@@ -71,8 +51,8 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
     
     var schedule: Schedule? {
         didSet {
+            courseList.items = Array(schedule?.items ?? [])
             weekView.reload()
-            courseList.courses = schedule?.coursesArr ?? []
         }
     }
     static var reuseIdentifier: String {
@@ -81,14 +61,18 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
 
     func configure(with content: Schedule) {
         schedule = content
-        label.text = content.name
-        courseList.courses = schedule?.coursesArr ?? []
+        name.text = content.name
     }
     
-    var label: UILabel = {
-        let label = UILabel()
+    lazy var name: UITextField = {
+        let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.textAlignment = .left
+        label.isUserInteractionEnabled = false
+        label.layer.cornerRadius = 6
+        label.layer.cornerCurve = .continuous
+        label.delegate = self
         return label
     }()
     
@@ -104,11 +88,64 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
         return weekView
     }()
     
-    lazy var addCourseButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
+    lazy var addCourseButton: ResizableButton = {
+        let image = UIImage(systemName: "plus")!
+        let button = ResizableButton()
+        button.setImage(image, for: .normal)
+        button.imageEdgeInsets = .all(6)
+        button.contentHorizontalAlignment = .trailing
+        button.setContentHuggingPriority(.init(1000), for: .horizontal)
         return button
     }()
+    
+    lazy var editTitleButton: ResizableButton = {
+        let image = UIImage(systemName: "square.and.pencil")!
+        let button = ResizableButton()
+        button.setImage(image, for: .normal)
+        button.imageEdgeInsets = .all(6)
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    var inInternalEditMode = false
+    
+    @objc
+    func editButtonTapped() {
+        inInternalEditMode.toggle()
+        courseList.inEditMode = inInternalEditMode
+        if inInternalEditMode {
+            name.isUserInteractionEnabled = true
+            name.backgroundColor = .secondarySystemBackground
+            for cell in courseList.visibleCells {
+                cell.wiggle(radians: 4)
+            }
+        } else {
+            unsetInternalEditMode()
+        }
+    }
+    
+    func unsetInternalEditMode() {
+        name.isUserInteractionEnabled = false
+        name.backgroundColor = .clear
+        for cell in courseList.visibleCells {
+            cell.layer.removeAllAnimations()
+        }
+    }
+    
+    func onTextFieldReturn(textField: UITextField) -> Bool {
+        unsetInternalEditMode()
+        schedule?.name = textField.text
+        try? CoreDataStack.shared.container.viewContext.save()
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        onTextFieldReturn(textField: textField)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        onTextFieldReturn(textField: textField)
+    }
     
     let courseList: CourseList = CourseList()
     
@@ -132,8 +169,7 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
             }
         } else {
             contentView.subviews.first { $0 == overlay }?.removeFromSuperview()
-            layer.removeAnimation(forKey: "transform")
-            layer.removeAnimation(forKey: "scale")
+            layer.removeAllAnimations()
         }
     }
     
@@ -144,11 +180,13 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
         weekView.setContentCompressionResistancePriority(.init(1000), for: .vertical)
         courseList.setContentHuggingPriority(.init(1000), for: .vertical)
         
-        header = UIStackView(arrangedSubviews: [label, addCourseButton])
-        header.addArrangedSubview(label)
-        header.addArrangedSubview(addCourseButton)
-        header.axis = .horizontal
-        label.setContentHuggingPriority(.init(0), for: .horizontal)
+        let buttonStack = UIStackView(arrangedSubviews: [addCourseButton, editTitleButton])
+        buttonStack.distribution = .fillEqually
+
+
+        header = UIStackView(arrangedSubviews: [name, buttonStack])
+        header.distribution = .fillEqually
+        name.setContentHuggingPriority(.init(0), for: .horizontal)
         
         let stack = UIStackView(arrangedSubviews: [header, courseList, weekView])
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -165,11 +203,49 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource {
         contentView.layer.borderWidth = 5
         contentView.layer.borderColor = UIColor.systemBlue.cgColor
         contentView.clipsToBounds = true
+        
+        courseList.onRemoveItem = { [weak self] item in
+            self?.schedule?.items?.remove(item)
+            self?.courseList.items = Array(self?.schedule?.items ?? [])
+            self?.weekView.reload()
+        }
     }
     
 
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+extension UIImage {
+    func resized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}
+
+
+class ResizableButton: UIButton {
+    var scaleImageView: UIImageView?
+    
+    override func setImage(_ image: UIImage?, for state: UIControl.State) {
+        scaleImageView = UIImageView(image: image)
+        scaleImageView?.contentMode = .scaleAspectFit
+        addSubview(scaleImageView!)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scaleImageView?.frame = bounds.inset(by: imageEdgeInsets)
+        invalidateIntrinsicContentSize()
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        guard let size = scaleImageView?.bounds else { return super.intrinsicContentSize }
+        let side = min(size.height, size.width)
+        return CGSize(width: side, height: side)
     }
 }

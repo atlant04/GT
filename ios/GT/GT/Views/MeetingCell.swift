@@ -16,6 +16,9 @@ class MeetingCell: MTBaseCell{
         super.configure(with: data)
         if let meeting = data as? MeetingEvent {
             label.text = meeting.name
+            if let colorStr = meeting.color {
+                contentView.backgroundColor = UIColor(hex: colorStr)?.withAlphaComponent(0.9)
+            }
         }
     }
 
@@ -27,6 +30,11 @@ class MeetingCell: MTBaseCell{
         return label
     }()
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let side = min(bounds.height, bounds.width)
+        contentView.layer.cornerRadius = min(side / 2, 10)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +46,6 @@ class MeetingCell: MTBaseCell{
         ])
         let color = UIColor(red: 94/255, green: 25/255, blue: 20/255, alpha: 0.9)
         contentView.backgroundColor = color
-        contentView.layer.cornerRadius = 12
         contentView.layer.cornerCurve = .continuous
     }
     

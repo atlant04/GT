@@ -6,4 +6,16 @@
 //  Copyright © 2020 Maksim Tochilkin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
+class SerchConfigViewController: UIViewController {
+    
+    override func loadView() {
+        view = ConfigView()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

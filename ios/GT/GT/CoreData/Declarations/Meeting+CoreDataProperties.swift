@@ -24,5 +24,6 @@ extension Meeting {
     @NSManaged public var time: String?
     @NSManaged public var type: String?
     @NSManaged public var section: Section?
+    
 
 }

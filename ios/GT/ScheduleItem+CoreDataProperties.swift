@@ -17,9 +17,9 @@ extension ScheduleItem {
         return NSFetchRequest<ScheduleItem>(entityName: "ScheduleItem")
     }
 
-    @NSManaged public var color: String?
-    @NSManaged public var courses: NSSet?
-    @NSManaged public var selectedSections: NSSet?
+    @NSManaged public var color: String
+    @NSManaged public var course: Course
+    @NSManaged public var selectedSections: Set<Section>?
 
 }
 

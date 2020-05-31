@@ -18,7 +18,7 @@ extension Schedule {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var items: NSSet?
+    @NSManaged public var items: Set<ScheduleItem>?
 
 }
 

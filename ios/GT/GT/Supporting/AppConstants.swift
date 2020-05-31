@@ -11,11 +11,14 @@ import UIKit
 
 struct AppConstants {
     
-    static let shared = AppConstants()
+    static let randomColors: [UIColor] = [.systemRed, .systemBlue, .systemGray, .systemTeal, .systemGray, .systemGreen, .systemOrange, .systemIndigo, .systemPurple, .systemYellow]
+    static var shared = AppConstants()
     
     var userId: String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
+    
+    var currentTerm: String = "B"
     
     private init() { }
     
@@ -27,6 +30,10 @@ struct AppConstants {
     
     var seatsUrl: String {
         return baseUrl + EndPoints.seats.rawValue
+    }
+    
+    func testCourses(size: Int) -> String {
+        return baseUrl + "/testCourses/\(size)"
     }
     
     var listenSectionUrl: String {

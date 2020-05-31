@@ -22,7 +22,7 @@ extension Section {
     @NSManaged public var instructors: [String]?
     @NSManaged public var tracked: Bool
     @NSManaged public var course: Course?
-    @NSManaged public var meetings: NSSet?
+    @NSManaged public var meetings: Set<Meeting>?
     @NSManaged public var seats: Seats?
 
 }

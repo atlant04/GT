@@ -9,9 +9,8 @@
 import UIKit
 import CoreData
 
-class SearchViewController: ColumnViewController<Course, CourseCell> {
+class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverPresentationControllerDelegate {
     let search = UISearchController()
-    
     var request: NSFetchRequest<Course> = Course.fetchRequest()
     var controller: NSFetchedResultsController<Course>?
 
@@ -25,6 +24,9 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         }
     }
     
+    var configView = ConfigView()
+    var configBarButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = search
@@ -32,12 +34,36 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         navigationController?.navigationBar.prefersLargeTitles = true
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
+        configView.searchVC = self
+        configView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        search.searchBar.searchTextField.inputAccessoryView = configView
         
         collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = self
         
         request.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
         searchCourses(text: section)
-        
+        configBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleConfig))
+        navigationItem.rightBarButtonItem = nil//configBarButton
+        modalPresentationStyle = .none
+    }
+    
+    let configVC = SerchConfigViewController()
+    @objc
+    func handleConfig() {
+        configVC.modalPresentationStyle = .popover
+        configVC.preferredContentSize = CGSize(width: 200, height: 200)
+        configVC.popoverPresentationController?.delegate = self
+        configVC.popoverPresentationController?.passthroughViews = [view]
+        (configVC.view as? ConfigView)?.searchVC = self
+        if let popverVC = configVC.popoverPresentationController {
+            popverVC.barButtonItem = configBarButton
+            present(configVC, animated: true, completion: nil)
+        }
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        .none
     }
 
     func presentDetailVC(course: Course) {
@@ -46,13 +72,14 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        configVC.dismiss(animated: true, completion: nil)
     }
     
     func searchCourses(text: String?) {
         request.predicate = createPredicate(text: text)
+        request.sortDescriptors = [.init(key: "number", ascending: true)]
         controller = NSFetchedResultsController<Course>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
@@ -80,6 +107,13 @@ class SearchViewController: ColumnViewController<Course, CourseCell> {
         }
         return predicate
     }
+    
+    func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<String, Course>()
+        snapshot.appendSections(["Default"])
+        snapshot.appendItems(controller?.fetchedObjects ?? [])
+        dataSource.apply(snapshot)
+    }
 }
 
 
@@ -93,19 +127,8 @@ extension SearchViewController: UISearchResultsUpdating {
     }
 }
 
-
-extension SearchViewController {
-    
-    func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<String, Course>()
-        snapshot.appendSections(["Default"])
-        snapshot.appendItems(controller?.fetchedObjects ?? [])
-        dataSource.apply(snapshot)
-    }
-}
-
-extension SearchViewController {
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let controller = controller else { return }
         let course = controller.object(at: indexPath)
         onSelected(course, self)

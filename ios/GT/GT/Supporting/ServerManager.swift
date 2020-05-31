@@ -30,6 +30,19 @@ struct ServerManager {
         }
     }
     
+    public func getTestCourses(size: Int, completion: @escaping ([[String: Any]]) -> ()) {
+        AF.request(AppConstants.shared.testCourses(size: size)).responseJSON { response in
+            switch response.result {
+            case .success(let json):
+                if let courses = json as? [[String: Any]] {
+                    completion(courses)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
 //    public func getCourses(completion: @escaping ([Course]) -> ()) {
 //        AF.request(AppConstants.shared.coursesUrl).responseJSON { response in

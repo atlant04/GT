@@ -9,30 +9,44 @@
 import UIKit
 
 
-class ColumnViewController<T: Hashable, Cell: UICollectionViewCell>: UICollectionViewController where Cell: ConfiguringCell, Cell.Content == T{
+class ColumnViewController<T: Hashable, Cell: UICollectionViewCell>: UIViewController where Cell: ConfiguringCell, Cell.Content == T {
+    
+    var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<String, T>!
-    var columnNumber: Int
+    var columnNumber: Int {
+        didSet {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
     
     init(columns: Int = 1) {
         columnNumber = columns
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.collectionViewLayout = createCompositionalLayout()
+        super.init(nibName: nil, bundle: nil)
         setupCollectionView()
+        registerCells()
+        setupDataSource()
+    }
+    
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+         columnNumber = 1
+         super.init(nibName: nil, bundle: nil)
+        setupCollectionView()
+        registerCells()
+        setupDataSource()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(collectionView)
+        collectionView.frame = view.bounds
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        registerCells()
-        setupDataSource()
-    }
-    
     func setupCollectionView() {
-        collectionView.delegate = self
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
     }
@@ -80,6 +94,16 @@ class ColumnViewController<T: Hashable, Cell: UICollectionViewCell>: UICollectio
             sectionProvider: sectionProvider, configuration: config)
         return layout
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("will layout \(collectionView.contentOffset)")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("did layout \(collectionView.contentOffset)")
     }
     
     typealias CellConfigurator<CellType: UICollectionViewCell> = (T, IndexPath) -> CellType where CellType: ConfiguringCell

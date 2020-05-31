@@ -24,14 +24,12 @@ class CourseDetailTableView: UITableView, UITableViewDelegate, UITableViewDataSo
         translatesAutoresizingMaskIntoConstraints = false
         isScrollEnabled = false
         separatorStyle = .none
-        estimatedRowHeight = 50
-        rowHeight = UITableView.automaticDimension
         delegate = self
         dataSource = self
-
+        contentMode = .center
         register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-
+    
     override open var intrinsicContentSize: CGSize {
         return contentSize
     }
@@ -39,9 +37,25 @@ class CourseDetailTableView: UITableView, UITableViewDelegate, UITableViewDataSo
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var adjusted = false
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if !adjusted {
+            for cell in visibleCells {
+                cell.frame.origin.y += 4
+            }
+            adjusted.toggle()
+        }
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         attributes.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

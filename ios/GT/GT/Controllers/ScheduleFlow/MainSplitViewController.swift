@@ -47,8 +47,8 @@ extension UINavigationController {
     }
 }
 
-extension UITableViewCell {
-    func wiggle(duration: Double = 0.25) {
+extension UIView {
+    func wiggle(radians: CGFloat = 2.0) {
         
         let scale = CABasicAnimation(keyPath: "transform.scale")
         scale.fromValue = 1
@@ -61,9 +61,9 @@ extension UITableViewCell {
         transform.duration = 0.5
         transform.values = [
             0,
-            2.0.inRadians,
+            radians.inRadians,
             0,
-            -2.0.inRadians,
+            -radians.inRadians,
             0
         ]
         transform.keyTimes  = [0, 0.25, 0.5, 0.75, 1]
@@ -75,6 +75,3 @@ extension UITableViewCell {
     }
 }
 
-private func degreesToRadians(_ x: CGFloat) -> CGFloat {
-    return .pi * x / 180.0
-}

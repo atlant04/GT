@@ -52,8 +52,8 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Track", style: .plain, target: self, action: #selector(trackButtonTapped))
 
         button = navigationItem.rightBarButtonItem!
-
-        allEvents = (course.sections as? Set<Section>)?.compactMap { $0.allEvents }.reduce([], +)
+        extendedLayoutIncludesOpaqueBars = true
+        allEvents = Parser.events(for: course)
 
         tableView = CourseDetailTableView()
         tableView.attributes = courseAttributes
@@ -63,7 +63,6 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
         weekView = MTWeekView(frame: .zero, configuration: config)
         weekView.register(MeetingCell.self)
         weekView.dataSource = self
-        weekView.setContentCompressionResistancePriority(UILayoutPriority(249), for: .vertical)
         
         view.backgroundColor = .systemBackground
 
@@ -91,18 +90,21 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
 
         setupStack()
     }
+    
+
 
     func setupStack() {
         stack = UIStackView(arrangedSubviews: [tableView, segmentioView, weekView])
         stack.axis = .vertical
-        //stack.alignment = .center
-        stack.setCustomSpacing(24, after: segmentioView)
+        stack.distribution = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
+        stack.setCustomSpacing(8, after: segmentioView)
+        weekView.setContentCompressionResistancePriority(.init(1000), for: .vertical)
 
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
@@ -150,19 +152,19 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
             labelTextAlignment: .center,
             segmentStates: SegmentioStates(
                 defaultState: SegmentioState(
-                    backgroundColor: .clear,
+                    backgroundColor: .secondarySystemGroupedBackground,
                     titleFont: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
-                    titleTextColor: .white
+                    titleTextColor: traitCollection.userInterfaceStyle == .light ? .black : .white
                 ),
                 selectedState: SegmentioState(
                     backgroundColor: .orange,
                     titleFont: UIFont.systemFont(ofSize: UIFont.systemFontSize),
-                    titleTextColor: .black
+                    titleTextColor: traitCollection.userInterfaceStyle == .light ? .black : .white
                 ),
                 highlightedState: SegmentioState(
-                    backgroundColor: UIColor.lightGray.withAlphaComponent(0.6),
+                    backgroundColor: UIColor.systemBackground.withAlphaComponent(0.6),
                     titleFont: UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize),
-                    titleTextColor: .black
+                    titleTextColor: traitCollection.userInterfaceStyle == .light ? .black : .white
                 )
             )
         )
@@ -192,9 +194,14 @@ public struct MeetingEvent: Codable, Event {
     public var day: Day
     public var start: Time
     public var end: Time
+    public var color: String?
     
     mutating func setName(name: String?) {
         self.name = name
+    }
+    
+    mutating func setColor(_ color: String) {
+        self.color = color
     }
 }
 

@@ -11,14 +11,14 @@ import UIKit
 class SideMenuTableViewController: UITableViewController {
 
     var schedules = [Schedule]()
-//    {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-    
     var selectedSchedules: [IndexPath: Schedule] = [:]
-    var inEditMode = false
+    var inEditMode = false {
+        didSet {
+            navigationItem.leftBarButtonItem = inEditMode ? deleteBarButton : nil
+            deleteBarButton?.isEnabled = false
+            tableView.reloadData()
+        }
+    }
     var deleteBarButton: UIBarButtonItem?
     
     override func viewDidLoad() {
@@ -36,6 +36,11 @@ class SideMenuTableViewController: UITableViewController {
         deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteSelected))
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(CoreDataStack.shared.save())
+    }
+    
     @objc
     func deleteSelected() {
         selectedSchedules.values.forEach {
@@ -44,13 +49,13 @@ class SideMenuTableViewController: UITableViewController {
         schedules = (try? CoreDataStack.shared.fetch(type: Schedule.self)) ?? []
         tableView.deleteRows(at: Array(selectedSchedules.keys), with: .automatic)
         selectedSchedules = [:]
+        if schedules.count < 1 {
+            inEditMode.toggle()
+        }
     }
     
     @objc func handleEdit() {
         inEditMode.toggle()
-        navigationItem.leftBarButtonItem = inEditMode ? deleteBarButton : nil
-        deleteBarButton?.isEnabled = false
-        tableView.reloadData()
     }
     
     @objc func presentAddScheduleAlert() {
@@ -63,9 +68,8 @@ class SideMenuTableViewController: UITableViewController {
                         schedule.name = text
                     }
                     self.schedules.append(schedule)
-                    print(schedule)
                     alertVC.dismiss(animated: true, completion: nil)
-                                   self.tableView.reloadData()
+                    self.tableView.reloadData()
                 } catch {
                     print(error)
                 }
@@ -96,14 +100,15 @@ class SideMenuTableViewController: UITableViewController {
         let searchVC = SearchViewController()
         searchVC.onSelected = { [weak self] course, vc in
             guard let self = self else { return }
-            self.schedules[sender.tag].addToCourses(course)
-            try? CoreDataStack.shared.container.viewContext.save()
-            print(self.schedules[sender.tag])
-            vc.dismiss(animated: true, completion: {
+            searchVC.dismiss(animated: true, completion: {
                 let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ScheduleCell
                 cell?.schedule = self.schedules[sender.tag]
-                cell?.courseList.reloadData()
             })
+            vc.dismiss(animated: true, completion: nil)
+            let item = ScheduleItem(context: CoreDataStack.shared.container.viewContext)
+            item.color = AppConstants.randomColors.randomElement()!.hexString
+            item.course = course
+            self.schedules[sender.tag].items?.insert(item)
         }
         self.present(UINavigationController(rootViewController: searchVC), animated: true, completion: nil)
     }
@@ -138,7 +143,6 @@ extension SideMenuTableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ScheduleCell else { return }
-        let schedule = schedules[indexPath.row]
         cell.setEditMode(inEditMode)
     }
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
+    <entity name="Course" representedClassName="Course" syncable="YES">
         <attribute name="attributes" optional="YES" attributeType="String"/>
         <attribute name="fields" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="fullname" optional="YES" attributeType="String">
@@ -54,7 +54,7 @@
             </userInfo>
         </relationship>
     </entity>
-    <entity name="Meeting" representedClassName=".Meeting" syncable="YES">
+    <entity name="Meeting" representedClassName="Meeting" syncable="YES">
         <attribute name="days" optional="YES" attributeType="String">
             <userInfo>
                 <entry key="JSONKeyPath" value="days"/>
@@ -79,12 +79,16 @@
         </attribute>
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="meetings" inverseEntity="Section"/>
     </entity>
-    <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
+    <entity name="Schedule" representedClassName="Schedule" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ScheduleItem"/>
+    </entity>
+    <entity name="ScheduleItem" representedClassName="ScheduleItem" syncable="YES">
+        <attribute name="color" attributeType="String"/>
+        <relationship name="course" maxCount="1" deletionRule="Nullify" destinationEntity="Course"/>
         <relationship name="selectedSections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Section"/>
     </entity>
-    <entity name="Seats" representedClassName="Seats" syncable="YES" codeGenerationType="class">
+    <entity name="Seats" representedClassName="Seats" syncable="YES">
         <attribute name="actual" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo>
                 <entry key="JSONKeyPath" value="seats.actual"/>
@@ -117,7 +121,7 @@
         </attribute>
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="seats" inverseEntity="Section"/>
     </entity>
-    <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
+    <entity name="Section" representedClassName="Section" syncable="YES">
         <attribute name="crn" optional="YES" attributeType="String">
             <userInfo>
                 <entry key="JSONKeyPath" value="crn"/>
@@ -149,8 +153,9 @@
     <elements>
         <element name="Course" positionX="-63" positionY="-18" width="128" height="223"/>
         <element name="Meeting" positionX="-36" positionY="81" width="128" height="148"/>
-        <element name="Schedule" positionX="-54" positionY="99" width="128" height="88"/>
+        <element name="Schedule" positionX="-54" positionY="99" width="128" height="73"/>
         <element name="Seats" positionX="-54" positionY="90" width="128" height="148"/>
         <element name="Section" positionX="-54" positionY="72" width="128" height="148"/>
+        <element name="ScheduleItem" positionX="-54" positionY="99" width="128" height="88"/>
     </elements>
 </model>

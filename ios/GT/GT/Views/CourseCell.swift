@@ -11,16 +11,15 @@ import UIKit
 
 var schoolColors: [String: UIColor] = [:]
 
-class CourseCell: UICollectionViewCell, ConfiguringCell {
-    static var reuseIdentifier: String = "course_cell"
+class CourseCell: UICollectionViewCell, ConfiguringCell, UIContextMenuInteractionDelegate {
     
-    static let randomColors: [UIColor] = [.systemRed, .systemBlue, .systemGray, .systemTeal, .systemGray, .systemGreen, .systemOrange, .systemIndigo, .systemPurple, .systemYellow]
+    static var reuseIdentifier: String = "course_cell"
     
     func getSchoolColor(_ school: String) -> UIColor {
         if let color = schoolColors[school] {
             return color
         }
-        let color = CourseCell.randomColors.randomElement()!
+        let color = AppConstants.randomColors.randomElement()!
         schoolColors[school] = color
         return color
     }
@@ -46,8 +45,10 @@ class CourseCell: UICollectionViewCell, ConfiguringCell {
        func configure(with course: Course) {
         name.text = course.name
         identifier.text = course.identifier
-        hours.text = course.hours?.removeExtraSpaces()
-        sections.text = "# of sections \(course.sections?.count ?? 0)"
+        let text = course.hours?.removeExtraSpaces().split(separator: " ")
+        let maybeHours = (text?.compactMap { Float($0) } ?? [0]).map { String(Int($0)) }
+        hours.text = "\(maybeHours.joined(separator: " and ")) credits"
+        sections.text = "\(course.sections?.count ?? 0) sections"
         
         contentView.layer.borderColor = getSchoolColor(course.school ?? "Default").cgColor
      }
@@ -101,12 +102,27 @@ class CourseCell: UICollectionViewCell, ConfiguringCell {
         contentView.addSubview(stack)
         contentView.fill(with: stack, insets: .all(4))
         //stack.fill(with: contentView, insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+        let interaction = UIContextMenuInteraction(delegate: self)
+        addInteraction(interaction)
 
     }
 
     required init?(coder: NSCoder) {
         fatalError("No storyboards please...")
     }
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil,
+            actionProvider: { _ in
+                let action = UIAction(title: "Add To Schedule") { _ in
+                    print("hello")
+                }
+                return UIMenu(title: "", children: [action])
+        })
+    }
+    
 }
 
 

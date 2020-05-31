@@ -11,51 +11,36 @@ import Alamofire
 import ObjectMapper
 import CoreData
 
-final class ViewController: ColumnViewController<Course, CourseCell> {
+final class ViewController: ColumnViewController<Course, CourseCell>, UICollectionViewDelegate {
     var searchBar: UISearchController!
-    var fetchController: NSFetchedResultsController<Course>!
+    var fetchController: NSFetchedResultsController<Course>?
     var spinner: SpinnerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Courses"
-        loadCourses()
-
-        if fetchController.fetchedObjects?.count == 0 {
+        collectionView.delegate = self
+        
+        fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
+        if fetchController == nil || fetchController?.fetchedObjects == [] {
             spinner = SpinnerViewController()
-            ServerManager.shared.getCourses { dict in
-                CoreDataStack.shared.insertCourses(dict) { success in
-                    if success {
-                        self.spinner?.stop()
-                        self.spinner = nil
-                        self.loadCourses()
-                        self.reloadData()
-                        print(schoolColors)
-                    }
-                }
+            CoreDataStack.shared.downloadData() { success in
+                self.fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
+                self.spinner?.stop()
+                self.spinner = nil
+                self.reloadData()
             }
         } else {
             self.reloadData()
         }
     
+        print(CoreDataStack.shared.container.persistentStoreCoordinator.persistentStores.map { $0.url })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         spinner?.start()
-    }
-    
-    func loadCourses() {
-        let request: NSFetchRequest<Course> = Course.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "school", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
-        fetchController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "school", cacheName: nil)
-        
-        do {
-            try fetchController.performFetch()
-        } catch {
-            print(error)
-        }
     }
     
     override func registerCells() {
@@ -91,9 +76,6 @@ final class ViewController: ColumnViewController<Course, CourseCell> {
         return section
         
     }
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("here")
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -124,14 +106,14 @@ final class ViewController: ColumnViewController<Course, CourseCell> {
             print(view)
         }
         if let header = view as? SectionHeader {
-            let searchVC = SearchViewController()
+            let searchVC = SearchViewController(columns: 1)
             searchVC.section = header.title.text
             navigationController?.pushViewController(searchVC, animated: true)
         }
     }
     
     func reloadData() {
-        guard let sections = fetchController.sections else { return }
+        guard let sections = fetchController?.sections else { return }
         var snapshot = NSDiffableDataSourceSnapshot<String, Course>()
         for section in sections {
             snapshot.appendSections([section.name])
@@ -140,8 +122,8 @@ final class ViewController: ColumnViewController<Course, CourseCell> {
         dataSource.apply(snapshot)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let course = fetchController.object(at: indexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let course = fetchController?.object(at: indexPath)
         let detailVC = DetailViewController()
         detailVC.course = course
         navigationController?.pushViewController(detailVC, animated: true)

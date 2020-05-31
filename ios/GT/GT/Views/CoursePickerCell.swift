@@ -32,16 +32,32 @@ final class CoursePickerCell: UIView {
     }
     
     
-    func setupUI() {
+//    func setupUI() {
+//        backgroundColor = .secondarySystemBackground
+//        layer.shouldRasterize = true
+//        layer.rasterizationScale = UIScreen.main.scale
+//        layer.borderWidth = 3.0
+//        layer.cornerRadius = 8
+//    }
+    
+    private func setupUI() {
         backgroundColor = .secondarySystemBackground
+        layer.cornerRadius = 20.0
+        layer.cornerCurve = .continuous
+        layer.borderWidth = 3.0
+        
+        clipsToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 5)
-        layer.shadowRadius = 8.0
+        layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
+        layer.shadowRadius = 4.0
         layer.shadowOpacity = 0.3
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
-        layer.borderColor = UIColor.tertiarySystemBackground.cgColor
-        layer.borderWidth = 3.0
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.frame = self.frame.insetBy(dx: 8, dy: 4)
     }
     
     required init?(coder: NSCoder) {

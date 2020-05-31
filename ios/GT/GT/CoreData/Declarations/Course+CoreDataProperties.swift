@@ -28,7 +28,8 @@ extension Course {
     @NSManaged public var number: String?
     @NSManaged public var school: String?
     @NSManaged public var semester: String?
-    @NSManaged public var sections: NSSet?
+    @NSManaged public var sections: Set<Section>?
+    
 
 }
 

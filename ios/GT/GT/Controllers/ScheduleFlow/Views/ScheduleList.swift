@@ -12,11 +12,15 @@ import UIKit
 class CourseList: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var alignedLayout: UICollectionViewFlowLayout
     
-    var courses = [Course]() {
+    var items = [ScheduleItem]() {
         didSet {
             reloadData()
         }
     }
+    
+    var onRemoveItem: ((ScheduleItem) -> Void)?
+    
+    var inEditMode = false
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         alignedLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .leading, verticalAlignment: .center)
@@ -46,13 +50,19 @@ class CourseList: UICollectionView, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        courses.count
+        items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CourseListCell.reuseIdentifier, for: indexPath) as! CourseListCell
-        cell.label.text = courses[indexPath.row].identifier
+        cell.label.text = items[indexPath.row].course.identifier
+        cell.contentView.backgroundColor = UIColor(hex: items[indexPath.row].color)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard inEditMode else { return }
+        onRemoveItem?(items[indexPath.row])
     }
     
     override var intrinsicContentSize: CGSize {
@@ -67,7 +77,7 @@ class CourseList: UICollectionView, UICollectionViewDataSource, UICollectionView
 }
 
 
-private final class CourseListCell: UICollectionViewCell, ConfiguringCell {
+final class CourseListCell: UICollectionViewCell, ConfiguringCell {
     typealias Content = Course
     static var reuseIdentifier: String {
         return String(describing: self)
