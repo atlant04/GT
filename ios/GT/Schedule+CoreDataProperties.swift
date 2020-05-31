@@ -1,8 +1,9 @@
 //
 //  Schedule+CoreDataProperties.swift
-//  
+//  GT
 //
-//  Created by Maksim Tochilkin on 04.05.2020.
+//  Created by Maksim Tochilkin on 30.05.2020.
+//  Copyright © 2020 Maksim Tochilkin. All rights reserved.
 //
 //
 
@@ -17,23 +18,23 @@ extension Schedule {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var sections: NSSet?
+    @NSManaged public var items: NSSet?
 
 }
 
-// MARK: Generated accessors for sections
+// MARK: Generated accessors for items
 extension Schedule {
 
-    @objc(addSectionsObject:)
-    @NSManaged public func addToSections(_ value: Section)
+    @objc(addItemsObject:)
+    @NSManaged public func addToItems(_ value: ScheduleItem)
 
-    @objc(removeSectionsObject:)
-    @NSManaged public func removeFromSections(_ value: Section)
+    @objc(removeItemsObject:)
+    @NSManaged public func removeFromItems(_ value: ScheduleItem)
 
-    @objc(addSections:)
-    @NSManaged public func addToSections(_ values: NSSet)
+    @objc(addItems:)
+    @NSManaged public func addToItems(_ values: NSSet)
 
-    @objc(removeSections:)
-    @NSManaged public func removeFromSections(_ values: NSSet)
+    @objc(removeItems:)
+    @NSManaged public func removeFromItems(_ values: NSSet)
 
 }

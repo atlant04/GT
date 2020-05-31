@@ -1,5 +1,5 @@
 //
-//  Schedule+CoreDataClass.swift
+//  ScheduleItem+CoreDataClass.swift
 //  GT
 //
 //  Created by Maksim Tochilkin on 30.05.2020.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Schedule)
-public class Schedule: NSManagedObject {
+@objc(ScheduleItem)
+public class ScheduleItem: NSManagedObject {
 
 }
