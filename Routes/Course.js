@@ -3,8 +3,8 @@ import { db } from "../db.js"
 
 const router = express.Router()
 
-router.get("/courses", (req, res) => {
-    db.collection("courses")
+router.get("/courses/:term", (req, res) => {
+    db.collection(req.params.term)
         .find({})
         .toArray((err, courses) => {
             res.json(courses)
