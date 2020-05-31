@@ -11,17 +11,34 @@ import Alamofire
 import ObjectMapper
 import CoreData
 
-final class ViewController: ColumnViewController<Course, CourseCell>, UICollectionViewDelegate {
+final class ViewController: ColumnViewController<Course, CourseCell>, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate {
     var searchBar: UISearchController!
     var fetchController: NSFetchedResultsController<Course>?
     var spinner: SpinnerViewController?
+    
+    var rightButton: UIBarButtonItem!
+    var dropDown = DropDownTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Courses"
         collectionView.delegate = self
+        rightButton = UIBarButtonItem(title: AppConstants.shared.currentTerm, style: .plain, target: self, action: #selector(termButtonTapped))
+        navigationItem.rightBarButtonItem = rightButton
+    
+        loadOrDownloadIfNeeded()
+        print(CoreDataStack.shared.container.persistentStoreCoordinator.persistentStores.map { $0.url })
         
+        dropDown.onSelect = { [weak self] key in
+            AppConstants.shared.currentTerm = key
+            self?.rightButton.title = key
+            self?.loadOrDownloadIfNeeded()
+        }
+    }
+    
+    func loadOrDownloadIfNeeded() {
+        fetchController = nil
         fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
         if fetchController == nil || fetchController?.fetchedObjects == [] {
             spinner = SpinnerViewController()
@@ -34,8 +51,18 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
         } else {
             self.reloadData()
         }
+    }
     
-        print(CoreDataStack.shared.container.persistentStoreCoordinator.persistentStores.map { $0.url })
+    @objc func termButtonTapped() {
+        dropDown.modalPresentationStyle = .popover
+        dropDown.popoverPresentationController?.barButtonItem = rightButton
+        dropDown.popoverPresentationController?.delegate = self
+        dropDown.popoverPresentationController?.passthroughViews = [view]
+        self.present(dropDown, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        .none
     }
     
     override func viewWillAppear(_ animated: Bool) {

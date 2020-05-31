@@ -8,7 +8,6 @@
 
 import Foundation
 import MTWeekView
-import SwiftDate
 
 
 struct Parser {

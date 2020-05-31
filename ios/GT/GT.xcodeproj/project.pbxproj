@@ -33,6 +33,7 @@
 		2766E010245DF741001795FB /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E00F245DF741001795FB /* ScheduleCell.swift */; };
 		2766E012245DFA87001795FB /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E011245DFA87001795FB /* ScheduleList.swift */; };
 		2766E014245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */; };
+		278F10B72483E23D008B9D50 /* TableViewDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278F10B62483E23D008B9D50 /* TableViewDropDown.swift */; };
 		2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 2792C73E247E8DA400E0789F /* MTWeekView */; };
 		279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */; };
 		279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */; };
@@ -93,7 +94,8 @@
 		2766E00F245DF741001795FB /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		2766E011245DFA87001795FB /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
 		2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		2792C740247E8DAB00E0789F /* MTWeekView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTWeekView; path = ../../../MTWeekView; sourceTree = "<group>"; };
+		278F10B62483E23D008B9D50 /* TableViewDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDropDown.swift; sourceTree = "<group>"; };
+		278F10B82483FD11008B9D50 /* MTWeekView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTWeekView; path = ../../../MTWeekView; sourceTree = "<group>"; };
 		279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerTableView.swift; sourceTree = "<group>"; };
 		279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePickerCell.swift; sourceTree = "<group>"; };
 		279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerCell.swift; sourceTree = "<group>"; };
@@ -156,7 +158,7 @@
 		273DFBF82429074C008950DA = {
 			isa = PBXGroup;
 			children = (
-				2792C740247E8DAB00E0789F /* MTWeekView */,
+				278F10B82483FD11008B9D50 /* MTWeekView */,
 				273DFC032429074C008950DA /* GT */,
 				273DFC022429074C008950DA /* Products */,
 				566B16AA1F6131133B08F523 /* Pods */,
@@ -258,6 +260,7 @@
 			children = (
 				273DFC1A2429076E008950DA /* ViewController.swift */,
 				273DFC1B2429076E008950DA /* DetailViewController.swift */,
+				278F10B62483E23D008B9D50 /* TableViewDropDown.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 			files = (
 				27D9437324819B91000A0FE3 /* Section+CoreDataClass.swift in Sources */,
 				FA365FE5244874980058AE7B /* SectionHeader.swift in Sources */,
+				278F10B72483E23D008B9D50 /* TableViewDropDown.swift in Sources */,
 				FA365FE6244874980058AE7B /* CourseCell.swift in Sources */,
 				FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */,
 				FA365FE7244874980058AE7B /* Protocols.swift in Sources */,

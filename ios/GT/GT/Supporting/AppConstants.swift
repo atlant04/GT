@@ -18,7 +18,21 @@ struct AppConstants {
         return UIDevice.current.identifierForVendor?.uuidString
     }
     
-    var currentTerm: String = "B"
+    var currentTerm: String {
+        get {
+            UserDefaults.standard.value(forKey: "term") as? String ?? "Fall"
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: "term")
+        }
+    }
+    
+    var allTerms: [String: String] = [
+        "Fall": "202008",
+        "Spring": "202005",
+        "Summer": "202002"
+    ]
     
     private init() { }
     
