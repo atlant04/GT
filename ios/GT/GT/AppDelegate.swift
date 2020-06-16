@@ -19,11 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.push.registerForRemoteNotifications()
         try? self.push.addDeviceInterest(interest: AppConstants.shared.userId!)
         
-        
-        ServerManager.shared.getTestCourses(size: 10) { dict in
-            
-        }
-        
       return true
     }
 

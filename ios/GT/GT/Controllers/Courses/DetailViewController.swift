@@ -26,7 +26,7 @@ class DetailViewController: UIViewController, MTWeekViewDataSource {
     }
 
     var currentSegment: SegmentioItem {
-        return segmentioView.segmentioItems[segmentioView.selectedSegmentioIndex]
+        return segmentioView.segmentioItems[max(segmentioView.selectedSegmentioIndex, 0)]
     }
 
     var tableView: CourseDetailTableView!

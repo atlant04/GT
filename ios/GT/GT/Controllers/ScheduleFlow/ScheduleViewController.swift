@@ -244,7 +244,7 @@ struct Layout {
     }
     
     var pickerFrame: CGRect {
-        CGRect(x: 0, y: separatorFrame.maxY, width: safeBounds.width, height: safeBounds.midY - separatorFrame.height)
+        CGRect(x: 0, y: separatorFrame.maxY, width: safeBounds.width, height: view.bounds.height)
     }
     
     var weekViewFrame: CGRect {

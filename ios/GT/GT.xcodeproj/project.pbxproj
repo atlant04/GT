@@ -33,6 +33,7 @@
 		2766E010245DF741001795FB /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E00F245DF741001795FB /* ScheduleCell.swift */; };
 		2766E012245DFA87001795FB /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E011245DFA87001795FB /* ScheduleList.swift */; };
 		2766E014245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */; };
+		2780872E24913B0A00F35CE5 /* MTFlexBox in Frameworks */ = {isa = PBXBuildFile; productRef = 2780872D24913B0A00F35CE5 /* MTFlexBox */; };
 		278F10B72483E23D008B9D50 /* TableViewDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278F10B62483E23D008B9D50 /* TableViewDropDown.swift */; };
 		2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 2792C73E247E8DA400E0789F /* MTWeekView */; };
 		279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */; };
@@ -75,7 +76,7 @@
 		273526B924826435005283EB /* SerchConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchConfigViewController.swift; sourceTree = "<group>"; };
 		273526BB248264AF005283EB /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		273526BD2482738B005283EB /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
-		273DFC012429074C008950DA /* GT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		273DFC012429074C008950DA /* Oscar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oscar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273DFC042429074C008950DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		273DFC0B2429074C008950DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		273DFC0D2429074F008950DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		2766E00F245DF741001795FB /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		2766E011245DFA87001795FB /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
 		2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		2780872F24913C9A00F35CE5 /* MTFlexBox */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTFlexBox; path = "../../../iOS Random/MTFlexBox"; sourceTree = "<group>"; };
 		278F10B62483E23D008B9D50 /* TableViewDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDropDown.swift; sourceTree = "<group>"; };
 		278F10B82483FD11008B9D50 /* MTWeekView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTWeekView; path = ../../../MTWeekView; sourceTree = "<group>"; };
 		279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerTableView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */,
+				2780872E24913B0A00F35CE5 /* MTFlexBox in Frameworks */,
 				850FD7BDFFF6B638E349271F /* Pods_GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +161,7 @@
 		273DFBF82429074C008950DA = {
 			isa = PBXGroup;
 			children = (
+				2780872F24913C9A00F35CE5 /* MTFlexBox */,
 				278F10B82483FD11008B9D50 /* MTWeekView */,
 				273DFC032429074C008950DA /* GT */,
 				273DFC022429074C008950DA /* Products */,
@@ -169,7 +173,7 @@
 		273DFC022429074C008950DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				273DFC012429074C008950DA /* GT.app */,
+				273DFC012429074C008950DA /* Oscar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,9 +347,10 @@
 			name = GT;
 			packageProductDependencies = (
 				2792C73E247E8DA400E0789F /* MTWeekView */,
+				2780872D24913B0A00F35CE5 /* MTFlexBox */,
 			);
 			productName = GT;
-			productReference = 273DFC012429074C008950DA /* GT.app */;
+			productReference = 273DFC012429074C008950DA /* Oscar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -374,6 +379,7 @@
 			mainGroup = 273DFBF82429074C008950DA;
 			packageReferences = (
 				2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */,
+				2780872C24913B0A00F35CE5 /* XCRemoteSwiftPackageReference "MTFlexBox" */,
 			);
 			productRefGroup = 273DFC022429074C008950DA /* Products */;
 			projectDirPath = "";
@@ -568,7 +574,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -622,7 +628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -641,7 +647,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = ZF27C7P399;
 				INFOPLIST_FILE = GT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -650,12 +656,12 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MT.GTApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Oscar;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -666,7 +672,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GT/GT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = ZF27C7P399;
 				INFOPLIST_FILE = GT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -675,10 +681,10 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MT.GTApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PRODUCT_NAME = Oscar;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -706,6 +712,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2780872C24913B0A00F35CE5 /* XCRemoteSwiftPackageReference "MTFlexBox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/atlant04/MTFlexBox.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/atlant04/MTWeekView.git";
@@ -717,6 +731,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2780872D24913B0A00F35CE5 /* MTFlexBox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2780872C24913B0A00F35CE5 /* XCRemoteSwiftPackageReference "MTFlexBox" */;
+			productName = MTFlexBox;
+		};
 		2792C73E247E8DA400E0789F /* MTWeekView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */;

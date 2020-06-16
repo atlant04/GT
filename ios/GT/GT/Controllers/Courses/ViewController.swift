@@ -25,10 +25,9 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
         navigationItem.title = "Courses"
         collectionView.delegate = self
         rightButton = UIBarButtonItem(title: AppConstants.shared.currentTerm, style: .plain, target: self, action: #selector(termButtonTapped))
-        navigationItem.rightBarButtonItem = rightButton
+//        navigationItem.rightBarButtonItem = rightButton
     
         loadOrDownloadIfNeeded()
-        print(CoreDataStack.shared.container.persistentStoreCoordinator.persistentStores.map { $0.url })
         
         dropDown.onSelect = { [weak self] key in
             AppConstants.shared.currentTerm = key
@@ -40,7 +39,7 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
     func loadOrDownloadIfNeeded() {
         fetchController = nil
         fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
-        if fetchController == nil || fetchController?.fetchedObjects == [] {
+        if fetchController == nil || fetchController?.fetchedObjects == [] || fetchController?.fetchedObjects == nil {
             spinner = SpinnerViewController()
             CoreDataStack.shared.downloadData() { success in
                 self.fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
@@ -91,9 +90,9 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         section.interGroupSpacing = 12
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
         
-        let boundaryItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+        let boundaryItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95),
                                                       heightDimension: .estimated(40))
         let boundaryItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: boundaryItemSize,
                                                                        elementKind: UICollectionView.elementKindSectionHeader,
@@ -114,6 +113,7 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader
             let course = self.dataSource.itemIdentifier(for: indexPath)
             sectionHeader?.title.text = course?.school
+            sectionHeader?.seeAllButton.tag = indexPath.section
             sectionHeader?.seeAllButton.addTarget(self, action: #selector(self.seeAllTapped(_:)), for: .touchUpInside)
             return sectionHeader
         }
@@ -121,17 +121,8 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
     
     
     @objc func seeAllTapped(_ sender: UIButton) {
-        var view: UIView = sender
+        let view = dataSource.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: sender.tag))
         
-        while let superview = view.superview {
-            if superview is SectionHeader {
-                view = superview as! SectionHeader
-                break;
-            } else {
-                view = superview
-            }
-            print(view)
-        }
         if let header = view as? SectionHeader {
             let searchVC = SearchViewController(columns: 1)
             searchVC.section = header.title.text

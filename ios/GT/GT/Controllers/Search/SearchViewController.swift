@@ -42,10 +42,14 @@ class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverP
         collectionView.delegate = self
         
         request.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
-        searchCourses(text: section)
+        
+        if controller == nil {
+            searchCourses(text: section)
+        }
         configBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleConfig))
         navigationItem.rightBarButtonItem = nil//configBarButton
         modalPresentationStyle = .none
+        self.reloadData()
     }
     
     let configVC = SerchConfigViewController()
@@ -84,7 +88,6 @@ class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverP
         
         do {
             try controller?.performFetch()
-            self.reloadData()
         } catch {
             print(error)
         }
@@ -124,6 +127,7 @@ extension SearchViewController: UISearchResultsUpdating {
         } else {
             searchCourses(text: section)
         }
+        self.reloadData()
     }
 }
 

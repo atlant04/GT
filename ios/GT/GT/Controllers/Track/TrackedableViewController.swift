@@ -17,7 +17,7 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
     var controller: NSFetchedResultsController<Section> = {
         let request: NSFetchRequest<Section> = Section.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        request.predicate = NSPredicate(format: "tracked = %d", true)
+        request.predicate = NSPredicate(format: "crn = '35859'", true)
         let controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "course.identifier", cacheName: nil)
         return controller
     }()
@@ -34,11 +34,20 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         return Array(trackedSections.values).flatMap{ $0 }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        overlay.animate()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        overlay.zeroAlpha()
+    }
     
     override init(columns: Int = 1) {
         super.init(columns: columns)
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackingRequest(_:)), name: .newTrackRequest, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackAllRequest(_:)), name: .trackAllRequest, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackingRequest(_:)), name: .newTrackRequest, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveTrackAllRequest(_:)), name: .trackAllRequest, object: nil)
     }
     
     override func viewDidLoad() {
@@ -63,7 +72,73 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         collectionView.addGestureRecognizer(left)
         collectionView.addGestureRecognizer(right)
         collectionView.alwaysBounceVertical = true
+        
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(overlay)
+        view.fill(with: overlay)
 
+    }
+    let overlay = OverlayView()
+    
+    class OverlayView: UIView {
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            backgroundColor = UIColor.systemBackground.withAlphaComponent(0.7)
+            let stack = UIStackView(arrangedSubviews: [comingSoon, message])
+            stack.axis = .vertical
+            addSubview(stack)
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                stack.centerYAnchor.constraint(equalTo: centerYAnchor),
+                stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+                stack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8)
+            ])
+        }
+        
+        lazy var comingSoon: UILabel = {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.numberOfLines = 1
+            label.textAlignment = .center
+            label.adjustsFontSizeToFitWidth = true
+            label.text = "Coming soon..."
+            label.alpha = 0
+            label.textColor = traitCollection.userInterfaceStyle == .light ? .black : .white
+            label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+            return label
+        }()
+        
+        lazy var message: UILabel = {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.numberOfLines = 4
+            label.textAlignment = .center
+            label.alpha = 0
+            label.adjustsFontSizeToFitWidth = true
+            label.textColor = traitCollection.userInterfaceStyle == .light ? .black : .white
+            label.text = "Live course availability tracking with notifications when more spots open up for you"
+            label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+            return label
+        }()
+        
+        func animate() {
+            UIView.animate(withDuration: 1, delay: 0.5, animations: {
+                self.comingSoon.alpha = 1
+            }, completion: {_ in})
+            
+            UIView.animate(withDuration: 1, delay: 1.5, animations: {
+                self.message.alpha = 1
+            }, completion: {_ in})
+        }
+        
+        func zeroAlpha() {
+            comingSoon.alpha = 0
+            message.alpha = 0
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     }
 
     
@@ -83,13 +158,14 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         
         for section in sectionsAsArray {
             group.enter()
-            ServerManager.shared.seats(to: section) { [weak self] dict in
-                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
-                    section.seats = seats
-                    self?.updateCell(section: section)
-                }
-                 group.leave()
-            }
+//            ServerManager.shared.seats(to: section) { [weak self] dict in
+//                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+//                    section.seats = seats
+//                    self?.updateCell(section: section)
+//                }
+//                 group.leave()
+//            }
+            group.leave()
         }
         
         group.notify(queue: .main) {

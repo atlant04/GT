@@ -67,9 +67,11 @@ class SideMenuTableViewController: UITableViewController {
                     let schedule = try CoreDataStack.shared.newObject(type: Schedule.self) { schedule in
                         schedule.name = text
                     }
-                    self.schedules.append(schedule)
-                    alertVC.dismiss(animated: true, completion: nil)
-                    self.tableView.reloadData()
+                    if schedule != nil {
+                        self.schedules.append(schedule!)
+                        alertVC.dismiss(animated: true, completion: nil)
+                        self.tableView.reloadData()
+                    }
                 } catch {
                     print(error)
                 }

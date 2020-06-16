@@ -8,6 +8,7 @@
 
 import UIKit
 import MTWeekView
+import MTFlexBox
 
 class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITextFieldDelegate {
     func allEvents(for weekView: MTWeekView) -> [Event] {
@@ -71,6 +72,7 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITe
         label.textAlignment = .left
         label.isUserInteractionEnabled = false
         label.layer.cornerRadius = 6
+        label.adjustsFontSizeToFitWidth = true
         label.layer.cornerCurve = .continuous
         label.delegate = self
         return label
@@ -179,12 +181,15 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITe
         weekView.register(MeetingCell.self)
         weekView.setContentCompressionResistancePriority(.init(1000), for: .vertical)
         courseList.setContentHuggingPriority(.init(1000), for: .vertical)
-        
-        let buttonStack = UIStackView(arrangedSubviews: [addCourseButton, editTitleButton])
-        buttonStack.distribution = .fillEqually
 
-
+        let buttonStack = MTFlexBox {
+            addCourseButton
+            editTitleButton
+            Spacer()
+        }
+    
         header = UIStackView(arrangedSubviews: [name, buttonStack])
+        name.setContentCompressionResistancePriority(.init(1000), for: .horizontal)
         header.distribution = .fillEqually
         name.setContentHuggingPriority(.init(0), for: .horizontal)
         

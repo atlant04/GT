@@ -2,11 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "MTWeekView",
-        "repositoryURL": "https://github.com/atlant04/MTWeekView.git",
+        "package": "MTFlexBox",
+        "repositoryURL": "https://github.com/atlant04/MTFlexBox.git",
         "state": {
-          "branch": "drag&drop",
-          "revision": "7fdeb1b774cade462514414f119aea08ebae2059",
+          "branch": "master",
+          "revision": "aa3b45db85abc21bb327cc2b5ace8a17fedb77ae",
           "version": null
         }
       }
