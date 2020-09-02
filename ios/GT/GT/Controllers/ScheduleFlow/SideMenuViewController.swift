@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Combine
 
 class SideMenuTableViewController: UITableViewController {
 
-    var schedules = [Schedule]()
+    var schedules: [Schedule] = store.scheduleStore.schedules
+    
     var selectedSchedules: [IndexPath: Schedule] = [:]
     var inEditMode = false {
         didSet {
@@ -20,11 +22,11 @@ class SideMenuTableViewController: UITableViewController {
         }
     }
     var deleteBarButton: UIBarButtonItem?
+    var cancellable: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Schedules"
-        schedules = (try? CoreDataStack.shared.fetch(type: Schedule.self)) ?? []
         tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 200
@@ -34,23 +36,18 @@ class SideMenuTableViewController: UITableViewController {
             UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleEdit))
         ]
         deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteSelected))
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(CoreDataStack.shared.save())
+        
+        cancellable = store.scheduleStore.publisher.sink(receiveValue: { [unowned self] schedules in
+            self.schedules = schedules
+            self.tableView.reloadData()
+        })
+        
     }
     
     @objc
     func deleteSelected() {
-        selectedSchedules.values.forEach {
-            try? CoreDataStack.shared.delete($0)
-        }
-        schedules = (try? CoreDataStack.shared.fetch(type: Schedule.self)) ?? []
-        tableView.deleteRows(at: Array(selectedSchedules.keys), with: .automatic)
-        selectedSchedules = [:]
-        if schedules.count < 1 {
-            inEditMode.toggle()
+        for schedule in self.selectedSchedules.values {
+            store.scheduleStore.submit(.delete(schedule))
         }
     }
     
@@ -63,18 +60,7 @@ class SideMenuTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { action in
             let textField = alertVC.textFields?.first!
             if let text = textField?.text, !text.isEmpty {
-                do {
-                    let schedule = try CoreDataStack.shared.newObject(type: Schedule.self) { schedule in
-                        schedule.name = text
-                    }
-                    if schedule != nil {
-                        self.schedules.append(schedule!)
-                        alertVC.dismiss(animated: true, completion: nil)
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print(error)
-                }
+                store.scheduleStore.submit(.addSchedule(text))
             }
         }
         alertVC.addTextField(configurationHandler: nil)
@@ -99,20 +85,8 @@ class SideMenuTableViewController: UITableViewController {
     
     @objc
     func handleAddCourse(_ sender: UIButton) {
-        let searchVC = SearchViewController()
-        searchVC.onSelected = { [weak self] course, vc in
-            guard let self = self else { return }
-            searchVC.dismiss(animated: true, completion: {
-                let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ScheduleCell
-                cell?.schedule = self.schedules[sender.tag]
-            })
-            vc.dismiss(animated: true, completion: nil)
-            let item = ScheduleItem(context: CoreDataStack.shared.container.viewContext)
-            item.color = AppConstants.randomColors.randomElement()!.hexString
-            item.course = course
-            self.schedules[sender.tag].items?.insert(item)
-        }
-        self.present(UINavigationController(rootViewController: searchVC), animated: true, completion: nil)
+        let courseAdder = CourseAdderTableViewController(schedule: schedules[sender.tag])
+        self.present(UINavigationController(rootViewController: courseAdder), animated: true, completion: nil)
     }
 
 }
@@ -135,7 +109,7 @@ extension SideMenuTableViewController {
         } else {
             let scheduleVC = ScheduleViewController()
             scheduleVC.schedule = schedule
-            showDetailViewController(UINavigationController(rootViewController: scheduleVC), sender: nil)
+            self.navigationController?.pushViewController(scheduleVC, animated: true)
         }
     }
     
@@ -149,3 +123,17 @@ extension SideMenuTableViewController {
     }
     
 }
+
+//#if DEBUG
+//import SwiftUI
+//import CoreData
+//typealias VC = SideMenuTableViewController
+//
+//struct Preview: PreviewProvider {
+//    static var previews: some View {
+//        let vc = VC()
+//        vc.schedules = try! CoreDataStack.shared.fetch(type: Schedule.self)
+//        return vc.preview
+//    }
+//}
+//#endif

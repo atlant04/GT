@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="gxm-WT-VHJ" userLabel="ContentView" customClass="ScheduleItemHeaderView" customModule="Oscar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="143"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="zUy-HR-yzC">
+                    <rect key="frame" x="8" y="8" width="190.5" height="127"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS 1332" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xb-tY-tAh">
+                            <rect key="frame" x="0.0" y="0.0" width="111.5" height="49"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Struct &amp; Algorithms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YB8-Mk-tvm">
+                            <rect key="frame" x="0.0" y="55" width="190.5" height="30.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course GPA: 2.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOP-EX-Lff">
+                            <rect key="frame" x="0.0" y="91.5" width="125.5" height="35.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="720" placeholderIntrinsicHeight="143" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ATa-M8-Tdb">
+                    <rect key="frame" x="285" y="8" width="160" height="127"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6w-Wi-23p">
+                            <rect key="frame" x="0.0" y="0.0" width="37.5" height="127"/>
+                            <state key="normal" image="arrowtriangle.down" catalog="system">
+                                <attributedString key="attributedTitle"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
+                            <connections>
+                                <action selector="arrow:" destination="gxm-WT-VHJ" eventType="touchUpInside" id="XyT-j7-2fz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P1A-uA-LxJ">
+                            <rect key="frame" x="61.5" y="0.0" width="37" height="127"/>
+                            <state key="normal" image="paintbrush" catalog="system">
+                                <attributedString key="attributedTitle"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
+                            <connections>
+                                <action selector="brush:" destination="gxm-WT-VHJ" eventType="touchUpInside" id="p2x-NR-33g"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6e-qg-i0U">
+                            <rect key="frame" x="122.5" y="0.0" width="37.5" height="127"/>
+                            <state key="normal" image="info.circle" catalog="system">
+                                <attributedString key="attributedTitle"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
+                            <connections>
+                                <action selector="info:" destination="gxm-WT-VHJ" eventType="touchUpInside" id="WdY-qm-cJ8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="1Se-8R-w8X"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ATa-M8-Tdb" secondAttribute="bottom" constant="8" id="BDk-5e-Etu"/>
+                <constraint firstItem="zUy-HR-yzC" firstAttribute="leading" secondItem="gxm-WT-VHJ" secondAttribute="leading" constant="8" id="Jvp-2r-K2j"/>
+                <constraint firstItem="s0x-2P-EI7" firstAttribute="trailing" secondItem="ATa-M8-Tdb" secondAttribute="trailing" constant="8" id="OQy-NM-5UR"/>
+                <constraint firstItem="zUy-HR-yzC" firstAttribute="top" secondItem="gxm-WT-VHJ" secondAttribute="top" constant="8" id="fzE-Jb-XvV"/>
+                <constraint firstAttribute="bottom" secondItem="zUy-HR-yzC" secondAttribute="bottom" constant="8" id="mbJ-Wy-lro"/>
+                <constraint firstItem="ATa-M8-Tdb" firstAttribute="top" secondItem="gxm-WT-VHJ" secondAttribute="top" constant="8" id="xoC-4B-YvZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="s0x-2P-EI7"/>
+            <connections>
+                <outlet property="main" destination="7xb-tY-tAh" id="HtD-dM-MyE"/>
+                <outlet property="secondary" destination="YB8-Mk-tvm" id="5P3-Or-ixK"/>
+                <outlet property="tertiary" destination="iOP-EX-Lff" id="gAA-9I-oaa"/>
+            </connections>
+            <point key="canvasLocation" x="-391" y="-345"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrowtriangle.down" catalog="system" width="128" height="124"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="paintbrush" catalog="system" width="128" height="128"/>
+    </resources>
+</document>

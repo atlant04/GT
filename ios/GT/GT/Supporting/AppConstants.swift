@@ -9,16 +9,11 @@
 import Foundation
 import UIKit
 
-struct AppConstants {
+enum AppConstants {
     
     static let randomColors: [UIColor] = [.systemRed, .systemBlue, .systemGray, .systemTeal, .systemGray, .systemGreen, .systemOrange, .systemIndigo, .systemPurple, .systemYellow]
-    static var shared = AppConstants()
     
-    var userId: String? {
-        return UIDevice.current.identifierForVendor?.uuidString
-    }
-    
-    var currentTerm: String {
+    static var currentTerm: String {
         get {
             UserDefaults.standard.value(forKey: "term") as? String ?? "Fall"
         }
@@ -28,41 +23,43 @@ struct AppConstants {
         }
     }
     
-    var allTerms: [String: String] = [
-        "Fall": "202008",
-        "Spring": "202005",
-        "Summer": "202002"
-    ]
-    
-    private init() { }
-    
-    let baseUrl =  "https://oscar-gt.herokuapp.com" //"https://oscarapp.appspot.com" 
-    
-    var coursesUrl: String {
-        return baseUrl + EndPoints.courses.rawValue + "/202002"
+    static var userId: String? {
+        UIDevice().identifierForVendor?.uuidString
     }
     
-    var seatsUrl: String {
-        return baseUrl + EndPoints.seats.rawValue
+    enum Term: String, CaseIterable {
+        case Fall, Spring, Summer, Unknown
+        
+        init?(rawValue: String) {
+            self = Term.allTerms[rawValue] ?? .Unknown
+        }
+        
+        static private var allTerms: [String: Term] = [
+            "202008": .Fall,
+            "202005": .Spring,
+            "202002": .Summer
+        ]
     }
     
-    func testCourses(size: Int) -> String {
-        return baseUrl + "/testCourses/\(size)"
+    enum AppURL {
+        static let baseUrl =  "https://oscar-gt.herokuapp.com" //"https://oscarapp.appspot.com"
+
+        
+        static func testCourses(size: Int) -> String {
+            return AppConstants.AppURL.baseUrl + "/testCourses/\(size)"
+        }
+        
+        static func url(at endpoint: EndPoints) -> URL {
+            return URL(string: AppConstants.AppURL.baseUrl + endpoint.rawValue)!
+        }
+        
+        
+        enum EndPoints: String {
+            case courses = "/courses"
+            case seats = "/seats"
+            case listenSection = "/listen/section"
+            case unsubscribe = "/unsubscribe"
+        }
     }
     
-    var listenSectionUrl: String {
-        return baseUrl + EndPoints.listenSection.rawValue
-    }
-    
-    var unsubscribe: String {
-        return baseUrl + EndPoints.unsubscribe.rawValue
-    }
-    
-    
-    enum EndPoints: String {
-        case courses = "/courses"
-        case seats = "/seats"
-        case listenSection = "/listen/section"
-        case unsubscribe = "/unsubscribe"
-    }
 }

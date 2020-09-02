@@ -15,7 +15,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
     struct CourseSection {
         var item: ScheduleItem
         var sections: [Section] {
-            item.course.sections?.sorted(by: \.id) ?? []
+            item.course?.sections ?? []
         }
         var isHidden = false
         var _selected: [Section: Bool] = [:]
@@ -46,7 +46,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
     
     var weekView: MTWeekView!
     var sectionPicker: SectionPickerTableView = SectionPickerTableView()
-    var separator = Separator()
+    var separator = SeparatorView()
     var layout: Layout!
     var schedule: Schedule? {
         didSet {
@@ -57,7 +57,6 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
                     return courseSection
                 }
             }
-            navigationItem.title = schedule?.name ?? "My Schedule"
         }
     }
     
@@ -65,7 +64,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
         super.viewWillDisappear(animated)
         if let items = schedule?.items {
             for item in items {
-                item.selectedSections = Set(courseSections.first { $0.item === item }?.selectedSections ?? [])
+//                item.selectedSections = Set(courseSections.first { $0.item === item }?.selectedSections ?? [])
             }
         }
         try? CoreDataStack.shared.container.viewContext.save()
@@ -86,6 +85,10 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
     
         pickerContainer = ContainverView(frame: .zero, view: sectionPicker)
         view.addSubview(pickerContainer)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
         
     }
     
@@ -129,7 +132,7 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
         tap.localObject = section
         view.addGestureRecognizer(tap)
         view.course = courseSections[section].item.course
-        view.layer.borderColor = UIColor(hex: courseSections[section].item.color)?.cgColor
+        view.layer.borderColor = courseSections[section].item.color.cgColor
         return view
     }
     
@@ -195,10 +198,41 @@ class ScheduleViewController: UIViewController, MTWeekViewDataSource, UITableVie
     
     func allEvents(for weekView: MTWeekView) -> [Event] {
         var events = [MeetingEvent]()
-        for c in courseSections {
-            events += c.selectedSections.flatten { Parser.events(for: $0, withColor: c.item.color)}
-        }
+//        for c in courseSections {
+//            events += c.selectedSections.flatten { Parser.events(for: $0, withColor: c.item.color)}
+//        }
+//        events = courseSections.flatten { $0.events }
         return events
+    }
+    
+    struct Layout {
+        unowned var view: UIView
+        var translation: CGFloat?
+        
+        var alreadyLayedOut: Bool {
+            return translation != nil
+        }
+        
+        var safeBounds: CGRect {
+            view.bounds.inset(by: view.safeAreaInsets)
+        }
+        
+        var separatorFrame: CGRect {
+            let y: CGFloat = translation == nil ? safeBounds.midY : max(translation!, 200 + view.safeAreaInsets.top)
+            return CGRect(x: 0, y: y, width: safeBounds.width, height: 20)
+        }
+        
+        var pickerFrame: CGRect {
+            CGRect(x: 0, y: separatorFrame.maxY, width: safeBounds.width, height: view.bounds.height)
+        }
+        
+        var weekViewFrame: CGRect {
+            CGRect(x: 0, y: safeBounds.minY / 2, width: safeBounds.width, height: separatorFrame.minY - safeBounds.minY / 2)
+        }
+        
+        mutating func setTranslation(_ y: CGFloat) {
+            self.translation = y
+        }
     }
     
 }
@@ -209,11 +243,13 @@ class ContainverView: UIView {
     convenience init(frame: CGRect, view: UIView) {
         self.init(frame: frame)
         enclosingView = view
-        enclosingView?.translatesAutoresizingMaskIntoConstraints = false
-        if let view = enclosingView {
-            addSubview(view)
-            self.fill(with: view)
-        }
+        self.layer.masksToBounds = true
+        addSubview(view)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.enclosingView?.frame = self.bounds
     }
     
     override init(frame: CGRect) {
@@ -226,64 +262,12 @@ class ContainverView: UIView {
 }
 
 
-struct Layout {
-    unowned var view: UIView
-    var translation: CGFloat?
-    
-    var alreadyLayedOut: Bool {
-        return translation != nil
-    }
-    
-    var safeBounds: CGRect {
-        view.bounds.inset(by: view.safeAreaInsets)
-    }
-    
-    var separatorFrame: CGRect {
-        let y: CGFloat = translation == nil ? safeBounds.midY : max(translation!, 200 + view.safeAreaInsets.top)
-        return CGRect(x: 0, y: y, width: safeBounds.width, height: 20)
-    }
-    
-    var pickerFrame: CGRect {
-        CGRect(x: 0, y: separatorFrame.maxY, width: safeBounds.width, height: view.bounds.height)
-    }
-    
-    var weekViewFrame: CGRect {
-        CGRect(x: 0, y: safeBounds.minY, width: safeBounds.width, height: separatorFrame.minY - safeBounds.minY)
-    }
-    
-    mutating func setTranslation(_ y: CGFloat) {
-        self.translation = y
-    }
-}
 
-
-struct Row<SectionType, ItemType> where SectionType: Hashable, ItemType: Hashable {
-    var section: SectionType
-    var item: ItemType
-}
-
-class DataSource<Section, Item>: UITableViewDiffableDataSource<Section, Item> where Section: Hashable, Item: Hashable {
-    typealias DiffableRow = Row<Section, Item>
-    typealias RowProvider = (UITableView, DiffableRow) -> UITableViewCell?
-    
-    
-    func applyRows(_ rows: [DiffableRow]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        let sections = Set(rows.map(\.section))
-        snapshot.appendSections(Array(sections))
-        for row in rows {
-            snapshot.appendItems([row.item], toSection: row.section)
-        }
-        self.apply(snapshot)
-    }
-    
-}
 
 extension Sequence {
-    func sorted<T: Comparable>(by keyPath: KeyPath<Element, T?>) -> [Element] {
+    func sorted<T: Comparable>(by keyPath: KeyPath<Element, T>) -> [Element] {
         return sorted { a, b in
-            guard let first = a[keyPath: keyPath], let second = b[keyPath: keyPath] else { return false }
-            return first < second
+            return a[keyPath: keyPath] < b[keyPath: keyPath]
         }
     }
     

@@ -138,3 +138,15 @@ protocol ConfiguringCell {
     static var reuseIdentifier: String { get }
     func configure(with content: Content)
 }
+
+extension ConfiguringCell {
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+extension ConfiguringCell where Content == Never {
+    func configure(with content: Never) {
+        fatalError("Cell's content type is set to never")
+    }
+}

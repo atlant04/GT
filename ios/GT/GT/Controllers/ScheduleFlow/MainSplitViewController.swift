@@ -21,13 +21,6 @@ class MainSplitViewController: UISplitViewController {
         self.maximumPrimaryColumnWidth = 700
         schedulePicker = SideMenuTableViewController()
         viewControllers = [UINavigationController(schedulePicker)]
-        
-    }
-    
-    func getTestCourses() -> [Course] {
-        let request: NSFetchRequest<Course> = Course.fetchRequest()
-        request.predicate = NSPredicate(format: "number = 1332 OR number = 1331")
-        return try! CoreDataStack.shared.container.viewContext.fetch(request)
     }
 
 }

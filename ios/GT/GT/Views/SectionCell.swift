@@ -66,18 +66,19 @@ class SectionCell: UICollectionViewCell, ConfiguringCell {
     }()
     
     func configure(with content: Section) {
-        name.text = "\(content.course?.identifier ?? "") Section: \(content.id ?? "")"
-        crn.text = "CRN: \(content.crn ?? "")"
-        seats.text = "Remaining: \(content.seats?.remaining ?? 0)"
-        waitlist.text = "Remaining on waitlist: \(content.seats?.remainingWL ?? 0)"
-        image.image = UIImage(named: "cross")
-        contentView.layer.borderColor = UIColor.systemRed.cgColor
-        if let seats = content.seats?.remaining {
-            if seats > 0 {
-                image.image = UIImage(named: "check")
-                contentView.layer.borderColor = UIColor.systemGreen.cgColor
-            }
-        }
+        
+        name.text = "[Here goes course id] Section: \(content.id )"
+        crn.text = "CRN: \(content.crn)"
+//        seats.text = "Remaining: \(content.seats?.remaining ?? 0)"
+//        waitlist.text = "Remaining on waitlist: \(content.seats?.remainingWL ?? 0)"
+//        image.image = UIImage(named: "cross")
+//        contentView.layer.borderColor = UIColor.systemRed.cgColor
+//        if let seats = content.seats?.remaining {
+//            if seats > 0 {
+//                image.image = UIImage(named: "check")
+//                contentView.layer.borderColor = UIColor.systemGreen.cgColor
+//            }
+//        }
     }
     
     override init(frame: CGRect) {

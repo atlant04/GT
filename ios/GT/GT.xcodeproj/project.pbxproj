@@ -10,49 +10,60 @@
 		1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786E574243FCC5900FF6C9C /* SectionCell.swift */; };
 		1786E57B243FCC5900FF6C9C /* SectionCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1786E575243FCC5900FF6C9C /* SectionCellXib.xib */; };
 		1786E57E243FCC5900FF6C9C /* CoursePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786E578243FCC5900FF6C9C /* CoursePickerView.swift */; };
-		273526B52481C778005283EB /* ScheduleItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526B12481C778005283EB /* ScheduleItem+CoreDataClass.swift */; };
-		273526B62481C778005283EB /* ScheduleItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526B22481C778005283EB /* ScheduleItem+CoreDataProperties.swift */; };
-		273526B72481C778005283EB /* Schedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526B32481C778005283EB /* Schedule+CoreDataClass.swift */; };
-		273526B82481C778005283EB /* Schedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526B42481C778005283EB /* Schedule+CoreDataProperties.swift */; };
-		273526BA24826435005283EB /* SerchConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526B924826435005283EB /* SerchConfigViewController.swift */; };
+		2716186A24C84552007FB284 /* CourseDetailViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716186924C84552007FB284 /* CourseDetailViewConroller.swift */; };
 		273526BC248264AF005283EB /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526BB248264AF005283EB /* ConfigView.swift */; };
-		273526BE2482738B005283EB /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526BD2482738B005283EB /* Separator.swift */; };
+		273526BE2482738B005283EB /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273526BD2482738B005283EB /* SeparatorView.swift */; };
 		273DFC052429074C008950DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC042429074C008950DA /* AppDelegate.swift */; };
 		273DFC0C2429074C008950DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC0A2429074C008950DA /* Main.storyboard */; };
 		273DFC0E2429074F008950DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC0D2429074F008950DA /* Assets.xcassets */; };
 		273DFC112429074F008950DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273DFC0F2429074F008950DA /* LaunchScreen.storyboard */; };
 		273DFC1D2429076E008950DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC1A2429076E008950DA /* ViewController.swift */; };
 		273DFC1E2429076E008950DA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC1B2429076E008950DA /* DetailViewController.swift */; };
-		273DFC2C2429078D008950DA /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2B2429078D008950DA /* Course.swift */; };
 		273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2D242907A5008950DA /* SceneDelegate.swift */; };
 		273DFC32242907AE008950DA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC2F242907AD008950DA /* AppConstants.swift */; };
-		273DFC33242907AE008950DA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC30242907AE008950DA /* ServerManager.swift */; };
+		273DFC33242907AE008950DA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC30242907AE008950DA /* API.swift */; };
 		273DFC34242907AE008950DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DFC31242907AE008950DA /* Extensions.swift */; };
 		274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D8730242A238E00B229B2 /* TrackedableViewController.swift */; };
+		275150CF24D6C21E00A01737 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275150CE24D6C21E00A01737 /* Store.swift */; };
+		275150D124D6CC0300A01737 /* CourseAdderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275150D024D6CC0300A01737 /* CourseAdderTableView.swift */; };
+		275150DC24D73C4B00A01737 /* CourseAdderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275150DA24D73C4B00A01737 /* CourseAdderTableViewController.swift */; };
+		275150DF24D73D3700A01737 /* ScheduleItemHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275150DE24D73D3700A01737 /* ScheduleItemHeaderView.xib */; };
+		275150E124D73D6400A01737 /* ScheduleItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275150E024D73D6400A01737 /* ScheduleItemHeaderView.swift */; };
+		275150E324D7473D00A01737 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275150E224D7473D00A01737 /* UIView+Extension.swift */; };
+		275150EA24D75E5700A01737 /* ScheduleItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275150E824D75E5700A01737 /* ScheduleItemDetailView.swift */; };
+		275150EB24D75E5700A01737 /* ScheduleItemDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275150E924D75E5700A01737 /* ScheduleItemDetailView.xib */; };
 		2766DFEA245B8D64001795FB /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766DFE9245B8D64001795FB /* MainSplitViewController.swift */; };
 		2766E010245DF741001795FB /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E00F245DF741001795FB /* ScheduleCell.swift */; };
 		2766E012245DFA87001795FB /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E011245DFA87001795FB /* ScheduleList.swift */; };
 		2766E014245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */; };
-		2780872E24913B0A00F35CE5 /* MTFlexBox in Frameworks */ = {isa = PBXBuildFile; productRef = 2780872D24913B0A00F35CE5 /* MTFlexBox */; };
 		278F10B72483E23D008B9D50 /* TableViewDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278F10B62483E23D008B9D50 /* TableViewDropDown.swift */; };
-		2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 2792C73E247E8DA400E0789F /* MTWeekView */; };
 		279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */; };
 		279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2024546CE700B3DD06 /* CoursePickerCell.swift */; };
 		279ACE2324546CF500B3DD06 /* SectionPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */; };
 		27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A782192438C6B5006CDE57 /* ColumnViewController.swift */; };
 		27A78224243A11CF006CDE57 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A78223243A11CF006CDE57 /* SpinnerViewController.swift */; };
 		27B71FAD242CABD1000EFEFE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */; };
-		27D9437124819B91000A0FE3 /* Meeting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436724819B91000A0FE3 /* Meeting+CoreDataClass.swift */; };
-		27D9437224819B91000A0FE3 /* Meeting+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436824819B91000A0FE3 /* Meeting+CoreDataProperties.swift */; };
-		27D9437324819B91000A0FE3 /* Section+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436924819B91000A0FE3 /* Section+CoreDataClass.swift */; };
-		27D9437424819B91000A0FE3 /* Section+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436A24819B91000A0FE3 /* Section+CoreDataProperties.swift */; };
-		27D9437724819B91000A0FE3 /* Seats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436D24819B91000A0FE3 /* Seats+CoreDataClass.swift */; };
-		27D9437824819B91000A0FE3 /* Seats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436E24819B91000A0FE3 /* Seats+CoreDataProperties.swift */; };
-		27D9437924819B91000A0FE3 /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9436F24819B91000A0FE3 /* Course+CoreDataClass.swift */; };
-		27D9437A24819B91000A0FE3 /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9437024819B91000A0FE3 /* Course+CoreDataProperties.swift */; };
-		27F9B29124350DCC006C5EE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27B71FA3242CA620000EFEFE /* Model.xcdatamodeld */; };
+		27C19F7724CF5B3900499D03 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C19F7624CF5B3900499D03 /* Models.swift */; };
+		27C19F7C24CF660700499D03 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C19F7B24CF660700499D03 /* Storage.swift */; };
+		27C19F7E24CF71A700499D03 /* Wrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C19F7D24CF71A700499D03 /* Wrappers.swift */; };
+		27D8A81D24C86883003AFE3A /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D8A81B24C86883003AFE3A /* DetailViewCell.swift */; };
+		27D8A81E24C86883003AFE3A /* DetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D8A81C24C86883003AFE3A /* DetailViewCell.xib */; };
+		27DA9EB324D59BFD00493DDD /* MTFlexBox in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9EB224D59BFD00493DDD /* MTFlexBox */; };
+		27DA9EB524D59BFD00493DDD /* MTLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9EB424D59BFD00493DDD /* MTLayout */; };
+		27DA9EB724D59BFD00493DDD /* MTWeekView in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9EB624D59BFD00493DDD /* MTWeekView */; };
+		27DA9EB924D59BFD00493DDD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9EB824D59BFD00493DDD /* RealmSwift */; };
+		27DA9EBB24D59BFD00493DDD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9EBA24D59BFD00493DDD /* Alamofire */; };
+		27DA9EEA24D5AB8100493DDD /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA9EE924D5AB8100493DDD /* CourseStore.swift */; };
+		27DA9F1424D5C29F00493DDD /* PrereqAndRestrictionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA9F1324D5C29F00493DDD /* PrereqAndRestrictionTable.swift */; };
+		27DA9F1A24D5C4B800493DDD /* Segmentio in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9F1924D5C4B800493DDD /* Segmentio */; };
+		27DA9F1D24D5D34F00493DDD /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9F1C24D5D34F00493DDD /* SideMenu */; };
+		27DA9F1F24D5D57400493DDD /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DA9F1E24D5D57400493DDD /* Search.storyboard */; };
+		27DA9F2124D5EE8500493DDD /* FilterItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA9F2024D5EE8500493DDD /* FilterItemCell.swift */; };
+		27DA9F2324D5EEC500493DDD /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA9F2224D5EEC500493DDD /* FilterTableViewController.swift */; };
+		27DA9F2624D619D800493DDD /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9F2524D619D800493DDD /* SwiftSoup */; };
+		27DA9F2924D61A6D00493DDD /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 27DA9F2824D61A6D00493DDD /* MBProgressHUD */; };
+		27DA9F2B24D61AF700493DDD /* CourseCritique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA9F2A24D61AF700493DDD /* CourseCritique.swift */; };
 		27F9B29324351DF7006C5EE8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9B29224351DF7006C5EE8 /* SearchViewController.swift */; };
-		850FD7BDFFF6B638E349271F /* Pods_GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7CAC2D3D35BD4D3CD90374 /* Pods_GT.framework */; };
 		FA365FE5244874980058AE7B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA365FE2244874970058AE7B /* SectionHeader.swift */; };
 		FA365FE6244874980058AE7B /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA365FE3244874980058AE7B /* CourseCell.swift */; };
 		FA365FE7244874980058AE7B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA365FE4244874980058AE7B /* Protocols.swift */; };
@@ -65,17 +76,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AF9DE093F0FB685B6287235 /* Pods-GT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.release.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.release.xcconfig"; sourceTree = "<group>"; };
 		1786E574243FCC5900FF6C9C /* SectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 		1786E575243FCC5900FF6C9C /* SectionCellXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionCellXib.xib; sourceTree = "<group>"; };
 		1786E578243FCC5900FF6C9C /* CoursePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursePickerView.swift; sourceTree = "<group>"; };
-		273526B12481C778005283EB /* ScheduleItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		273526B22481C778005283EB /* ScheduleItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		273526B32481C778005283EB /* Schedule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		273526B42481C778005283EB /* Schedule+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		273526B924826435005283EB /* SerchConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchConfigViewController.swift; sourceTree = "<group>"; };
+		2716186824C844D9007FB284 /* MTFlexBox */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTFlexBox; path = ../../../../MTFlexBox; sourceTree = "<group>"; };
+		2716186924C84552007FB284 /* CourseDetailViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewConroller.swift; sourceTree = "<group>"; };
+		27269DD924CEFD9100D804FD /* ScrollPicker */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ScrollPicker; path = ../../../dev/ScrollPicker; sourceTree = "<group>"; };
 		273526BB248264AF005283EB /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
-		273526BD2482738B005283EB /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		273526BD2482738B005283EB /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		273DFC012429074C008950DA /* Oscar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oscar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273DFC042429074C008950DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		273DFC0B2429074C008950DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,18 +92,24 @@
 		273DFC122429074F008950DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		273DFC1A2429076E008950DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		273DFC1B2429076E008950DA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		273DFC2B2429078D008950DA /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		273DFC2D242907A5008950DA /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		273DFC2F242907AD008950DA /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		273DFC30242907AE008950DA /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		273DFC30242907AE008950DA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		273DFC31242907AE008950DA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		274D8730242A238E00B229B2 /* TrackedableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedableViewController.swift; sourceTree = "<group>"; };
+		275150CE24D6C21E00A01737 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		275150D024D6CC0300A01737 /* CourseAdderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAdderTableView.swift; sourceTree = "<group>"; };
+		275150DA24D73C4B00A01737 /* CourseAdderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAdderTableViewController.swift; sourceTree = "<group>"; };
+		275150DE24D73D3700A01737 /* ScheduleItemHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleItemHeaderView.xib; sourceTree = "<group>"; };
+		275150E024D73D6400A01737 /* ScheduleItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemHeaderView.swift; sourceTree = "<group>"; };
+		275150E224D7473D00A01737 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		275150E824D75E5700A01737 /* ScheduleItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemDetailView.swift; sourceTree = "<group>"; };
+		275150E924D75E5700A01737 /* ScheduleItemDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleItemDetailView.xib; sourceTree = "<group>"; };
 		275BA43D242A95BC00E89227 /* GT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GT.entitlements; sourceTree = "<group>"; };
 		2766DFE9245B8D64001795FB /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		2766E00F245DF741001795FB /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		2766E011245DFA87001795FB /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
 		2766E013245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		2780872F24913C9A00F35CE5 /* MTFlexBox */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTFlexBox; path = "../../../iOS Random/MTFlexBox"; sourceTree = "<group>"; };
 		278F10B62483E23D008B9D50 /* TableViewDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDropDown.swift; sourceTree = "<group>"; };
 		278F10B82483FD11008B9D50 /* MTWeekView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTWeekView; path = ../../../MTWeekView; sourceTree = "<group>"; };
 		279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerTableView.swift; sourceTree = "<group>"; };
@@ -103,19 +117,21 @@
 		279ACE2224546CF500B3DD06 /* SectionPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPickerCell.swift; sourceTree = "<group>"; };
 		27A782192438C6B5006CDE57 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		27A78223243A11CF006CDE57 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
-		27B71FA4242CA620000EFEFE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		27D9436724819B91000A0FE3 /* Meeting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meeting+CoreDataClass.swift"; path = "GT/CoreData/Declarations/Meeting+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		27D9436824819B91000A0FE3 /* Meeting+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meeting+CoreDataProperties.swift"; path = "GT/CoreData/Declarations/Meeting+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		27D9436924819B91000A0FE3 /* Section+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Section+CoreDataClass.swift"; path = "GT/CoreData/Declarations/Section+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		27D9436A24819B91000A0FE3 /* Section+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Section+CoreDataProperties.swift"; path = "GT/CoreData/Declarations/Section+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		27D9436D24819B91000A0FE3 /* Seats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Seats+CoreDataClass.swift"; path = "GT/CoreData/Declarations/Seats+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		27D9436E24819B91000A0FE3 /* Seats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Seats+CoreDataProperties.swift"; path = "GT/CoreData/Declarations/Seats+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		27D9436F24819B91000A0FE3 /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataClass.swift"; path = "GT/CoreData/Declarations/Course+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		27D9437024819B91000A0FE3 /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataProperties.swift"; path = "GT/CoreData/Declarations/Course+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		27C19F7624CF5B3900499D03 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		27C19F7B24CF660700499D03 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		27C19F7D24CF71A700499D03 /* Wrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrappers.swift; sourceTree = "<group>"; };
+		27C19F9324D08FD500499D03 /* MTLayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MTLayout; path = ../../../dev/MTLayout; sourceTree = "<group>"; };
+		27D8A81B24C86883003AFE3A /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
+		27D8A81C24C86883003AFE3A /* DetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewCell.xib; sourceTree = "<group>"; };
+		27DA9EE924D5AB8100493DDD /* CourseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseStore.swift; sourceTree = "<group>"; };
+		27DA9F1324D5C29F00493DDD /* PrereqAndRestrictionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrereqAndRestrictionTable.swift; sourceTree = "<group>"; };
+		27DA9F1824D5C4AF00493DDD /* Segmentio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Segmentio; path = ../../../dev/Segmentio; sourceTree = "<group>"; };
+		27DA9F1E24D5D57400493DDD /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		27DA9F2024D5EE8500493DDD /* FilterItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemCell.swift; sourceTree = "<group>"; };
+		27DA9F2224D5EEC500493DDD /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
+		27DA9F2A24D61AF700493DDD /* CourseCritique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCritique.swift; sourceTree = "<group>"; };
 		27F9B29224351DF7006C5EE8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		3F7CAC2D3D35BD4D3CD90374 /* Pods_GT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A153F377C25C6D3F4E0D5AE0 /* Pods-GT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT.debug.xcconfig"; path = "Target Support Files/Pods-GT/Pods-GT.debug.xcconfig"; sourceTree = "<group>"; };
 		FA365FE2244874970058AE7B /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		FA365FE3244874980058AE7B /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		FA365FE4244874980058AE7B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -132,9 +148,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2792C73F247E8DA400E0789F /* MTWeekView in Frameworks */,
-				2780872E24913B0A00F35CE5 /* MTFlexBox in Frameworks */,
-				850FD7BDFFF6B638E349271F /* Pods_GT.framework in Frameworks */,
+				27DA9EBB24D59BFD00493DDD /* Alamofire in Frameworks */,
+				27DA9EB924D59BFD00493DDD /* RealmSwift in Frameworks */,
+				27DA9F1A24D5C4B800493DDD /* Segmentio in Frameworks */,
+				27DA9F2924D61A6D00493DDD /* MBProgressHUD in Frameworks */,
+				27DA9EB724D59BFD00493DDD /* MTWeekView in Frameworks */,
+				27DA9F1D24D5D34F00493DDD /* SideMenu in Frameworks */,
+				27DA9F2624D619D800493DDD /* SwiftSoup in Frameworks */,
+				27DA9EB324D59BFD00493DDD /* MTFlexBox in Frameworks */,
+				27DA9EB524D59BFD00493DDD /* MTLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,12 +183,14 @@
 		273DFBF82429074C008950DA = {
 			isa = PBXGroup;
 			children = (
-				2780872F24913C9A00F35CE5 /* MTFlexBox */,
+				27DA9F1824D5C4AF00493DDD /* Segmentio */,
+				27C19F9324D08FD500499D03 /* MTLayout */,
+				27269DD924CEFD9100D804FD /* ScrollPicker */,
+				2716186824C844D9007FB284 /* MTFlexBox */,
 				278F10B82483FD11008B9D50 /* MTWeekView */,
 				273DFC032429074C008950DA /* GT */,
 				273DFC022429074C008950DA /* Products */,
-				566B16AA1F6131133B08F523 /* Pods */,
-				D66F3A33F4FA9750477A8A32 /* Frameworks */,
+				27DA9EB124D59BFD00493DDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,10 +205,10 @@
 		273DFC032429074C008950DA /* GT */ = {
 			isa = PBXGroup;
 			children = (
+				27C19F7524CF5B2E00499D03 /* Realm */,
 				FAB530DC2449DA9F00B97046 /* Supporting */,
 				27B71F9C242CA620000EFEFE /* CoreData */,
 				275BA43D242A95BC00E89227 /* GT.entitlements */,
-				273DFC2A2429078D008950DA /* Models */,
 				1786E573243FCC5900FF6C9C /* Views */,
 				273DFC182429076E008950DA /* Controllers */,
 				273DFC042429074C008950DA /* AppDelegate.swift */,
@@ -193,6 +217,7 @@
 				273DFC0F2429074F008950DA /* LaunchScreen.storyboard */,
 				273DFC2D242907A5008950DA /* SceneDelegate.swift */,
 				273DFC122429074F008950DA /* Info.plist */,
+				27DA9EE924D5AB8100493DDD /* CourseStore.swift */,
 			);
 			path = GT;
 			sourceTree = "<group>";
@@ -210,14 +235,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		273DFC2A2429078D008950DA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				273DFC2B2429078D008950DA /* Course.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		2766E00E245DF723001795FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,7 +242,11 @@
 				2766E00F245DF741001795FB /* ScheduleCell.swift */,
 				279ACE1E24546B3F00B3DD06 /* SectionPickerTableView.swift */,
 				2766E011245DFA87001795FB /* ScheduleList.swift */,
-				273526BD2482738B005283EB /* Separator.swift */,
+				273526BD2482738B005283EB /* SeparatorView.swift */,
+				275150DE24D73D3700A01737 /* ScheduleItemHeaderView.xib */,
+				275150E024D73D6400A01737 /* ScheduleItemHeaderView.swift */,
+				275150E824D75E5700A01737 /* ScheduleItemDetailView.swift */,
+				275150E924D75E5700A01737 /* ScheduleItemDetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,35 +254,44 @@
 		27B71F9C242CA620000EFEFE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				27D9437B24819CA6000A0FE3 /* Declarations */,
-				27B71FA3242CA620000EFEFE /* Model.xcdatamodeld */,
 				27B71FAC242CABD1000EFEFE /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		27D9437B24819CA6000A0FE3 /* Declarations */ = {
+		27C19F7524CF5B2E00499D03 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				273526B12481C778005283EB /* ScheduleItem+CoreDataClass.swift */,
-				273526B22481C778005283EB /* ScheduleItem+CoreDataProperties.swift */,
-				273526B32481C778005283EB /* Schedule+CoreDataClass.swift */,
-				273526B42481C778005283EB /* Schedule+CoreDataProperties.swift */,
-				27D9436724819B91000A0FE3 /* Meeting+CoreDataClass.swift */,
-				27D9436824819B91000A0FE3 /* Meeting+CoreDataProperties.swift */,
-				27D9436924819B91000A0FE3 /* Section+CoreDataClass.swift */,
-				27D9436A24819B91000A0FE3 /* Section+CoreDataProperties.swift */,
-				27D9436D24819B91000A0FE3 /* Seats+CoreDataClass.swift */,
-				27D9436E24819B91000A0FE3 /* Seats+CoreDataProperties.swift */,
-				27D9436F24819B91000A0FE3 /* Course+CoreDataClass.swift */,
-				27D9437024819B91000A0FE3 /* Course+CoreDataProperties.swift */,
+				27C19F7624CF5B3900499D03 /* Models.swift */,
+				27C19F7B24CF660700499D03 /* Storage.swift */,
+				27C19F7D24CF71A700499D03 /* Wrappers.swift */,
 			);
-			path = Declarations;
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		27DA9EB124D59BFD00493DDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27DA9F1224D5C28900493DDD /* CourseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				27D8A81C24C86883003AFE3A /* DetailViewCell.xib */,
+				27D8A81B24C86883003AFE3A /* DetailViewCell.swift */,
+				2716186924C84552007FB284 /* CourseDetailViewConroller.swift */,
+				27DA9F1324D5C29F00493DDD /* PrereqAndRestrictionTable.swift */,
+				27DA9F2A24D61AF700493DDD /* CourseCritique.swift */,
+			);
+			path = CourseDetail;
 			sourceTree = "<group>";
 		};
 		27F94230245B725300832468 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
+				27DA9F1224D5C28900493DDD /* CourseDetail */,
 				273DFC1A2429076E008950DA /* ViewController.swift */,
 				273DFC1B2429076E008950DA /* DetailViewController.swift */,
 				278F10B62483E23D008B9D50 /* TableViewDropDown.swift */,
@@ -273,8 +303,10 @@
 			isa = PBXGroup;
 			children = (
 				27F9B29224351DF7006C5EE8 /* SearchViewController.swift */,
-				273526B924826435005283EB /* SerchConfigViewController.swift */,
 				273526BB248264AF005283EB /* ConfigView.swift */,
+				27DA9F1E24D5D57400493DDD /* Search.storyboard */,
+				27DA9F2024D5EE8500493DDD /* FilterItemCell.swift */,
+				27DA9F2224D5EEC500493DDD /* FilterTableViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -286,6 +318,8 @@
 				FAE59F03244E59C20096F003 /* ScheduleViewController.swift */,
 				FAE59F05244E600B0096F003 /* SideMenuViewController.swift */,
 				2766DFE9245B8D64001795FB /* MainSplitViewController.swift */,
+				275150D024D6CC0300A01737 /* CourseAdderTableView.swift */,
+				275150DA24D73C4B00A01737 /* CourseAdderTableViewController.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -298,31 +332,16 @@
 			path = Track;
 			sourceTree = "<group>";
 		};
-		566B16AA1F6131133B08F523 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A153F377C25C6D3F4E0D5AE0 /* Pods-GT.debug.xcconfig */,
-				0AF9DE093F0FB685B6287235 /* Pods-GT.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		D66F3A33F4FA9750477A8A32 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3F7CAC2D3D35BD4D3CD90374 /* Pods_GT.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		FAB530DC2449DA9F00B97046 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
 				273DFC2F242907AD008950DA /* AppConstants.swift */,
 				273DFC31242907AE008950DA /* Extensions.swift */,
-				273DFC30242907AE008950DA /* ServerManager.swift */,
+				273DFC30242907AE008950DA /* API.swift */,
 				FAB530DD2449DAFB00B97046 /* Parser.swift */,
 				FA3938EC2454F7760022DA8F /* UserDefaults.swift */,
+				275150CE24D6C21E00A01737 /* Store.swift */,
+				275150E224D7473D00A01737 /* UIView+Extension.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -334,11 +353,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 273DFC152429074F008950DA /* Build configuration list for PBXNativeTarget "GT" */;
 			buildPhases = (
-				8D068975B6E4E365F1726590 /* [CP] Check Pods Manifest.lock */,
 				273DFBFD2429074C008950DA /* Sources */,
 				273DFBFE2429074C008950DA /* Frameworks */,
 				273DFBFF2429074C008950DA /* Resources */,
-				B75AF3C010AC3E6F94BC2102 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -346,8 +363,15 @@
 			);
 			name = GT;
 			packageProductDependencies = (
-				2792C73E247E8DA400E0789F /* MTWeekView */,
-				2780872D24913B0A00F35CE5 /* MTFlexBox */,
+				27DA9EB224D59BFD00493DDD /* MTFlexBox */,
+				27DA9EB424D59BFD00493DDD /* MTLayout */,
+				27DA9EB624D59BFD00493DDD /* MTWeekView */,
+				27DA9EB824D59BFD00493DDD /* RealmSwift */,
+				27DA9EBA24D59BFD00493DDD /* Alamofire */,
+				27DA9F1924D5C4B800493DDD /* Segmentio */,
+				27DA9F1C24D5D34F00493DDD /* SideMenu */,
+				27DA9F2524D619D800493DDD /* SwiftSoup */,
+				27DA9F2824D61A6D00493DDD /* MBProgressHUD */,
 			);
 			productName = GT;
 			productReference = 273DFC012429074C008950DA /* Oscar.app */;
@@ -360,7 +384,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Maksim Tochilkin";
 				TargetAttributes = {
 					273DFC002429074C008950DA = {
@@ -380,6 +404,11 @@
 			packageReferences = (
 				2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */,
 				2780872C24913B0A00F35CE5 /* XCRemoteSwiftPackageReference "MTFlexBox" */,
+				27C19F7824CF5BCA00499D03 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				27C19F9624D0927A00499D03 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				27DA9F1B24D5D34E00493DDD /* XCRemoteSwiftPackageReference "SideMenu" */,
+				27DA9F2424D619D800493DDD /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				27DA9F2724D61A6D00493DDD /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = 273DFC022429074C008950DA /* Products */;
 			projectDirPath = "";
@@ -398,94 +427,57 @@
 				273DFC112429074F008950DA /* LaunchScreen.storyboard in Resources */,
 				273DFC0E2429074F008950DA /* Assets.xcassets in Resources */,
 				273DFC0C2429074C008950DA /* Main.storyboard in Resources */,
+				275150DF24D73D3700A01737 /* ScheduleItemHeaderView.xib in Resources */,
+				27D8A81E24C86883003AFE3A /* DetailViewCell.xib in Resources */,
+				275150EB24D75E5700A01737 /* ScheduleItemDetailView.xib in Resources */,
+				27DA9F1F24D5D57400493DDD /* Search.storyboard in Resources */,
 				1786E57B243FCC5900FF6C9C /* SectionCellXib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		8D068975B6E4E365F1726590 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GT-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B75AF3C010AC3E6F94BC2102 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GT/Pods-GT-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		273DFBFD2429074C008950DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27D9437324819B91000A0FE3 /* Section+CoreDataClass.swift in Sources */,
 				FA365FE5244874980058AE7B /* SectionHeader.swift in Sources */,
+				275150E124D73D6400A01737 /* ScheduleItemHeaderView.swift in Sources */,
+				275150DC24D73C4B00A01737 /* CourseAdderTableViewController.swift in Sources */,
 				278F10B72483E23D008B9D50 /* TableViewDropDown.swift in Sources */,
+				27DA9EEA24D5AB8100493DDD /* CourseStore.swift in Sources */,
 				FA365FE6244874980058AE7B /* CourseCell.swift in Sources */,
 				FAB530E02449DCA500B97046 /* CourseDetailTableView.swift in Sources */,
 				FA365FE7244874980058AE7B /* Protocols.swift in Sources */,
 				2766E010245DF741001795FB /* ScheduleCell.swift in Sources */,
-				27F9B29124350DCC006C5EE8 /* Model.xcdatamodeld in Sources */,
-				273526BA24826435005283EB /* SerchConfigViewController.swift in Sources */,
 				273DFC1D2429076E008950DA /* ViewController.swift in Sources */,
 				274D8731242A238E00B229B2 /* TrackedableViewController.swift in Sources */,
 				279ACE2324546CF500B3DD06 /* SectionPickerCell.swift in Sources */,
+				27DA9F2124D5EE8500493DDD /* FilterItemCell.swift in Sources */,
+				27DA9F2B24D61AF700493DDD /* CourseCritique.swift in Sources */,
+				2716186A24C84552007FB284 /* CourseDetailViewConroller.swift in Sources */,
 				FAE59F04244E59C20096F003 /* ScheduleViewController.swift in Sources */,
-				273526B72481C778005283EB /* Schedule+CoreDataClass.swift in Sources */,
-				27D9437124819B91000A0FE3 /* Meeting+CoreDataClass.swift in Sources */,
-				273526BE2482738B005283EB /* Separator.swift in Sources */,
-				27D9437724819B91000A0FE3 /* Seats+CoreDataClass.swift in Sources */,
+				275150D124D6CC0300A01737 /* CourseAdderTableView.swift in Sources */,
+				27DA9F1424D5C29F00493DDD /* PrereqAndRestrictionTable.swift in Sources */,
+				275150E324D7473D00A01737 /* UIView+Extension.swift in Sources */,
+				273526BE2482738B005283EB /* SeparatorView.swift in Sources */,
+				27D8A81D24C86883003AFE3A /* DetailViewCell.swift in Sources */,
+				27C19F7724CF5B3900499D03 /* Models.swift in Sources */,
 				1786E57A243FCC5900FF6C9C /* SectionCell.swift in Sources */,
 				27A7821A2438C6B5006CDE57 /* ColumnViewController.swift in Sources */,
-				27D9437424819B91000A0FE3 /* Section+CoreDataProperties.swift in Sources */,
 				273526BC248264AF005283EB /* ConfigView.swift in Sources */,
+				27C19F7E24CF71A700499D03 /* Wrappers.swift in Sources */,
 				2766DFEA245B8D64001795FB /* MainSplitViewController.swift in Sources */,
 				1786E57E243FCC5900FF6C9C /* CoursePickerView.swift in Sources */,
 				FA3938ED2454F7760022DA8F /* UserDefaults.swift in Sources */,
-				273DFC2C2429078D008950DA /* Course.swift in Sources */,
 				273DFC32242907AE008950DA /* AppConstants.swift in Sources */,
+				275150EA24D75E5700A01737 /* ScheduleItemDetailView.swift in Sources */,
+				27DA9F2324D5EEC500493DDD /* FilterTableViewController.swift in Sources */,
 				2766E014245E05CB001795FB /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				FAE59F06244E600B0096F003 /* SideMenuViewController.swift in Sources */,
-				273DFC33242907AE008950DA /* ServerManager.swift in Sources */,
-				273526B52481C778005283EB /* ScheduleItem+CoreDataClass.swift in Sources */,
+				273DFC33242907AE008950DA /* API.swift in Sources */,
 				FAB530DE2449DAFB00B97046 /* Parser.swift in Sources */,
-				27D9437224819B91000A0FE3 /* Meeting+CoreDataProperties.swift in Sources */,
-				27D9437A24819B91000A0FE3 /* Course+CoreDataProperties.swift in Sources */,
-				27D9437824819B91000A0FE3 /* Seats+CoreDataProperties.swift in Sources */,
-				273526B62481C778005283EB /* ScheduleItem+CoreDataProperties.swift in Sources */,
 				273DFC2E242907A5008950DA /* SceneDelegate.swift in Sources */,
 				279ACE1F24546B3F00B3DD06 /* SectionPickerTableView.swift in Sources */,
 				279ACE2124546CE700B3DD06 /* CoursePickerCell.swift in Sources */,
@@ -494,11 +486,11 @@
 				273DFC34242907AE008950DA /* Extensions.swift in Sources */,
 				2766E012245DFA87001795FB /* ScheduleList.swift in Sources */,
 				273DFC1E2429076E008950DA /* DetailViewController.swift in Sources */,
+				275150CF24D6C21E00A01737 /* Store.swift in Sources */,
 				27A78224243A11CF006CDE57 /* SpinnerViewController.swift in Sources */,
-				273526B82481C778005283EB /* Schedule+CoreDataProperties.swift in Sources */,
 				273DFC052429074C008950DA /* AppDelegate.swift in Sources */,
 				FAB530E22449F19F00B97046 /* MeetingCell.swift in Sources */,
-				27D9437924819B91000A0FE3 /* Course+CoreDataClass.swift in Sources */,
+				27C19F7C24CF660700499D03 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +542,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -610,6 +603,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -640,14 +634,13 @@
 		};
 		273DFC162429074F008950DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A153F377C25C6D3F4E0D5AE0 /* Pods-GT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GT/GT.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = ZF27C7P399;
 				INFOPLIST_FILE = GT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -655,24 +648,24 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MT.GTApp;
 				PRODUCT_NAME = Oscar;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		273DFC172429074F008950DA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AF9DE093F0FB685B6287235 /* Pods-GT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GT/GT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = ZF27C7P399;
 				INFOPLIST_FILE = GT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -680,11 +673,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MT.GTApp;
 				PRODUCT_NAME = Oscar;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -728,33 +722,91 @@
 				kind = branch;
 			};
 		};
+		27C19F7824CF5BCA00499D03 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.2;
+			};
+		};
+		27C19F9624D0927A00499D03 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+		27DA9F1B24D5D34E00493DDD /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.4.8;
+			};
+		};
+		27DA9F2424D619D800493DDD /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+		27DA9F2724D61A6D00493DDD /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2780872D24913B0A00F35CE5 /* MTFlexBox */ = {
+		27DA9EB224D59BFD00493DDD /* MTFlexBox */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2780872C24913B0A00F35CE5 /* XCRemoteSwiftPackageReference "MTFlexBox" */;
 			productName = MTFlexBox;
 		};
-		2792C73E247E8DA400E0789F /* MTWeekView */ = {
+		27DA9EB424D59BFD00493DDD /* MTLayout */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2792C73D247E8DA400E0789F /* XCRemoteSwiftPackageReference "MTWeekView" */;
+			productName = MTLayout;
+		};
+		27DA9EB624D59BFD00493DDD /* MTWeekView */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = MTWeekView;
 		};
-/* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		27B71FA3242CA620000EFEFE /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				27B71FA4242CA620000EFEFE /* Model.xcdatamodel */,
-			);
-			currentVersion = 27B71FA4242CA620000EFEFE /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+		27DA9EB824D59BFD00493DDD /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27C19F7824CF5BCA00499D03 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
-/* End XCVersionGroup section */
+		27DA9EBA24D59BFD00493DDD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27C19F9624D0927A00499D03 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		27DA9F1924D5C4B800493DDD /* Segmentio */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Segmentio;
+		};
+		27DA9F1C24D5D34F00493DDD /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27DA9F1B24D5D34E00493DDD /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		27DA9F2524D619D800493DDD /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27DA9F2424D619D800493DDD /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		27DA9F2824D61A6D00493DDD /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27DA9F2724D61A6D00493DDD /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 273DFBF92429074C008950DA /* Project object */;
 }

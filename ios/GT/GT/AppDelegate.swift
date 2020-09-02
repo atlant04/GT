@@ -7,23 +7,15 @@
 //
 
 import UIKit
-import PushNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    let push = PushNotifications.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      self.push.start(instanceId: "2c57da76-8881-452d-93e7-974833886bda")
-      self.push.registerForRemoteNotifications()
-        try? self.push.addDeviceInterest(interest: AppConstants.shared.userId!)
-        
       return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-      self.push.registerDeviceToken(deviceToken)
     }
 
     // MARK: UISceneSession Lifecycle

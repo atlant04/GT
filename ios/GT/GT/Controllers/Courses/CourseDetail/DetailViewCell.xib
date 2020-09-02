@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="DetailViewCell" customModule="Oscar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="270" height="66"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="3.45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-HL-OVl" customClass="PaddedLabel" customModule="Oscar" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="49"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ac-af-7tW">
+                        <rect key="frame" x="8" y="49" width="254" height="1"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="DvV-Go-VQO"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="752" text="Average Course GPA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvD-Rc-nTE">
+                        <rect key="frame" x="0.0" y="50" width="270" height="16"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="4ac-af-7tW" secondAttribute="trailing" constant="8" id="AcF-sh-oDQ"/>
+                <constraint firstItem="4ac-af-7tW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="KgX-rg-fUD"/>
+                <constraint firstItem="4ac-af-7tW" firstAttribute="top" secondItem="oiB-HL-OVl" secondAttribute="bottom" id="NOw-Hj-d2d"/>
+                <constraint firstItem="oiB-HL-OVl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Nf9-s8-bVW"/>
+                <constraint firstItem="oiB-HL-OVl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QWk-rh-KrR"/>
+                <constraint firstAttribute="trailing" secondItem="oiB-HL-OVl" secondAttribute="trailing" id="UBh-Kj-ZW7"/>
+                <constraint firstAttribute="trailing" secondItem="FvD-Rc-nTE" secondAttribute="trailing" id="hfc-TV-es9"/>
+                <constraint firstItem="FvD-Rc-nTE" firstAttribute="top" secondItem="4ac-af-7tW" secondAttribute="bottom" id="lDF-Vy-zdi"/>
+                <constraint firstItem="FvD-Rc-nTE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vPm-M7-e0o"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="FvD-Rc-nTE" secondAttribute="bottom" id="yqj-Z0-gGU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="270" height="66"/>
+            <connections>
+                <outlet property="mainLabel" destination="oiB-HL-OVl" id="goD-d3-sZf"/>
+                <outlet property="secondaryLabel" destination="FvD-Rc-nTE" id="Jtw-Mw-OX8"/>
+            </connections>
+            <point key="canvasLocation" x="-169.56521739130437" y="0.6696428571428571"/>
+        </collectionViewCell>
+    </objects>
+</document>

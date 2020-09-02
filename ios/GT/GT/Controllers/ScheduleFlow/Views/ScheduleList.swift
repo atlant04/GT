@@ -55,8 +55,8 @@ class CourseList: UICollectionView, UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CourseListCell.reuseIdentifier, for: indexPath) as! CourseListCell
-        cell.label.text = items[indexPath.row].course.identifier
-        cell.contentView.backgroundColor = UIColor(hex: items[indexPath.row].color)
+        cell.label.text = items[indexPath.row].course?.identifier
+        cell.contentView.backgroundColor = items[indexPath.row].color
         return cell
     }
     
@@ -115,8 +115,15 @@ final class CourseListCell: UICollectionViewCell, ConfiguringCell {
     }
 }
 
+@IBDesignable
 class PaddedLabel: UILabel {
     var insets: UIEdgeInsets?
+    @IBInspectable var padding: CGFloat = 0 {
+        didSet {
+            insets = .all(padding)
+            setNeedsLayout()
+        }
+    }
     
     override var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize

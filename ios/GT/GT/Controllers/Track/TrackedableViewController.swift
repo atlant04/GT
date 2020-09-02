@@ -7,20 +7,17 @@
 //
 
 import UIKit
-import ObjectMapper
-import CoreData
-import Groot
 import Alamofire
 
 class TrackedableViewController: ColumnViewController<Section, SectionCell> {
 
-    var controller: NSFetchedResultsController<Section> = {
-        let request: NSFetchRequest<Section> = Section.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        request.predicate = NSPredicate(format: "crn = '35859'", true)
-        let controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "course.identifier", cacheName: nil)
-        return controller
-    }()
+//    var controller: NSFetchedResultsController<Section> = {
+//        let request: NSFetchRequest<Section> = Section.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+//        request.predicate = NSPredicate(format: "crn = '35859'", true)
+//        let controller = NSFetchedResultsController<Section>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: "course.identifier", cacheName: nil)
+//        return controller
+//    }()
 
     lazy var refresh: UIRefreshControl = {
         let refresh = UIRefreshControl()
@@ -55,11 +52,11 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Tracked Courses"
 
-        if let _ = try? controller.performFetch(), let sections = controller.fetchedObjects {
-            trackedSections = Dictionary<String, Set<Section>>()
-            sections.forEach { self.append(section: $0) }
-            update()
-        }
+//        if let _ = try? controller.performFetch(), let sections = controller.fetchedObjects {
+//            trackedSections = Dictionary<String, Set<Section>>()
+//            sections.forEach { self.append(section: $0) }
+//            update()
+//        }
 
 
         let left = UISwipeGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
@@ -175,53 +172,53 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
     }
     
     @objc func didReceiveTrackingRequest(_ notification: Notification) {
-        if let section = notification.object as? Section {
+        if var section = notification.object as? Section {
             section.tracked = true
             append(section: section)
             update()
-            ServerManager.shared.seats(to: section) { [weak self] dict in
-                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
-                    section.seats = seats
-                    section.tracked = true
-                    self?.updateCell(section: section)
-                }
+            API.seats(to: section) { [weak self] dict in
+//                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+//                    section.seats = seats
+//                    section.tracked = true
+//                    self?.updateCell(section: section)
+//                }
             }
         }
     }
 
     func append(section: Section) {
-        guard let id = section.course?.identifier else { return }
-        if let _ = trackedSections[id] {
-            trackedSections[id]?.insert(section)
-        } else {
-            trackedSections[id] = [section]
-        }
+//        guard let id = section.course?.identifier else { return }
+//        if let _ = trackedSections[id] {
+//            trackedSections[id]?.insert(section)
+//        } else {
+//            trackedSections[id] = [section]
+//        }
     }
 
     func remove(_ section: Section) {
-        guard let id = section.course?.identifier else { return }
-        trackedSections[id]?.remove(section)
-        if trackedSections[id]?.isEmpty ?? false {
-            trackedSections.removeValue(forKey: id)
-        }
+//        guard let id = section.course?.identifier else { return }
+//        trackedSections[id]?.remove(section)
+//        if trackedSections[id]?.isEmpty ?? false {
+//            trackedSections.removeValue(forKey: id)
+//        }
     }
     
     @objc func didReceiveTrackAllRequest(_ notification: Notification) {
         guard let sections = notification.object as? [Section] else { return }
 
         let group = DispatchGroup()
-        for section in sections {
-            append(section: section)
-            group.enter()
-            ServerManager.shared.seats(to: section) { [weak self] dict in
-                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
-                    seats.section = section
-                    section.tracked = true
-                    self?.updateCell(section: section)
-                    group.leave()
-                }
-            }
-        }
+//        for section in sections {
+//            append(section: section)
+//            group.enter()
+//            ServerManager.shared.seats(to: section) { [weak self] dict in
+//                if let seats = try? object(withEntityName: "Seats", fromJSONDictionary: dict, inContext: CoreDataStack.shared.container.viewContext) as? Seats {
+//                    seats.section = section
+//                    section.tracked = true
+//                    self?.updateCell(section: section)
+//                    group.leave()
+//                }
+//            }
+//        }
 
         update()
             
@@ -270,11 +267,11 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
             UIView.animate(withDuration: 0.2, animations: {
                 cell.center.x = 0
             }) { _ in
-                if let section = self.dataSource.itemIdentifier(for: indexPath) {
+                if var section = self.dataSource.itemIdentifier(for: indexPath) {
                     self.remove(section)
                     self.update()
                     section.tracked = false
-                    ServerManager.shared.unsubscribe(from: section) { response in }
+                    API.unsubscribe(from: section) { response in }
                 }
             }
         }
@@ -296,7 +293,7 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? SectionHeader
             let section = self.dataSource.itemIdentifier(for: indexPath)
-            sectionHeader?.title.text = section?.course?.identifier
+//            sectionHeader?.title.text = section?.course?.identifier
             sectionHeader?.seeAllButton.isHidden = true
             return sectionHeader
         }
@@ -309,18 +306,11 @@ class TrackedableViewController: ColumnViewController<Section, SectionCell> {
 
 }
 
-struct MTResponse: Mappable {
+struct MTResponse {
     
     var crn: String?
     var seats: [String: Any]?
     var waitlist: [String: Any]?
     
-    init?(map: Map) { }
-    
-    mutating func mapping(map: Map) {
-        crn <- map["crn"]
-        seats <- map["data.seats"]
-        waitlist <- map["data.waitlist"]
-    }
 }
 

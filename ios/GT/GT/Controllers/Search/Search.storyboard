@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aOt-Qd-6mR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filter-->
+        <scene sceneID="mOl-Sy-jBZ">
+            <objects>
+                <tableViewController id="Qzo-9J-4Nv" customClass="FilterTableViewController" customModule="Oscar" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ugw-6y-fJh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterItemCell" rowHeight="119" id="8Y6-u2-v7F" customClass="FilterItemCell" customModule="Oscar" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="119"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Y6-u2-v7F" id="xeV-IX-nMT">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQM-5o-kMd">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="119"/>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rQM-5o-kMd" firstAttribute="top" secondItem="xeV-IX-nMT" secondAttribute="top" id="3Di-03-Tx2"/>
+                                        <constraint firstAttribute="trailing" secondItem="rQM-5o-kMd" secondAttribute="trailing" id="4qt-La-SQ6"/>
+                                        <constraint firstItem="rQM-5o-kMd" firstAttribute="leading" secondItem="xeV-IX-nMT" secondAttribute="leading" id="GKl-b3-gjg"/>
+                                        <constraint firstAttribute="bottom" secondItem="rQM-5o-kMd" secondAttribute="bottom" id="HOp-ew-BQG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="picker" destination="rQM-5o-kMd" id="NE6-1z-uOl"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterButton" rowHeight="69" id="k5X-aM-72z" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                <rect key="frame" x="20" y="174.5" width="374" height="69"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k5X-aM-72z" id="rOr-El-Mop">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="69"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sew-Dh-QJF">
+                                            <rect key="frame" x="165" y="16.5" width="44" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="Filter"/>
+                                            <connections>
+                                                <action selector="applyFilters:" destination="Qzo-9J-4Nv" eventType="touchUpInside" id="INp-TI-VQd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="sew-Dh-QJF" firstAttribute="centerY" secondItem="rOr-El-Mop" secondAttribute="centerY" id="5kY-in-jQY"/>
+                                        <constraint firstItem="sew-Dh-QJF" firstAttribute="centerX" secondItem="rOr-El-Mop" secondAttribute="centerX" id="ZlM-jr-MDi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qzo-9J-4Nv" id="Vin-bG-tgu"/>
+                            <outlet property="delegate" destination="Qzo-9J-4Nv" id="sQz-kt-sYx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Filter" id="GDO-2Q-m3h"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rp9-ZW-hUt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="563.768115942029" y="97.767857142857139"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="w7t-KI-w5X">
+            <objects>
+                <navigationController id="aOt-Qd-6mR" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i1N-Ts-jFQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="NO"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="statusBarEndAlpha">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="Qzo-9J-4Nv" kind="relationship" relationship="rootViewController" id="Jl5-ZB-fEo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XWV-mD-fMp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-354" y="98"/>
+        </scene>
+    </scenes>
+</document>

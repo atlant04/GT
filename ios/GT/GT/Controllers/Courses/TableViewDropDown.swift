@@ -36,18 +36,18 @@ class DropDownTableView: UITableViewController, UIPopoverPresentationControllerD
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        AppConstants.shared.allTerms.count
+        AppConstants.Term.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = AppConstants.shared.allTerms[indexPath.row].key
+        cell.textLabel?.text = AppConstants.Term.allCases[indexPath.row].rawValue
         cell.backgroundColor = .clear
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismiss(animated: true, completion: nil)
-        onSelect?(AppConstants.shared.allTerms[indexPath.row].key)
+        onSelect?(AppConstants.Term.allCases[indexPath.row].rawValue)
     }
 }

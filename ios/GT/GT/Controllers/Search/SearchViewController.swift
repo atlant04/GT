@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreData
+import SideMenu
+import Combine
 
 class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverPresentationControllerDelegate {
+    
     let search = UISearchController()
-    var request: NSFetchRequest<Course> = Course.fetchRequest()
-    var controller: NSFetchedResultsController<Course>?
-
+    
     var onSelected: ((Course, SearchViewController) -> Void) = { course, vc  in
         vc.presentDetailVC(course: course)
     }
@@ -25,7 +26,7 @@ class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverP
     }
     
     var configView = ConfigView()
-    var configBarButton: UIBarButtonItem!
+    var bag = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,56 +42,44 @@ class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverP
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         
-        request.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
-        
-        if controller == nil {
-            searchCourses(text: section)
-        }
-        configBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleConfig))
-        navigationItem.rightBarButtonItem = nil//configBarButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .plain, target: self, action: #selector(presentFilterVC))
         modalPresentationStyle = .none
-        self.reloadData()
+        
+        store.publisher.sink(receiveValue: { [unowned self] courses in
+            print(courses.count)
+            self.reloadData(courses: courses)
+            }).store(in: &bag)
+    
+        
     }
     
-    let configVC = SerchConfigViewController()
-    @objc
-    func handleConfig() {
-        configVC.modalPresentationStyle = .popover
-        configVC.preferredContentSize = CGSize(width: 200, height: 200)
-        configVC.popoverPresentationController?.delegate = self
-        configVC.popoverPresentationController?.passthroughViews = [view]
-        (configVC.view as? ConfigView)?.searchVC = self
-        if let popverVC = configVC.popoverPresentationController {
-            popverVC.barButtonItem = configBarButton
-            present(configVC, animated: true, completion: nil)
-        }
+    @objc func presentFilterVC() {
+        let searchNavVC = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! SideMenuNavigationController
+        searchNavVC.settings.presentationStyle = .menuSlideIn
+        searchNavVC.settings.pushStyle = .popWhenPossible
+//        searchNavVC.settings.presentationStyle.presentingScaleFactor = 0.9
+        searchNavVC.settings.presentationStyle.presentingEndAlpha = 0.8
+        searchNavVC.settings.menuWidth = self.view.bounds.width * 0.75
+        self.present(searchNavVC, animated: true, completion: nil)
     }
+    
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         .none
     }
 
     func presentDetailVC(course: Course) {
-        let detailVC = DetailViewController()
-        detailVC.course = course
-        self.navigationController?.pushViewController(detailVC, animated: true)
+//        let detailVC = CourseDetailViewConroller(course: course)
+//        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        configVC.dismiss(animated: true, completion: nil)
     }
     
     func searchCourses(text: String?) {
-        request.predicate = createPredicate(text: text)
-        request.sortDescriptors = [.init(key: "number", ascending: true)]
-        controller = NSFetchedResultsController<Course>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        do {
-            try controller?.performFetch()
-        } catch {
-            print(error)
-        }
+        guard let predicate = createPredicate(text: text) else { return }
+//        $courses = $courses.filter(predicate)
     }
     
     func createPredicate(text: String?) -> NSPredicate? {
@@ -111,10 +100,10 @@ class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverP
         return predicate
     }
     
-    func reloadData() {
+    func reloadData(courses: [Course]) {
         var snapshot = NSDiffableDataSourceSnapshot<String, Course>()
         snapshot.appendSections(["Default"])
-        snapshot.appendItems(controller?.fetchedObjects ?? [])
+        snapshot.appendItems(courses)
         dataSource.apply(snapshot)
     }
 }
@@ -123,18 +112,17 @@ class SearchViewController: ColumnViewController<Course, CourseCell>, UIPopoverP
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
-            searchCourses(text: text)
-        } else {
-            searchCourses(text: section)
+            store.submit(.search(text))
         }
-        self.reloadData()
+//        self.reloadData()
     }
 }
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let controller = controller else { return }
-        let course = controller.object(at: indexPath)
-        onSelected(course, self)
+        if let course = self.dataSource.itemIdentifier(for: indexPath) {
+            let detail = CourseDetailViewConroller(course: course)
+            self.navigationController?.pushViewController(detail, animated: true)
+        }
     }
 }

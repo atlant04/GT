@@ -8,49 +8,51 @@
 
 import UIKit
 import Alamofire
-import ObjectMapper
-import CoreData
+import RealmSwift
+import Combine
+import MBProgressHUD
+
+extension Results {
+    mutating func sort(byKeyPath keyPath: String, ascending: Bool = true) {
+        self = sorted(byKeyPath: keyPath, ascending: true)
+    }
+    
+    mutating func sort<T>(by keyPath: KeyPath<Element, T>, ascending: Bool = true) where T: Comparable {
+        let string = NSExpression(forKeyPath: keyPath).keyPath
+        self = sorted(byKeyPath: string, ascending: ascending)
+    }
+
+    
+    mutating func filtered(_ predicateFormat: String, _ args: Any...) {
+        self = filter(predicateFormat, args)
+    }
+}
 
 final class ViewController: ColumnViewController<Course, CourseCell>, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate {
     var searchBar: UISearchController!
-    var fetchController: NSFetchedResultsController<Course>?
     var spinner: SpinnerViewController?
     
     var rightButton: UIBarButtonItem!
     var dropDown = DropDownTableView()
+    
+    var bag: AnyCancellable?
+    var hud: MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Courses"
         collectionView.delegate = self
-        rightButton = UIBarButtonItem(title: AppConstants.shared.currentTerm, style: .plain, target: self, action: #selector(termButtonTapped))
-//        navigationItem.rightBarButtonItem = rightButton
-    
-        loadOrDownloadIfNeeded()
+        rightButton = UIBarButtonItem(title: AppConstants.currentTerm, style: .plain, target: self, action: #selector(termButtonTapped))
         
-        dropDown.onSelect = { [weak self] key in
-            AppConstants.shared.currentTerm = key
-            self?.rightButton.title = key
-            self?.loadOrDownloadIfNeeded()
+        let window = UIApplication.shared.windows.first!
+        hud = MBProgressHUD.showAdded(to: window, animated: true)
+        bag = store.publisher.sink { [unowned self] courses in
+            self.hud?.hide(animated: true)
+            self.reloadData(courses: courses)
         }
     }
-    
-    func loadOrDownloadIfNeeded() {
-        fetchController = nil
-        fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
-        if fetchController == nil || fetchController?.fetchedObjects == [] || fetchController?.fetchedObjects == nil {
-            spinner = SpinnerViewController()
-            CoreDataStack.shared.downloadData() { success in
-                self.fetchController = CoreDataStack.shared.loadData(sortedBy: "school", "number")
-                self.spinner?.stop()
-                self.spinner = nil
-                self.reloadData()
-            }
-        } else {
-            self.reloadData()
-        }
-    }
+
     
     @objc func termButtonTapped() {
         dropDown.modalPresentationStyle = .popover
@@ -130,21 +132,43 @@ final class ViewController: ColumnViewController<Course, CourseCell>, UICollecti
         }
     }
     
-    func reloadData() {
-        guard let sections = fetchController?.sections else { return }
+    func reloadData(courses: [Course]) {
         var snapshot = NSDiffableDataSourceSnapshot<String, Course>()
-        for section in sections {
-            snapshot.appendSections([section.name])
-            snapshot.appendItems(section.objects as! [Course], toSection: section.name)
+        let schools = courses.map(\.school).unique().sorted()
+        snapshot.appendSections(schools)
+
+        for course in courses {
+            snapshot.appendItems([course], toSection: course.school)
         }
+
         dataSource.apply(snapshot)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let course = fetchController?.object(at: indexPath)
-        let detailVC = DetailViewController()
-        detailVC.course = course
-        navigationController?.pushViewController(detailVC, animated: true)
+        if let course = self.dataSource.itemIdentifier(for: indexPath) {
+            let detailVC = CourseDetailViewConroller(course: course)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 
+}
+
+extension Array where Element: Hashable {
+    func unique() -> [Element] {
+        var set = Set<Element>()
+        return self.filter { set.insert($0).inserted }
+    }
+}
+
+extension Sequence {
+    func group<T>(by keyPath: KeyPath<Element, T>) -> [T: [Element]] where T: Hashable {
+        var dict: [T: [Element]] = [:]
+        for element in self {
+            let key = element[keyPath: keyPath]
+            if case nil = dict[key]?.append(element) {
+                dict[key] = [element]
+            }
+        }
+        return dict
+    }
 }

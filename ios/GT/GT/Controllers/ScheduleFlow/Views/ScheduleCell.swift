@@ -13,7 +13,7 @@ import MTFlexBox
 class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITextFieldDelegate {
     func allEvents(for weekView: MTWeekView) -> [Event] {
         if let schedule = schedule {
-            return Parser.events(scheduleWithColor: schedule)
+            return schedule.items.flatten { $0.course?.events }
         }
         return []
     }
@@ -136,8 +136,8 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITe
     
     func onTextFieldReturn(textField: UITextField) -> Bool {
         unsetInternalEditMode()
-        schedule?.name = textField.text
-        try? CoreDataStack.shared.container.viewContext.save()
+        guard let text = textField.text else { return false }
+        schedule?.name = text
         return true
     }
     
@@ -210,7 +210,7 @@ class ScheduleCell: UITableViewCell, ConfiguringCell, MTWeekViewDataSource, UITe
         contentView.clipsToBounds = true
         
         courseList.onRemoveItem = { [weak self] item in
-            self?.schedule?.items?.remove(item)
+            self?.schedule?.items.remove(object: item)
             self?.courseList.items = Array(self?.schedule?.items ?? [])
             self?.weekView.reload()
         }

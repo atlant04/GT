@@ -42,12 +42,11 @@ class CourseCell: UICollectionViewCell, ConfiguringCell, UIContextMenuInteractio
     
     let colors: [UIColor] = [.systemRed, .systemBlue, .systemPurple, .systemPink, .systemTeal, .systemGreen, .systemIndigo, .systemPurple, .systemOrange]
 
-       func configure(with course: Course) {
+    func configure(with course: Course) {
         name.text = course.name
         identifier.text = course.identifier
-        let text = course.hours?.removeExtraSpaces().split(separator: " ")
-        let maybeHours = (text?.compactMap { Float($0) } ?? [0]).map { String(Int($0)) }
-        hours.text = "\(maybeHours.joined(separator: " and ")) credits"
+        let str = course.hours.map(String.init).joined(separator: " and ")
+        hours.text = "\(str) credits"
         sections.text = "\(course.sections?.count ?? 0) sections"
         
         contentView.layer.borderColor = getSchoolColor(course.school ?? "Default").cgColor

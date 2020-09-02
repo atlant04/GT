@@ -9,31 +9,6 @@
 import UIKit
 import MTWeekView
 
-protocol Collapsable {
-    var isCollapsed: Bool { get set }
-    var numberOfCollapsableItems: Int { get }
-}
-
-extension Course: Collapsable {
-    private static var collapsables = [String: Bool]()
-    
-    var isCollapsed: Bool {
-        get {
-            guard let name = name else { return false}
-            return Course.collapsables[name] ?? false
-        }
-        set {
-            guard let name = name else { return }
-            Course.collapsables[name] = newValue
-        }
-    }
-    
-    var numberOfCollapsableItems: Int {
-        return isCollapsed ? 0 : sections?.count ?? 0
-    }
-    
-}
-
 extension Bool {
     mutating func toggle() {
         self = !self
@@ -261,6 +236,12 @@ extension UIColor {
         return nil
     }
     
+    static var colors: [UIColor] = [.red, .yellow, .blue, .black, .brown, .cyan, .green, .orange, .purple, .magenta]
+    
+    static var random: UIColor {
+        return Self.colors.randomElement()!
+    }
+    
     var rgbComponents:(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var r:CGFloat = 0
         var g:CGFloat = 0
@@ -287,3 +268,36 @@ extension UIColor {
         return String(format: "#%02x%02x%02x%02x", Int(rgbComponents.red * 255), Int(rgbComponents.green * 255),Int(rgbComponents.blue * 255),Int(rgbComponents.alpha * 255) )
     }
 }
+
+extension Array where Element: Equatable {
+
+    // Remove first collection element that is equal to the given `object`:
+    mutating func remove(object: Element) {
+        guard let index = firstIndex(of: object) else {return}
+        remove(at: index)
+    }
+
+}
+
+#if canImport(SwiftUI)
+import SwiftUI
+extension UIViewController {
+    private struct HostViewController<T>: UIViewControllerRepresentable where T: UIViewController {
+        typealias UIViewControllerType = T
+        
+        var viewController: T
+        
+        func makeUIViewController(context: Context) -> T {
+            return viewController
+        }
+        
+        func updateUIViewController(_ uiViewController: T, context: Context) {
+            
+        }
+    }
+    
+    var preview: some View {
+        HostViewController(viewController: self)
+    }
+}
+#endif

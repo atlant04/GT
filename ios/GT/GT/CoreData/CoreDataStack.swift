@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import Groot
 
 class CoreDataStack {
     static let shared = CoreDataStack()
@@ -53,7 +52,7 @@ class CoreDataStack {
         container.performBackgroundTask { context in
             do {
                 for c in courses {
-                    try object(withEntityName: "Course", fromJSONDictionary: c, inContext: context) as! Course
+    
                 }
             } catch {
                 print(error)
@@ -87,14 +86,6 @@ class CoreDataStack {
         }
     }
     
-    func downloadData(completion: @escaping (Bool) -> Void) {
-        ServerManager.shared.getCourses() { dict in
-            self.insertCourses(dict) { success in
-                completion(success)
-            }
-        }
-    }
-    
     var description: NSPersistentStoreDescription {
         let description = NSPersistentStoreDescription()
         description.shouldMigrateStoreAutomatically = true
@@ -104,7 +95,7 @@ class CoreDataStack {
     }
     
     var currentTermUrl: URL? {
-        NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("\(AppConstants.shared.currentTerm).sqlite")
+        NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("\(AppConstants.currentTerm).sqlite")
     }
     
     var currentStore: NSPersistentStore? {

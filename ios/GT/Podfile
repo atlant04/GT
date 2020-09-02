@@ -6,9 +6,5 @@ target 'GT' do
   use_frameworks!
 
   # Pods for GT
-   pod 'ObjectMapper'
-   pod 'Alamofire', '~> 5.0'
-   pod 'PushNotifications', '2.0.0'
-   pod 'Groot'
    pod 'Segmentio'
 end
